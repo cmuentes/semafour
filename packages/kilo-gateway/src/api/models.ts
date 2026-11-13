@@ -91,6 +91,8 @@ export async function fetchKiloModels(options?: {
   kilocodeOrganizationId?: string
   baseURL?: string
 }): Promise<KiloModelsResult> {
+  if (!options?.kilocodeToken) return { models: {} }
+
   const raw = await fetchRawKiloModels(options)
   if (raw.error) return { models: {}, error: raw.error }
 
@@ -139,6 +141,8 @@ export async function fetchKiloImageModels(options?: {
   kilocodeOrganizationId?: string
   baseURL?: string
 }): Promise<KiloImageModelsResult> {
+  if (!options?.kilocodeToken) return { models: [] }
+
   const raw = await fetchRawKiloModels(options)
   if (raw.error) return { models: [], error: raw.error }
 

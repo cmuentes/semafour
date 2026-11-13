@@ -20,8 +20,8 @@ function probe(env: Record<string, string>) {
     const embedding = await import(${JSON.stringify(`${src}/api/embedding-models.ts`)})
     const fim = await import(${JSON.stringify(`${src}/fim.ts`)})
     const edit = await import(${JSON.stringify(`${src}/edit.ts`)})
-    await models.fetchKiloModels({})
-    await models.fetchKiloModels({ kilocodeOrganizationId: "org-1" })
+    await models.fetchKiloModels({ kilocodeToken: "token" })
+    await models.fetchKiloModels({ kilocodeToken: "token", kilocodeOrganizationId: "org-1" })
     await models.fetchKiloTranscriptionModels({})
     await embedding.fetchKiloEmbeddingModelCatalog({ attempts: 1 })
     console.log(JSON.stringify({

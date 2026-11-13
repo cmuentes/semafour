@@ -61,6 +61,8 @@ export function clearModesCache() {
  * @returns Array of organization modes, or empty array on error
  */
 export async function fetchOrganizationModes(token: string, organizationId: string): Promise<OrganizationMode[]> {
+  if (!token) return []
+
   const cached = cache.get(organizationId)
   if (cached && Date.now() - cached.timestamp < TTL) {
     return cached.modes

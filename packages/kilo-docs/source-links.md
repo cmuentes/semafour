@@ -21,13 +21,8 @@
   <!-- packages/opencode/src/config/config.ts -->
 - <https://app.kilo.ai/credits>
   <!-- packages/kilo-vscode/src/services/autocomplete/AutocompleteServiceManager.ts -->
-  <!-- packages/kilo-vscode/webview-ui/src/components/profile/ProfileView.tsx -->
-- <https://app.kilo.ai/profile>
-  <!-- packages/kilo-vscode/webview-ui/src/components/profile/ProfileView.tsx -->
 - <https://app.kilo.ai/tui.json>
   <!-- packages/opencode/src/config/tui-migrate.ts -->
-- <https://app.kilo.ai/usage>
-  <!-- packages/opencode/src/kilocode/components/dialog-kilo-profile.tsx -->
 - <https://auth.x.ai>
   <!-- packages/opencode/src/plugin/xai.ts -->
 - <https://auth.x.ai/oauth2/authorize>
@@ -36,8 +31,6 @@
   <!-- packages/opencode/src/plugin/xai.ts -->
 - <https://auth.x.ai/oauth2/token>
   <!-- packages/opencode/src/plugin/xai.ts -->
-- <https://blog.kilo.ai/p/kilo-gateway-now-supports-byok-20-providers>
-  <!-- packages/kilo-vscode/webview-ui/src/components/settings/ProviderConnectDialog.tsx -->
 - <https://chatgpt.com/explore/plus>
   <!-- packages/opencode/src/provider/error.ts -->
 - <https://cli.github.com/>
@@ -116,7 +109,6 @@
   <!-- packages/opencode/src/kilocode/installation/index.ts -->
 - <https://kilo.ai/discord>
   <!-- packages/kilo-vscode/webview-ui/src/components/chat/FeedbackDialog.tsx -->
-  <!-- packages/kilo-vscode/webview-ui/src/components/settings/AboutKiloCodeTab.tsx -->
   <!-- packages/opencode/src/kilocode/cli/cmd/tui/component/dialog-about.tsx -->
 - <https://kilo.ai/docs>
   <!-- packages/kilo-vscode/webview-ui/src/hooks/useSlashCommand.ts -->
@@ -144,11 +136,8 @@
   <!-- packages/opencode/src/kilocode/mcp/client-metadata.ts -->
 - <https://kilo.ai/gateway>
   <!-- packages/opencode/src/kilocode/cli/cmd/tui/component/dialog-provider.tsx -->
-- <https://kilo.ai/pricing/kilo-pass>
-  <!-- packages/kilo-vscode/webview-ui/src/components/profile/ProfileView.tsx -->
 - <https://kilo.ai/support>
   <!-- packages/kilo-vscode/webview-ui/src/components/chat/FeedbackDialog.tsx -->
-  <!-- packages/kilo-vscode/webview-ui/src/components/settings/AboutKiloCodeTab.tsx -->
 - <https://kilocode.ai>
   <!-- packages/opencode/src/kilocode/const.ts -->
 - <https://opencode.ai/>

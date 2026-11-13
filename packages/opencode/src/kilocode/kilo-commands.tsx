@@ -10,11 +10,9 @@ import { useSync } from "@tui/context/sync"
 import { useDialog } from "@tui/ui/dialog"
 import { useToast } from "@tui/ui/toast"
 import { DialogAlert } from "@tui/ui/dialog-alert"
-import { DialogConfirm } from "@tui/ui/dialog-confirm"
 import { reconcile } from "solid-js/store"
 import type { Organization } from "@kilocode/kilo-gateway"
 import { DialogKiloTeamSelect } from "./components/dialog-kilo-team-select.js"
-import { DialogKiloProfile } from "./components/dialog-kilo-profile.js"
 import { DialogIndexing } from "./components/dialog-indexing.js"
 import { DialogProviderUsage } from "./components/dialog-provider-usage.js"
 import { indexingEnabled } from "./indexing-feature"
@@ -93,50 +91,6 @@ export function registerKiloCommands(useSDK: () => UseSDK) {
         slashAliases: ["plans", "quota"],
         run: () => {
           dialog.replace(() => <DialogProviderUsage />)
-        },
-      },
-
-      // /profile command
-      {
-        name: "kilo.profile",
-        title: "Profile",
-        desc: "View your Kilo Gateway profile",
-        category: "Kilo",
-        slashName: "profile",
-        slashAliases: ["me", "whoami"],
-        enabled: isKiloConnected(),
-        hidden: !isKiloConnected(),
-        run: async () => {
-          try {
-            if (sync.data.config.privacy_mode === true || sync.data.globalConfig.privacy_mode === true) {
-              const confirmed = await DialogConfirm.show(
-                dialog,
-                "Privacy Mode Enabled",
-                "Privacy mode is on. Revealing your profile will display your email, name, balance, and team on screen.",
-              )
-              if (confirmed !== true) return
-            }
-
-            // Fetch profile and balance using server endpoint
-            const response = await sdk.client.kilo.profile()
-
-            if (response.error || !response.data) {
-              dialog.replace(() => (
-                <DialogAlert
-                  title="Error"
-                  message="Failed to fetch profile. Please ensure you're authenticated with Kilo Gateway."
-                />
-              ))
-              return
-            }
-
-            const { profile, balance, currentOrgId } = response.data
-
-            // Show profile dialog with clickable usage link
-            dialog.replace(() => <DialogKiloProfile profile={profile} balance={balance} currentOrgId={currentOrgId} />)
-          } catch (error) {
-            dialog.replace(() => <DialogAlert title="Error" message={`Failed to fetch profile: ${error}`} />)
-          }
         },
       },
 

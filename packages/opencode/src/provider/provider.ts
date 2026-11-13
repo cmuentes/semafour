@@ -2184,7 +2184,13 @@ const layer = Layer.effect(
       }
 
       const configured = Object.keys(cfg.provider ?? {})
-      const provider = Object.values(s.providers).find((p) => configured.length === 0 || configured.includes(p.id))
+      // kilocode_change start - prefer local/BYOK openai-compatible providers over the Kilo gateway
+      const candidates = Object.values(s.providers).filter((p) => configured.length === 0 || configured.includes(p.id))
+      const provider =
+        candidates.find((p) => p.id !== "kilo" && Object.values(p.models).some((m) => m.api.npm === "@ai-sdk/openai-compatible")) ??
+        candidates.find((p) => p.id !== "kilo") ??
+        candidates.at(0)
+      // kilocode_change end
       if (!provider) return yield* new NoProvidersError()
       const [model] = sort(Object.values(provider.models))
       if (!model) return yield* new NoModelsError({ providerID: provider.id })

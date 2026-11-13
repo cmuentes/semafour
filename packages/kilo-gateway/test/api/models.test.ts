@@ -97,7 +97,7 @@ for (const status of [408, 429, 503]) {
         new Response("Unavailable", { status, headers: header == null ? {} : { "retry-after": header } }),
       )
       try {
-        const result = await fetchKiloModels({ kilocodeOrganizationId: "org-a" })
+        const result = await fetchKiloModels({ kilocodeToken: "token", kilocodeOrganizationId: "org-a" })
         expect(result.error?.kind).toBe("http")
         expect(result.error?.status).toBe(status)
         expect(result.error?.retryAfter).toBe(expected)
@@ -109,6 +109,16 @@ for (const status of [408, 429, 503]) {
     })
   }
 }
+
+test("returns empty models without fetching when no token is provided", async () => {
+  const fetch = spyOn(globalThis, "fetch").mockResolvedValue(Response.json({ data: [] }))
+  try {
+    expect(await fetchKiloModels({})).toEqual({ models: {} })
+    expect(fetch).toHaveBeenCalledTimes(0)
+  } finally {
+    fetch.mockRestore()
+  }
+})
 
 test("returns empty models and error when both auth and public requests return 401", async () => {
   const orig = globalThis.fetch
@@ -150,7 +160,6 @@ test("falls back to public endpoint on 401 and returns models", async () => {
 
 test.each([
   { kilocodeToken: "expired-token", kilocodeOrganizationId: "org-123" },
-  { kilocodeOrganizationId: "org-123" },
   { kilocodeToken: "expired-token", baseURL: "https://api.kilo.ai/api/organizations/org-123" },
   { kilocodeToken: "expired-token", baseURL: "https://gateway.test/api/organizations/org-123" },
   { kilocodeToken: "https://gateway.test/api/organizations/org-token:expired-token" },
@@ -184,7 +193,7 @@ test("returns error with kind=network on fetch exception", async () => {
     throw new Error("network error")
   })
 
-  const result = await fetchKiloModels({})
+  const result = await fetchKiloModels({ kilocodeToken: "token" })
 
   ;(globalThis as any).fetch = orig
 
@@ -196,7 +205,7 @@ test("returns error with kind=http on non-auth HTTP error (e.g. 500)", async () 
   const orig = globalThis.fetch
   stubFetch(async () => new Response("Server Error", { status: 500, statusText: "Internal Server Error" }))
 
-  const result = await fetchKiloModels({})
+  const result = await fetchKiloModels({ kilocodeToken: "token" })
 
   ;(globalThis as any).fetch = orig
 
@@ -215,7 +224,7 @@ test("returns models without error on success", async () => {
       }),
   )
 
-  const result = await fetchKiloModels({})
+  const result = await fetchKiloModels({ kilocodeToken: "token" })
 
   ;(globalThis as any).fetch = orig
 
@@ -237,7 +246,7 @@ test("preserves Terminal Bench metadata as a dedicated model field", async () =>
       }),
   )
 
-  const result = await fetchKiloModels({})
+  const result = await fetchKiloModels({ kilocodeToken: "token" })
 
   ;(globalThis as any).fetch = orig
 
@@ -258,7 +267,7 @@ test("preserves Auto Efficient routing metadata as a dedicated model field", asy
       }),
   )
 
-  const result = await fetchKiloModels({})
+  const result = await fetchKiloModels({ kilocodeToken: "token" })
 
   ;(globalThis as any).fetch = orig
 
@@ -278,7 +287,7 @@ test("omits malformed Terminal Bench metadata without rejecting the catalog", as
       }),
   )
 
-  const result = await fetchKiloModels({})
+  const result = await fetchKiloModels({ kilocodeToken: "token" })
 
   ;(globalThis as any).fetch = orig
 
@@ -296,7 +305,7 @@ test("returns error with kind=schema when response body is invalid JSON", async 
       }),
   )
 
-  const result = await fetchKiloModels({})
+  const result = await fetchKiloModels({ kilocodeToken: "token" })
 
   ;(globalThis as any).fetch = orig
 
@@ -393,7 +402,7 @@ test("keeps image-output models with tools and drops models without tools", asyn
       }),
   )
 
-  const result = await fetchKiloModels({})
+  const result = await fetchKiloModels({ kilocodeToken: "token" })
 
   ;(globalThis as any).fetch = orig
 
@@ -508,7 +517,7 @@ test("omits cost when pricing contains negative values (dynamic/auto-routed pric
       ),
   )
 
-  const result = await fetchKiloModels({})
+  const result = await fetchKiloModels({ kilocodeToken: "token" })
 
   ;(globalThis as any).fetch = orig
 
