@@ -5,7 +5,7 @@ import { join } from "node:path"
 import { preserveZedVersion } from "./preserve-versions"
 
 describe("preserveZedVersion", () => {
-  test("preserves the Kilo extension version and release archives", async () => {
+  test("preserves the Semafour extension version and release archives", async () => {
     const dir = await mkdtemp(join(tmpdir(), "kilo-zed-version-"))
     const file = join(dir, "extension.toml")
     try {

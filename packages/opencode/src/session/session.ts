@@ -33,7 +33,7 @@ import { SessionMessage } from "@opencode-ai/core/session/message" // kilocode_c
 import type { Provider } from "@/provider/provider"
 import { Permission } from "@/permission"
 import { Global } from "@opencode-ai/core/global"
-// kilocode_change start - Kilo session behavior extensions
+// kilocode_change start - Semafour session behavior extensions
 import { BackgroundProcess } from "@/kilocode/background-process"
 import * as SandboxInheritance from "@/kilocode/sandbox/inheritance"
 import { KiloSession } from "@/kilocode/session"
@@ -463,7 +463,7 @@ export const getUsage = (input: {
     },
   }
 
-  // kilocode_change start - Use provider-reported cost when available for OpenRouter/Kilo
+  // kilocode_change start - Use provider-reported cost when available for OpenRouter/Semafour
   const reported = KiloSession.providerCost({
     metadata: input.metadata,
     usage: input.usage,
@@ -682,7 +682,7 @@ export const layer: Layer.Layer<
       })
     })
 
-    // kilocode_change start - preserve Kilo's cross-project worktree-family filtering
+    // kilocode_change start - preserve Semafour's cross-project worktree-family filtering
     const listGlobal = Effect.fn("Session.listGlobal")((input?: GlobalListInput) =>
       KiloSession.listGlobal<GlobalInfo>({ ...input, fromRow }).pipe(Effect.provideService(Database.Service, database)),
     )
@@ -1239,7 +1239,7 @@ export function listGlobal(input?: {
 }
 // kilocode_change end
 
-// kilocode_change - delegate the exported Promise facade to the Kilo session runtime
+// kilocode_change - delegate the exported Promise facade to the Semafour session runtime
 export const fork = kiloSessionFork
 
 export const node = LayerNode.make({

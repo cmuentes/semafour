@@ -334,7 +334,7 @@ class HistoryPanel(
     }
 
     private fun installContextMenu(list: ActiveList) {
-        val group = ActionManager.getInstance().getAction("Kilo.History.ContextMenu")
+        val group = ActionManager.getInstance().getAction("Semafour.History.ContextMenu")
         if (group is ActionGroup) list.installPopup(group)
     }
 

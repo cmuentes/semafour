@@ -7,7 +7,7 @@ import DESCRIPTION from "./websearch.txt"
 import { checksum } from "@opencode-ai/core/util/encode"
 import { InstallationVersion } from "@opencode-ai/core/installation/version"
 import { RuntimeFlags } from "@/effect/runtime-flags"
-import { Auth } from "@/auth" // kilocode_change - source Kilo bearer for Kilo-REST transport
+import { Auth } from "@/auth" // kilocode_change - source Semafour bearer for Kilo-REST transport
 import { Env } from "@/env" // kilocode_change - config via Env.Service instead of process.env reads
 
 const MAX_RESULTS = 10 // kilocode_change - cap numResults across all transports
@@ -114,7 +114,7 @@ export const WebSearchTool = Tool.define(
   Effect.gen(function* () {
     const http = yield* HttpClient.HttpClient
     const flags = yield* RuntimeFlags.Service
-    const authSvc = yield* Auth.Service // kilocode_change - source Kilo bearer for Kilo-REST transport
+    const authSvc = yield* Auth.Service // kilocode_change - source Semafour bearer for Kilo-REST transport
     const env = yield* Env.Service // kilocode_change - config via Env.Service instead of process.env reads
 
     return {
@@ -144,7 +144,7 @@ export const WebSearchTool = Tool.define(
           // Precedence:
           //   provider="kilo-exa"          -> kilo-rest  (auth required)
           //   provider="exa" + EXA_API_KEY -> mcp-exa-byok     (BYOK wins)
-          //   provider="exa" + Kilo auth   -> kilo-rest        (new default for authed users)
+          //   provider="exa" + Semafour auth   -> kilo-rest        (new default for authed users)
           //   provider="exa" + no auth     -> mcp-exa-unauth   (preserves current fallback)
           //   provider="parallel"          -> mcp-parallel     (unchanged)
           const kiloToken = yield* Effect.gen(function* () {
@@ -197,7 +197,7 @@ export const WebSearchTool = Tool.define(
                   },
                   kiloToken,
                 )
-              : Effect.die(new Error("KILO_WEBSEARCH_PROVIDER=kilo-exa requires Kilo auth; run `kilo auth login`"))
+              : Effect.die(new Error("KILO_WEBSEARCH_PROVIDER=kilo-exa requires Semafour auth; run `kilo auth login`"))
             : callProvider(http, provider, params, ctx, { exa: exaKey, parallel: parallelKey }) // kilocode_change
           // kilocode_change end
 

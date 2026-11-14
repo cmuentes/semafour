@@ -58,7 +58,7 @@ describe("generate-image response parser", () => {
 })
 
 describe("generate-image provider resolver", () => {
-  test("uses Kilo cloud when Kilo auth is present", () => {
+  test("uses Semafour cloud when Semafour auth is present", () => {
     const result = resolveProvider({ type: "oauth", access: "kilo-token", accountId: "org-123" }, undefined)
     expect(result).not.toBeNull()
     expect(result!.token).toBe("kilo-token")
@@ -67,13 +67,13 @@ describe("generate-image provider resolver", () => {
     expect(result!.url).toBe("https://ai-gateway.kilo.ai/api/v1/chat/completions")
   })
 
-  test("uses Kilo cloud with API key auth", () => {
+  test("uses Semafour cloud with API key auth", () => {
     const result = resolveProvider({ type: "api", key: "kilo-api-key" }, undefined)
     expect(result!.token).toBe("kilo-api-key")
     expect(result!.provider).toBe("kilo")
   })
 
-  test("falls back to OpenRouter with BYO key when no Kilo auth", () => {
+  test("falls back to OpenRouter with BYO key when no Semafour auth", () => {
     const result = resolveProvider(undefined, "or-key-123")
     expect(result!.provider).toBe("openrouter")
     expect(result!.token).toBe("or-key-123")
@@ -84,7 +84,7 @@ describe("generate-image provider resolver", () => {
     expect(resolveProvider(undefined, undefined)).toBeNull()
   })
 
-  test("prefers Kilo auth over OpenRouter key", () => {
+  test("prefers Semafour auth over OpenRouter key", () => {
     const result = resolveProvider({ type: "oauth", access: "kilo-token" }, "or-key")
     expect(result!.provider).toBe("kilo")
     expect(result!.token).toBe("kilo-token")

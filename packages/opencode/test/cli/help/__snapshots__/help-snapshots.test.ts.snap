@@ -1,6 +1,6 @@
 // Bun Snapshot v1, https://bun.sh/docs/test/snapshots
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo acp --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo acp --help 1`] = `
 "kilo acp
 
 start ACP (Agent Client Protocol) server
@@ -22,7 +22,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo mcp --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo mcp --help 1`] = `
 "kilo mcp
 
 manage MCP (Model Context Protocol) servers
@@ -43,7 +43,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo attach --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo attach --help 1`] = `
 "kilo attach <url>
 
 attach to a running kilo server
@@ -70,7 +70,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo run --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo run --help 1`] = `
 "kilo run [message..]
 
 run kilo with a message
@@ -111,7 +111,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo debug --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo debug --help 1`] = `
 "kilo debug
 
 debugging and troubleshooting tools
@@ -140,7 +140,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo providers --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo providers --help 1`] = `
 "kilo auth
 
 manage AI providers and credentials
@@ -159,7 +159,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo agent --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo agent --help 1`] = `
 "kilo agent
 
 manage agents
@@ -177,7 +177,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo upgrade --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo upgrade --help 1`] = `
 "kilo upgrade [target]
 
 upgrade kilo to the latest or a specific version
@@ -196,7 +196,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo uninstall --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo uninstall --help 1`] = `
 "kilo uninstall
 
 uninstall kilo and remove all related files
@@ -214,7 +214,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo serve --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo serve --help 1`] = `
 "kilo serve
 
 starts a headless kilo server
@@ -235,7 +235,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo models --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo models --help 1`] = `
 "kilo models [provider]
 
 list all available models
@@ -254,7 +254,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo stats --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo stats --help 1`] = `
 "kilo stats
 
 show token usage and cost statistics
@@ -273,7 +273,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo export --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo export --help 1`] = `
 "kilo export [sessionID]
 
 export session data as JSON
@@ -291,7 +291,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo import --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo import --help 1`] = `
 "kilo import <file>
 
 import session data from JSON file or URL
@@ -308,7 +308,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo github --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo github --help 1`] = `
 "kilo github
 
 manage GitHub agent
@@ -326,7 +326,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo pr --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo pr --help 1`] = `
 "kilo pr
 
 manage pull requests
@@ -346,7 +346,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo session --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo session --help 1`] = `
 "kilo session
 
 manage sessions
@@ -364,7 +364,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo plugin --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo plugin --help 1`] = `
 "kilo plugin <module>
 
 install plugin and update config
@@ -383,7 +383,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo db --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo db --help 1`] = `
 "kilo db
 
 database tools
@@ -405,7 +405,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo mcp list --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo mcp list --help 1`] = `
 "kilo mcp list
 
 list MCP servers and their status
@@ -419,7 +419,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo mcp add --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo mcp add --help 1`] = `
 "kilo mcp add [name]
 
 add an MCP server
@@ -439,7 +439,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo mcp auth --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo mcp auth --help 1`] = `
 "kilo mcp auth [name]
 
 authenticate with an OAuth-enabled MCP server
@@ -459,7 +459,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo mcp logout --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo mcp logout --help 1`] = `
 "kilo mcp logout [name]
 
 remove OAuth credentials for an MCP server
@@ -476,7 +476,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo providers list --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo providers list --help 1`] = `
 "kilo providers list
 
 list providers and credentials
@@ -490,7 +490,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo providers login --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo providers login --help 1`] = `
 "kilo providers login [url]
 
 log in to a provider
@@ -509,7 +509,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo providers logout --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo providers logout --help 1`] = `
 "kilo providers logout [provider]
 
 log out from a configured provider
@@ -526,7 +526,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo agent create --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo agent create --help 1`] = `
 "kilo agent create
 
 create a new agent
@@ -547,7 +547,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo agent list --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo agent list --help 1`] = `
 "kilo agent list
 
 list all available agents
@@ -561,7 +561,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo session list --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo session list --help 1`] = `
 "kilo session list
 
 list sessions
@@ -579,7 +579,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo session delete --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo session delete --help 1`] = `
 "kilo session delete <sessionID>
 
 delete a session
@@ -596,7 +596,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo github install --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo github install --help 1`] = `
 "kilo github install
 
 install the GitHub agent
@@ -610,7 +610,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo github run --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo github run --help 1`] = `
 "kilo github run
 
 run the GitHub agent
@@ -626,7 +626,7 @@ Options:
 "
 `;
 
-exports[`Kilo CLI help-text snapshots every documented command emits stable help text: kilo db path --help 1`] = `
+exports[`Semafour CLI help-text snapshots every documented command emits stable help text: kilo db path --help 1`] = `
 "kilo db path
 
 print the database path

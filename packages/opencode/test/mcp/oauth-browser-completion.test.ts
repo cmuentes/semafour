@@ -38,7 +38,7 @@ interface TokenAttempt {
 
 // The browser stub drives the authorization URL the same way a real browser does:
 // it follows the authorization server's redirect back to the local callback listener.
-// `onOpen` lets a test act while the browser tab is open, which is when another Kilo
+// `onOpen` lets a test act while the browser tab is open, which is when another Semafour
 // process touches the same server.
 let onOpen: ((url: string) => Effect.Effect<void>) | undefined
 
@@ -209,7 +209,7 @@ mcpTest.instance("completion redeems the flow's own PKCE verifier when another p
     const name = "test-oauth-clobber"
     const mcp = yield* addServer(name, server.url)
 
-    // While the browser tab is open, another Kilo process (the VS Code backend, or
+    // While the browser tab is open, another Semafour process (the VS Code backend, or
     // `kilo mcp list` in a second terminal) connects the same server and saves its own
     // PKCE verifier for that server name, exactly as the SDK does while starting an
     // authorization flow. It must not be able to make this flow redeem its verifier.
@@ -335,7 +335,7 @@ mcpTest.instance("a superseded authorization attempt is rejected by name", () =>
   }),
 )
 
-mcpTest.instance("a callback listener taken over by another Kilo process is reported as replaced", () =>
+mcpTest.instance("a callback listener taken over by another Semafour process is reported as replaced", () =>
   Effect.gen(function* () {
     yield* withCallbackStop
     const server = yield* serveOAuthMcp()

@@ -1,11 +1,11 @@
 ---
 title: "Authentication"
-description: "Learn how to authenticate with the Kilo AI Gateway using API keys, session tokens, and Bring Your Own Key (BYOK)."
+description: "Learn how to authenticate with the Semafour AI Gateway using API keys, session tokens, and Bring Your Own Key (BYOK)."
 ---
 
 # Authentication
 
-The Kilo AI Gateway supports multiple authentication methods depending on your use case.
+The Semafour AI Gateway supports multiple authentication methods depending on your use case.
 
 ## API key authentication
 
@@ -15,7 +15,7 @@ The primary authentication method is a Bearer token passed in the `Authorization
 Authorization: Bearer <your_api_key>
 ```
 
-API keys are JWT tokens tied to your Kilo account. See [how to get your API key](/docs/getting-started/setup-authentication#kilo-gateway-api-key) for step-by-step instructions.
+API keys are JWT tokens tied to your Semafour account. See [how to get your API key](/docs/getting-started/setup-authentication#kilo-gateway-api-key) for step-by-step instructions.
 
 ### Using your API key
 
@@ -74,7 +74,7 @@ Free models include models tagged with `:free` in their model ID, such as `minim
 
 ## Bring Your Own Key (BYOK)
 
-BYOK lets you use your own provider API keys with the Kilo AI Gateway. When a BYOK key is configured, requests are sent to the provider using your key. You are billed directly by the provider -- Kilo does not add any markup.
+BYOK lets you use your own provider API keys with the Semafour AI Gateway. When a BYOK key is configured, requests are sent to the provider using your key. You are billed directly by the provider -- Semafour does not add any markup.
 
 ### Supported BYOK providers
 
@@ -107,11 +107,11 @@ BYOK lets you use your own provider API keys with the Kilo AI Gateway. When a BY
 
 ### How BYOK works
 
-1. Add your provider API key in the [Kilo dashboard](https://app.kilo.ai) or through your Kilo Code extension settings
+1. Add your provider API key in the [Semafour dashboard](https://app.kilo.ai) or through your Semafour extension settings
 2. Keys are encrypted at rest using AES-256 encryption
 3. When you make a request for a model from that provider, the gateway automatically uses your key
-4. Usage is tracked but not billed to your Kilo balance (cost is set to $0)
-5. If your BYOK key fails, the request will not automatically fall back to Kilo's keys
+4. Usage is tracked but not billed to your Semafour balance (cost is set to $0)
+5. If your BYOK key fails, the request will not automatically fall back to Semafour's keys
 
 BYOK keys can be configured at the personal level or at the organization level. Organization-level keys apply to all members of the organization and require owner or billing manager access to manage.
 

@@ -454,7 +454,7 @@ describe("session.llm.ai-sdk adapter", () => {
     ])
   })
 
-  // kilocode_change start - preserve AI SDK raw usage for Kilo provider billing
+  // kilocode_change start - preserve AI SDK raw usage for Semafour provider billing
   test("preserves raw usage in native usage provider metadata", async () => {
     const events = await adapt([
       uncheckedAdapterEvent({

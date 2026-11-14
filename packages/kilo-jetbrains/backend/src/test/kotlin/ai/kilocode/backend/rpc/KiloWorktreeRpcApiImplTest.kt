@@ -2814,7 +2814,7 @@ class KiloWorktreeRpcApiImplTest {
     private fun initRepo() {
         git(repo, "init")
         git(repo, "config", "user.email", "test@kilo.ai")
-        git(repo, "config", "user.name", "Kilo Test")
+        git(repo, "config", "user.name", "Semafour Test")
         Files.writeString(repo.resolve("README.md"), "hello")
         git(repo, "add", "README.md")
         git(repo, "commit", "-m", "init")
@@ -2827,7 +2827,7 @@ class KiloWorktreeRpcApiImplTest {
     private fun originWith(pull: Int, head: String): Path {
         git(remote, "init")
         git(remote, "config", "user.email", "test@kilo.ai")
-        git(remote, "config", "user.name", "Kilo Test")
+        git(remote, "config", "user.name", "Semafour Test")
         Files.writeString(remote.resolve("README.md"), "origin")
         git(remote, "add", "README.md")
         git(remote, "commit", "-m", "init")

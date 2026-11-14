@@ -132,7 +132,7 @@ describe("cli tree-sitter resources", () => {
     })
   })
 
-  it("copies the Kilo sandbox worker with the packaged CLI binary", async () => {
+  it("copies the Semafour sandbox worker with the packaged CLI binary", async () => {
     const root = await fs.mkdtemp(path.join(os.tmpdir(), "kilo-vscode-sandbox-worker-"))
     try {
       const source = path.join(root, "dist", "@kilocode", "cli-darwin-arm64", "bin", "kilo")

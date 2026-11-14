@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.emptyFlow
  *
  * The two strings serve different surfaces and should read differently:
  * - [title] is a short label — one bullet in the session list card, one row in the dialog's step
- *   rail. Keep it to a few words, e.g. "Migrate from Kilo v5".
+ *   rail. Keep it to a few words, e.g. "Migrate from Semafour v5".
  * - [detail] is the longer explanation shown only in the dedicated dialog UI, above the step's own
  *   content, e.g. "We found settings from your previous installation...".
  */

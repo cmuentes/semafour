@@ -8,7 +8,7 @@ fun interface ApprovalReasonVisibilityListener {
     companion object {
         @JvmField
         val TOPIC: Topic<ApprovalReasonVisibilityListener> = Topic.create(
-            "Kilo approval reason visibility",
+            "Semafour approval reason visibility",
             ApprovalReasonVisibilityListener::class.java,
         )
     }

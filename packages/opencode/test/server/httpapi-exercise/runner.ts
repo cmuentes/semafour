@@ -278,6 +278,6 @@ const resetState = Effect.promise(async () => {
   Flag.KILO_SERVER_USERNAME = original.KILO_SERVER_USERNAME
   await disposeApps()
   await modules.disposeAllInstances()
-  // kilocode_change - each exerciser process already owns an isolated DB; unlinking it between scenarios races async Kilo callbacks
+  // kilocode_change - each exerciser process already owns an isolated DB; unlinking it between scenarios races async Semafour callbacks
   await Bun.sleep(25)
 })

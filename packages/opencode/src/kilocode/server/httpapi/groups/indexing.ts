@@ -65,12 +65,12 @@ export const IndexingApi = HttpApi.make("indexing")
       .add(
         HttpApiEndpoint.get("models", IndexingPaths.models, {
           query: WorkspaceRoutingQuery,
-          success: described(KiloEmbeddingModelCatalog, "Kilo embedding model catalog"),
+          success: described(KiloEmbeddingModelCatalog, "Semafour embedding model catalog"),
         }).annotateMerge(
           OpenApi.annotations({
             identifier: "indexing.models",
-            summary: "List Kilo embedding models",
-            description: "Retrieve the embedding models available through the active Kilo account.",
+            summary: "List Semafour embedding models",
+            description: "Retrieve the embedding models available through the active Semafour account.",
           }),
         ),
       )
@@ -90,7 +90,7 @@ export const IndexingApi = HttpApi.make("indexing")
       .annotateMerge(
         OpenApi.annotations({
           title: "indexing",
-          description: "Kilo indexing routes.",
+          description: "Semafour indexing routes.",
         }),
       )
       .middleware(InstanceContextMiddleware)
@@ -101,6 +101,6 @@ export const IndexingApi = HttpApi.make("indexing")
     OpenApi.annotations({
       title: "kilo HttpApi",
       version: "0.0.1",
-      description: "Kilo HttpApi surface.",
+      description: "Semafour HttpApi surface.",
     }),
   )

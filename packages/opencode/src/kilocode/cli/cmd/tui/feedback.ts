@@ -4,7 +4,7 @@
  *
  * Wired via the `messages_feedback_up` / `messages_feedback_down` keybinds
  * in the Session route. Kept out of `routes/session/index.tsx` so the
- * upstream-shared session route stays free of Kilo telemetry plumbing.
+ * upstream-shared session route stays free of Semafour telemetry plumbing.
  */
 import { Telemetry } from "@kilocode/kilo-telemetry"
 import type { AssistantMessage, Message } from "@kilocode/sdk/v2"

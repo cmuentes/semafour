@@ -44,7 +44,7 @@ describe("coordinator success", () => {
     })
   })
 
-  test("strips ambient Kilo credentials before running the driver", async () => {
+  test("strips ambient Semafour credentials before running the driver", async () => {
     const previous = process.env.KILO_API_KEY
     process.env.KILO_API_KEY = "ambient-secret"
     try {

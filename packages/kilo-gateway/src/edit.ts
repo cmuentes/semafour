@@ -25,7 +25,7 @@ const KILO_NEXTEDIT_URL = resolveKiloGatewayUrl("edit/completions")
 
 /**
  * Pick the upstream edit endpoint for a (provider, model) pair. Today this is
- * either Inception's `/v1/edit/completions` (direct BYOK) or the Kilo Gateway's
+ * either Inception's `/v1/edit/completions` (direct BYOK) or the Semafour Gateway's
  * `/edit/completions` proxy, which forwards to Inception server-side.
  * Mistral does not expose a comparable surface.
  */

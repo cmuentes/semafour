@@ -1030,7 +1030,7 @@ describe("Agent Manager Webview — non-git sessionsLoaded fix", () => {
   const tsx = readAllTsx()
 
   /**
-   * Regression: when isGitRepo is false, the Kilo server never sends a
+   * Regression: when isGitRepo is false, the Semafour server never sends a
    * "sessionsLoaded" message, so the skeleton was stuck forever.
    * The fix must set sessionsLoaded(true) when receiving a state message
    * with isGitRepo === false.

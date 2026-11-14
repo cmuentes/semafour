@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kilo.ai"><img width="250" alt="Kilo Code logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
+  <a href="https://kilo.ai"><img width="250" alt="Semafour logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
 </p>
 
 <p align="center">Den open source-kodeagent til at bygge med AI i VS Code, JetBrains eller CLI.</p>
@@ -21,18 +21,18 @@
 
 ---
 
-Kilo Code er en AI-kodeagent, der møder dig overalt, hvor du arbejder: [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) og [CLI](https://kilo.ai/cli). Den er open source med åben prissætning. Du vælger mellem mere end 500 modeller, skifter mellem dem midt i en opgave og betaler modeludbyderens pris uden tillæg. Ingen API-nøgler kræves for at komme i gang.
+Semafour er en AI-kodeagent, der møder dig overalt, hvor du arbejder: [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) og [CLI](https://kilo.ai/cli). Den er open source med åben prissætning. Du vælger mellem mere end 500 modeller, skifter mellem dem midt i en opgave og betaler modeludbyderens pris uden tillæg. Ingen API-nøgler kræves for at komme i gang.
 
 ### Installation
 
-Vælg, hvor du vil køre Kilo.
+Vælg, hvor du vil køre Semafour.
 
 <details open>
 <summary><strong>VS Code</strong></summary>
 
 <br>
 
-Installer [Kilo Code-udvidelsen](vscode:extension/kilocode.kilo-code) direkte, eller hent den fra [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Opret en konto, og du får adgang til mere end 500 modeller, herunder GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 og Gemini 3.1 Pro Preview, alle til udbyderpris.
+Installer [Semafour-udvidelsen](vscode:extension/kilocode.kilo-code) direkte, eller hent den fra [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Opret en konto, og du får adgang til mere end 500 modeller, herunder GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 og Gemini 3.1 Pro Preview, alle til udbyderpris.
 
 </details>
 
@@ -70,7 +70,7 @@ Kør derefter `kilo` i en vilkårlig projektmappe for at starte.
 
 <br>
 
-Installer [Kilo Code-pluginet](https://plugins.jetbrains.com/plugin/28350-kilo-code) fra JetBrains Marketplace, eller søg efter "Kilo Code" i `Settings → Plugins` i en JetBrains IDE.
+Installer [Semafour-pluginet](https://plugins.jetbrains.com/plugin/28350-kilo-code) fra JetBrains Marketplace, eller søg efter "Semafour" i `Settings → Plugins` i en JetBrains IDE.
 
 </details>
 
@@ -79,7 +79,7 @@ Installer [Kilo Code-pluginet](https://plugins.jetbrains.com/plugin/28350-kilo-c
 
 <br>
 
-Kør Kilo fra webben, uden lokal maskine, på [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
+Kør Semafour fra webben, uden lokal maskine, på [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
 
 </details>
 
@@ -111,7 +111,7 @@ Bemærk: `x64-baseline` er en kompatibilitetsbuild til ældre CPU'er uden AVX. `
 
 ### Agents
 
-Kilo leveres med specialiserede agents, som du kan skifte mellem afhængigt af opgaven. Du kan også bygge dine egne brugerdefinerede agents.
+Semafour leveres med specialiserede agents, som du kan skifte mellem afhængigt af opgaven. Du kan også bygge dine egne brugerdefinerede agents.
 
 - **Code** - Standard. Implementerer og redigerer kode fra naturligt sprog.
 - **Plan** - Designer arkitektur og skriver implementeringsplaner, før der skrives kode.
@@ -157,9 +157,9 @@ MIT. Du kan bruge, ændre og distribuere denne kode, også kommercielt, så læn
 ### FAQ
 
 <details>
-<summary>Hvor kommer Kilo CLI fra?</summary>
+<summary>Hvor kommer Semafour CLI fra?</summary>
 
-Kilo CLI er en fork af [OpenCode](https://github.com/anomalyco/opencode), forbedret til at fungere i Kilo agentic engineering-platformen.
+Semafour CLI er en fork af [OpenCode](https://github.com/anomalyco/opencode), forbedret til at fungere i Semafour agentic engineering-platformen.
 
 </details>
 

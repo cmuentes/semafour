@@ -263,7 +263,7 @@ export const TuiThreadCommand = cmd({
       return
     }
 
-    // kilocode_change start - lazy Kilo implementations so other CLI commands
+    // kilocode_change start - lazy Semafour implementations so other CLI commands
     // don't pay their module cost at startup
     const { importCloudSession, localSessionID, validateCloudFork, reportCloudImportError } = await import("@/kilocode/cloud-session")
     const { KiloTuiThreadDaemon } = await import("@/kilocode/cli/cmd/tui/thread")

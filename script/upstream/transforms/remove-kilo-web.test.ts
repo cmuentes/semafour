@@ -3,7 +3,7 @@ import { removeKiloWeb } from "./remove-kilo-web"
 
 const INDEX = "packages/opencode/src/index.ts"
 
-test("replaces the known Kilo web command import and registration with Kilo omissions", () => {
+test("replaces the known Semafour web command import and registration with Semafour omissions", () => {
   const source = [
     'import { WebCommand } from "./cli/cmd/web"',
     'import { ServeCommand } from "./cli/cmd/serve"',
@@ -16,7 +16,7 @@ test("replaces the known Kilo web command import and registration with Kilo omis
 
   expect(removeKiloWeb(INDEX, source)).toEqual({
     result: [
-      "// kilocode_change - upstream web command intentionally omitted; Kilo does not ship an embedded web UI",
+      "// kilocode_change - upstream web command intentionally omitted; Semafour does not ship an embedded web UI",
       'import { ServeCommand } from "./cli/cmd/serve"',
       "cli",
       "  .command(ServeCommand)",

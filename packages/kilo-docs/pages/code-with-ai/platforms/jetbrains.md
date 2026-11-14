@@ -1,9 +1,9 @@
 ---
-title: "Kilo Code for JetBrains: Free Open-Source AI Coding Plugin"
-description: "Using Kilo Code in JetBrains IDEs"
+title: "Semafour for JetBrains: Free Open-Source AI Coding Plugin"
+description: "Using Semafour in JetBrains IDEs"
 ---
 
-# Kilo Code for JetBrains: Free AI Coding Plugin
+# Semafour for JetBrains: Free AI Coding Plugin
 
 ## Installation
 
@@ -11,7 +11,7 @@ description: "Using Kilo Code in JetBrains IDEs"
 
 ## Settings
 
-Open **Settings → Tools → Kilo Code** to configure the plugin. Shared agent settings use the same `kilo.jsonc` files as the CLI and VS Code extension; IDE-specific options such as GitHub integration and worktree indexing stay in the plugin. See [Settings](/docs/getting-started/settings) for config file locations and precedence.
+Open **Settings → Tools → Semafour** to configure the plugin. Shared agent settings use the same `kilo.jsonc` files as the CLI and VS Code extension; IDE-specific options such as GitHub integration and worktree indexing stay in the plugin. See [Settings](/docs/getting-started/settings) for config file locations and precedence.
 
 - **Auto-Approve** — set per-tool permission levels (Allow / Ask / Deny) and manage granular command and path exceptions without editing config by hand. Permission prompts offer one-time approvals alongside saved allow/reject rules. See [Auto-Approving Actions](/docs/getting-started/settings/auto-approving-actions) for the shared permission model.
 - **Context** — toggle auto-compaction, set the auto-compaction limit (the percentage of the model window that triggers compaction), enable pruning of old tool outputs, and manage file watcher ignore patterns. See [Context Condensing](/docs/customize/context/context-condensing) and [.kilocodeignore](/docs/customize/context/kilocodeignore) for what these settings control.
@@ -31,7 +31,7 @@ Use **Chat** for the current workspace and **Agents** to manage parallel tasks i
 
 ### Worktree setup scripts
 
-Add a setup script to install dependencies or prepare configuration in new worktrees. Kilo starts it automatically in a terminal, but **does not wait for it to finish before starting the session**. Wait for setup to complete before asking the agent to use those dependencies or generated files.
+Add a setup script to install dependencies or prepare configuration in new worktrees. Semafour starts it automatically in a terminal, but **does not wait for it to finish before starting the session**. Wait for setup to complete before asking the agent to use those dependencies or generated files.
 
 | Platform | Filename (checked in order) |
 |---|---|
@@ -42,7 +42,7 @@ The terminal runs in the worktree directory with `WORKTREE_PATH` (the worktree d
 
 ### Running code in a worktree
 
-Open **Build/Run** in the worktree editor to choose a supported IDE run configuration. Eligible Application, Spring Boot, and Kotlin/Groovy application configurations can run through the project's build system using the worktree's code. Support depends on the configuration and build-system integration; the popup identifies the build system used. A plain-application fallback may omit framework settings, which Kilo reports in a notification.
+Open **Build/Run** in the worktree editor to choose a supported IDE run configuration. Eligible Application, Spring Boot, and Kotlin/Groovy application configurations can run through the project's build system using the worktree's code. Support depends on the configuration and build-system integration; the popup identifies the build system used. A plain-application fallback may omit framework settings, which Semafour reports in a notification.
 
 Use **Show Output** to view a running process's console, **Stop** to stop it, or **Kill** if it remains running. **Build** and **Rebuild** are available for supported build systems. Removing a worktree stops its running processes. For unsupported configurations or full IDE run and debug support, choose **Open in New Frame**.
 
@@ -52,7 +52,7 @@ Use **Fork Session** in a worktree session's row menu, right-click menu, or prom
 
 ## Diagrams in chat
 
-Ask Kilo for a Mermaid diagram to visualize a workflow, architecture, data relationship, or timeline. Chat renders `mermaid` and `mmd` code blocks inline, with source shown while streaming or if rendering fails.
+Ask Semafour for a Mermaid diagram to visualize a workflow, architecture, data relationship, or timeline. Chat renders `mermaid` and `mmd` code blocks inline, with source shown while streaming or if rendering fails.
 
 Click a diagram to open a zoomable viewer, or use its toolbar to open an editor tab with **Diagram** and read-only **Source** views. Copying a rendered diagram copies a PNG; copying while it is still streaming or after a render error copies the source instead.
 
@@ -66,13 +66,13 @@ Worktree rows separate committed changes against the base branch from uncommitte
 
 ## Session controls
 
-Right-click in a session or open the prompt bar's more menu to compare changes, copy the session ID, or share the conversation. **Share Session** creates a public link; **Stop Sharing** revokes it. Sharing requires signing in to Kilo and must be allowed by your configuration. The right-click menu also includes **Stop Session**. Its **Auto-Approve** toggle applies across Kilo sessions in the IDE, not just the current conversation.
+Right-click in a session or open the prompt bar's more menu to compare changes, copy the session ID, or share the conversation. **Share Session** creates a public link; **Stop Sharing** revokes it. Sharing requires signing in to Semafour and must be allowed by your configuration. The right-click menu also includes **Stop Session**. Its **Auto-Approve** toggle applies across Semafour sessions in the IDE, not just the current conversation.
 
 If a turn fails, use **Retry** after resolving the problem or selecting a different model or agent. Retry uses the current selections. A turn you stop yourself is marked as stopped, not as a failure.
 
 ### Keyboard shortcuts
 
-These shortcuts work while a Kilo session is active. They use `Ctrl` on macOS too, and can be changed in **Settings → Keymap**.
+These shortcuts work while a Semafour session is active. They use `Ctrl` on macOS too, and can be changed in **Settings → Keymap**.
 
 | Shortcut | Action |
 |---|---|

@@ -33,7 +33,7 @@ const plan = Effect.fn("SessionRevert.plan")(function* (input: BoundaryInput) {
     .where(and(eq(SessionMessageTable.session_id, input.sessionID), eq(SessionMessageTable.id, input.messageID)))
     .get()
     .pipe(Effect.orDie)
-  // kilocode_change - Kilo keeps session_message.seq nullable for released-data compatibility
+  // kilocode_change - Semafour keeps session_message.seq nullable for released-data compatibility
   if (!boundary || boundary.seq === null) return yield* new MessageNotFoundError(input)
   const rows = yield* db
     .select()

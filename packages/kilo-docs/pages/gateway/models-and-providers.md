@@ -1,11 +1,11 @@
 ---
 title: "Models & Providers"
-description: "Learn about the AI models available through the Kilo AI Gateway, including model IDs and how to use them."
+description: "Learn about the AI models available through the Semafour AI Gateway, including model IDs and how to use them."
 ---
 
 # Models & Providers
 
-The Kilo AI Gateway provides access to hundreds of AI models through a single unified API. You can switch between models by changing the model ID string -- no code changes required.
+The Semafour AI Gateway provides access to hundreds of AI models through a single unified API. You can switch between models by changing the model ID string -- no code changes required.
 
 ## Specifying a model
 

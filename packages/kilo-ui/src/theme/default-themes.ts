@@ -30,7 +30,7 @@ export const KILO_THEMES: Record<string, DesktopTheme> = {
   "kilo-vscode": kiloVscodeTheme,
 }
 
-// Override DEFAULT_THEMES: Kilo themes first, then upstream
+// Override DEFAULT_THEMES: Semafour themes first, then upstream
 export const DEFAULT_THEMES: Record<string, DesktopTheme> = {
   ...KILO_THEMES,
   ...UPSTREAM_THEMES,

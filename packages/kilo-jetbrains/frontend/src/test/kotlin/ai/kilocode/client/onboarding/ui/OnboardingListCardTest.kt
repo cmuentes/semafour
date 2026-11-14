@@ -41,13 +41,13 @@ class OnboardingListCardTest : BasePlatformTestCase() {
         val card = OnboardingListCard()
         card.update(
             listOf(
-                step("a", "Migrate from Kilo v5"),
+                step("a", "Migrate from Semafour v5"),
                 step("b", "Sign in"),
             ),
         )
 
         val body = body(card)
-        assertTrue("expected a bullet for step a, got: $body", body.contains("• Migrate from Kilo v5"))
+        assertTrue("expected a bullet for step a, got: $body", body.contains("• Migrate from Semafour v5"))
         assertTrue("expected a bullet for step b, got: $body", body.contains("• Sign in"))
         assertEquals("expected one bullet per step", 2, body.count { it == '•' })
     }
@@ -59,10 +59,10 @@ class OnboardingListCardTest : BasePlatformTestCase() {
     fun `test bullets omit the long detail text`() {
         val detail = "We found settings from your previous installation. Here's what we can bring over."
         val card = OnboardingListCard()
-        card.update(listOf(step("a", "Migrate from Kilo v5", detail)))
+        card.update(listOf(step("a", "Migrate from Semafour v5", detail)))
 
         val body = body(card)
-        assertTrue("short title should be shown, got: $body", body.contains("• Migrate from Kilo v5"))
+        assertTrue("short title should be shown, got: $body", body.contains("• Migrate from Semafour v5"))
         assertFalse("long detail must not leak into the card, got: $body", body.contains(detail))
     }
 
@@ -73,7 +73,7 @@ class OnboardingListCardTest : BasePlatformTestCase() {
     fun `test card text wraps rather than ellipsizing`() {
         val intro = KiloBundle.message("onboarding.list.subtitle")
         val card = OnboardingListCard()
-        card.update(listOf(step("a", "Migrate from Kilo v5")))
+        card.update(listOf(step("a", "Migrate from Semafour v5")))
 
         val carrier = texts(card).firstOrNull { it.text.contains(intro) }
             ?: error("intro not carried by any text component: ${body(card)}")
@@ -83,7 +83,7 @@ class OnboardingListCardTest : BasePlatformTestCase() {
 
     fun `test action buttons are ordered skip all then later then start`() {
         val card = OnboardingListCard()
-        card.update(listOf(step("a", "Migrate from Kilo v5")))
+        card.update(listOf(step("a", "Migrate from Semafour v5")))
 
         val labels = buttons(card).map { it.text }
         assertEquals(

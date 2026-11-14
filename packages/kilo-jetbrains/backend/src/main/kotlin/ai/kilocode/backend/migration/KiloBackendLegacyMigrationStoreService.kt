@@ -19,7 +19,7 @@ import java.nio.file.Files
 import java.nio.file.StandardOpenOption
 import java.nio.file.attribute.PosixFilePermissions
 
-/** Provides the production [LegacyMigrationStore] backed by the CLI Kilo config directory. */
+/** Provides the production [LegacyMigrationStore] backed by the CLI Semafour config directory. */
 @Service(Service.Level.APP)
 class KiloBackendLegacyMigrationStoreService {
 

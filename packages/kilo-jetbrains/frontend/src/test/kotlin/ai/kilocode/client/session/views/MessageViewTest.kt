@@ -110,7 +110,7 @@ class MessageViewTest : BasePlatformTestCase() {
         )
     }
 
-    // A prompt Kilo composed shows the same attribution header as VS Code and starts collapsed to
+    // A prompt Semafour composed shows the same attribution header as VS Code and starts collapsed to
     // its first paragraph, with a control that expands it again.
     fun `test injected prompt shows header and collapses to the first paragraph`() {
         val msg = Message(MessageDto("m1", "ses_user", "user", MessageTimeDto(0.0)))
@@ -123,7 +123,7 @@ class MessageViewTest : BasePlatformTestCase() {
         msg.parts["p1"] = text
         view.upsertPart(text)
 
-        val label = find(view) { it is JBLabel && it.text == "Sent by Kilo \u00B7 Update from main" }
+        val label = find(view) { it is JBLabel && it.text == "Sent by Semafour \u00B7 Update from main" }
         val toggle = find(view) { it is HyperlinkLabel } as? HyperlinkLabel
         assertNotNull("attribution label is shown", label)
         assertNotNull("collapse control is shown", toggle)
@@ -152,7 +152,7 @@ class MessageViewTest : BasePlatformTestCase() {
         msg.parts["p1"] = text
         view.upsertPart(text)
 
-        assertNotNull(find(view) { it is JBLabel && it.text == "Sent by Kilo \u00B7 Update from main" })
+        assertNotNull(find(view) { it is JBLabel && it.text == "Sent by Semafour \u00B7 Update from main" })
         val toggle = find(view) { it is HyperlinkLabel } as? HyperlinkLabel
         assertNotNull(toggle)
         assertFalse("a short prompt has nothing to collapse", toggle!!.isVisible)

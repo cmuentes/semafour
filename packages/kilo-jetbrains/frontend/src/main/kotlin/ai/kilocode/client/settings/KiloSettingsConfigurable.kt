@@ -22,7 +22,7 @@ import com.intellij.util.ui.JBUI
 import javax.swing.JComponent
 
 /**
- * Root settings entry under Settings -> Tools -> Kilo Code.
+ * Root settings entry under Settings -> Tools -> Semafour.
  *
  * Displays a brief description and links to the registered child pages.
  * Child configurables are registered in XML (`kilo.jetbrains.frontend.xml`) as

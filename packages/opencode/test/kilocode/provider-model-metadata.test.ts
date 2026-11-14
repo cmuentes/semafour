@@ -3,7 +3,7 @@ import { Schema } from "effect"
 import { Provider } from "../../src/provider/provider"
 import { patchModelsDevModel } from "../../src/kilocode/provider/provider"
 
-describe("Kilo provider model metadata", () => {
+describe("Semafour provider model metadata", () => {
   test("preserves Auto Efficient routing models from Models.dev data", () => {
     const patch = patchModelsDevModel("kilo", {
       autoRouting: { models: ["google/gemini-2.5-flash", "anthropic/claude-sonnet-4.6"] },
@@ -19,7 +19,7 @@ describe("Kilo provider model metadata", () => {
       id: "kilo-auto/efficient",
       providerID: "kilo",
       api: { id: "kilo", url: "https://kilocode.ai", npm: "@kilocode/kilo-gateway" },
-      name: "Kilo Auto Efficient",
+      name: "Semafour Auto Efficient",
       family: "kilo-auto",
       capabilities: {
         temperature: true,

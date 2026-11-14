@@ -57,12 +57,12 @@ function makeRoutes<AuthError, AuthServices>(auth: Layer.Layer<ServerAuth.Config
   return HttpApiBuilder.layer(Api, { openapiPath: "/openapi.json" }).pipe(
     Layer.provide(handlers),
     Layer.provide(sessionLocationLayer),
-    Layer.provide(locationLayer), // kilocode_change - standalone server has no Kilo config reconciler
+    Layer.provide(locationLayer), // kilocode_change - standalone server has no Semafour config reconciler
     Layer.provide(authorizationLayer),
     Layer.provide(schemaErrorLayer),
     Layer.provide(auth),
     Layer.provide(serviceLayer),
-    HttpRouter.provideRequest(ReferenceReconciler.noop), // kilocode_change - request-scoped; no Kilo reconciler outside the CLI
+    HttpRouter.provideRequest(ReferenceReconciler.noop), // kilocode_change - request-scoped; no Semafour reconciler outside the CLI
   )
 }
 

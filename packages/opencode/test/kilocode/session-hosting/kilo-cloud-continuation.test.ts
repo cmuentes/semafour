@@ -195,7 +195,7 @@ it.effect("rejects a different session order as invalid_response", () => {
 
 it.effect("reads the continuation code from a real nested tRPC envelope", () => {
   return Effect.gen(function* () {
-    // tRPC puts a generic transport code beside the actionable Kilo message, so
+    // tRPC puts a generic transport code beside the actionable Semafour message, so
     // the code must be found in error.json.message / error.data.code, not only a
     // flat `data.code`.
     const shapes: Array<unknown> = [

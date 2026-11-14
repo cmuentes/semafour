@@ -47,7 +47,7 @@ export function resolveKiloOpenRouterBaseUrl(options: UrlOptions = {}): string {
   return resolve(options, "openrouter")
 }
 
-/** Resolve a Kilo AI gateway endpoint, e.g. `fim/completions`, against the configured gateway base. */
+/** Resolve a Semafour AI gateway endpoint, e.g. `fim/completions`, against the configured gateway base. */
 export function resolveKiloGatewayUrl(path: string): string {
   return `${KILO_AI_GATEWAY_BASE}/${path}`
 }

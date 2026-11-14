@@ -26,7 +26,7 @@ const message = {
   tokens: { input: 1, output: 1, reasoning: 0, cache: { read: 0, write: 0 } },
 } satisfies Message
 
-describe("Kilo sidebar footer", () => {
+describe("Semafour sidebar footer", () => {
   test("formats money", () => {
     expect(format(12.345)).toBe("$12.35")
     expect(format(0)).toBe("$0.00")
@@ -46,7 +46,7 @@ describe("Kilo sidebar footer", () => {
     expect(resetLabel("not-a-date")).toBeUndefined()
   })
 
-  test("refreshes only after completed billed Kilo turns", () => {
+  test("refreshes only after completed billed Semafour turns", () => {
     expect(billable(message)).toBeTrue()
     expect(billable({ ...message, providerID: "anthropic" })).toBeFalse()
     expect(billable({ ...message, cost: 0 })).toBeFalse()

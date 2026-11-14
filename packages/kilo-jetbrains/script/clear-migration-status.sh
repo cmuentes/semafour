@@ -7,7 +7,7 @@ set -eu
 # durable "legacy-migration-status" marker and strips the inline "migrationStatus" key from
 # "legacy-settings.json". Legacy source data in that file is preserved so migration can run again.
 #
-# It clears every Kilo config dir it can resolve, matching KiloCliConfigPath.resolve():
+# It clears every Semafour config dir it can resolve, matching KiloCliConfigPath.resolve():
 #   1. $KILO_CONFIG_DIR
 #   2. $XDG_CONFIG_HOME/kilo
 #   3. $HOME/.config/kilo

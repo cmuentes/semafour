@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 /**
- * SBOM generation for the Kilo JetBrains plugin.
+ * SBOM generation for the Semafour JetBrains plugin.
  *
  * Two artifacts ship from one source tree and they make different claims:
  *
@@ -136,7 +136,7 @@ async function checksums(file?: string) {
 }
 
 /**
- * The embedded or downloadable Kilo CLI for each supported platform.
+ * The embedded or downloadable Semafour CLI for each supported platform.
  *
  * Reuses the CLI component graphs, so the plugin cannot describe a CLI build
  * differently from the CLI release that produced it.
@@ -172,12 +172,12 @@ async function clis(input: {
       purl: Deps.purl(`@kilocode/cli-${platform}`, input.version),
       platform,
       delivery,
-      supplier: "Kilo Code",
+      supplier: "Semafour",
       ...(digest ? { hashes: [{ alg: "SHA-256" as const, content: digest }] } : {}),
       description:
         delivery === "contained"
-          ? "Kilo CLI embedded in kilo-cli.zip and extracted for the current platform"
-          : "Kilo CLI release asset downloaded on first connect",
+          ? "Semafour CLI embedded in kilo-cli.zip and extracted for the current platform"
+          : "Semafour CLI release asset downloaded on first connect",
     })
 
     const graph = await Cli.graph({ target: Cli.target(platform), subject: ref, lock: input.lock })
@@ -239,7 +239,7 @@ export async function plugin(input: Options) {
       name: "kilo-code-jetbrains",
       version: input.version,
       type: "application",
-      description: `Kilo Code JetBrains plugin (${input.variant})`,
+      description: `Semafour JetBrains plugin (${input.variant})`,
     },
     target: { platform: input.variant === "bundled" ? "all" : "any" },
     build: {

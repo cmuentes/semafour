@@ -29,13 +29,13 @@ export namespace KilocodePaths {
     }
   }
 
-  /** Global Kilo directories in user home: ~/.kilocode and ~/.kilo (legacy first, .kilo wins later) */
+  /** Global Semafour directories in user home: ~/.kilocode and ~/.kilo (legacy first, .kilo wins later) */
   export function globalDirs(): string[] {
     return [path.join(home(), ".kilocode"), path.join(home(), ".kilo")]
   }
 
   /**
-   * Discover Kilo directories containing skills.
+   * Discover Semafour directories containing skills.
    * Returns parent directories (.kilocode/ and .kilo/) for glob pattern "skills/[*]/SKILL.md".
    *
    * - Walks up from projectDir to worktreeRoot for .kilocode/ and .kilo/
@@ -44,7 +44,7 @@ export namespace KilocodePaths {
    *
    * Does NOT copy/migrate skills - just provides paths for discovery.
    * Skills remain in their original locations and can be managed independently
-   * by the Kilo VSCode extension.
+   * by the Semafour VSCode extension.
    */
   export async function skillDirectories(opts: {
     projectDir: string

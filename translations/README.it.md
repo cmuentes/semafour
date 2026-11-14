@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kilo.ai"><img width="250" alt="Kilo Code logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
+  <a href="https://kilo.ai"><img width="250" alt="Semafour logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
 </p>
 
 <p align="center">L'agente di coding open source per creare con l'IA in VS Code, JetBrains o nella CLI.</p>
@@ -21,18 +21,18 @@
 
 ---
 
-Kilo Code è un agente di coding con IA che ti segue ovunque lavori: [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) e la [CLI](https://kilo.ai/cli). È open source con prezzi trasparenti. Puoi scegliere tra oltre 500 modelli, passare da uno all'altro durante un'attività e pagare la tariffa del provider del modello senza ricarichi. Non servono chiavi API per iniziare.
+Semafour è un agente di coding con IA che ti segue ovunque lavori: [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) e la [CLI](https://kilo.ai/cli). È open source con prezzi trasparenti. Puoi scegliere tra oltre 500 modelli, passare da uno all'altro durante un'attività e pagare la tariffa del provider del modello senza ricarichi. Non servono chiavi API per iniziare.
 
 ### Installazione
 
-Scegli dove vuoi eseguire Kilo.
+Scegli dove vuoi eseguire Semafour.
 
 <details open>
 <summary><strong>VS Code</strong></summary>
 
 <br>
 
-Installa direttamente l'[estensione Kilo Code](vscode:extension/kilocode.kilo-code), oppure scaricala dal [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Crea un account e avrai accesso a oltre 500 modelli, inclusi GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 e Gemini 3.1 Pro Preview, tutti al prezzo del provider.
+Installa direttamente l'[estensione Semafour](vscode:extension/kilocode.kilo-code), oppure scaricala dal [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Crea un account e avrai accesso a oltre 500 modelli, inclusi GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 e Gemini 3.1 Pro Preview, tutti al prezzo del provider.
 
 </details>
 
@@ -70,7 +70,7 @@ Poi esegui `kilo` in qualsiasi directory di progetto per iniziare.
 
 <br>
 
-Installa il [plugin Kilo Code](https://plugins.jetbrains.com/plugin/28350-kilo-code) dal JetBrains Marketplace, oppure cerca "Kilo Code" in `Settings → Plugins` dentro qualsiasi IDE JetBrains.
+Installa il [plugin Semafour](https://plugins.jetbrains.com/plugin/28350-kilo-code) dal JetBrains Marketplace, oppure cerca "Semafour" in `Settings → Plugins` dentro qualsiasi IDE JetBrains.
 
 </details>
 
@@ -79,7 +79,7 @@ Installa il [plugin Kilo Code](https://plugins.jetbrains.com/plugin/28350-kilo-c
 
 <br>
 
-Esegui Kilo dal web, senza una macchina locale, su [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
+Esegui Semafour dal web, senza una macchina locale, su [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
 
 </details>
 
@@ -111,7 +111,7 @@ Note: `x64-baseline` è una build di compatibilità per CPU più vecchie senza A
 
 ### Agents
 
-Kilo include agents specializzati tra cui puoi passare in base all'attività. Puoi anche creare agents personalizzati.
+Semafour include agents specializzati tra cui puoi passare in base all'attività. Puoi anche creare agents personalizzati.
 
 - **Code** - Predefinito. Implementa e modifica codice da linguaggio naturale.
 - **Plan** - Progetta l'architettura e scrive piani di implementazione prima che venga scritto codice.
@@ -157,9 +157,9 @@ MIT. Puoi usare, modificare e distribuire questo codice, anche commercialmente, 
 ### FAQ
 
 <details>
-<summary>Da dove viene Kilo CLI?</summary>
+<summary>Da dove viene Semafour CLI?</summary>
 
-Kilo CLI è un fork di [OpenCode](https://github.com/anomalyco/opencode), migliorato per funzionare nella piattaforma di ingegneria agentica Kilo.
+Semafour CLI è un fork di [OpenCode](https://github.com/anomalyco/opencode), migliorato per funzionare nella piattaforma di ingegneria agentica Semafour.
 
 </details>
 

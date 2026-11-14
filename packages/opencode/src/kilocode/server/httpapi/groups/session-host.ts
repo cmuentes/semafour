@@ -397,7 +397,7 @@ export const SessionHostApi = HttpApi.make("session-host")
       .annotateMerge(
         OpenApi.annotations({
           title: "session-host",
-          description: "Kilo hosted session control routes.",
+          description: "Semafour hosted session control routes.",
         }),
       )
       .middleware(Authorization),
@@ -406,6 +406,6 @@ export const SessionHostApi = HttpApi.make("session-host")
     OpenApi.annotations({
       title: "kilo HttpApi",
       version: "0.0.1",
-      description: "Kilo HttpApi surface.",
+      description: "Semafour HttpApi surface.",
     }),
   )

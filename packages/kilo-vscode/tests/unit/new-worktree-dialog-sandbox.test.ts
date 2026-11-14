@@ -454,7 +454,7 @@ describe("NewWorktreeDialog models", () => {
     `)
   })
 
-  it("keeps external-only comparisons usable while a Kilo catalog refresh blocks mixed comparisons", () => {
+  it("keeps external-only comparisons usable while a Semafour catalog refresh blocks mixed comparisons", () => {
     check(`
       const { state, refresh } = scene(x, {
         providers: catalog(x, external, y), fallback: y, ready: true, connected: ["external"],

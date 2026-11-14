@@ -20,7 +20,7 @@ const BUFFER_LIMIT = 1024 * 1024 * 2
 const EXITED_LIMIT = 25
 const pty = lazy(() => import("#pty"))
 
-// kilocode_change - the Kilo `sessionID` field now lives on the canonical shared schema (see
+// kilocode_change - the Semafour `sessionID` field now lives on the canonical shared schema (see
 // packages/schema/src/pty.ts) so the generated SDK carries it; reuse that schema verbatim here.
 export const Info = Pty.Info
 export type Info = Types.DeepMutable<typeof Info.Type>
@@ -36,7 +36,7 @@ export const UpdateInput = Schema.Struct({
 
 export type UpdateInput = Types.DeepMutable<typeof UpdateInput.Type>
 
-// kilocode_change - the shared events already carry Kilo's extended Info (see packages/schema/src/pty.ts),
+// kilocode_change - the shared events already carry Semafour's extended Info (see packages/schema/src/pty.ts),
 // so reuse them verbatim instead of redefining pty.created/pty.updated here.
 export const Event = Pty.Event
 
@@ -161,7 +161,7 @@ const layer = Layer.effect(
 
     const createBody = Effect.fn("Pty.createBody")(function* (input: CreateInput, owner: Location.Ref) {
       const id = PtyID.ascending()
-      // kilocode_change start - resolve Kilo self-commands to the real binary, arguments, and project cwd
+      // kilocode_change start - resolve Semafour self-commands to the real binary, arguments, and project cwd
       const resolved = KiloPtySelfCommand.resolve({
         command: input.command,
         args: input.args ? [...input.args] : undefined,
@@ -178,7 +178,7 @@ const layer = Layer.effect(
         ...input.env,
         TERM: "xterm-256color",
         KILO_TERMINAL: "1",
-        KILO_PTY_ID: id, // kilocode_change - let nested Kilo processes identify their parent terminal
+        KILO_PTY_ID: id, // kilocode_change - let nested Semafour processes identify their parent terminal
       } as Record<string, string>
       // kilocode_change start - do not expose local server credentials to user terminals.
       // node-pty inherits parent values for omitted keys, so empty tombstones are required.
@@ -288,7 +288,7 @@ const layer = Layer.effect(
     const update = Effect.fn("Pty.update")(function* (id: PtyID, input: UpdateInput) {
       const session = yield* requireSession(id)
       if (input.title) session.info.title = input.title
-      // kilocode_change start - associate nested Kilo TUI terminals with the viewed session
+      // kilocode_change start - associate nested Semafour TUI terminals with the viewed session
       if ("sessionID" in input) session.info.sessionID = input.sessionID ?? undefined
       // kilocode_change end
       if (input.size && session.info.status === "running") session.process.resize(input.size.cols, input.size.rows)

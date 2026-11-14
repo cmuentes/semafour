@@ -243,7 +243,7 @@ class KiloSessionRpcApiImpl internal constructor(
         if (hosted.isHosted(id)) return@ready hosted.diff(id, organization())
         // GET /session/:id/diff returns the cumulative, deduplicated, unquoted snapshot diff. Prefer it
         // over concatenating per-message summaries (which duplicate files per turn and skip unquoting).
-        val api = app.api ?: throw IllegalStateException("Kilo API is unavailable")
+        val api = app.api ?: throw IllegalStateException("Semafour API is unavailable")
         withContext(Dispatchers.IO) { api.sessionDiff(sessionID = id, directory = directory) }
             .mapNotNull { file ->
                 val path = file.file ?: return@mapNotNull null

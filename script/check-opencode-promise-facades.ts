@@ -3,7 +3,7 @@
 
 /**
  * Prevents new service-local runtimes in shared Effect modules while the
- * remaining Kilo Promise facades are migrated away. It also prevents tests
+ * remaining Semafour Promise facades are migrated away. It also prevents tests
  * from reaching through the global application runtime unless the integration
  * boundary is explicitly classified.
  *
@@ -87,7 +87,7 @@ const testAllow: Record<string, { count: number; reason: string }> = {
     count: 2,
     reason: "disk-backed prompt steering integration test cleanup",
   },
-  "server/experimental-session-list.test.ts": { count: 2, reason: "Kilo session list integration test" },
+  "server/experimental-session-list.test.ts": { count: 2, reason: "Semafour session list integration test" },
   "kilocode/server/cloud-session-import.test.ts": { count: 5, reason: "full app cloud import transaction integration" },
   "kilocode/server/listener-runtime.test.ts": { count: 4, reason: "listener and AppRuntime integration test" },
   "kilocode/wakeup/wakeup-cron.test.ts": {

@@ -50,7 +50,7 @@ describe("Markdown bidirectional rendering contract", () => {
         useMarked: () => ({ parse: async () => "" }),
         deferredHighlight: async () => {},
         fnv1a: (text) => text,
-        KiloTheme: { name: "Kilo" },
+        KiloTheme: { name: "Semafour" },
       }))
       mock.module("./src/kilocode/mermaid/markdown-mermaid", () => ({
         cleanupMermaidActions: () => {},

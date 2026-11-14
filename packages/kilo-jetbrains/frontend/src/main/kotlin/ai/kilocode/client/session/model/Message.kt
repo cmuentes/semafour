@@ -61,7 +61,7 @@ sealed class Content(val id: String)
 /** Streamed text content from the assistant. */
 class Text(id: String) : Content(id) {
     val content = StringBuilder()
-    /** Set when Kilo composed this prompt, e.g. "Update from main". */
+    /** Set when Semafour composed this prompt, e.g. "Update from main". */
     var injectedTitle: String? = null
 }
 

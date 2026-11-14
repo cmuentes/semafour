@@ -17,10 +17,10 @@ class KiloSourceEditorProvider : FileEditorProvider, DumbAware {
     override fun acceptRequiresReadAction(): Boolean = false
 
     override fun createEditor(project: Project, file: VirtualFile): FileEditor {
-        val path = kiloPath(file) ?: error("Invalid Kilo virtual file: ${file.path}")
+        val path = kiloPath(file) ?: error("Invalid Semafour virtual file: ${file.path}")
         val kilo = file as? KiloVirtualFile ?: KiloVirtualFile(path)
-        val kind = service<KiloEditorKindRegistry>().get(kilo.path.kind) ?: error("Unknown Kilo editor kind: ${kilo.path.kind}")
-        val view = kind.source ?: error("Kilo editor kind has no source view: ${kilo.path.kind}")
+        val kind = service<KiloEditorKindRegistry>().get(kilo.path.kind) ?: error("Unknown Semafour editor kind: ${kilo.path.kind}")
+        val view = kind.source ?: error("Semafour editor kind has no source view: ${kilo.path.kind}")
         return KiloFileEditor(project, file, kilo, view)
     }
 

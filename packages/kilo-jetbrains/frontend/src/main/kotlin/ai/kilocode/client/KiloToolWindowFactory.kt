@@ -43,11 +43,11 @@ import kotlinx.coroutines.withContext
 import java.awt.BorderLayout
 import javax.swing.JPanel
 
-/** Registered id of the Kilo Code tool window (`kilo.jetbrains.frontend.xml`'s `<toolWindow id=...>`). */
-const val KILO_TOOL_WINDOW_ID = "Kilo Code"
+/** Registered id of the Semafour tool window (`kilo.jetbrains.frontend.xml`'s `<toolWindow id=...>`). */
+const val KILO_TOOL_WINDOW_ID = "Semafour"
 
 /**
- * Creates the Kilo Code tool window and delegates session content management.
+ * Creates the Semafour tool window and delegates session content management.
  *
  * Resolves the project directory through the backend (handles split-mode
  * where `project.basePath` is a synthetic frontend path) before creating
@@ -88,7 +88,7 @@ internal class KiloToolWindowSetupService(
             }
         } catch (e: Exception) {
             Telemetry.send("Tool Window Setup Failed", mapOf("stage" to "create", "errorClass" to e::class.java.name))
-            LOG.error("Failed to create Kilo tool window content", e)
+            LOG.error("Failed to create Semafour tool window content", e)
         }
     }
 
@@ -131,7 +131,7 @@ internal class KiloToolWindowSetupService(
             agent.add(agentManagerPanel.component, BorderLayout.CENTER)
 
             toolWindow.setContentUiType(ToolWindowContentUiType.TABBED, null)
-            // Hide the "Kilo Code" id label in the header so only the content tabs remain.
+            // Hide the "Semafour" id label in the header so only the content tabs remain.
             toolWindow.component.putClientProperty(ToolWindowContentUi.HIDE_ID_LABEL, "true")
 
             val factory = ContentFactory.getInstance()
@@ -203,20 +203,20 @@ internal class KiloToolWindowSetupService(
             Disposer.register(manager) { dot.cancel() }
 
             val actions = listOfNotNull(
-                ActionManager.getInstance().getAction("Kilo.NewSession"),
-                ActionManager.getInstance().getAction("Kilo.NewWorktree"),
+                ActionManager.getInstance().getAction("Semafour.NewSession"),
+                ActionManager.getInstance().getAction("Semafour.NewWorktree"),
                 Separator.create(),
-                ActionManager.getInstance().getAction("Kilo.History"),
+                ActionManager.getInstance().getAction("Semafour.History"),
             )
             toolWindow.setTitleActions(actions)
             // Settings moves off the toolbar into the header gear (options) menu: Open Settings…,
-            // Config Files, and Core, inlined from the declarative Kilo.SettingsGroup.
-            (ActionManager.getInstance().getAction("Kilo.SettingsGroup") as? ActionGroup)?.let {
+            // Config Files, and Core, inlined from the declarative Semafour.SettingsGroup.
+            (ActionManager.getInstance().getAction("Semafour.SettingsGroup") as? ActionGroup)?.let {
                 toolWindow.setAdditionalGearActions(it)
             }
         } catch (e: Exception) {
             Telemetry.send("Tool Window Setup Failed", mapOf("stage" to "setup", "errorClass" to e::class.java.name))
-            LOG.error("Failed to set up Kilo tool window content", e)
+            LOG.error("Failed to set up Semafour tool window content", e)
         }
     }
 }

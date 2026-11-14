@@ -51,7 +51,7 @@ describe("parseKiloErrorCode", () => {
     expect(parseKiloErrorCode(error)).toBe("PROMOTION_MODEL_LIMIT_REACHED")
   })
 
-  it("returns undefined for non-Kilo error codes", () => {
+  it("returns undefined for non-Semafour error codes", () => {
     const error = makeAPIError({
       statusCode: 429,
       responseBody: JSON.stringify({ error: { code: "SOME_OTHER_ERROR" } }),
@@ -97,7 +97,7 @@ describe("isKiloError", () => {
     expect(isKiloError(error)).toBe(true)
   })
 
-  it("returns false for regular 429 errors without Kilo code", () => {
+  it("returns false for regular 429 errors without Semafour code", () => {
     const error = makeAPIError({
       statusCode: 429,
       isRetryable: true,
@@ -112,7 +112,7 @@ describe("isKiloError", () => {
   })
 })
 
-describe("SessionRetry.retryable with Kilo errors", () => {
+describe("SessionRetry.retryable with Semafour errors", () => {
   it("returns undefined for PAID_MODEL_AUTH_REQUIRED (not retryable)", () => {
     const error = makeAPIError({
       statusCode: 401,

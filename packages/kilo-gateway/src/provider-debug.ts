@@ -8,10 +8,10 @@ import { resolveKiloOpenRouterBaseUrl } from "./api/url.js"
 import { buildRequestHeaders } from "./provider.js"
 
 /**
- * Debug version of createKilo with extensive logging
+ * Debug version of createSemafour with extensive logging
  */
 export function createKiloDebug(options: KiloProviderOptions = {}): SDK {
-  console.log("\n🔍 [KILO DEBUG] Creating Kilo Provider")
+  console.log("\n🔍 [KILO DEBUG] Creating Semafour Provider")
   console.log("📋 [KILO DEBUG] Options received:", JSON.stringify(options, null, 2))
 
   // Get API key from options or environment

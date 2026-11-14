@@ -124,7 +124,7 @@ it.effect("selects the default provider only while it is available", () =>
     primary.availability.current = {
       state: "unavailable",
       reason: "signed_out",
-      message: "Sign in to Kilo to use cloud sessions",
+      message: "Sign in to Semafour to use cloud sessions",
     }
     expect(yield* registry.default).toBeUndefined()
   }),
@@ -134,7 +134,7 @@ it.effect("does not promote a non-default provider when the default is unavailab
   Effect.gen(function* () {
     const primary = provider("kilo-cloud", SESSION, {
       default: true,
-      availability: { state: "unavailable", reason: "signed_out", message: "Sign in to Kilo to use cloud sessions" },
+      availability: { state: "unavailable", reason: "signed_out", message: "Sign in to Semafour to use cloud sessions" },
     })
     const registry = create([primary.value, provider("other", SESSION).value])
     expect(yield* registry.default).toBeUndefined()

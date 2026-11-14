@@ -5,7 +5,7 @@ const IMPORT = /^import \{ WebCommand \} from "\.\/cli\/cmd\/web"\n/m
 const REGISTER = /^(\s*)\.command\(WebCommand\)\n/m
 const REFERENCE = /\bWebCommand\b|["']\.\/cli\/cmd\/web["']/
 const OMIT_IMPORT =
-  "// kilocode_change - upstream web command intentionally omitted; Kilo does not ship an embedded web UI\n"
+  "// kilocode_change - upstream web command intentionally omitted; Semafour does not ship an embedded web UI\n"
 const OMIT_REGISTER = "// kilocode_change - upstream web command intentionally omitted\n"
 
 export type KiloWebResult = {
@@ -30,9 +30,9 @@ export async function transformKiloWeb(options: { dryRun?: boolean; verbose?: bo
   const content = await file.text()
   const transformed = removeKiloWeb(INDEX, content)
   if (transformed.removals > 0 && !options.dryRun) await Bun.write(INDEX, transformed.result)
-  if (transformed.removals > 0 && options.verbose) debug("Removed unsupported Kilo web command registration")
+  if (transformed.removals > 0 && options.verbose) debug("Removed unsupported Semafour web command registration")
   if (transformed.review) {
-    warn("Kilo web command shape changed upstream — review packages/opencode/src/index.ts; merge continues")
+    warn("Semafour web command shape changed upstream — review packages/opencode/src/index.ts; merge continues")
   }
   return transformed
 }

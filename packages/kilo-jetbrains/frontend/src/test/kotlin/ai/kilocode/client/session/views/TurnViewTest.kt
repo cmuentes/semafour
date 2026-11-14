@@ -153,8 +153,8 @@ class TurnViewTest : BasePlatformTestCase() {
         mv.upsertPart(text("p1", "Hello"))
         assertEquals("Assistant message: Hello", mv.accessibleContext.accessibleName)
 
-        mv.appendDelta("p1", "\nfrom Kilo")
-        assertEquals("Assistant message: Hello from Kilo", mv.accessibleContext.accessibleName)
+        mv.appendDelta("p1", "\nfrom Semafour")
+        assertEquals("Assistant message: Hello from Semafour", mv.accessibleContext.accessibleName)
 
         mv.removePart("p1")
         assertEquals("Assistant message", mv.accessibleContext.accessibleName)

@@ -9,7 +9,7 @@ fun interface TranscriptDisplayListener {
     companion object {
         @JvmField
         val TOPIC: Topic<TranscriptDisplayListener> = Topic.create(
-            "Kilo transcript display",
+            "Semafour transcript display",
             TranscriptDisplayListener::class.java,
         )
     }

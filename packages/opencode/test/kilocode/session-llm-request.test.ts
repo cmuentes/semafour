@@ -104,7 +104,7 @@ async function prepare(name: string, oauth = false) {
   )
 }
 
-describe("Kilo persona in generated metadata requests", () => {
+describe("Semafour persona in generated metadata requests", () => {
   test.each(["title", "branch-name"])("omits the persona for %s generation", async (name) => {
     const result = await prepare(name)
 
@@ -166,7 +166,7 @@ describe("LLM request output tokens", () => {
 
   const adaptive = { high: { reasoning: { enabled: true, effort: "high" }, verbosity: "high" } }
 
-  it.instance("requests the full output limit for Claude on the Kilo gateway", () =>
+  it.instance("requests the full output limit for Claude on the Semafour gateway", () =>
     Effect.gen(function* () {
       const mdl = claude({
         id: "anthropic/claude-opus-5.5",

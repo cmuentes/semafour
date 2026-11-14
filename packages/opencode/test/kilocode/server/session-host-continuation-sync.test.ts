@@ -107,7 +107,7 @@ process.env["CLOUD_AGENT_NEXT_BASE_URL"] = server.url.origin
 process.env["KILO_WEB_APP_URL"] = server.url.origin
 process.env["KILO_ORG_ID"] = ORG
 
-// The Kilo API base is captured at module load from KILO_API_URL, so auth checks
+// The Semafour API base is captured at module load from KILO_API_URL, so auth checks
 // may still target the default origin. Map that origin onto the local server.
 const realFetch = globalThis.fetch
 globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {

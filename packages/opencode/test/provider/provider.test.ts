@@ -78,7 +78,7 @@ const list = Provider.use.list()
 
 const paid = (providers: Record<string, { models: Record<string, { cost: { input: number } }> }>) => {
   const item = providers[ProviderV2.ID.make("opencode")]
-  if (!item) return 0 // kilocode_change - Kilo drops opencode provider without apiKey/auth
+  if (!item) return 0 // kilocode_change - Semafour drops opencode provider without apiKey/auth
   return Object.values(item.models).filter((model) => model.cost.input > 0).length
 }
 
@@ -1259,7 +1259,7 @@ it.instance(
     const providers = yield* list
     expect(providers[ProviderV2.ID.make("nvidia")].options.headers).toEqual({
       "HTTP-Referer": "https://kilo.ai/", // kilocode_change
-      "X-Title": "Kilo Code", // kilocode_change
+      "X-Title": "Semafour", // kilocode_change
       "X-BILLING-INVOKE-ORIGIN": "KiloCode", // kilocode_change
     })
   }),
@@ -1272,7 +1272,7 @@ it.instance(
     const providers = yield* list
     expect(providers[ProviderV2.ID.make("nvidia")].options.headers).toEqual({
       "HTTP-Referer": "https://kilo.ai/", // kilocode_change
-      "X-Title": "Kilo Code", // kilocode_change
+      "X-Title": "Semafour", // kilocode_change
       "X-BILLING-INVOKE-ORIGIN": "KiloCode", // kilocode_change
     })
   }),

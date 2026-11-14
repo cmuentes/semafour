@@ -1,7 +1,7 @@
 /**
- * Kilo Gateway Commands for TUI
+ * Semafour Gateway Commands for TUI
  *
- * Provides /profile and /teams commands that are only visible when connected to Kilo Gateway.
+ * Provides /profile and /teams commands that are only visible when connected to Semafour Gateway.
  */
 
 import { createMemo } from "solid-js"
@@ -24,7 +24,7 @@ type UseSDK = any
 type SDK = any
 
 /**
- * Register all Kilo Gateway commands
+ * Register all Semafour Gateway commands
  * Call this from a component inside the TUI app
  *
  * @param useSDK - OpenCode's useSDK hook (passed from TUI context)
@@ -35,7 +35,7 @@ export function registerKiloCommands(useSDK: () => UseSDK) {
   const sdk = useSDK()
   const toast = useToast()
 
-  // Only show Kilo commands when connected to Kilo Gateway
+  // Only show Semafour commands when connected to Semafour Gateway
   const isKiloConnected = createMemo(() => {
     return sync.data.provider_next.connected.includes("kilo")
   })
@@ -48,7 +48,7 @@ export function registerKiloCommands(useSDK: () => UseSDK) {
         name: "remote.toggle",
         title: "Toggle remote",
         desc: "Enable or disable remote session relay",
-        category: "Kilo",
+        category: "Semafour",
         slashName: "remote",
         enabled: isKiloConnected(),
         hidden: !isKiloConnected(),
@@ -86,7 +86,7 @@ export function registerKiloCommands(useSDK: () => UseSDK) {
         name: "kilo.usage",
         title: "Plans & usage",
         desc: "View provider plans and quota",
-        category: "Kilo",
+        category: "Semafour",
         slashName: "usage",
         slashAliases: ["plans", "quota"],
         run: () => {
@@ -100,7 +100,7 @@ export function registerKiloCommands(useSDK: () => UseSDK) {
               name: "kilo.indexing",
               title: "Indexing",
               desc: "Configure codebase indexing",
-              category: "Kilo",
+              category: "Semafour",
               slashName: "indexing",
               slashAliases: ["index", "embedding"],
               run: () => {
@@ -118,7 +118,7 @@ export function registerKiloCommands(useSDK: () => UseSDK) {
           return active ? "Disable privacy mode" : "Enable privacy mode"
         },
         desc: "Blur PII (balance, email, etc.) and confirm before showing profile",
-        category: "Kilo",
+        category: "Semafour",
         slashName: "privacy",
         run: async () => {
           const active = sync.data.config.privacy_mode === true || sync.data.globalConfig.privacy_mode === true
@@ -161,8 +161,8 @@ export function registerKiloCommands(useSDK: () => UseSDK) {
       {
         name: "kilo.teams",
         title: "Teams",
-        desc: "Switch between Kilo Gateway teams",
-        category: "Kilo",
+        desc: "Switch between Semafour Gateway teams",
+        category: "Semafour",
         slashName: "teams",
         slashAliases: ["team", "org", "orgs"],
         enabled: isKiloConnected(),
@@ -176,7 +176,7 @@ export function registerKiloCommands(useSDK: () => UseSDK) {
               dialog.replace(() => (
                 <DialogAlert
                   title="Error"
-                  message="Failed to fetch teams. Please ensure you're authenticated with Kilo Gateway."
+                  message="Failed to fetch teams. Please ensure you're authenticated with Semafour Gateway."
                 />
               ))
               return
@@ -256,7 +256,7 @@ export function registerKiloCommands(useSDK: () => UseSDK) {
         name: "kilo.about",
         title: "About",
         desc: "Show version, environment, and diagnostic info",
-        category: "Kilo",
+        category: "Semafour",
         slashName: "about",
         run: () => {
           showAboutDialog(dialog)

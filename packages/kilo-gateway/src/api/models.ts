@@ -81,7 +81,7 @@ function parseApiPrice(price: string | null | undefined): number | undefined {
 }
 
 /**
- * Fetch models from Kilo API (OpenRouter-compatible endpoint)
+ * Fetch models from Semafour API (OpenRouter-compatible endpoint)
  *
  * @param options - Configuration options
  * @returns Typed result with models and optional error info
@@ -100,7 +100,7 @@ export async function fetchKiloModels(options?: {
   const models: Record<string, any> = {}
 
   for (const model of raw.data) {
-    // Skip models that explicitly don't support tools — Kilo requires tool calling
+    // Skip models that explicitly don't support tools — Semafour requires tool calling
     if (!supportsTools(model)) continue
 
     const transformedModel = transformToModelDevFormat(model)
@@ -132,7 +132,7 @@ export type KiloTranscriptionModelsResult = {
 }
 
 /**
- * Fetch image-capable models from Kilo API (OpenRouter-compatible endpoint).
+ * Fetch image-capable models from Semafour API (OpenRouter-compatible endpoint).
  * Uses the same raw fetch as {@link fetchKiloModels} but keeps only models
  * whose `output_modalities` include `"image"`.
  */
@@ -271,7 +271,7 @@ async function fetchRawKiloModels(options?: {
 }
 
 /**
- * Kilo requires tool calling, so models that explicitly omit "tools" are hidden.
+ * Semafour requires tool calling, so models that explicitly omit "tools" are hidden.
  * Optimistically assume models with a missing or empty supported_parameters list
  * support tools (e.g. routers like typesafe/jev-router report an empty list).
  */

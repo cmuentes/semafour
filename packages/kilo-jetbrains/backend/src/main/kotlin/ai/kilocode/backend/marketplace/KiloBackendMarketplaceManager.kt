@@ -323,7 +323,7 @@ class KiloBackendMarketplaceManager(private val backend: KiloBackendAppService? 
         (this[key] as? JsonArray)?.mapNotNull { (it as? JsonPrimitive)?.contentOrNull } ?: emptyList()
 
     private suspend fun request(directory: String, path: String, body: JsonObject?): String = withContext(Dispatchers.IO) {
-        val http = app.http ?: throw IllegalStateException("Kilo HTTP client is unavailable")
+        val http = app.http ?: throw IllegalStateException("Semafour HTTP client is unavailable")
         val url = "http://127.0.0.1:${app.port}$path?directory=${encode(directory)}"
         val request = Request.Builder().url(url).let { builder ->
             if (body == null) builder.get() else builder.post(body.toString().toRequestBody(JSON_MEDIA))

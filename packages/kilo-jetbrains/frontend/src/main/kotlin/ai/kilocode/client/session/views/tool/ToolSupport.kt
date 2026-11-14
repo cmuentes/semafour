@@ -745,7 +745,7 @@ private fun patchOf(obj: JsonObject?): String? =
     obj?.get("patch")?.jsonPrimitive?.contentOrNull?.takeIf { it.isNotBlank() }
 
 /**
- * Unified diff patch produced by a write tool, or empty when none is available. Kilo strips the raw
+ * Unified diff patch produced by a write tool, or empty when none is available. Semafour strips the raw
  * `diff` field from stored parts (see stripPartMetadata) but keeps `filediff.patch` (edit/write) and
  * per-file `files[].patch` (apply_patch) when under the size cap, so read those first.
  */

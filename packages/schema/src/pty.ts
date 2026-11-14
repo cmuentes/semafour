@@ -29,7 +29,7 @@ export const Info = Schema.Struct({
   status: Schema.Literals(["running", "exited"]),
   pid: NonNegativeInt,
   exitCode: optional(NonNegativeInt),
-  sessionID: optional(Schema.NullOr(SessionID)), // kilocode_change - Kilo associates PTYs with sessions
+  sessionID: optional(Schema.NullOr(SessionID)), // kilocode_change - Semafour associates PTYs with sessions
 }).annotate({ identifier: "Pty" })
 export interface Info extends Schema.Schema.Type<typeof Info> {}
 

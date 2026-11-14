@@ -93,7 +93,7 @@ data class PartDto(
     val filename: String? = null,
     val synthetic: Boolean? = null,
     val source: PartSourceDto? = null,
-    /** Set for user text that Kilo composed, e.g. "Update from main". Stored in metadata.kilo.injected. */
+    /** Set for user text that Semafour composed, e.g. "Update from main". Stored in metadata.kilo.injected. */
     val injectedTitle: String? = null,
 )
 
@@ -166,7 +166,7 @@ data class PromptPartDto(
     val source: PartSourceDto? = null,
     /** Hides the part from the transcript; used for handoff notes the agent reads but the user never sees. */
     val synthetic: Boolean? = null,
-    /** Marks a text part Kilo composed instead of the user typing it. */
+    /** Marks a text part Semafour composed instead of the user typing it. */
     val injectedTitle: String? = null,
 )
 

@@ -1,6 +1,6 @@
 // Entry and exit splash banners for direct interactive mode scrollback.
 //
-// Renders the full Kilo entry logo and a compact [O] exit badge, plus // kilocode_change
+// Renders the full Semafour entry logo and a compact [O] exit badge, plus // kilocode_change
 // session metadata and the resume command. These are scrollback snapshots, so
 // they become immutable terminal history once committed.
 //
@@ -194,7 +194,7 @@ function build(input: SplashWriterInput, kind: "entry" | "exit", ctx: Scrollback
       })
     }
 
-    push(lines, body_left, top, "Kilo", right, undefined, TextAttributes.BOLD) // kilocode_change
+    push(lines, body_left, top, "Semafour", right, undefined, TextAttributes.BOLD) // kilocode_change
     if (input.detail) {
       push(
         lines,

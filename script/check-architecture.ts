@@ -2,7 +2,7 @@
 // kilocode_change - new file
 
 /**
- * Enforces domain architecture boundaries and state ratchets for Kilo packages and Kilo-owned code.
+ * Enforces domain architecture boundaries and state ratchets for Semafour packages and Kilo-owned code.
  *
  * Upstream-owned shared opencode files are exempt to prevent upstream merge conflicts.
  *
@@ -13,7 +13,7 @@
  *    (packages/opencode/src/kilocode, packages/opencode/src/kilo-sessions, packages/kilo-*).
  * 3. kilo-database-constructors: Direct SQLite instantiation (new Database / new DatabaseSync)
  *    in Kilo-owned code is restricted to allowed exceptions.
- * 4. kilo-tool-process-env: Direct process.env reads in Kilo tools must be classified.
+ * 4. kilo-tool-process-env: Direct process.env reads in Semafour tools must be classified.
  * 5. kilo-httpapi-handlers: Handlers must not call raw OS operations (node:fs, spawn).
  */
 
@@ -68,7 +68,7 @@ for (const scope of DOMAIN_SCOPES) {
 }
 
 // ---------------------------------------------------------------------------
-// Rule 2: Kilo InstanceState.make Ratchet (Kilo-owned code)
+// Rule 2: Semafour InstanceState.make Ratchet (Kilo-owned code)
 // ---------------------------------------------------------------------------
 
 const srcGlob = new Bun.Glob("packages/*/src/**/*.ts")
@@ -117,7 +117,7 @@ for (const file of Object.keys(allowedInstanceState)) {
 }
 
 // ---------------------------------------------------------------------------
-// Rule 3: Kilo Database Direct Instantiation Guard (Kilo-owned code)
+// Rule 3: Semafour Database Direct Instantiation Guard (Kilo-owned code)
 // ---------------------------------------------------------------------------
 
 const allowedDb: Record<string, { count: number; owner: string; reason: string }> =
@@ -141,7 +141,7 @@ for (const [file, count] of kiloDbHits) {
     violations.push({
       file,
       rule: "kilo-database-constructors",
-      message: `Unclassified SQLite constructor (new Database / new DatabaseSync) in Kilo code (${count} site(s)). Route persistence through Database.Service in @opencode-ai/core.`,
+      message: `Unclassified SQLite constructor (new Database / new DatabaseSync) in Semafour code (${count} site(s)). Route persistence through Database.Service in @opencode-ai/core.`,
     })
   } else if (expected.count !== count) {
     violations.push({
@@ -163,7 +163,7 @@ for (const file of Object.keys(allowedDb)) {
 }
 
 // ---------------------------------------------------------------------------
-// Rule 4: Kilo Tool process.env Reads Guard
+// Rule 4: Semafour Tool process.env Reads Guard
 // ---------------------------------------------------------------------------
 
 const allowedToolEnv: Record<string, { count: number; owner: string; reason: string }> =
@@ -210,7 +210,7 @@ for (const file of Object.keys(allowedToolEnv)) {
 }
 
 // ---------------------------------------------------------------------------
-// Rule 5: HttpApi Handler Boundaries (No raw OS operations in Kilo handlers)
+// Rule 5: HttpApi Handler Boundaries (No raw OS operations in Semafour handlers)
 // ---------------------------------------------------------------------------
 
 const handlerGlob = new Bun.Glob("packages/opencode/src/**/httpapi/handlers/**/*.ts")
@@ -245,4 +245,4 @@ if (violations.length > 0) {
 const totalTracked =
   Object.keys(allowedInstanceState).length + Object.keys(allowedDb).length + Object.keys(allowedToolEnv).length
 
-console.log(`check-architecture: ok (${totalTracked} classified Kilo ratchet sites, 0 boundary violations).`)
+console.log(`check-architecture: ok (${totalTracked} classified Semafour ratchet sites, 0 boundary violations).`)

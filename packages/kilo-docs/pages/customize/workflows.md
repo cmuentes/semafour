@@ -1,14 +1,14 @@
 ---
 title: "Workflows"
-description: "Create automated workflows with Kilo Code"
+description: "Create automated workflows with Semafour"
 platform: new
 ---
 
 # Workflows
 
-Workflows (also called **slash commands** in the new extension) automate repetitive tasks by defining step-by-step instructions for Kilo Code to execute.
+Workflows (also called **slash commands** in the new extension) automate repetitive tasks by defining step-by-step instructions for Semafour to execute.
 
-{% image src="/docs/img/screenshot-tests/kilo-vscode/visual-regression/settings/agent-behaviour-workflows-chromium-linux.png" alt="Workflows tab in Kilo Code" width="420" caption="Workflows tab in Kilo Code" /%}
+{% image src="/docs/img/screenshot-tests/kilo-vscode/visual-regression/settings/agent-behaviour-workflows-chromium-linux.png" alt="Workflows tab in Semafour" width="420" caption="Workflows tab in Semafour" /%}
 
 ## Creating Workflows
 
@@ -62,7 +62,7 @@ You are helping submit a pull request...
 
 ### Reserved Names
 
-`goal` is reserved for [session goals](/docs/code-with-ai/agents/goals). A command named `goal` in your config or from a plugin is ignored under that name — Kilo reports a configuration warning and keeps `/goal` for its own command, but the command you defined is still reachable as `/goal:command`, the same way a skill that collides with a command is offered as `/name:skill`.
+`goal` is reserved for [session goals](/docs/code-with-ai/agents/goals). A command named `goal` in your config or from a plugin is ignored under that name — Semafour reports a configuration warning and keeps `/goal` for its own command, but the command you defined is still reachable as `/goal:command`, the same way a skill that collides with a command is offered as `/name:skill`.
 
 ### Model and Reasoning Variant
 
@@ -138,7 +138,7 @@ Parameters needed (ask if not provided):
 
 Trigger this workflow by typing `/submit-pr` in the chat.
 
-Kilo Code will:
+Semafour will:
 
 - Scan your code for common issues before committing
 - Run your test suite to catch problems early

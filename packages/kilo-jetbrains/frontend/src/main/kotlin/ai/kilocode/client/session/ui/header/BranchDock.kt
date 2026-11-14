@@ -40,8 +40,8 @@ internal class BranchDock @RequiresEdt constructor(
     private val core = PrHeaderView(titleStyle = titleStyle, mode = ChangesPanel.Mode.COMPACT, openDiff = openDiff)
     private val changes = ChangesPanel(ChangesPanel.Mode.COMPACT, onBase = openDiff)
     private val group = DefaultActionGroup().apply {
-        ActionManager.getInstance().getAction("Kilo.Chat.NewWorktree")?.let { add(it) }
-        ActionManager.getInstance().getAction("Kilo.Chat.MoveToWorktree")?.let { add(it) }
+        ActionManager.getInstance().getAction("Semafour.Chat.NewWorktree")?.let { add(it) }
+        ActionManager.getInstance().getAction("Semafour.Chat.MoveToWorktree")?.let { add(it) }
     }
     private val toolbar = ActionManager.getInstance().createActionToolbar(PLACE, group, true)
     private val actionRow = Stack.horizontal(UiStyle.Gap.sm())

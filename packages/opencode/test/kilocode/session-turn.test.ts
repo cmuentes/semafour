@@ -7,7 +7,7 @@ import { Global } from "@opencode-ai/core/global"
 import { KiloSessionTurn } from "../../src/kilocode/session/turn"
 import { SessionID } from "../../src/session/schema"
 
-// Markers are the on-disk contract between Kilo processes, so these tests write them the way another process does.
+// Markers are the on-disk contract between Semafour processes, so these tests write them the way another process does.
 const dir = path.join(Global.Path.state, "session-turn")
 
 async function marker(id: SessionID, pid: number, host: string, age = 0) {

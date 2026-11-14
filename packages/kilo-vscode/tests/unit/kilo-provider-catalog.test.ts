@@ -11,7 +11,7 @@ const catalog = (org: string) => ({
     all: [
       {
         id: "kilo",
-        name: "Kilo Gateway",
+        name: "Semafour Gateway",
         models: { [`${org}/first`]: { id: `${org}/first` }, [`${org}/model`]: { id: `${org}/model` } },
       },
       external,
@@ -71,7 +71,7 @@ function setup(list: () => Promise<ReturnType<typeof catalog>>, org: () => strin
 }
 
 describe("KiloProvider catalog refresh", () => {
-  it("invalidates cached Kilo data before another account refresh", async () => {
+  it("invalidates cached Semafour data before another account refresh", async () => {
     const { internal, messages } = setup(
       async () => catalog("org"),
       () => "org",
@@ -264,7 +264,7 @@ describe("KiloProvider catalog refresh", () => {
     expect(internal.cachedProvidersMessage).toBeNull()
   })
 
-  it("flags an organization's failed Kilo catalog and refetches until it recovers", async () => {
+  it("flags an organization's failed Semafour catalog and refetches until it recovers", async () => {
     let failed = true
     const { internal, messages } = setup(
       async () =>
@@ -298,7 +298,7 @@ describe("KiloProvider catalog refresh", () => {
     expect(scheduled).toHaveLength(1)
   })
 
-  it("keeps retrying after a failed refetch while the Kilo catalog stays unavailable", async () => {
+  it("keeps retrying after a failed refetch while the Semafour catalog stays unavailable", async () => {
     const steps = ["failed", "reject", "recovered"]
     const { internal, messages } = setup(
       async () => {
@@ -334,7 +334,7 @@ describe("KiloProvider catalog refresh", () => {
     expect(scheduled).toHaveLength(2)
   })
 
-  it("does not flag a failed Kilo catalog outside an organization", async () => {
+  it("does not flag a failed Semafour catalog outside an organization", async () => {
     const { internal, messages } = setup(
       async () => ({
         data: { all: [external], connected: ["external"], default: { external: "model" }, failed: ["kilo"] },

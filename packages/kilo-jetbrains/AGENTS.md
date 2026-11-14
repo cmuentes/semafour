@@ -1,4 +1,4 @@
-# AGENTS.md — Kilo JetBrains Plugin
+# AGENTS.md — Semafour JetBrains Plugin
 
 This file is always loaded for work in this package. Detailed guidance lives in the skills and command listed in [Skill and Command Index](#skill-and-command-index) — load the relevant one before starting UI, session, architecture, or release work.
 

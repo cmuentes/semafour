@@ -16,7 +16,7 @@ describe("tui thread", () => {
     expect(source).not.toContain('import("./app")')
   })
 
-  // kilocode_change start - preserve the sanitized Kilo worker environment
+  // kilocode_change start - preserve the sanitized Semafour worker environment
   test("forwards the sanitized CLI environment to the TUI worker", async () => {
     const source = await Bun.file(new URL("../../../src/cli/cmd/tui.ts", import.meta.url)).text()
 

@@ -177,7 +177,7 @@ describe("AI SDK adapter", () => {
   })
 })
 
-// End to end: an OpenRouter-compatible stream with `delta.images` (how the Kilo Gateway
+// End to end: an OpenRouter-compatible stream with `delta.images` (how the Semafour Gateway
 // streams Gemini "Nano Banana" output) must become an assistant file part.
 
 const ref = {

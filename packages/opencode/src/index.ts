@@ -6,7 +6,7 @@ import { TuiThreadCommand } from "./cli/cmd/tui" // kilocode_change - yargs requ
 import { InstallationVersion } from "@opencode-ai/core/installation/version"
 import { FormatError } from "./cli/error"
 import { EOL } from "os"
-// kilocode_change - upstream web command intentionally omitted; Kilo does not ship an embedded web UI
+// kilocode_change - upstream web command intentionally omitted; Semafour does not ship an embedded web UI
 import { errorMessage } from "./util/error"
 import { Heap } from "./cli/heap"
 import { KiloCli } from "@/kilocode/cli/setup" // kilocode_change
@@ -87,7 +87,7 @@ let cli = yargs(args) // kilocode_change
     process.env.OPENCODE = "1"
     process.env.KILO_PID = String(process.pid)
     await KiloCli.bootstrap(opts) // kilocode_change - env tagging, telemetry init, legacy JSON-to-SQLite migration, and auth migration
-    // kilocode_change start - retain Kilo process/run correlation metadata in startup logs
+    // kilocode_change start - retain Semafour process/run correlation metadata in startup logs
     Log.Default.info("opencode", {
       version: InstallationVersion,
       command: args[0] ?? "", // avoid persisting prompts, passwords, tokens, headers, or environment values

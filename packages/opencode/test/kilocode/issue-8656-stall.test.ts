@@ -17,7 +17,7 @@ import { Server } from "../../src/server/server"
 // before the fix nothing bounded that wait.
 //
 // The simulated socket is injected as the provider's `fetch` through the plugin
-// `config` hook (see ../fixture/stall-plugin.ts), so the SDK, Kilo's fetch
+// `config` hook (see ../fixture/stall-plugin.ts), so the SDK, Semafour's fetch
 // wrapper, SSE parsing, the processor and the agent loop stay production code
 // and nothing global is patched.
 

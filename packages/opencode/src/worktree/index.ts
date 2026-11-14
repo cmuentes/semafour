@@ -379,7 +379,7 @@ const layer: Layer.Layer<
       )
     }
 
-    // kilocode_change start - use Kilo cleanup helper for slow Windows handle release
+    // kilocode_change start - use Semafour cleanup helper for slow Windows handle release
     function cleanDirectory(target: string) {
       return Effect.tryPromise({
         try: () => WorktreeCleanup.removeDirectory(target),

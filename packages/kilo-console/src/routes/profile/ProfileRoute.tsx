@@ -160,9 +160,9 @@ export function ProfileRoute() {
           <Show when={!disconnected()}>
             <header class="profile-header">
               <div>
-                <p class="eyebrow">Kilo Account</p>
+                <p class="eyebrow">Semafour Account</p>
                 <h1>Your Profile</h1>
-                <p>Manage your Kilo identity, account context, credits, and billing shortcuts.</p>
+                <p>Manage your Semafour identity, account context, credits, and billing shortcuts.</p>
               </div>
               <div class="profile-actions">
                 <Button variant="secondary" type="button" onClick={refresh} disabled={data.loading || !server.query()}>
@@ -198,9 +198,9 @@ export function ProfileRoute() {
                 KG
               </span>
               <div class="profile-connect-copy">
-                <p class="eyebrow">Kilo Account</p>
-                <h1>Connect your Kilo account</h1>
-                <p>Sign in to view your credits, organizations, and account details in Kilo Console.</p>
+                <p class="eyebrow">Semafour Account</p>
+                <h1>Connect your Semafour account</h1>
+                <p>Sign in to view your credits, organizations, and account details in Semafour Console.</p>
               </div>
               <A
                 class="profile-primary-link"
@@ -216,8 +216,8 @@ export function ProfileRoute() {
 
           <Show when={!server.query() && !server.discoverable()}>
             <Card class="profile-banner" variant="warning">
-              <strong>Kilo server not found</strong>
-              <span>Start Kilo Console from a running Kilo server or pass a server URL with ?server=.</span>
+              <strong>Semafour server not found</strong>
+              <span>Start Semafour Console from a running Semafour server or pass a server URL with ?server=.</span>
             </Card>
           </Show>
 
@@ -289,7 +289,7 @@ export function ProfileRoute() {
                       </span>
                       <span class="profile-org-body">
                         <strong>Personal Account</strong>
-                        <span>Your personal Kilo credits and settings</span>
+                        <span>Your personal Semafour credits and settings</span>
                       </span>
                       <span class="profile-org-state">{!info().currentOrgId ? "Current" : "Use"}</span>
                     </button>

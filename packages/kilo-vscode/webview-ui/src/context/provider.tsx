@@ -26,7 +26,7 @@ interface ProviderContextValue {
   authMethods: Accessor<Record<string, ProviderAuthMethod[]>>
   authStates: Accessor<Record<string, ProviderAuthState>>
   isModelValid: (selection: ModelSelection | null) => boolean
-  /** The organization's Kilo catalog failed to load; the host retries until it recovers. */
+  /** The organization's Semafour catalog failed to load; the host retries until it recovers. */
   kiloUnavailable: Accessor<boolean>
   /** Typed reasons providers failed to load, so the UI can explain why instead of hiding them. */
   failures: Accessor<ProviderFailure[]>

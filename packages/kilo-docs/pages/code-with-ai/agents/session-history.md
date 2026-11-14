@@ -1,11 +1,11 @@
 ---
 title: "Session History and Search"
-description: "Find, search, inspect, and resume local Kilo Code sessions"
+description: "Find, search, inspect, and resume local Semafour sessions"
 ---
 
 # Session history and search
 
-Kilo Code keeps local session metadata and chat history so you can resume earlier work. You can search session titles in the history UI or CLI, ask the agent to search chat content, or inspect the local SQLite database directly.
+Semafour keeps local session metadata and chat history so you can resume earlier work. You can search session titles in the history UI or CLI, ask the agent to search chat content, or inspect the local SQLite database directly.
 
 {% callout type="info" %}
 Local sessions use SQLite, not PostgreSQL. Use `kilo db` or `sqlite3`, not `psql`, to inspect the local database.
@@ -21,12 +21,12 @@ Different search surfaces cover different content and scopes:
 | [JetBrains History](#search-session-history-in-jetbrains) | Session titles | Sessions loaded in the selected Local or Cloud history view |
 | [CLI Past chats](#reference-a-past-chat-in-the-cli-tui) | Session titles | Current workspace |
 | [`kilo session list --search`](#filter-session-titles) | Session titles | Current workspace, or every local workspace with `--all` |
-| [Ask Kilo to recall past chats](#ask-kilo-to-search-past-chats) | Titles and high-signal chat content | Current workspace and related Git worktrees |
+| [Ask Semafour to recall past chats](#ask-kilo-to-search-past-chats) | Titles and high-signal chat content | Current workspace and related Git worktrees |
 | [VS Code chat search](#search-the-open-chat-session) | Rendered content in the open session | Current chat session |
 | [VS Code Past chats](#add-a-past-chat-to-the-current-session) | Session titles and worktree names | Current workspace and related Git worktrees, including Agent Manager worktrees |
 | [SQLite query](#query-sqlite-directly) | Any stored field you select | Entire selected local database |
 
-History and CLI list searches do **not** search message content. To find a string inside prompts or replies, ask Kilo to search past chats or use a direct SQLite query.
+History and CLI list searches do **not** search message content. To find a string inside prompts or replies, ask Semafour to search past chats or use a direct SQLite query.
 
 ## Search in the UI
 
@@ -35,7 +35,7 @@ History and CLI list searches do **not** search message content. To find a strin
 
 ### Search session history in VS Code
 
-1. Open the Kilo Code sidebar.
+1. Open the Semafour sidebar.
 2. Select the **History** button in the sidebar title bar. You can also select **Show History** below the recent sessions on a new chat.
 3. Select **Local** or **Cloud**.
 4. Enter part of a session title in **Search sessions**.
@@ -56,7 +56,7 @@ Open a session and select the magnifying-glass button in its header. Chat search
 - Whole word
 - Regular expressions
 
-Kilo loads older messages while the search is active so the search covers the full local chat session, not only the messages initially visible.
+Semafour loads older messages while the search is active so the search covers the full local chat session, not only the messages initially visible.
 
 ### Add a past chat to the current session
 
@@ -67,7 +67,7 @@ Type `@` in the chat input, select **Past chats**, and search by session title o
 
 ### Search session history in JetBrains
 
-1. Open the Kilo Code tool window.
+1. Open the Semafour tool window.
 2. Select **History** in the tool window toolbar.
 3. Select **Local** or **Cloud**.
 4. Enter part of a session title in **Search sessions**.
@@ -87,22 +87,22 @@ The JetBrains History search matches session titles, not chat content.
 3. Search for a session by title.
 4. Select a session, finish your message, and send it.
 
-Kilo adds the selected chat history as context for your message. This does not switch the TUI to the selected session. Use `/sessions`, `/resume`, or `/continue` when you want to load a different session instead.
+Semafour adds the selected chat history as context for your message. This does not switch the TUI to the selected session. Use `/sessions`, `/resume`, or `/continue` when you want to load a different session instead.
 
 {% /tab %}
 {% /tabs %}
 
-## Ask Kilo to search past chats
+## Ask Semafour to search past chats
 
-The simplest way to search message content across past local sessions is to ask Kilo directly:
+The simplest way to search message content across past local sessions is to ask Semafour directly:
 
 ```text
 Search my local sessions for "database disk image is malformed" and summarize the matching conversations.
 ```
 
-Kilo's local recall search covers session titles, user and assistant text, file references, and failed tool errors in the current workspace and related Git worktrees. Every query term must occur somewhere in a matching session; exact phrases and user-authored matches rank higher.
+Semafour's local recall search covers session titles, user and assistant text, file references, and failed tool errors in the current workspace and related Git worktrees. Every query term must occur somewhere in a matching session; exact phrases and user-authored matches rank higher.
 
-The search includes archived and child sessions. It excludes reasoning, synthetic or ignored text, successful tool output, file contents, and other metadata. Kilo can then read the full chat history for a selected result.
+The search includes archived and child sessions. It excludes reasoning, synthetic or ignored text, successful tool output, file contents, and other metadata. Semafour can then read the full chat history for a selected result.
 
 ## Search with CLI commands
 
@@ -156,7 +156,7 @@ The actual path can differ when `KILO_DB`, `XDG_DATA_HOME`, a development channe
 ## Query SQLite directly
 
 {% callout type="warning" %}
-The `kilo db` query command accepts arbitrary SQL, including writes. Use read-only queries, and use `sqlite3 -readonly` for safer interactive inspection. Stop Kilo before copying, replacing, or restoring the database because active transactions may also use `kilo.db-wal` and `kilo.db-shm`.
+The `kilo db` query command accepts arbitrary SQL, including writes. Use read-only queries, and use `sqlite3 -readonly` for safer interactive inspection. Stop Semafour before copying, replacing, or restoring the database because active transactions may also use `kilo.db-wal` and `kilo.db-shm`.
 {% /callout %}
 
 ### Use the built-in database command
@@ -200,7 +200,7 @@ kilo db "
 " --format json
 ```
 
-Replace the search string in the second `lower(...)` expression. This query searches ordinary user and assistant text. It intentionally does not reproduce Kilo's recall ranking, workspace scope, file-reference matching, or tool-error matching.
+Replace the search string in the second `lower(...)` expression. This query searches ordinary user and assistant text. It intentionally does not reproduce Semafour's recall ranking, workspace scope, file-reference matching, or tool-error matching.
 
 ### Use the SQLite shell
 
@@ -221,7 +221,7 @@ Useful commands inside the shell include:
 
 Run the SQL examples above without the surrounding `kilo db` command. Exit with `.quit`.
 
-`psql` cannot open this file because `psql` speaks the PostgreSQL client protocol, while local Kilo sessions are stored in an embedded SQLite database.
+`psql` cannot open this file because `psql` speaks the PostgreSQL client protocol, while local Semafour sessions are stored in an embedded SQLite database.
 
 ## Search through the API or SDK
 
@@ -285,6 +285,6 @@ for (const session of result.data) {
 
 ## Local and cloud sessions
 
-Local sessions live in the SQLite database on the machine where Kilo runs. With VS Code Remote SSH, that means the remote host. Cloud sessions and shared-session copies are separate and are not available through local SQLite queries unless you import them locally.
+Local sessions live in the SQLite database on the machine where Semafour runs. With VS Code Remote SSH, that means the remote host. Cloud sessions and shared-session copies are separate and are not available through local SQLite queries unless you import them locally.
 
 For database corruption or reset procedures, see [Troubleshooting IDE Extensions](/docs/getting-started/troubleshooting/troubleshooting-extension). Resetting the database removes local session history, so back it up before recovery work.

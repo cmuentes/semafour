@@ -1,6 +1,6 @@
 import type { PermissionV1 } from "@opencode-ai/core/v1/permission"
 import { FSUtil } from "@opencode-ai/core/fs-util"
-// kilocode_change start - use Kilo CLI branding
+// kilocode_change start - use Semafour CLI branding
 // CLI entry point for `kilo run` and `kilo --mini`.
 //
 // Handles three modes:
@@ -28,7 +28,7 @@ import type { KiloClient, Session, ToolPart } from "@kilocode/sdk/v2"
 import { FormatError, FormatUnknownError } from "../error"
 import { INTERACTIVE_INPUT_ERROR, resolveInteractiveStdin } from "./run/runtime.stdin"
 import { readPipedStdin } from "./run-stdin" // kilocode_change - bounded piped-stdin read
-// kilocode_change start - Kilo implementations (createKiloClient, run-message,
+// kilocode_change start - Semafour implementations (createKiloClient, run-message,
 // cloud-session, run-auto, headless, KiloRun) are dynamically imported inside the
 // handler so other CLI commands don't pay their module cost at startup.
 // kilocode_change end
@@ -279,7 +279,7 @@ export const RunCommand = effectCmd({
     const { RuntimeFlags } = yield* Effect.promise(() => import("@/effect/runtime-flags"))
     const { InstanceRef } = yield* Effect.promise(() => import("@/effect/instance-ref"))
     const { ServerAuth } = yield* Effect.promise(() => import("@/server/auth"))
-    // kilocode_change start - lazy Kilo implementations (see top-of-file note)
+    // kilocode_change start - lazy Semafour implementations (see top-of-file note)
     const { buildRunMessage } = yield* Effect.promise(() => import("@/kilocode/cli/cmd/run-message"))
     const { importCloudSession, validateCloudFork, reportCloudImportError } = yield* Effect.promise(
       () => import("@/kilocode/cloud-session"),

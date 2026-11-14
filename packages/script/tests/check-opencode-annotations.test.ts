@@ -104,7 +104,7 @@ function repo() {
   exec(root, ["init"])
   exec(root, ["checkout", "-B", "main"])
   exec(root, ["add", "."])
-  exec(root, ["-c", "user.name=Kilo", "-c", "user.email=kilo@example.com", "commit", "-m", "init"])
+  exec(root, ["-c", "user.name=Semafour", "-c", "user.email=kilo@example.com", "commit", "-m", "init"])
   exec(root, ["update-ref", "refs/remotes/origin/main", "HEAD"])
   return root
 }
@@ -172,7 +172,7 @@ describe("CLI worktree mode", () => {
       exec(root, ["checkout", "-B", "upstream"])
       writeFileSync(path.join(root, "packages/opencode/src/shared.ts"), "export const value = 2\n")
       exec(root, ["add", "."])
-      exec(root, ["-c", "user.name=Kilo", "-c", "user.email=kilo@example.com", "commit", "-m", "upstream"])
+      exec(root, ["-c", "user.name=Semafour", "-c", "user.email=kilo@example.com", "commit", "-m", "upstream"])
       exec(root, ["checkout", "main"])
       exec(root, ["merge", "--no-ff", "-m", "Merge: upstream opencode", "upstream"])
 
@@ -201,7 +201,7 @@ describe("CLI worktree mode", () => {
       exec(root, ["checkout", "-B", "merge-author/opencode-v1.18.15"])
       writeFileSync(path.join(root, "packages/opencode/src/shared.ts"), "export const value = 2\n")
       exec(root, ["add", "."])
-      exec(root, ["-c", "user.name=Kilo", "-c", "user.email=kilo@example.com", "commit", "-m", "upstream"])
+      exec(root, ["-c", "user.name=Semafour", "-c", "user.email=kilo@example.com", "commit", "-m", "upstream"])
       exec(root, ["checkout", "main"])
       exec(root, [
         "merge",
@@ -225,7 +225,7 @@ describe("CLI worktree mode", () => {
       exec(root, ["checkout", "-B", "update"])
       writeFileSync(path.join(root, "packages/opencode/src/shared.ts"), "export const value = 2\n")
       exec(root, ["add", "."])
-      exec(root, ["-c", "user.name=Kilo", "-c", "user.email=kilo@example.com", "commit", "-m", "update"])
+      exec(root, ["-c", "user.name=Semafour", "-c", "user.email=kilo@example.com", "commit", "-m", "update"])
       exec(root, ["checkout", "main"])
       exec(root, [
         "merge",
@@ -273,14 +273,14 @@ describe("CLI default mode", () => {
     const root = repo()
     try {
       const file = path.join(root, "packages/opencode/src/shared.ts")
-      // A committed Kilo change: two marked lines inserted above the upstream
+      // A committed Semafour change: two marked lines inserted above the upstream
       // body. Both added lines are covered in HEAD.
       writeFileSync(
         file,
         "const kilo1 = 1 // kilocode_change\nconst kilo2 = 2 // kilocode_change\nexport const value = 1\n",
       )
       exec(root, ["add", "packages/opencode/src/shared.ts"])
-      exec(root, ["-c", "user.name=Kilo", "-c", "user.email=kilo@example.com", "commit", "-m", "kilo change"])
+      exec(root, ["-c", "user.name=Semafour", "-c", "user.email=kilo@example.com", "commit", "-m", "kilo change"])
       // The round's own edits are still uncommitted: one marked line is gone, so
       // the committed line numbers no longer point at the committed lines. A
       // checker that reads this file's content while numbering from HEAD accuses
@@ -784,7 +784,7 @@ describe("checkLine (main loop simulation)", () => {
     const text = [
       "// kilocode_change - new file",
       "export const kiloFeature = true",
-      "export const alsoKilo = 123",
+      "export const alsoSemafour = 123",
       "export const notMarked = 'oops'",
     ].join("\n")
     expect(check(text, [2, 3, 4])).toEqual([])
@@ -795,7 +795,7 @@ describe("checkLine (main loop simulation)", () => {
 // Mirrors the pure parsing logic in script/check-opencode-annotations.ts:addedLines.
 // Given a `git diff --unified=0` output, returns the set of added line numbers
 // and a flag indicating whether the diff removes any kilocode_change marker
-// (i.e. the change is reverting Kilo modifications back to upstream).
+// (i.e. the change is reverting Semafour modifications back to upstream).
 
 function parseDiff(diff: string): { added: Set<number>; revert: boolean } {
   const added = new Set<number>()
@@ -879,7 +879,7 @@ describe("parseDiff (revert detection)", () => {
   test("file-level revert: marker removed in one hunk covers other hunks", () => {
     // Mirrors the prompt.test.ts case from PR #9908: kilocode_change marker
     // is removed in hunk A, while a separate hunk B replaces references that
-    // depended on the removed Kilo construct.
+    // depended on the removed Semafour construct.
     const diff = [
       "diff --git a/test.ts b/test.ts",
       "@@ -218 +217,0 @@",

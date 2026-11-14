@@ -1,7 +1,7 @@
 import type { Provider } from "@/provider/provider"
 
 /**
- * OpenRouter-compatible chat endpoints (OpenRouter and the Kilo Gateway) only return
+ * OpenRouter-compatible chat endpoints (OpenRouter and the Semafour Gateway) only return
  * generated images when the request asks for the image output modality. Without it,
  * image models such as Gemini "Nano Banana" answer with text only.
  *

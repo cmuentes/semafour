@@ -144,10 +144,10 @@ function isSource(file: string) {
 // Parses the unified=0 diff for `file` against the selected target and returns:
 //   - added: every added line number on the checked version
 //   - revert: true when the file's diff removes any kilocode_change marker.
-//     In that case the changes are reverting Kilo modifications back to the
+//     In that case the changes are reverting Semafour modifications back to the
 //     upstream baseline, so newly added lines (which are restoring upstream
 //     content) should not require a marker. Refs that depended on a removed
-//     Kilo construct (e.g. `unixSkip(` → `unix(`) often live in different
+//     Semafour construct (e.g. `unixSkip(` → `unix(`) often live in different
 //     hunks than the marker itself, so we use file-level detection rather
 //     than hunk-level to avoid false positives on legitimate reverts.
 function addedLines(file: string): { added: Set<number>; revert: boolean } {
@@ -297,7 +297,7 @@ const violations: string[] = []
 for (const file of files) {
   const { added, revert } = addedLines(file)
   if (added.size === 0) continue
-  if (revert) continue // kilocode_change - file is reverting Kilo modifications back to upstream
+  if (revert) continue // kilocode_change - file is reverting Semafour modifications back to upstream
 
   const text = content(file) // kilocode_change
   const { lines, covered } = coveredLines(text)
@@ -318,7 +318,7 @@ if (violations.length === 0) {
 
 console.error(
   [
-    "Unannotated Kilo changes found in shared upstream files:",
+    "Unannotated Semafour changes found in shared upstream files:",
     "",
     ...violations,
     "",

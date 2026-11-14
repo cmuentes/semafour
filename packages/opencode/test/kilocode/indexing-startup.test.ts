@@ -139,7 +139,7 @@ afterEach(async () => {
 })
 
 describe("indexing model catalog", () => {
-  test("ignores a project-scoped Kilo origin", async () => {
+  test("ignores a project-scoped Semafour origin", async () => {
     await using tmp = await tmpdir({
       git: true,
       init: async (dir) => {
@@ -648,7 +648,7 @@ describe("indexing startup degradation", () => {
     }
   })
 
-  test("disabled indexing does not resolve the Kilo model catalog", async () => {
+  test("disabled indexing does not resolve the Semafour model catalog", async () => {
     const fetchSpy = spyOn(globalThis, "fetch")
     const key = process.env.KILO_API_KEY
 
@@ -802,7 +802,7 @@ describe("indexing startup degradation", () => {
     }
   }, 15_000)
 
-  test("enriches Kilo provider config from env auth", async () => {
+  test("enriches Semafour provider config from env auth", async () => {
     global.fetch = (() =>
       Promise.resolve(
         new Response(
@@ -849,7 +849,7 @@ describe("indexing startup degradation", () => {
     }
   })
 
-  test("reports an error for an unsupported explicit Kilo model instead of falling back", async () => {
+  test("reports an error for an unsupported explicit Semafour model instead of falling back", async () => {
     global.fetch = (() =>
       Promise.resolve(
         new Response(
@@ -866,7 +866,7 @@ describe("indexing startup degradation", () => {
     const warn = spyOn(logger, "warn")
     const key = process.env.KILO_API_KEY
 
-    await using tmp = await tmpdir({ git: true, config: staleKilo })
+    await using tmp = await tmpdir({ git: true, config: staleSemafour })
     process.env["KILO_CONFIG_DIR"] = tmp.path
     process.env.KILO_API_KEY = "kilo-token"
 
@@ -895,7 +895,7 @@ describe("indexing startup degradation", () => {
     }
   })
 
-  test("passes a valid explicit Kilo model through without error", async () => {
+  test("passes a valid explicit Semafour model through without error", async () => {
     global.fetch = (() =>
       Promise.resolve(
         new Response(
@@ -946,7 +946,7 @@ describe("indexing startup degradation", () => {
     }
   })
 
-  test("uses hosted dimensions for supported Kilo models", async () => {
+  test("uses hosted dimensions for supported Semafour models", async () => {
     global.fetch = (() =>
       Promise.resolve(
         new Response(
@@ -1000,12 +1000,12 @@ describe("indexing startup degradation", () => {
     }
   })
 
-  test("leaves Kilo model metadata unset when the hosted catalog is unavailable", async () => {
+  test("leaves Semafour model metadata unset when the hosted catalog is unavailable", async () => {
     global.fetch = (() => Promise.resolve(new Response(undefined, { status: 500 }))) as unknown as typeof global.fetch
     const init = spyOn(CodeIndexManager.prototype, "initialize").mockResolvedValue({ requiresRestart: false })
     const key = process.env.KILO_API_KEY
 
-    await using tmp = await tmpdir({ git: true, config: staleKilo })
+    await using tmp = await tmpdir({ git: true, config: staleSemafour })
     process.env["KILO_CONFIG_DIR"] = tmp.path
     process.env.KILO_API_KEY = "kilo-token"
 
@@ -1030,7 +1030,7 @@ describe("indexing startup degradation", () => {
     }
   })
 
-  test("does not default to Kilo when an existing provider config is present", async () => {
+  test("does not default to Semafour when an existing provider config is present", async () => {
     const init = spyOn(CodeIndexManager.prototype, "initialize").mockResolvedValue({ requiresRestart: false })
     const key = process.env.KILO_API_KEY
 

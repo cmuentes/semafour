@@ -87,7 +87,7 @@ export function createFetch(override?: FetchHandler, events?: ReturnType<typeof 
       )
     )
       return json({})
-    // kilocode_change start - Kilo bootstrap endpoints
+    // kilocode_change start - Semafour bootstrap endpoints
     if (["/network", "/background-process", "/config/warnings"].includes(url.pathname)) return json([])
     if (["/permission", "/question"].includes(url.pathname)) return json([])
     if (url.pathname === "/indexing/status")

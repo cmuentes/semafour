@@ -1,5 +1,5 @@
 /**
- * Kilo Gateway TUI Integration
+ * Semafour Gateway TUI Integration
  *
  * This module provides TUI-specific functionality for kilo-gateway.
  * It requires OpenCode TUI dependencies to be injected at runtime.

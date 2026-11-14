@@ -91,7 +91,7 @@ export const layer: Layer.Layer<Service, never, Core.Service | Config.Service | 
         const models = !valid || org || Object.keys(fetched).length > 0 ? fetched : (fallback?.models ?? {})
         providers.kilo = {
           id: "kilo",
-          name: "Kilo Gateway",
+          name: "Semafour Gateway",
           env: ["KILO_API_KEY"],
           api: KILO_OPENROUTER_BASE.endsWith("/") ? KILO_OPENROUTER_BASE : `${KILO_OPENROUTER_BASE}/`,
           npm: "@kilocode/kilo-gateway",

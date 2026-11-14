@@ -1,15 +1,15 @@
 ---
 title: "Cloud Agent"
-description: "Using Kilo Code in the browser"
+description: "Using Semafour in the browser"
 ---
 
 # {% $markdoc.frontmatter.title %}
 
-Cloud Agents let you run Kilo Code in the cloud from any device, without relying on your local machine. They provide a remote development environment that can read and modify your GitHub, GitLab, or Bitbucket repositories, run commands, and optionally commit and push changes as work progresses. Bitbucket repositories are available for organizations only.
+Cloud Agents let you run Semafour in the cloud from any device, without relying on your local machine. They provide a remote development environment that can read and modify your GitHub, GitLab, or Bitbucket repositories, run commands, and optionally commit and push changes as work progresses. Bitbucket repositories are available for organizations only.
 
 ## What Cloud Agents Enable
 
-- Run Kilo Code remotely from a browser
+- Run Semafour remotely from a browser
 - Create branches and optionally commit and push changes automatically
 - Use env vars + startup commands to shape the workspace
 - Work from anywhere while keeping your repo in sync
@@ -23,7 +23,7 @@ Before using Cloud Agents:
 
 ## Cost
 
-Cloud Agent compute is billed per second while the container is awake. Compute and model inference draw from the same Kilo credit balance, but they are charged separately.
+Cloud Agent compute is billed per second while the container is awake. Compute and model inference draw from the same Semafour credit balance, but they are charged separately.
 
 | Cloud Agent size | Hourly rate |
 |---|---|
@@ -33,7 +33,7 @@ Cloud Agent compute is billed per second while the container is awake. Compute a
 
 Usage is measured in whole seconds, with no rounding up to a longer billing interval and no minimum usage charge. Your balance must contain at least $5 to launch a container, but this is not an extra charge or minimum spend. BYOK users still pay for cloud compute because their provider keys cover inference only.
 
-See [Kilo Code pricing](https://kilo.ai/pricing) for current rates and pricing for other cloud products.
+See [Semafour pricing](https://kilo.ai/pricing) for current rates and pricing for other cloud products.
 
 ### Session cost display
 
@@ -46,7 +46,7 @@ If a compute billing check fails, follow the recovery action next to the compose
 1. **Connect your GitHub, GitLab, or Bitbucket account** in the [Integrations](https://app.kilo.ai/integrations) tab of your personal or organization dashboard. Bitbucket requires an organization.
 2. **Select a repository** to use as your workspace.
 3. **Add environment variables** (secrets supported) and set optional startup commands.
-4. **Start chatting with Kilo Code.**
+4. **Start chatting with Semafour.**
 
 Automatic commit and push depends on your session settings. If it is disabled, review, commit, and push the changes you want to keep.
 
@@ -132,7 +132,7 @@ Select **Changes** in the chat header to open the worktree's saved change summar
 
 While the change view is open, the current workspace tab is not shown as selected. Select that tab to close the view and return to it.
 
-Drag the divider between the list and the diff to resize the file list between 200 and 640 pixels. Kilo saves the width in your browser and restores it the next time you open the view. On narrow viewports the list takes the full width, the diff appears after you select a file, and the resize handle is hidden.
+Drag the divider between the list and the diff to resize the file list between 200 and 640 pixels. Semafour saves the width in your browser and restores it the next time you open the view. On narrow viewports the list takes the full width, the diff appears after you select a file, and the resize handle is hidden.
 
 Use the side-by-side toggle in the file viewer to switch between a unified diff and a split, side-by-side diff. The viewer starts in unified and remembers your choice for the files you open next. The markdown preview is unaffected.
 
@@ -206,22 +206,22 @@ Remote mode must be enabled from the CLI. See [CLI Remote Connections](/docs/cod
 
 ### Requirements
 
-- Same Kilo account on both CLI and Cloud Agent
+- Same Semafour account on both CLI and Cloud Agent
 - Active internet connection on the local machine
 - CLI must remain running
 
 {% callout type="warning" title="Security Warning" %}
-Anyone with access to your Kilo account can send messages to your computer when remote mode is enabled.
+Anyone with access to your Semafour account can send messages to your computer when remote mode is enabled.
 {% /callout %}
 
 ## Perfect For
 
 Cloud Agents are great for:
 
-- **Remote debugging** using Kilo Code debug mode
+- **Remote debugging** using Semafour debug mode
 - **Exploration of unfamiliar codebases** without touching your local machine
 - **Architect-mode brainstorming** while on the go
-- **Automated refactors or tech debt cleanup** driven by Kilo Code
+- **Automated refactors or tech debt cleanup** driven by Semafour
 - **Offloading CI-like tasks**, experiments, or batch updates
 
 ## Triggers
@@ -326,7 +326,7 @@ Care should be taken when deciding to use webhooks as they are susceptible to pr
 - Each message can run for **up to 15 minutes**.
   Break large tasks into smaller steps; use a `plan.md` or `todo.md` file to keep scope clear.
 - **Context is persistent across messages.**
-  Kilo Code remembers previous turns within the same session.
+  Semafour remembers previous turns within the same session.
 - **Auto/YOLO mode is always on.**
   The agent will modify code without prompting for confirmation.
 - **Sessions are restorable locally** and local sessions can be resumed in Cloud Agent.

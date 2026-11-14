@@ -1,6 +1,6 @@
 ---
 title: "Files"
-description: "Browse and edit your workspace files — including rendered Markdown, Mermaid, and data tables — mention them in chat, and open file links from the agent's responses in Kilo Desktop."
+description: "Browse and edit your workspace files — including rendered Markdown, Mermaid, and data tables — mention them in chat, and open file links from the agent's responses in Semafour Desktop."
 ---
 
 # Files
@@ -30,7 +30,7 @@ Select a file to open it in the editor with syntax highlighting.
   - Table view is available for files up to 64 MB (Parquet) or 1 MB (CSV/TSV). For larger CSV/TSV files, use **Show text preview** or open them in an external editor.
 - Files that can't be shown — such as binaries or very large files — open read-only or explain why they can't be previewed.
 
-Save with `Cmd/Ctrl+S`. If the file changed on disk since you opened it, Kilo Desktop surfaces a conflict instead of overwriting, so you can reload the latest version, overwrite it with your changes, or cancel. Closing a file with unsaved changes prompts you first.
+Save with `Cmd/Ctrl+S`. If the file changed on disk since you opened it, Semafour Desktop surfaces a conflict instead of overwriting, so you can reload the latest version, overwrite it with your changes, or cancel. Closing a file with unsaved changes prompts you first.
 
 ## Mention files in chat
 
@@ -38,10 +38,10 @@ Type `@` in the chat to search your workspace files and insert a mention. The me
 
 ## Open file links from responses
 
-When the agent references a file in its response — including a specific location, like `src/api.py:42` — it renders as a clickable link rather than plain text. Click it to open that file at that line in the Files tab. If the link isn't an exact path from the workspace root, Kilo Desktop looks for workspace files whose path ends with it: a single match opens directly, and several matches open a **Choose a file** picker. If nothing matches, Kilo Desktop shows *File not found* instead of opening the Files tab.
+When the agent references a file in its response — including a specific location, like `src/api.py:42` — it renders as a clickable link rather than plain text. Click it to open that file at that line in the Files tab. If the link isn't an exact path from the workspace root, Semafour Desktop looks for workspace files whose path ends with it: a single match opens directly, and several matches open a **Choose a file** picker. If nothing matches, Semafour Desktop shows *File not found* instead of opening the Files tab.
 
 The agent can also open a file for you directly, jumping to the relevant line.
 
 ## Open in another editor
 
-Prefer your usual editor? Open the current file in an external editor you have installed, such as VS Code, Cursor, Zed, or a JetBrains IDE. Kilo Desktop remembers your preferred editor for next time.
+Prefer your usual editor? Open the current file in an external editor you have installed, such as VS Code, Cursor, Zed, or a JetBrains IDE. Semafour Desktop remembers your preferred editor for next time.

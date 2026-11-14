@@ -1,6 +1,6 @@
-# Releasing Kilo Code
+# Releasing Semafour
 
-Kilo Code uses a fully automated CI pipeline triggered via GitHub Actions `workflow_dispatch`. A single workflow handles version bumping, building all artifacts, publishing to every distribution channel, and updating package registries.
+Semafour uses a fully automated CI pipeline triggered via GitHub Actions `workflow_dispatch`. A single workflow handles version bumping, building all artifacts, publishing to every distribution channel, and updating package registries.
 
 ## How to Trigger a Release
 
@@ -30,7 +30,7 @@ The `publish.yml` workflow runs four jobs sequentially:
 
 ### 2. Build CLI (`build-cli`)
 
-- Runs `packages/opencode/script/build.ts` to compile the Kilo CLI binary.
+- Runs `packages/opencode/script/build.ts` to compile the Semafour CLI binary.
 - Builds native binaries for **all supported platforms and architectures**:
   - Linux: x64, arm64 (glibc and musl), plus baseline (non-AVX2) variants
   - macOS: x64, arm64, plus baseline variants
@@ -109,8 +109,8 @@ The following secrets must be configured in the repository:
 
 | Secret | Purpose |
 |---|---|
-| `KILO_API_KEY` | Kilo API key used during version computation |
-| `KILO_ORG_ID` | Kilo organization ID |
+| `KILO_API_KEY` | Semafour API key used during version computation |
+| `KILO_ORG_ID` | Semafour organization ID |
 | `KILO_MAINTAINER_APP_ID` | GitHub App ID for the kilo-maintainer bot (used for git commits) |
 | `KILO_MAINTAINER_APP_SECRET` | GitHub App secret for the kilo-maintainer bot |
 | `NPM_TOKEN` | npm authentication token for publishing packages |

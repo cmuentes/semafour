@@ -14,7 +14,7 @@ export function delay(result: KiloModelsResult, attempt: number) {
 export function failure(error: KiloModelsResult["error"]) {
   if (!error) return undefined
   const reason = error.status == null ? error.kind : `HTTP ${error.status}`
-  return `Failed to load the Kilo model catalog (${reason}). Check your connection and credentials.`
+  return `Failed to load the Semafour model catalog (${reason}). Check your connection and credentials.`
 }
 
 export function unavailable(error: { catalogError?: unknown; modelsEmpty?: unknown }) {

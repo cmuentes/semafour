@@ -34,7 +34,7 @@ import java.awt.Component
  * Covers the two session action menus — the right-click context menu and the prompt bar's "more"
  * popup — plus each new action's visibility rules. Most importantly, it covers that the context
  * published by `SessionUi` resolves from a target deep inside the transcript: the reused
- * `Kilo.StopSession` action reads a data key whose local provider is a sibling of the transcript, so
+ * `Semafour.StopSession` action reads a data key whose local provider is a sibling of the transcript, so
  * without `SessionUi` republishing it the menu would silently render it invisible.
  */
 @Suppress("UnstableApiUsage")
@@ -45,27 +45,27 @@ class SessionContextMenuActionsTest : SessionUiTestBase() {
     fun `test context menu group lists actions in order with separators`() {
         assertEquals(
             listOf(
-                "Kilo.Session.AutoApprove",
+                "Semafour.Session.AutoApprove",
                 "---",
-                "Kilo.Session.Fork",
-                "Kilo.Session.Board",
+                "Semafour.Session.Fork",
+                "Semafour.Session.Board",
                 "---",
-                "Kilo.Session.CompareToBase",
-                "Kilo.Session.OpenPr",
-                "Kilo.Session.CopyPrRef",
+                "Semafour.Session.CompareToBase",
+                "Semafour.Session.OpenPr",
+                "Semafour.Session.CopyPrRef",
                 "---",
-                "Kilo.OpenSettings",
-                "Kilo.ReloadCoreSettings",
+                "Semafour.OpenSettings",
+                "Semafour.ReloadCoreSettings",
                 "---",
                 "\$Copy",
                 "---",
-                "Kilo.Session.CopyId",
-                "Kilo.Session.CopyShareLink",
-                "Kilo.Session.Share",
+                "Semafour.Session.CopyId",
+                "Semafour.Session.CopyShareLink",
+                "Semafour.Session.Share",
                 "---",
-                "Kilo.StopSession",
+                "Semafour.StopSession",
             ),
-            menuChildren("Kilo.Session.ContextMenu"),
+            menuChildren("Semafour.Session.ContextMenu"),
         )
     }
 
@@ -74,7 +74,7 @@ class SessionContextMenuActionsTest : SessionUiTestBase() {
      * toolbar, which is their own `UiDataProvider` and needs no republishing from `SessionUi`.
      */
     fun `test context menu does not reference worktree actions`() {
-        val worktree = menuChildren("Kilo.Session.ContextMenu").filter { it.startsWith("Kilo.Chat.") }
+        val worktree = menuChildren("Semafour.Session.ContextMenu").filter { it.startsWith("Semafour.Chat.") }
 
         assertEquals(emptyList<String>(), worktree)
     }
@@ -82,23 +82,23 @@ class SessionContextMenuActionsTest : SessionUiTestBase() {
     fun `test prompt menu group lists session actions in order`() {
         assertEquals(
             listOf(
-                "Kilo.Session.AutoApprove",
+                "Semafour.Session.AutoApprove",
                 "---",
-                "Kilo.Session.Fork",
-                "Kilo.Session.Board",
+                "Semafour.Session.Fork",
+                "Semafour.Session.Board",
                 "---",
-                "Kilo.Session.CompareToBase",
-                "Kilo.Session.OpenPr",
-                "Kilo.Session.CopyPrRef",
+                "Semafour.Session.CompareToBase",
+                "Semafour.Session.OpenPr",
+                "Semafour.Session.CopyPrRef",
                 "---",
-                "Kilo.OpenSettings",
-                "Kilo.CliGroup",
+                "Semafour.OpenSettings",
+                "Semafour.CliGroup",
                 "---",
-                "Kilo.Session.CopyId",
-                "Kilo.Session.CopyShareLink",
-                "Kilo.Session.Share",
+                "Semafour.Session.CopyId",
+                "Semafour.Session.CopyShareLink",
+                "Semafour.Session.Share",
             ),
-            menuChildren("Kilo.Session.PromptMenu"),
+            menuChildren("Semafour.Session.PromptMenu"),
         )
     }
 
@@ -109,15 +109,15 @@ class SessionContextMenuActionsTest : SessionUiTestBase() {
     fun `test prompt menu reuses the core group with its version footer`() {
         assertEquals(
             listOf(
-                "Kilo.ReloadCoreSettings",
-                "Kilo.RefreshCloud",
+                "Semafour.ReloadCoreSettings",
+                "Semafour.RefreshCloud",
                 "---",
-                "Kilo.Restart",
-                "Kilo.Reinstall",
+                "Semafour.Restart",
+                "Semafour.Reinstall",
                 "---",
-                "Kilo.CoreInfo",
+                "Semafour.CoreInfo",
             ),
-            menuChildren("Kilo.CliGroup"),
+            menuChildren("Semafour.CliGroup"),
         )
     }
 
@@ -128,7 +128,7 @@ class SessionContextMenuActionsTest : SessionUiTestBase() {
             }
         }.toSet()
 
-        for (group in listOf("Kilo.Session.ContextMenu", "Kilo.Session.PromptMenu")) {
+        for (group in listOf("Semafour.Session.ContextMenu", "Semafour.Session.PromptMenu")) {
             val missing = menuChildren(group)
                 .filter { it != "---" && !it.startsWith("$") }
                 .filterNot { it in declared }
@@ -156,15 +156,15 @@ class SessionContextMenuActionsTest : SessionUiTestBase() {
      * missing key would render a blank menu item rather than failing anywhere else.
      */
     fun `test every declared session action has bundle text and description`() {
-        val ids = (menuChildren("Kilo.Session.ContextMenu") + menuChildren("Kilo.Session.PromptMenu"))
-            .filter { it.startsWith("Kilo.Session.") }
+        val ids = (menuChildren("Semafour.Session.ContextMenu") + menuChildren("Semafour.Session.PromptMenu"))
+            .filter { it.startsWith("Semafour.Session.") }
             .distinct()
 
         assertTrue("expected the new session actions in at least one menu", ids.isNotEmpty())
         // optional() consults containsKey; message() would return "!key!" and pass vacuously.
         val keys = ids.flatMap { listOf("action.$it.text", "action.$it.description") } +
             // The share item flips its wording, so it needs a second pair.
-            listOf("action.Kilo.Session.Share.stop.text", "action.Kilo.Session.Share.stop.description")
+            listOf("action.Semafour.Session.Share.stop.text", "action.Semafour.Session.Share.stop.description")
 
         val missing = keys.filter { KiloBundle.optional(it).isNullOrBlank() }
 
@@ -172,7 +172,7 @@ class SessionContextMenuActionsTest : SessionUiTestBase() {
     }
 
     fun `test every menu action class is instantiable`() {
-        val ids = menuChildren("Kilo.Session.ContextMenu") + menuChildren("Kilo.Session.PromptMenu")
+        val ids = menuChildren("Semafour.Session.ContextMenu") + menuChildren("Semafour.Session.PromptMenu")
         val classes = descriptor().getElementsByTagName("action").let { nodes ->
             (0 until nodes.length).map { nodes.item(it) as Element }
         }.filter { it.getAttribute("id") in ids }

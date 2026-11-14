@@ -110,7 +110,7 @@ internal class KiloBackendProviderSettingsManager(
         val provider = current.providers.firstOrNull { it.id == input.providerId }
         val cfg = current.config[input.providerId]
         if (input.providerId == "kilo") {
-            return ProviderActionResultDto(current, error = "Kilo Gateway cannot be disconnected from provider settings.")
+            return ProviderActionResultDto(current, error = "Semafour Gateway cannot be disconnected from provider settings.")
         }
         if (provider?.source == "env" && cfg == null) {
             return ProviderActionResultDto(current, error = "Provider is configured by environment variables.")
@@ -306,7 +306,7 @@ internal class KiloBackendProviderSettingsManager(
         val start = System.currentTimeMillis()
         LOG.debug { "provider settings http: start ${request.method} ${request.url.encodedPath}" }
         val http = app.http?.let { KiloBackendHttpClients.bounded(it, timeoutSeconds) }
-            ?: throw IllegalStateException("Kilo HTTP client is unavailable")
+            ?: throw IllegalStateException("Semafour HTTP client is unavailable")
         return withContext(Dispatchers.IO) {
             try {
                 http.newCall(request.newBuilder().header("Accept", "application/json").build()).execute().use { response ->

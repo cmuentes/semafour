@@ -1,9 +1,9 @@
 #!/usr/bin/env bun
 /**
- * Transform web/docs files with Kilo branding
+ * Transform web/docs files with Semafour branding
  *
  * This script handles documentation and web content files (.mdx, etc.)
- * by transforming OpenCode references to Kilo.
+ * by transforming OpenCode references to Semafour.
  */
 
 import { $ } from "bun"
@@ -58,7 +58,7 @@ const WEB_REPLACEMENTS: WebReplacement[] = [
   // Product names
   {
     pattern: /\bOpenCode\b(?!\.json|\/| Zen)/g,
-    replacement: "Kilo",
+    replacement: "Semafour",
     description: "Product name",
   },
 

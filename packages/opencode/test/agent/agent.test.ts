@@ -181,7 +181,7 @@ scout.instance(
     }),
   {
     config: {
-      // kilocode_change - Scout-backed Kilo agents use the supported references config
+      // kilocode_change - Scout-backed Semafour agents use the supported references config
       references: {
         effect: "github.com/effect/effect-smol",
         effectFull: {

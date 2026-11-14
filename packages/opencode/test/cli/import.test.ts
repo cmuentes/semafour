@@ -45,7 +45,7 @@ test("formats import file errors", () => {
 })
 
 // parseShareUrl tests
-test("parses valid Kilo share URLs", () => {
+test("parses valid Semafour share URLs", () => {
   expect(parseShareUrl("https://app.kilo.ai/s/7a755b04-b0fe-4e66-8b30-0ab52a181bd4")).toBe(
     "7a755b04-b0fe-4e66-8b30-0ab52a181bd4",
   )

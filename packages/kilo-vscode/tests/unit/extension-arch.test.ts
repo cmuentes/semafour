@@ -182,7 +182,7 @@ describe("Extension — package.json command sync", () => {
     })
   })
 
-  it("scopes agent mode shortcuts to focused Kilo webviews", () => {
+  it("scopes agent mode shortcuts to focused Semafour webviews", () => {
     const bindings = pkg.contributes?.keybindings?.filter(
       (item: { command: string }) =>
         item.command === "kilo-code.new.cycleAgentMode" || item.command === "kilo-code.new.cyclePreviousAgentMode",
@@ -199,15 +199,15 @@ describe("Extension — package.json command sync", () => {
     )
   })
 
-  it("routes task-close commands to the focused Kilo surface", () => {
+  it("routes task-close commands to the focused Semafour surface", () => {
     const commands = pkg.contributes?.commands ?? []
     expect(commands).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ command: "kilo-code.new.closeTask", title: "Close Task", category: "Kilo Code" }),
+        expect.objectContaining({ command: "kilo-code.new.closeTask", title: "Close Task", category: "Semafour" }),
         expect.objectContaining({
           command: "kilo-code.new.closeAllTasks",
           title: "Close All Tasks",
-          category: "Kilo Code",
+          category: "Semafour",
         }),
       ]),
     )
@@ -324,7 +324,7 @@ describe("Extension — editor panel placement", () => {
   const ext = fs.readFileSync(EXTENSION_FILE, "utf-8")
   const settings = fs.readFileSync(SETTINGS_PROVIDER_FILE, "utf-8")
 
-  it("opens Kilo as a tab in the active editor group", () => {
+  it("opens Semafour as a tab in the active editor group", () => {
     const fn = ext.indexOf("function openKiloInNewTab")
     expect(fn, "openKiloInNewTab must exist").toBeGreaterThan(-1)
     const body = sliceBlock(ext, fn)

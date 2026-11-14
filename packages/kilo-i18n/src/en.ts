@@ -1,7 +1,7 @@
 // Kilo-specific translations and overrides
 // Keys here will override any matching keys from upstream translations
 export const dict = {
-  // Kilo Gateway provider translations
+  // Semafour Gateway provider translations
   "provider.connect.kiloGateway.byok.prefix": "For more usage stats, ",
   "provider.connect.kiloGateway.byok.link": "BYOK via Semafour's Gateway",
   "provider.connect.kiloGateway.byok.suffix": ".",

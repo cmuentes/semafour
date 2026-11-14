@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kilo.ai"><img width="250" alt="Kilo Code logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
+  <a href="https://kilo.ai"><img width="250" alt="Semafour logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
 </p>
 
 <p align="center">Open source'owy agent kodujący do pracy z AI w VS Code, JetBrains lub CLI.</p>
@@ -21,18 +21,18 @@
 
 ---
 
-Kilo Code to agent kodujący z AI, który działa wszędzie tam, gdzie pracujesz: w [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) i [CLI](https://kilo.ai/cli). Jest open source i ma otwarte ceny. Wybierasz spośród ponad 500 modeli, przełączasz się między nimi w trakcie zadania i płacisz stawkę dostawcy modelu bez narzutów. Do rozpoczęcia nie są wymagane klucze API.
+Semafour to agent kodujący z AI, który działa wszędzie tam, gdzie pracujesz: w [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) i [CLI](https://kilo.ai/cli). Jest open source i ma otwarte ceny. Wybierasz spośród ponad 500 modeli, przełączasz się między nimi w trakcie zadania i płacisz stawkę dostawcy modelu bez narzutów. Do rozpoczęcia nie są wymagane klucze API.
 
 ### Instalacja
 
-Wybierz, gdzie chcesz uruchomić Kilo.
+Wybierz, gdzie chcesz uruchomić Semafour.
 
 <details open>
 <summary><strong>VS Code</strong></summary>
 
 <br>
 
-Zainstaluj bezpośrednio [rozszerzenie Kilo Code](vscode:extension/kilocode.kilo-code) albo pobierz je z [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Utwórz konto, a otrzymasz dostęp do ponad 500 modeli, w tym GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 i Gemini 3.1 Pro Preview, wszystkie w cenach dostawców.
+Zainstaluj bezpośrednio [rozszerzenie Semafour](vscode:extension/kilocode.kilo-code) albo pobierz je z [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Utwórz konto, a otrzymasz dostęp do ponad 500 modeli, w tym GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 i Gemini 3.1 Pro Preview, wszystkie w cenach dostawców.
 
 </details>
 
@@ -70,7 +70,7 @@ Następnie uruchom `kilo` w dowolnym katalogu projektu.
 
 <br>
 
-Zainstaluj [plugin Kilo Code](https://plugins.jetbrains.com/plugin/28350-kilo-code) z JetBrains Marketplace albo wyszukaj "Kilo Code" w `Settings → Plugins` w dowolnym IDE JetBrains.
+Zainstaluj [plugin Semafour](https://plugins.jetbrains.com/plugin/28350-kilo-code) z JetBrains Marketplace albo wyszukaj "Semafour" w `Settings → Plugins` w dowolnym IDE JetBrains.
 
 </details>
 
@@ -79,7 +79,7 @@ Zainstaluj [plugin Kilo Code](https://plugins.jetbrains.com/plugin/28350-kilo-co
 
 <br>
 
-Uruchom Kilo z poziomu przeglądarki, bez lokalnej maszyny, na [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
+Uruchom Semafour z poziomu przeglądarki, bez lokalnej maszyny, na [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
 
 </details>
 
@@ -111,7 +111,7 @@ Uwagi: `x64-baseline` to build zgodności dla starszych CPU bez AVX. `musl` to s
 
 ### Agents
 
-Kilo zawiera wyspecjalizowane agents, między którymi możesz przełączać się zależnie od zadania. Możesz też tworzyć własne niestandardowe agents.
+Semafour zawiera wyspecjalizowane agents, między którymi możesz przełączać się zależnie od zadania. Możesz też tworzyć własne niestandardowe agents.
 
 - **Code** - Domyślny. Implementuje i edytuje kod z języka naturalnego.
 - **Plan** - Projektuje architekturę i pisze plany implementacji przed napisaniem kodu.
@@ -157,9 +157,9 @@ MIT. Możesz używać, modyfikować i dystrybuować ten kod, również komercyjn
 ### FAQ
 
 <details>
-<summary>Skąd pochodzi Kilo CLI?</summary>
+<summary>Skąd pochodzi Semafour CLI?</summary>
 
-Kilo CLI jest forkiem [OpenCode](https://github.com/anomalyco/opencode), rozszerzonym do działania w platformie agentic engineering Kilo.
+Semafour CLI jest forkiem [OpenCode](https://github.com/anomalyco/opencode), rozszerzonym do działania w platformie agentic engineering Semafour.
 
 </details>
 

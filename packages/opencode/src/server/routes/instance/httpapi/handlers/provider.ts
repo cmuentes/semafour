@@ -83,7 +83,7 @@ export const providerHandlers = HttpApiBuilder.group(InstanceHttpApi, "provider"
         providers,
         (item, id) => Object.keys(item.models).length > 0 || id in connected || failedSet.has(id),
       )
-      // A failed provider can be entirely absent from `providers` (e.g. an org-scoped Kilo
+      // A failed provider can be entirely absent from `providers` (e.g. an org-scoped Semafour
       // catalog is deleted above at `delete filtered.kilo`, and `Provider.Service.list()` drops
       // zero-model entries). `pickBy` only filters existing keys, so without this, `failedSet`
       // has no row left to attach a reason to — the client gets `failed: ["kilo"]` but no entry
@@ -182,7 +182,7 @@ export const providerHandlers = HttpApiBuilder.group(InstanceHttpApi, "provider"
           code: ctx.payload.code,
         }),
       )
-      // kilocode_change start - drop old-user presence before instance disposal on Kilo OAuth callback
+      // kilocode_change start - drop old-user presence before instance disposal on Semafour OAuth callback
       if (ctx.params.providerID === "kilo") yield* invalidatePresence()
       // kilocode_change end
       yield* disposeAllInstancesAfterProviderAuthCallback() // kilocode_change

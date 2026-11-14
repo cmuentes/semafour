@@ -1,7 +1,7 @@
 /**
  * Release evidence manifest.
  *
- * GitHub Releases is Kilo's chosen long-term SBOM record, so the release itself
+ * GitHub Releases is Semafour's chosen long-term SBOM record, so the release itself
  * has to state what evidence is supposed to exist. Counting "some SBOMs were
  * uploaded" is not enough: the manifest pins the exact artifact set, its
  * digests, and its sidecars, which is what turns a missing or stale sidecar into

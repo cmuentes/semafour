@@ -61,7 +61,7 @@ export function serveUIEffect(
     const embeddedWebUI = yield* Effect.promise(() => embeddedUI(services.disableEmbeddedWebUi))
     const path = new URL(request.url, "http://localhost").pathname
 
-    // kilocode_change start - serve Kilo Console under /console
+    // kilocode_change start - serve Semafour Console under /console
     const asset = yield* Effect.promise(() => ConsoleAssets.resolve(path))
     if (asset && "file" in asset) {
       return yield* services.fs.readFile(asset.file).pipe(

@@ -17,7 +17,7 @@ import javax.swing.JComponent
  */
 internal fun marketplaceAction(surface: String): AnAction = object : DumbAwareAction(
     KiloBundle.message("settings.marketplace.displayName"),
-    KiloBundle.message("action.Kilo.OpenMarketplaceSettings.description"),
+    KiloBundle.message("action.Semafour.OpenMarketplaceSettings.description"),
     null,
 ) {
     init {

@@ -201,9 +201,9 @@ internal class OrphanBanner(
                 KiloBundle.message("worktree.orphans.notification.partial", ok, total, total - ok)
             else -> NotificationType.ERROR to KiloBundle.message("worktree.orphans.notification.failure")
         }
-        val notification = NotificationGroupManager.getInstance().getNotificationGroup("Kilo Code")
+        val notification = NotificationGroupManager.getInstance().getNotificationGroup("Semafour")
             ?.createNotification(title, "", type)
-            ?: Notification("Kilo Code", title, "", type)
+            ?: Notification("Semafour", title, "", type)
         notification.notify(project)
     }
 

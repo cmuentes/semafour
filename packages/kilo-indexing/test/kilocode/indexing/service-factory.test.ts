@@ -319,7 +319,7 @@ describe("CodeIndexServiceFactory", () => {
     expect(store.vectorSize).toBe(1024)
   })
 
-  test("creates Kilo embedder with Cloud-provided model", async () => {
+  test("creates Semafour embedder with Cloud-provided model", async () => {
     const factory = createFactory({
       embedderProvider: "kilo",
       openAiKey: undefined,

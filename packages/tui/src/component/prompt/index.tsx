@@ -468,7 +468,7 @@ export function Prompt(props: PromptProps) {
       // kilocode_change start
       {
         title: "Cost alert",
-        desc: "Set Kilo's cost alert",
+        desc: "Set Semafour's cost alert",
         name: "cost_alert",
         category: "Session",
         slashName: "cost-alert",
@@ -1852,7 +1852,7 @@ export function Prompt(props: PromptProps) {
                 <text fg={theme.accent}>(new working copy)</text>
               </box>
             </Match>
-            {/* kilocode_change start - Kilo already shows the working directory in its sidebar */}
+            {/* kilocode_change start - Semafour already shows the working directory in its sidebar */}
             <Match when={true}>{props.hint ?? <text />}</Match>
             {/* kilocode_change end */}
           </Switch>

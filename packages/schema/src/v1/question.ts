@@ -16,7 +16,7 @@ export const ID = Schema.String.check(Schema.isStartsWith("que")).pipe(
 export const Option = Schema.Struct({
   label: Schema.String.annotate({ description: "Display text (1-5 words, concise)" }),
   description: Schema.String.annotate({ description: "Explanation of choice" }),
-  // kilocode_change start - Kilo client localization and mode selection hints
+  // kilocode_change start - Semafour client localization and mode selection hints
   labelKey: Schema.optional(Schema.String).annotate({
     description: "Optional i18n key for the label; clients translate and still reply with `label`",
   }),
@@ -32,7 +32,7 @@ const base = {
   header: Schema.String.annotate({ description: "Very short label (max 30 chars)" }),
   options: Schema.Array(Option).annotate({ description: "Available choices" }),
   multiple: Schema.optional(Schema.Boolean).annotate({ description: "Allow selecting multiple choices" }),
-  // kilocode_change start - optional Kilo client hints
+  // kilocode_change start - optional Semafour client hints
   default: optional(
     Schema.String.annotate({
       description:

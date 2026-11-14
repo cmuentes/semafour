@@ -12,7 +12,7 @@ fun interface GithubIntegrationListener {
     companion object {
         @JvmField
         val TOPIC: Topic<GithubIntegrationListener> = Topic.create(
-            "Kilo github integration",
+            "Semafour github integration",
             GithubIntegrationListener::class.java,
         )
     }

@@ -38,7 +38,7 @@ const themeSource: ThemeSource = {
   async discover() {
     const directories = [Global.Path.config]
     for (let current = process.cwd(); ; current = path.dirname(current)) {
-      // kilocode_change start - discover Kilo config roots, not OpenCode roots
+      // kilocode_change start - discover Semafour config roots, not OpenCode roots
       directories.push(path.join(current, ".kilocode"), path.join(current, ".kilo"))
       // kilocode_change end
       if (path.dirname(current) === current) break

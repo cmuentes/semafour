@@ -2031,11 +2031,11 @@ class KiloCliDataParserTest {
         fun `parseProviders - maps model preview metadata`() {
             val raw = """{
                 "all": [{
-                    "id": "kilo", "name": "Kilo", "source": "api", "env": [], "options": {},
+                    "id": "kilo", "name": "Semafour", "source": "api", "env": [], "options": {},
                     "models": {
                         "auto": {
                             "id": "auto",
-                            "name": "Kilo Auto",
+                            "name": "Semafour Auto",
                             "inputPrice": 0.25,
                             "outputPrice": 1.5,
                             "contextLength": 256000,

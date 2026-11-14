@@ -1,7 +1,7 @@
 /**
- * Kilo News Component
+ * Semafour News Component
  *
- * Self-contained component that fetches and displays Kilo news/notifications.
+ * Self-contained component that fetches and displays Semafour news/notifications.
  * Shows a banner on the home screen; clicking opens a dialog with all news items.
  */
 

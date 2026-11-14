@@ -256,7 +256,7 @@ class KiloBackendAppService private constructor(
         when (_appState.value) {
             is KiloAppState.Ready -> return
             is KiloAppState.MigrationRequired -> throw IllegalStateException("Migration required")
-            else -> throw IllegalStateException("Kilo backend is not ready")
+            else -> throw IllegalStateException("Semafour backend is not ready")
         }
     }
 
@@ -273,16 +273,16 @@ class KiloBackendAppService private constructor(
                 when (state) {
                     is KiloAppState.Ready -> return
                     is KiloAppState.MigrationRequired -> throw IllegalStateException("Migration required")
-                    else -> throw IllegalStateException("Kilo backend is not ready")
+                    else -> throw IllegalStateException("Semafour backend is not ready")
                 }
             }
-            else -> throw IllegalStateException("Kilo backend is not ready")
+            else -> throw IllegalStateException("Semafour backend is not ready")
         }
     }
 
     suspend fun updateConfig(patch: ConfigPatchDto): KiloAppState {
         val http = connection.apiClient ?: throw IllegalStateException("Not connected")
-        val current = _appState.value as? KiloAppState.Ready ?: throw IllegalStateException("Kilo backend is not ready")
+        val current = _appState.value as? KiloAppState.Ready ?: throw IllegalStateException("Semafour backend is not ready")
         val connected = connection.state.value as? ConnectionState.Connected
         val body = KiloCliDataParser.buildConfigPatch(patch)
         val summary = summary(patch)
@@ -921,7 +921,7 @@ class KiloBackendAppService private constructor(
     }
 
     /**
-     * Start the Kilo device auth login flow.
+     * Start the Semafour device auth login flow.
      * Returns [DeviceAuthDto] containing the verification URL and code for display in the UI.
      */
     suspend fun startLogin(directory: String?): DeviceAuthDto {
@@ -937,7 +937,7 @@ class KiloBackendAppService private constructor(
     }
 
     /**
-     * Complete the Kilo device auth login flow.
+     * Complete the Semafour device auth login flow.
      * Blocks until the user completes authentication on the browser side.
      * Returns the user profile on success, or null if the login could not be completed.
      */
@@ -948,7 +948,7 @@ class KiloBackendAppService private constructor(
     }
 
     /**
-     * Log out from Kilo Gateway.
+     * Log out from Semafour Gateway.
      * Removes credentials and clears the profile from app state.
      */
     suspend fun logout(): Boolean {

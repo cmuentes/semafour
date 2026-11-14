@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap
 import kotlin.io.path.createTempDirectory
 
 /**
- * Lightweight mock HTTP server simulating the Kilo CLI server.
+ * Lightweight mock HTTP server simulating the Semafour CLI server.
  *
  * Handles REST endpoints with configurable JSON responses and provides
  * full control over the SSE `/global/event` stream. Uses raw sockets

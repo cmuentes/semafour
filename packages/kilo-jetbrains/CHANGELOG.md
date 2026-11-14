@@ -64,7 +64,7 @@
 
 ### Patch Changes
 
-- [#15112](https://github.com/Kilo-Org/kilocode/pull/15112) [`3cb7685`](https://github.com/Kilo-Org/kilocode/commit/3cb7685900ca5bc5adc337c797c18cc16cb8ebe6) - Use the primary brand yellow for the JetBrains plugin icon and in-app Kilo logos.
+- [#15112](https://github.com/Kilo-Org/kilocode/pull/15112) [`3cb7685`](https://github.com/Kilo-Org/kilocode/commit/3cb7685900ca5bc5adc337c797c18cc16cb8ebe6) - Use the primary brand yellow for the JetBrains plugin icon and in-app Semafour logos.
 
 - [#15179](https://github.com/Kilo-Org/kilocode/pull/15179) [`90791a0`](https://github.com/Kilo-Org/kilocode/commit/90791a055fd4108f5a042f16ba54771de089a96d) - Prevent editor context ignore-file loading from blocking the JetBrains UI thread.
 
@@ -80,7 +80,7 @@
 
 - [#15057](https://github.com/Kilo-Org/kilocode/pull/15057) [`00698f3`](https://github.com/Kilo-Org/kilocode/commit/00698f3ba2401662eeaad74e82dea2a591dd100c) - Recover a session that is stuck on "Considering next steps" after finishing a plan, by re-reading the pending prompt when the session view misses it.
 
-- [#15012](https://github.com/Kilo-Org/kilocode/pull/15012) [`bf714d4`](https://github.com/Kilo-Org/kilocode/commit/bf714d4e17754c0ecfdcbfc10c340c1b037ed175) - Keep existing sessions visible when the plugin runs a pre-release Kilo CLI, instead of starting from an empty session history.
+- [#15012](https://github.com/Kilo-Org/kilocode/pull/15012) [`bf714d4`](https://github.com/Kilo-Org/kilocode/commit/bf714d4e17754c0ecfdcbfc10c340c1b037ed175) - Keep existing sessions visible when the plugin runs a pre-release Semafour CLI, instead of starting from an empty session history.
 
 - [#15047](https://github.com/Kilo-Org/kilocode/pull/15047) [`fdb634f`](https://github.com/Kilo-Org/kilocode/commit/fdb634f535409e8a35d6eeb165cc15c123e9d66e) - Keep MCP sign-in from resetting
 
@@ -110,7 +110,7 @@
 
 - [#14968](https://github.com/Kilo-Org/kilocode/pull/14968) [`3933e3f`](https://github.com/Kilo-Org/kilocode/commit/3933e3f89c361d639cca829661d21395f90eb436) - Fix resetting a mode's model so it stays reset instead of snapping back to a previously saved model on the next mode switch or new session.
 
-- [#14966](https://github.com/Kilo-Org/kilocode/pull/14966) [`1991d3d`](https://github.com/Kilo-Org/kilocode/commit/1991d3da3235b61906eee62bfe64b58dae182b28) - Restore the session list after reconnecting to Kilo, instead of leaving it empty until a new session is started.
+- [#14966](https://github.com/Kilo-Org/kilocode/pull/14966) [`1991d3d`](https://github.com/Kilo-Org/kilocode/commit/1991d3da3235b61906eee62bfe64b58dae182b28) - Restore the session list after reconnecting to Semafour, instead of leaving it empty until a new session is started.
 
 - [#14935](https://github.com/Kilo-Org/kilocode/pull/14935) [`a7d0b50`](https://github.com/Kilo-Org/kilocode/commit/a7d0b5055cef1262e7a1d9db1fe5a55c94e0cd4a) - Jump to a step in the chat history by clicking its bar in the session timeline, and improve prompt navigation with a correctly sized popup and a gutter marker on the selected prompt
 
@@ -126,7 +126,7 @@
 
 - [#14512](https://github.com/Kilo-Org/kilocode/pull/14512) [`b3da592`](https://github.com/Kilo-Org/kilocode/commit/b3da592cf524a8a99a75c6a1a325e9d5aecc5f2e) - Explain why file checkpoints weren't restored after a revert and add complete Checkpoints settings. JetBrains users can manage snapshots and machine-wide automatic session cleanup, choose a retention period, inspect cleanup progress and results, and manually run cleanup even when automatic cleanup is disabled.
 
-- [#14622](https://github.com/Kilo-Org/kilocode/pull/14622) [`83c1d0f`](https://github.com/Kilo-Org/kilocode/commit/83c1d0fff714490f93b512767baa98c15c5087da) - Render Kilo Swarm board messages as stacked Markdown with agent identities and full syntax highlighting.
+- [#14622](https://github.com/Kilo-Org/kilocode/pull/14622) [`83c1d0f`](https://github.com/Kilo-Org/kilocode/commit/83c1d0fff714490f93b512767baa98c15c5087da) - Render Semafour Swarm board messages as stacked Markdown with agent identities and full syntax highlighting.
 
 ### Patch Changes
 
@@ -154,7 +154,7 @@
 
 ### Patch Changes
 
-- [#14515](https://github.com/Kilo-Org/kilocode/pull/14515) [`dfa67d0`](https://github.com/Kilo-Org/kilocode/commit/dfa67d022ac7d63a75a8bd863a34a209b0fe8ce6) - Fix a runtime exception thrown when switching editor tabs while the Kilo Code plugin is being reloaded or unloaded.
+- [#14515](https://github.com/Kilo-Org/kilocode/pull/14515) [`dfa67d0`](https://github.com/Kilo-Org/kilocode/commit/dfa67d022ac7d63a75a8bd863a34a209b0fe8ce6) - Fix a runtime exception thrown when switching editor tabs while the Semafour plugin is being reloaded or unloaded.
 
 - [#14520](https://github.com/Kilo-Org/kilocode/pull/14520) [`ceb83ea`](https://github.com/Kilo-Org/kilocode/commit/ceb83ea1a5f8ec32526f0100404d8384c29c050a) - Speed up switching between JetBrains session and worktree editor tabs, and reduce Agent Manager list repaint cost while sessions are running.
 
@@ -194,7 +194,7 @@
 
 ### Patch Changes
 
-- [#14365](https://github.com/Kilo-Org/kilocode/pull/14365) [`4486af2`](https://github.com/Kilo-Org/kilocode/commit/4486af2a952ac5c31b4ed44f5a85751b1e04fe22) - Even out the padding on the Kilo tool window's "New Session" and "New Worktree" buttons, and animate the active session's centered progress text with a shimmer effect.
+- [#14365](https://github.com/Kilo-Org/kilocode/pull/14365) [`4486af2`](https://github.com/Kilo-Org/kilocode/commit/4486af2a952ac5c31b4ed44f5a85751b1e04fe22) - Even out the padding on the Semafour tool window's "New Session" and "New Worktree" buttons, and animate the active session's centered progress text with a shimmer effect.
 
 - [#14305](https://github.com/Kilo-Org/kilocode/pull/14305) [`122d849`](https://github.com/Kilo-Org/kilocode/commit/122d849f6fecdd0406dd932f3e944a068ce9fe5e) - Stop a single slow GitHub CLI lookup from hiding Agent Manager pull request badges and warning that gh is not answering. Repositories with many worktrees also spend far fewer `gh` calls per refresh.
 
@@ -206,9 +206,9 @@
 
 ### Minor Changes
 
-- [#14253](https://github.com/Kilo-Org/kilocode/pull/14253) [`de6397c`](https://github.com/Kilo-Org/kilocode/commit/de6397cb8f4ba4b5b3ed6ae31743cf7ff94cbb0d) - Add Kilo Swarm support: a toggle in Agent Behavior settings, readable board messages in the transcript, and a board viewer opened from the session header or the session menu that pages through messages, jumps to a participating subagent, and can reset the board.
+- [#14253](https://github.com/Kilo-Org/kilocode/pull/14253) [`de6397c`](https://github.com/Kilo-Org/kilocode/commit/de6397cb8f4ba4b5b3ed6ae31743cf7ff94cbb0d) - Add Semafour Swarm support: a toggle in Agent Behavior settings, readable board messages in the transcript, and a board viewer opened from the session header or the session menu that pages through messages, jumps to a participating subagent, and can reset the board.
 
-- [#14252](https://github.com/Kilo-Org/kilocode/pull/14252) [`25ac477`](https://github.com/Kilo-Org/kilocode/commit/25ac477330ee37554a3db1ce96bb311831005fa3) - Browse and install marketplace agents, MCP servers, and skills from JetBrains Settings under Kilo Code -> Marketplace, jump straight to User Profile or Marketplace from the tool window menu, and reach Marketplace from the Agents, MCP Servers, and Skills settings pages.
+- [#14252](https://github.com/Kilo-Org/kilocode/pull/14252) [`25ac477`](https://github.com/Kilo-Org/kilocode/commit/25ac477330ee37554a3db1ce96bb311831005fa3) - Browse and install marketplace agents, MCP servers, and skills from JetBrains Settings under Semafour -> Marketplace, jump straight to User Profile or Marketplace from the tool window menu, and reach Marketplace from the Agents, MCP Servers, and Skills settings pages.
 
 - [#14255](https://github.com/Kilo-Org/kilocode/pull/14255) [`4881829`](https://github.com/Kilo-Org/kilocode/commit/4881829c38d41ae92671508784d3523ece54a8fe) - Leftover worktree folders now show a count and total size in the warning banner, with a "Resolve…" action that opens a dialog listing each folder's path, size, and whether it still holds a git checkout. While the total is still being measured the banner says so, and if the measurement fails it reports the count alone instead of claiming 0 B. Measuring stops as soon as you start a delete, or whenever the folder list changes, rather than walking folders that are on their way out, and then re-measures whatever is left. The dialog's explanation starts collapsed to its first paragraph behind a "Show more" link, and its checkboxes are drawn the way each IDE draws its own. Deletion runs in the background so the UI never freezes, folders that still contain a checkout are unchecked by default, and a completion notification reports how many were removed. Worktree deletion is also more thorough: JetBrains now tears down backend state and removes the snapshot repository for a deleted worktree the same way VS Code already does, and a directory that reappears immediately after deletion is cleaned up once more automatically.
 
@@ -236,7 +236,7 @@
 
 ### Minor Changes
 
-- [#13800](https://github.com/Kilo-Org/kilocode/pull/13800) [`de5bdbe`](https://github.com/Kilo-Org/kilocode/commit/de5bdbe448f4b5baf5dfd29f54aa6b07acfa9642) - Exclude Kilo-managed agent worktrees from the containing project's index, so a large `.kilo/worktrees` checkout no longer doubles indexing time or shows duplicate results in Search Everywhere. Toggle "Index agent worktrees" in Kilo Settings → Advanced to opt back in. Opening a worktree as its own project still indexes it fully.
+- [#13800](https://github.com/Kilo-Org/kilocode/pull/13800) [`de5bdbe`](https://github.com/Kilo-Org/kilocode/commit/de5bdbe448f4b5baf5dfd29f54aa6b07acfa9642) - Exclude Kilo-managed agent worktrees from the containing project's index, so a large `.kilo/worktrees` checkout no longer doubles indexing time or shows duplicate results in Search Everywhere. Toggle "Index agent worktrees" in Semafour Settings → Advanced to opt back in. Opening a worktree as its own project still indexes it fully.
 
 - [#13766](https://github.com/Kilo-Org/kilocode/pull/13766) [`399a1a5`](https://github.com/Kilo-Org/kilocode/commit/399a1a5396ef3cff1c7d2ba41e18a6306ed00839) - Fork a session from the worktree editor: "Fork Session" now leads the session list's row menu, sits in the session's right-click and prompt menus, and appears on every prompt bubble's hover toolbar so you can branch off from any earlier message. The fork keeps the conversation so far, opens next to its source, and starts with a note telling the agent it is a fork and which directory it now works in.
 
@@ -264,7 +264,7 @@
 
 ### Minor Changes
 
-- [#13764](https://github.com/Kilo-Org/kilocode/pull/13764) [`17c915b`](https://github.com/Kilo-Org/kilocode/commit/17c915b2a0687dc1dfe977c45bfedf2dc92b5db0) - Cycle Kilo mode, model, and reasoning effort from the chat with Ctrl+1, Ctrl+2, and Ctrl+3, and reset the model override with Ctrl+0. The same Ctrl shortcuts apply on macOS, they show up in the prompt bar's tooltips, and they can be rebound from Settings > Keymap.
+- [#13764](https://github.com/Kilo-Org/kilocode/pull/13764) [`17c915b`](https://github.com/Kilo-Org/kilocode/commit/17c915b2a0687dc1dfe977c45bfedf2dc92b5db0) - Cycle Semafour mode, model, and reasoning effort from the chat with Ctrl+1, Ctrl+2, and Ctrl+3, and reset the model override with Ctrl+0. The same Ctrl shortcuts apply on macOS, they show up in the prompt bar's tooltips, and they can be rebound from Settings > Keymap.
 
 ## 7.6.0
 
@@ -276,7 +276,7 @@
 
 ### Minor Changes
 
-- [#13566](https://github.com/Kilo-Org/kilocode/pull/13566) [`024733e`](https://github.com/Kilo-Org/kilocode/commit/024733efef372d12c9bdfb92cbec954f756cd2a5) - Add an Integrations settings page with a GitHub toggle. Turning it off stops Kilo from running the GitHub CLI, hides pull request badges and pull request import, and can be done straight from the gh warning banner.
+- [#13566](https://github.com/Kilo-Org/kilocode/pull/13566) [`024733e`](https://github.com/Kilo-Org/kilocode/commit/024733efef372d12c9bdfb92cbec954f756cd2a5) - Add an Integrations settings page with a GitHub toggle. Turning it off stops Semafour from running the GitHub CLI, hides pull request badges and pull request import, and can be done straight from the gh warning banner.
 
 - [#13569](https://github.com/Kilo-Org/kilocode/pull/13569) [`57b0d10`](https://github.com/Kilo-Org/kilocode/commit/57b0d1085de54cd392938f6830f85c428a885f2a) - Render all Mermaid diagram types natively in JetBrains chat: class, state, ER, gantt, pie, user journey, quadrant, requirement, git graph, C4, mindmap, timeline, sankey, XY chart, block, packet, kanban, architecture, radar, and treemap now join flowcharts and sequence diagrams.
 
@@ -298,7 +298,7 @@
 
 ### Patch Changes
 
-- [#13678](https://github.com/Kilo-Org/kilocode/pull/13678) [`d64bec0`](https://github.com/Kilo-Org/kilocode/commit/d64bec02dd87ab6477d693d52d3b2776553a9936) - Keep Kilo's actions available while the IDE builds its indexes. Session history, worktree, and worktree session menu items no longer grey out during indexing, and their toolbar buttons no longer report that they are waiting for analysis.
+- [#13678](https://github.com/Kilo-Org/kilocode/pull/13678) [`d64bec0`](https://github.com/Kilo-Org/kilocode/commit/d64bec02dd87ab6477d693d52d3b2776553a9936) - Keep Semafour's actions available while the IDE builds its indexes. Session history, worktree, and worktree session menu items no longer grey out during indexing, and their toolbar buttons no longer report that they are waiting for analysis.
 
 - [#13635](https://github.com/Kilo-Org/kilocode/pull/13635) [`037ae10`](https://github.com/Kilo-Org/kilocode/commit/037ae10ccdb15cbabf1b79885e78aab6a610e821) - Fix Agent Manager and history list rows not resizing correctly when zooming the IDE interface in or out
 
@@ -310,17 +310,17 @@
 
 - [#13628](https://github.com/Kilo-Org/kilocode/pull/13628) [`af2c45a`](https://github.com/Kilo-Org/kilocode/commit/af2c45aa27bcdd1e7d5bdbf356dcd280378abd23) - Show pull request and gh authorization changes right after you come back to the IDE. Returning from a long absence now reloads immediately instead of waiting out the poll, refreshes that arrive during a burst of window or tab switches are no longer dropped, and closing a dialog no longer triggers a needless lookup. A newly created worktree also gets its pull request badge without waiting for the cache to expire.
 
-- [#13628](https://github.com/Kilo-Org/kilocode/pull/13628) [`fc8077b`](https://github.com/Kilo-Org/kilocode/commit/fc8077b5124bdeca092554db9963264bfa7b55ca) - Explain it when GitHub rate limits your token instead of silently dropping every pull request badge. Kilo now keeps the badges it already resolved, says why they stopped updating, slows its checks right down until the limit clears, and picks up on its own once it does.
+- [#13628](https://github.com/Kilo-Org/kilocode/pull/13628) [`fc8077b`](https://github.com/Kilo-Org/kilocode/commit/fc8077b5124bdeca092554db9963264bfa7b55ca) - Explain it when GitHub rate limits your token instead of silently dropping every pull request badge. Semafour now keeps the badges it already resolved, says why they stopped updating, slows its checks right down until the limit clears, and picks up on its own once it does.
 
 - [#13566](https://github.com/Kilo-Org/kilocode/pull/13566) [`3402f45`](https://github.com/Kilo-Org/kilocode/commit/3402f450264138eef252bf192107632ff716508e) - Refresh GitHub state as soon as you return to the IDE or switch between the Chat and Agents tabs, so authorizing gh or merging a pull request elsewhere shows up without waiting for the next poll.
 
 - [#13551](https://github.com/Kilo-Org/kilocode/pull/13551) [`1d6744e`](https://github.com/Kilo-Org/kilocode/commit/1d6744e63ef90463b118d7895a2fff3cbec162f7) - Make `http`/`https` URLs written inside backticks clickable in chat messages. Previously only bare URLs became links, so URLs rendered as inline code — release links, PR links, run URLs — were inert text.
 
-- [#13566](https://github.com/Kilo-Org/kilocode/pull/13566) [`a68cb8a`](https://github.com/Kilo-Org/kilocode/commit/a68cb8a03610e22895ae478304a8a1201c52778f) - Fix switching chat mode cancelling running tasks in every open worktree, and explain any task Kilo stops on its own
+- [#13566](https://github.com/Kilo-Org/kilocode/pull/13566) [`a68cb8a`](https://github.com/Kilo-Org/kilocode/commit/a68cb8a03610e22895ae478304a8a1201c52778f) - Fix switching chat mode cancelling running tasks in every open worktree, and explain any task Semafour stops on its own
 
   Picking a mode in the chat prompt used to be saved as the CLI's global default, which made the CLI reload and cancel every task that was running anywhere. The mode now stays in the IDE and travels with each message, and it is still remembered for new chats.
 
-  When Kilo does stop a task without being asked — a settings or provider change, for example — the chat now shows why, offers Retry, and raises a notification, instead of quietly reporting "Stopped".
+  When Semafour does stop a task without being asked — a settings or provider change, for example — the chat now shows why, offers Retry, and raises a notification, instead of quietly reporting "Stopped".
 
 - [#13633](https://github.com/Kilo-Org/kilocode/pull/13633) [`a4f8242`](https://github.com/Kilo-Org/kilocode/commit/a4f824224d019da68edb49cfe457f3bade751979) - Keep the rename popup's confirm button live instead of greying it out, and close without a rename when the name is unchanged or blank. Rename and delete popups now point up at the middle of the row they act on instead of covering it.
 
@@ -356,7 +356,7 @@
 
 - [#13520](https://github.com/Kilo-Org/kilocode/pull/13520) [`b3f68e0`](https://github.com/Kilo-Org/kilocode/commit/b3f68e0a2ac9ecf44e3dadfec54e41f6dd1f8273) - Show a warning when a provider ends a response without signalling that it finished, instead of quietly returning the session to idle. The warning also appears when reopening the session.
 
-- [#13521](https://github.com/Kilo-Org/kilocode/pull/13521) [`d96b1b3`](https://github.com/Kilo-Org/kilocode/commit/d96b1b3c3d2a5424b0d5a5ecb299731cd1e88a37) - Label the Kilo tool window's create buttons as + Session and + Worktree with a compact plus icon.
+- [#13521](https://github.com/Kilo-Org/kilocode/pull/13521) [`d96b1b3`](https://github.com/Kilo-Org/kilocode/commit/d96b1b3c3d2a5424b0d5a5ecb299731cd1e88a37) - Label the Semafour tool window's create buttons as + Session and + Worktree with a compact plus icon.
 
 - [#13440](https://github.com/Kilo-Org/kilocode/pull/13440) [`85e13e5`](https://github.com/Kilo-Org/kilocode/commit/85e13e59fcb7e9cdc4d717b50e9ef92ec3e54471) - Detect a worktree's pull request reliably in Agent Manager. Imported PRs — including PRs from forks — hand-made worktrees, and locally renamed branches now show their PR badge, the current repository row gets one too, and a freshly imported PR no longer waits out the status poll. Imported PR branches also get proper git tracking, so `git push` and `git pull` work in the new worktree.
 
@@ -408,7 +408,7 @@
 
 - [#13315](https://github.com/Kilo-Org/kilocode/pull/13315) [`082b38b`](https://github.com/Kilo-Org/kilocode/commit/082b38b2349aaf5b02f22dadf4bec2eff228c4c0) - Fix an IDE freeze when a chat session reports an error, which could hang the whole IDE while opening a worktree session editor.
 
-- [#13315](https://github.com/Kilo-Org/kilocode/pull/13315) [`34a7eb3`](https://github.com/Kilo-Org/kilocode/commit/34a7eb34a1b9ea945a613ef0df1685676dc479a6) - Use the Kilo running spinner across session progress indicators.
+- [#13315](https://github.com/Kilo-Org/kilocode/pull/13315) [`34a7eb3`](https://github.com/Kilo-Org/kilocode/commit/34a7eb34a1b9ea945a613ef0df1685676dc479a6) - Use the Semafour running spinner across session progress indicators.
 
 - [#13287](https://github.com/Kilo-Org/kilocode/pull/13287) [`09a08fb`](https://github.com/Kilo-Org/kilocode/commit/09a08fbac6073f67abd1360be329f29cdf1218b5) - Keep the slash-command completion popup open while typing quickly and reopen it if it closes mid-token, so fast typing filters commands instead of dismissing the list. Refresh the popup when server commands finish loading, and return focus to the prompt after picking a model, agent, or reasoning option from a slash command.
 
@@ -432,7 +432,7 @@
 
 - [#13315](https://github.com/Kilo-Org/kilocode/pull/13315) [`0161c3a`](https://github.com/Kilo-Org/kilocode/commit/0161c3a4baf1c710e96dc60de58927f629c940c5) - Improve JetBrains Agent Manager session status badges, selection persistence, and PR badge theming.
 
-- [#13217](https://github.com/Kilo-Org/kilocode/pull/13217) [`254acc9`](https://github.com/Kilo-Org/kilocode/commit/254acc92a4fdf782404e7fb807a0bbea5e7b3287) - Avoid showing JetBrains internal error popups when Kilo workspace data fails to load, and include HTTP status and response details in diagnostics.
+- [#13217](https://github.com/Kilo-Org/kilocode/pull/13217) [`254acc9`](https://github.com/Kilo-Org/kilocode/commit/254acc92a4fdf782404e7fb807a0bbea5e7b3287) - Avoid showing JetBrains internal error popups when Semafour workspace data fails to load, and include HTTP status and response details in diagnostics.
 
 - [#13315](https://github.com/Kilo-Org/kilocode/pull/13315) [`3e152b7`](https://github.com/Kilo-Org/kilocode/commit/3e152b75fd98ac2cf5f56ddbfa0b94b017b12e45) - Show the current branch first in Agent Manager and replace worktree activity tags with status icons. Running, question, and error activity now share one color between the row icon and the text badge, add an error state, and surface a notification dot on the Agents tab when a session needs attention.
 
@@ -542,7 +542,7 @@
 
 - [#13040](https://github.com/Kilo-Org/kilocode/pull/13040) [`48c4a4a`](https://github.com/Kilo-Org/kilocode/commit/48c4a4af227572011bf44c172ab0ae86e0c2a429) - Ignore negative pricing entries from model catalogs and handle unpriced models gracefully in UI price formatting.
 
-- [#12861](https://github.com/Kilo-Org/kilocode/pull/12861) [`a957cc3`](https://github.com/Kilo-Org/kilocode/commit/a957cc38031823ae923d5bf7cc406543e19124c6) - Avoid GitHub API rate-limit failures when the JetBrains plugin downloads the pinned Kilo CLI.
+- [#12861](https://github.com/Kilo-Org/kilocode/pull/12861) [`a957cc3`](https://github.com/Kilo-Org/kilocode/commit/a957cc38031823ae923d5bf7cc406543e19124c6) - Avoid GitHub API rate-limit failures when the JetBrains plugin downloads the pinned Semafour CLI.
 
 - [#12869](https://github.com/Kilo-Org/kilocode/pull/12869) [`cee2e36`](https://github.com/Kilo-Org/kilocode/commit/cee2e369f80ac5e8baa949ab7c789dcec831d886) - Fix dropping files into the JetBrains prompt so code files are added as readable file references and drops anywhere in the session panel feed the prompt attachments.
 
@@ -614,7 +614,7 @@
 
 ### Patch Changes
 
-- [#12191](https://github.com/Kilo-Org/kilocode/pull/12191) [`4d676b6`](https://github.com/Kilo-Org/kilocode/commit/4d676b68d2d0dd025c7d1a6684f49f3d03e9d12d) - Use Kilo Core for JetBrains @ file completion.
+- [#12191](https://github.com/Kilo-Org/kilocode/pull/12191) [`4d676b6`](https://github.com/Kilo-Org/kilocode/commit/4d676b68d2d0dd025c7d1a6684f49f3d03e9d12d) - Use Semafour Core for JetBrains @ file completion.
 
 ## 7.4.10
 
@@ -632,7 +632,7 @@
 
 ### Patch Changes
 
-- [#12215](https://github.com/Kilo-Org/kilocode/pull/12215) [`9f9509d`](https://github.com/Kilo-Org/kilocode/commit/9f9509dde55678c5f84b00741dca7f439237b467) - Scale the Kilo session UI with IntelliJ IDE zoom and presentation mode.
+- [#12215](https://github.com/Kilo-Org/kilocode/pull/12215) [`9f9509d`](https://github.com/Kilo-Org/kilocode/commit/9f9509dde55678c5f84b00741dca7f439237b467) - Scale the Semafour session UI with IntelliJ IDE zoom and presentation mode.
 
 - [#12188](https://github.com/Kilo-Org/kilocode/pull/12188) [`349f972`](https://github.com/Kilo-Org/kilocode/commit/349f9723f55662ee4598d933c09264aae575df98) - Migrate legacy v5 markdown to-do lists into populated JetBrains To-dos cards.
 
@@ -646,7 +646,7 @@
 
 - [#12180](https://github.com/Kilo-Org/kilocode/pull/12180) [`18e798e`](https://github.com/Kilo-Org/kilocode/commit/18e798e81cd3a6584c6820c9ac710ceac24d0a97) - Use the IntelliJ stop icon for the JetBrains prompt stop button.
 
-- [#12180](https://github.com/Kilo-Org/kilocode/pull/12180) [`de06c40`](https://github.com/Kilo-Org/kilocode/commit/de06c407f91fd8131c6c703386b1684e3cf0e363) - Show elapsed time in the JetBrains progress footer while Kilo is working.
+- [#12180](https://github.com/Kilo-Org/kilocode/pull/12180) [`de06c40`](https://github.com/Kilo-Org/kilocode/commit/de06c407f91fd8131c6c703386b1684e3cf0e363) - Show elapsed time in the JetBrains progress footer while Semafour is working.
 
 - [#12180](https://github.com/Kilo-Org/kilocode/pull/12180) [`b62105a`](https://github.com/Kilo-Org/kilocode/commit/b62105a6490b268526eca51ff139934f36d0d6b0) - Add a separator before the JetBrains prompt send button.
 
@@ -662,7 +662,7 @@
 
 - [#12059](https://github.com/Kilo-Org/kilocode/pull/12059) [`42a4966`](https://github.com/Kilo-Org/kilocode/commit/42a49667a946a2f4f22df44b82aa5c3ff11f9aee) - Return keyboard focus to the JetBrains prompt after clicking inline session dialog actions.
 
-- [#12105](https://github.com/Kilo-Org/kilocode/pull/12105) [`8ceeb0f`](https://github.com/Kilo-Org/kilocode/commit/8ceeb0fb990911f5dc4647f7f9d75b26f5ce0ec4) - Stop orphaned Kilo CLI processes when JetBrains IDEs close, including binaries that ignore graceful shutdown.
+- [#12105](https://github.com/Kilo-Org/kilocode/pull/12105) [`8ceeb0f`](https://github.com/Kilo-Org/kilocode/commit/8ceeb0fb990911f5dc4647f7f9d75b26f5ce0ec4) - Stop orphaned Semafour CLI processes when JetBrains IDEs close, including binaries that ignore graceful shutdown.
 
 - [#12059](https://github.com/Kilo-Org/kilocode/pull/12059) [`39cec20`](https://github.com/Kilo-Org/kilocode/commit/39cec2063572368462acd3347bbf588991f366e2) - Refresh the JetBrains prompt input chrome when switching IDE themes.
 
@@ -684,7 +684,7 @@
 
 ### Added
 
-- Added hosted Kilo Cloud sessions to Agent Manager. Cloud workspaces now share the same editor chrome as local and worktree sessions, including session rows, date groups, badges, busy spinners, and refresh from the row menu.
+- Added hosted Semafour Cloud sessions to Agent Manager. Cloud workspaces now share the same editor chrome as local and worktree sessions, including session rows, date groups, badges, busy spinners, and refresh from the row menu.
 - Cloud discovery now pages through every workspace for a repository, reports the canonical status vocabulary instead of showing healthy workspaces as unknown, and shows the hourly compute price in the workspace header.
 - Linked custom router entries to platform benchmarks.
 - Indexing now prunes ignored directories and bounds LanceDB index growth.
@@ -698,14 +698,14 @@
 - Established a session's event subscription before startup returns so early updates are not missed.
 - Compaction now runs at the configured threshold and stops compaction loops, and chunked compaction gets the normal output budget.
 - Scheduled tasks fire once across processes sharing a data directory.
-- Kept a reply that another Kilo process is still writing, and preserved the real exit code of a failed background job.
+- Kept a reply that another Semafour process is still writing, and preserved the real exit code of a failed background job.
 - Restricted browser and MCP OAuth URLs to HTTP(S), and scoped the MCP SSE probe to its own request and redirects.
 - Blocked compromised eMudhra certificates.
 - Preserved the parent user-agent when loading npm config.
 
 ### Changed
 
-- Bundled Kilo CLI pin updated to v7.8.22 (via v7.8.20).
+- Bundled Semafour CLI pin updated to v7.8.22 (via v7.8.20).
 - Updated commonmark to 0.30.1.
 
 ## [7.1.12] - 2026-10-22
@@ -714,7 +714,7 @@
 
 - Added project-scoped agent usage aggregation to the bundled CLI, backed by a pageable agent usage HTTP API.
 - Added custom auto routers with client models and local evals.
-- Added a session host registry and Kilo Cloud session adapter.
+- Added a session host registry and Semafour Cloud session adapter.
 - Agent Manager now fetches the base branch before creating new worktrees.
 
 ### Fixed
@@ -727,14 +727,14 @@
 
 ### Changed
 
-- Bumped the bundled Kilo CLI pin to v7.8.15 (via v7.8.14).
+- Bumped the bundled Semafour CLI pin to v7.8.15 (via v7.8.14).
 
 ## [7.1.11] - 2026-10-16
 
 ### Added
 
 - List remote agents for the mobile app.
-- Bundle Kilo CLI v7.8.13.
+- Bundle Semafour CLI v7.8.13.
 
 ### Fixed
 
@@ -760,7 +760,7 @@
 - Opt in to the Marketplace error handler.
 - Fork a remote session from a message in the CLI.
 - Let glob search an opt-in allowlist of ignored paths.
-- Bundle Kilo CLI v7.8.12.
+- Bundle Semafour CLI v7.8.12.
 
 ### Fixed
 
@@ -818,7 +818,7 @@
 
 ### Changed
 
-- Bundled Kilo CLI pin updated to v7.8.10.
+- Bundled Semafour CLI pin updated to v7.8.10.
 
 ## [7.1.10-rc.3] - 2026-10-13
 
@@ -836,7 +836,7 @@
 
 ### Changed
 
-- Bundled Kilo CLI pin remains v7.8.9.
+- Bundled Semafour CLI pin remains v7.8.9.
 
 ## [7.1.10-rc.2] - 2026-10-13
 
@@ -870,7 +870,7 @@
 
 ### Changed
 
-- Bumped the bundled Kilo CLI pin to v7.8.9.
+- Bumped the bundled Semafour CLI pin to v7.8.9.
 
 ## [7.1.9] - 2026-10-07
 
@@ -896,7 +896,7 @@
 
 - Renamed JetBrains workflows to commands.
 - Split agent guidance documentation into skills.
-- Bumped the bundled Kilo CLI pin to v7.8.8 (via v7.8.3 and v7.8.7 intermediate bumps).
+- Bumped the bundled Semafour CLI pin to v7.8.8 (via v7.8.3 and v7.8.7 intermediate bumps).
 
 ## [7.1.9-rc.2] - 2026-10-07
 
@@ -914,7 +914,7 @@
 
 ### Changed
 
-- Bump the bundled Kilo CLI pin from 7.8.1 to 7.8.8.
+- Bump the bundled Semafour CLI pin from 7.8.1 to 7.8.8.
 - Pin the Bun runtime and types to 1.4.2 for reproducible builds.
 
 ## [7.1.9-rc.1] - 2026-09-28
@@ -943,7 +943,7 @@
 
 ### Fixed
 
-- Avoid a crash when reloading or unloading the JetBrains plugin while editor history still references Kilo virtual files.
+- Avoid a crash when reloading or unloading the JetBrains plugin while editor history still references Semafour virtual files.
 - Keep model selection isolated to each session, including overlapping agent runs and cleanup.
 - Keep sub-agents that belong to an active chat during session cleanup.
 - Make background-agent and todo strip headers expand, collapse, and highlight consistently while keeping expanded agent links actionable.
@@ -975,7 +975,7 @@
 
 ### Fixed
 
-- Avoid a crash when reloading or unloading the JetBrains plugin while editor history still references Kilo virtual files.
+- Avoid a crash when reloading or unloading the JetBrains plugin while editor history still references Semafour virtual files.
 
 ### Changed
 
@@ -989,7 +989,7 @@
 - Fold and unfold large pasted text blocks directly from the prompt input and transcript.
 - Add a Marketplace page to JetBrains settings for browsing, installing, and removing marketplace agents, MCP servers, and skills without leaving the IDE.
 - Install Marketplace plugins from npm packages or from a git repository (for example `git:github.com/owner/repo@v1.2.3#subdir`).
-- Add Kilo Swarm support to JetBrains, including an Agent Behavior toggle, readable board tool cards, and a board viewer for session collaboration.
+- Add Semafour Swarm support to JetBrains, including an Agent Behavior toggle, readable board tool cards, and a board viewer for session collaboration.
 - Add a cleanup flow for leftover Agent Manager worktree folders, with size reporting, git-checkout warnings, and safe removal from JetBrains.
 - Add unique avatars for subagents and a background agents strip in the session header, with a collapsed preview so active work stays visible without expanding the panel.
 - Add copy path and reveal actions when nested worktree deletion is blocked.
@@ -1002,7 +1002,7 @@
 - Keep diagnostics edits responsive during large edits.
 - Warn when posting to the shared board targets a stopped subagent.
 - Keep a session goal running when a new message arrives instead of dropping it.
-- Only route auxiliary tasks to `kilo-auto/small` when using Kilo credentials.
+- Only route auxiliary tasks to `kilo-auto/small` when using Semafour credentials.
 - Stop looping on repeated malformed tool calls.
 - Keep Keep Awake active while a wakeup is scheduled, and clear it when a session with pending wakeups is deleted.
 - Speed up local recall searches and improve match ranking.
@@ -1038,7 +1038,7 @@
 ### Added
 
 - Install Marketplace plugins from a git repository, using a git source such as `git:github.com/owner/repo@v1.2.3#subdir` so a plugin can be distributed without publishing to npm.
-- Install plugins from the Kilo Marketplace via npm packages, alongside agents, skills, and MCP servers.
+- Install plugins from the Semafour Marketplace via npm packages, alongside agents, skills, and MCP servers.
 
 ### Fixed
 
@@ -1052,7 +1052,7 @@
 
 ### Changed
 
-- Update the bundled JetBrains CLI pin to Kilo CLI v7.7.9.
+- Update the bundled JetBrains CLI pin to Semafour CLI v7.7.9.
 
 ## [7.1.7-rc.4] - 2026-09-22
 
@@ -1074,7 +1074,7 @@
 
 ### Changed
 
-- Update the bundled JetBrains CLI pin to Kilo CLI v7.7.7, including the latest CLI runtime fixes from the OpenCode v1.18.20 merge.
+- Update the bundled JetBrains CLI pin to Semafour CLI v7.7.7, including the latest CLI runtime fixes from the OpenCode v1.18.20 merge.
 
 ## [7.1.7-rc.3] - 2026-09-21
 
@@ -1093,7 +1093,7 @@
 ### Added
 
 - Add a Marketplace page to JetBrains settings for browsing, installing, and removing marketplace agents, MCP servers, and skills without leaving the IDE.
-- Add Kilo Swarm support to JetBrains, including an Agent Behavior toggle, readable board tool cards, and a board viewer for session collaboration.
+- Add Semafour Swarm support to JetBrains, including an Agent Behavior toggle, readable board tool cards, and a board viewer for session collaboration.
 - Add a cleanup flow for leftover Agent Manager worktree folders, with size reporting, git-checkout warnings, and safe removal from JetBrains.
 
 ### Fixed
@@ -1118,7 +1118,7 @@
 - Keep diagnostics edits responsive during large edits.
 - Warn when posting to the shared board targets a stopped subagent.
 - Keep a session goal running when a new message arrives instead of dropping it.
-- Only route auxiliary tasks to `kilo-auto/small` when using Kilo credentials.
+- Only route auxiliary tasks to `kilo-auto/small` when using Semafour credentials.
 - Stop looping on repeated malformed tool calls.
 - Keep Keep Awake active while a wakeup is scheduled, and clear it when a session with pending wakeups is deleted.
 - Speed up local recall searches and improve match ranking.
@@ -1139,7 +1139,7 @@
 - Move a session to a worktree directly from the worktree editor.
 - Fork a session from the worktree editor.
 - Add Ctrl+1/2/3/0 shortcuts to cycle mode, model, and reasoning effort.
-- Exclude Kilo worktrees from IntelliJ project indexing.
+- Exclude Semafour worktrees from IntelliJ project indexing.
 - Run project run configurations delegated to Gradle inside a worktree.
 - Surface pull request and run status in the Agent Manager worktree list.
 
@@ -1180,7 +1180,7 @@
 - Move a session to a worktree directly from the worktree editor.
 - Fork a session from the worktree editor.
 - Add Ctrl+1/2/3/0 shortcuts to cycle mode, model, and reasoning effort.
-- Exclude Kilo worktrees from IntelliJ project indexing.
+- Exclude Semafour worktrees from IntelliJ project indexing.
 - Run project run configurations delegated to Gradle inside a worktree.
 - Surface pull request and run status in the Agent Manager worktree list.
 - Add task-scoped shared agent boards (Swarm), including agent identity, execution state, and preselected question answers.
@@ -1254,7 +1254,7 @@
 
 - Hover a worktree row to see its pull request details, review state, and CI status at a glance.
 - Copy a worktree's branch name, path, or pull request reference (title plus link) from the worktree row menu.
-- Guided onboarding on first launch, including a wizard that imports your Kilo v5 settings and providers.
+- Guided onboarding on first launch, including a wizard that imports your Semafour v5 settings and providers.
 
 ### Fixed
 
@@ -1283,7 +1283,7 @@
 - Stop showing a false "Git is not installed" warning for worktrees that were deleted from disk.
 - Linkify URLs inside inline code in chat.
 - Stop the mode picker from cancelling a running session.
-- Reduce Kilo Core CLI startup initialization work.
+- Reduce Semafour Core CLI startup initialization work.
 
 ### Changed
 
@@ -1303,7 +1303,7 @@
 - Stop showing a false "Git is not installed" warning for worktrees that were deleted from disk.
 - Linkify URLs inside inline code in chat.
 - Stop the mode picker from cancelling a running session.
-- Reduce Kilo Core CLI startup initialization work.
+- Reduce Semafour Core CLI startup initialization work.
 
 ### Changed
 
@@ -1320,14 +1320,14 @@
 
 - Retry failed JetBrains turns by continuing the original request, keeping transcript and workspace context intact instead of rolling back or appending a placeholder prompt.
 - Surface JetBrains failed-turn errors more clearly and hide the failure card as soon as Retry starts.
-- Prevent compaction recovery from replaying requests incorrectly, looping, or dropping pending tool progress in Kilo Core.
+- Prevent compaction recovery from replaying requests incorrectly, looping, or dropping pending tool progress in Semafour Core.
 - Avoid unsafe indexing and checkpoint cleanup behavior in filesystem roots, home directories, and protected parent directories.
-- Return real subagent results instead of empty task responses in Kilo Core.
+- Return real subagent results instead of empty task responses in Semafour Core.
 - Avoid duplicated plan-mode permission rule stacking.
 
 ### Changed
 
-- Update the pinned Kilo Core CLI used by JetBrains from 7.4.23 to 7.5.5.
+- Update the pinned Semafour Core CLI used by JetBrains from 7.4.23 to 7.5.5.
 - Improve JetBrains worktree session guidance with branch-aware copy and localized empty-state text.
 
 ## [7.1.1-rc.1] - 2026-08-27
@@ -1341,11 +1341,11 @@
 
 - Retry failed JetBrains turns by continuing the original request, keeping transcript and workspace context intact instead of rolling back or appending a placeholder prompt.
 - Surface JetBrains failed-turn errors more clearly and hide the failure card as soon as Retry starts.
-- Avoid duplicated plan-mode permission rule stacking in Kilo Core.
+- Avoid duplicated plan-mode permission rule stacking in Semafour Core.
 
 ### Changed
 
-- Update the pinned Kilo Core CLI used by JetBrains from 7.4.23 to 7.5.5.
+- Update the pinned Semafour Core CLI used by JetBrains from 7.4.23 to 7.5.5.
 - Improve JetBrains worktree session UX with branch-aware guidance and localized copy updates.
 
 ## [7.1.0] - 2026-08-26
@@ -1370,18 +1370,18 @@
 - Stabilize JetBrains chat and Agent Manager layout, including header popups, PR badges, row spacing, hover popups, overlays, worktree tab painting, and dialog branch pickers.
 - Preserve project-level snapshot disabling across restarts after choosing to disable snapshots from the slow-repo prompt.
 - Keep Ask and Plan modes read-only even when broad permission rules are configured.
-- Improve Kilo Core reliability for JetBrains by preserving output budgets, recovering reasoning-only incomplete responses, preserving Cerebras completion limits, restoring terminal startup, and removing duplicate skill catalog content from prompts.
+- Improve Semafour Core reliability for JetBrains by preserving output budgets, recovering reasoning-only incomplete responses, preserving Cerebras completion limits, restoring terminal startup, and removing duplicate skill catalog content from prompts.
 - Fix Agent Manager session creation on strict providers and OpenAI Responses API models by allowing nullable tool fields and explicit provider selection.
 - Clear empty failed assistant responses when sending a normal follow-up after a provider failure.
 
 ### Changed
 
-- Update the pinned Kilo Core CLI used by JetBrains from 7.4.22 to 7.4.23.
-- Improve Kilo Core cold and warm startup speed for JetBrains and other clients.
+- Update the pinned Semafour Core CLI used by JetBrains from 7.4.22 to 7.4.23.
+- Improve Semafour Core cold and warm startup speed for JetBrains and other clients.
 - Show failed-turn details in a clearer error card with the error kind and retry action, while manually stopped turns render as a muted "Stopped" note.
 - Put new, imported, or moved Agent Manager worktrees at the top of the list unless manually reordered.
 - Make Agent Manager rows visually quieter with regular-weight labels, subdued idle icons, and less stale deleted-session status.
-- Remove the experimental agent requirements and task-aware output pruning features from the bundled Kilo Core runtime.
+- Remove the experimental agent requirements and task-aware output pruning features from the bundled Semafour Core runtime.
 - Remove an unused JetBrains Compose compiler plugin dependency.
 
 ## [7.1.0-rc.5] - 2026-08-26
@@ -1421,7 +1421,7 @@
 
 ### Changed
 
-- Improve Kilo Core startup speed for JetBrains and other clients, especially default TUI launch and short-lived commands.
+- Improve Semafour Core startup speed for JetBrains and other clients, especially default TUI launch and short-lived commands.
 - Put new, imported, or moved JetBrains Agent Manager worktrees at the top of the list and keep that ordering across reloads unless manually reordered.
 - Make JetBrains Agent Manager rows visually quieter with regular-weight labels, subdued idle icons, and pruning of stale deleted-session status.
 
@@ -1445,7 +1445,7 @@
 
 ### Changed
 
-- Bump the pinned Kilo Core CLI used by JetBrains releases to 7.4.23.
+- Bump the pinned Semafour Core CLI used by JetBrains releases to 7.4.23.
 - Remove an unused JetBrains Compose compiler plugin dependency.
 
 ## [7.1.0-rc.2] - 2026-08-18
@@ -1465,7 +1465,7 @@
 - Preserve recovered non-idle session states, including pending permission, pending question, retry, and offline states.
 - Keep Ask and Plan modes read-only even when broad global permission rules are configured.
 - Preserve project-level snapshot disabling across restarts after choosing to disable snapshots from the slow-repo prompt.
-- Remove duplicated skill catalog content from Kilo Core prompts to reduce request size while preserving lazy skill loading.
+- Remove duplicated skill catalog content from Semafour Core prompts to reduce request size while preserving lazy skill loading.
 
 ### Changed
 
@@ -1498,8 +1498,8 @@
 
 ### Changed
 
-- Update the JetBrains plugin CLI pin to Kilo Core 7.4.22.
-- Refresh Kilo Core with upstream provider, model variant, and session runtime updates.
+- Update the JetBrains plugin CLI pin to Semafour Core 7.4.22.
+- Refresh Semafour Core with upstream provider, model variant, and session runtime updates.
 
 ## [7.0.15] - 2026-08-10
 
@@ -1520,28 +1520,28 @@
 ### Fixed
 
 - Improve slash command matching in the JetBrains plugin so typed commands resolve more reliably.
-- Avoid startup crashes when the Kilo CLI database is temporarily locked by another process.
+- Avoid startup crashes when the Semafour CLI database is temporarily locked by another process.
 
 ## [7.0.13] - 2026-08-05
 
 ### Added
 
-- Show the pinned Kilo Core version and whether JetBrains is using a downloaded or bundled CLI build.
+- Show the pinned Semafour Core version and whether JetBrains is using a downloaded or bundled CLI build.
 
 ### Fixed
 
-- Avoid GitHub checksum API rate limits when JetBrains verifies downloaded Kilo Core CLI assets.
-- Add dropped files as JetBrains file references so attachments are available to Kilo reliably.
-- Stop eager Kilo Core file watchers when running from JetBrains to reduce unnecessary background work.
+- Avoid GitHub checksum API rate limits when JetBrains verifies downloaded Semafour Core CLI assets.
+- Add dropped files as JetBrains file references so attachments are available to Semafour reliably.
+- Stop eager Semafour Core file watchers when running from JetBrains to reduce unnecessary background work.
 - Improve JetBrains session diff rendering, including full-file editor diffs, multi-hunk diffs, fallback handling, gutter line numbers, and session-scoped diff paths.
-- Speed up local recall searches in Kilo Core.
+- Speed up local recall searches in Semafour Core.
 - Omit persona details from generated session names.
 - Make invalid tool-argument errors clearer and more actionable to the model.
 - Handle SQLite lock errors more gracefully.
 
 ### Changed
 
-- Bump the JetBrains CLI pin to Kilo CLI v7.4.20.
+- Bump the JetBrains CLI pin to Semafour CLI v7.4.20.
 - Include upstream OpenCode updates through v1.17.13.
 - Adopt upstream reasoning variant metadata from OpenCode v1.18.11.
 
@@ -1549,30 +1549,30 @@
 
 ### Added
 
-- Show the pinned Kilo Core version and whether JetBrains is using a downloaded or bundled CLI build.
-- Add JetBrains developer tooling for pinning, unpinning, and updating the bundled Kilo Core CLI used by the plugin.
-- Support resuming Claude and Codex sessions through the bundled Kilo Core runtime.
+- Show the pinned Semafour Core version and whether JetBrains is using a downloaded or bundled CLI build.
+- Add JetBrains developer tooling for pinning, unpinning, and updating the bundled Semafour Core CLI used by the plugin.
+- Support resuming Claude and Codex sessions through the bundled Semafour Core runtime.
 - Add remote CLI file delivery support for attachment flows.
 
 ### Fixed
 
-- Avoid GitHub checksum API rate limits when JetBrains verifies downloaded Kilo Core CLI assets.
-- Add dropped files as JetBrains file references so attachments are available to Kilo reliably.
-- Stop eager Kilo Core file watchers when running from JetBrains to reduce unnecessary background work.
+- Avoid GitHub checksum API rate limits when JetBrains verifies downloaded Semafour Core CLI assets.
+- Add dropped files as JetBrains file references so attachments are available to Semafour reliably.
+- Stop eager Semafour Core file watchers when running from JetBrains to reduce unnecessary background work.
 - Improve JetBrains session diff rendering, including full-file editor diffs, multi-hunk diffs, fallback handling, gutter line numbers, and session-scoped diff paths.
-- Preserve configured subagent routing in Kilo Core.
+- Preserve configured subagent routing in Semafour Core.
 - Defer threshold compaction during active tool loops so long-running sessions do not compact at unsafe points.
-- Speed up local recall searches in Kilo Core.
+- Speed up local recall searches in Semafour Core.
 - Stop inline skill-shell documentation examples from triggering permission prompts.
 - Omit persona details from generated session names.
-- Skip Kilo Core startup work for informational commands.
+- Skip Semafour Core startup work for informational commands.
 - Make invalid tool-argument errors clearer and more actionable to the model.
-- Allow explicit external markdown sources in Kilo Core.
+- Allow explicit external markdown sources in Semafour Core.
 - Handle SQLite lock errors more gracefully.
 
 ### Changed
 
-- Bump the JetBrains CLI pin to Kilo CLI v7.4.20.
+- Bump the JetBrains CLI pin to Semafour CLI v7.4.20.
 - Include upstream OpenCode updates through v1.17.13.
 - Adopt upstream reasoning variant metadata from OpenCode v1.18.11.
 
@@ -1580,7 +1580,7 @@
 
 ### Added
 
-- Support sending another JetBrains prompt while a session is still running. Queued prompts now appear in the conversation and can be removed before Kilo starts processing them.
+- Support sending another JetBrains prompt while a session is still running. Queued prompts now appear in the conversation and can be removed before Semafour starts processing them.
 - Show verbatim skill commands and the skill name in JetBrains permission prompts so approvals are easier to review.
 - Add improved session changes and diff review, including branch changes in the session header, richer diff navigation, and full-context file diffs.
 - Support executing commands from skill context with batch approval.
@@ -1598,11 +1598,11 @@
 - Keep session reverts atomic and make snapshot diffs more resilient on Windows.
 - Surface provider stream error details more clearly and keep retry handling consistent for rate limits and response stream failures.
 - Handle missing nested config unsets and remove unset config keys from layered config files.
-- Reduce CLI startup time by deferring Kilo module loading and telemetry work.
+- Reduce CLI startup time by deferring Semafour module loading and telemetry work.
 
 ### Changed
 
-- Bump the JetBrains CLI pin to Kilo CLI v7.4.17.
+- Bump the JetBrains CLI pin to Semafour CLI v7.4.17.
 - Include upstream OpenCode updates through v1.17.9.
 
 ## [7.0.12-rc.4] - 2026-08-01
@@ -1620,7 +1620,7 @@
 ### Added
 
 - feat(agent-manager): add embedded side-panel terminal destination by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12598
-- feat(opencode): route websearch Exa through Kilo proxy by @IamCoder18 in https://github.com/Kilo-Org/kilocode/pull/12470
+- feat(opencode): route websearch Exa through Semafour proxy by @IamCoder18 in https://github.com/Kilo-Org/kilocode/pull/12470
 - feat(agent-manager): reveal jump shortcut badges while modifier is held by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12631
 - feat(vscode): add prompt navigator rail to chat transcript by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12632
 - feat(agent-manager): support multiple side-panel terminals by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12633
@@ -1664,7 +1664,7 @@
 - fix(vscode): persist MCP server toggle state by @Hardik180704 in https://github.com/Kilo-Org/kilocode/pull/12624
 - fix(vscode): improve long-session prompt navigation by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12656
 - fix(cli): remove unset config keys from every layered config file by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12687
-- fix(cli): reduce startup time by deferring Kilo module loading and telemetry work by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12682
+- fix(cli): reduce startup time by deferring Semafour module loading and telemetry work by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12682
 - fix(agent-manager): make Cmd+/ terminal toggle reliable and sidebar-safe by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12691
 - fix(vscode): list past chats across the worktree family by @marius-kilocode in https://github.com/Kilo-Org/kilocode/pull/12692
 - fix(core): include underlying reason in ripgrep execution failures by @chrarnoldus in https://github.com/Kilo-Org/kilocode/pull/12684
@@ -1710,7 +1710,7 @@
 - docs(kilo-docs): document kilo cloud CLI usage and skill archives by @emilieschario in https://github.com/Kilo-Org/kilocode/pull/12664
 - docs: add NVIDIA to BYOK providers by @lambertjosh in https://github.com/Kilo-Org/kilocode/pull/12576
 - chore(jetbrains): bump CLI pin to v7.4.17 by @kilo-maintainer[bot] in https://github.com/Kilo-Org/kilocode/pull/12644
-- docs(cli): deprecate Kilo Console by @lambertjosh in https://github.com/Kilo-Org/kilocode/pull/12701
+- docs(cli): deprecate Semafour Console by @lambertjosh in https://github.com/Kilo-Org/kilocode/pull/12701
 
 ## [7.0.12-rc.2] - 2026-07-27
 
@@ -1726,24 +1726,24 @@
 
 ### Added
 
-- Support sending another JetBrains prompt while a session is still running. Queued prompts now appear in the conversation and can be removed before Kilo starts processing them.
+- Support sending another JetBrains prompt while a session is still running. Queued prompts now appear in the conversation and can be removed before Semafour starts processing them.
 
 ## [7.0.11] - 2026-07-27
 
 ### Added
 
-- Add a signed GitHub-hosted bundled JetBrains plugin build that includes the Kilo CLI for offline or restricted-network installs.
+- Add a signed GitHub-hosted bundled JetBrains plugin build that includes the Semafour CLI for offline or restricted-network installs.
 
 ### Fixed
 
 - Load global skills reliably from JetBrains projects that are not inside a Git repository.
 - Support adaptive thinking for Claude Opus and Sonnet 5+ model identifiers across Anthropic, AI Gateway, and Bedrock providers.
-- Flush pending cloud session updates when the Kilo Core runtime shuts down, reducing cases where the final assistant message is missing when a session is reopened elsewhere.
+- Flush pending cloud session updates when the Semafour Core runtime shuts down, reducing cases where the final assistant message is missing when a session is reopened elsewhere.
 - Prune stale bundled CLI versions after upgrading bundled JetBrains installs.
 
 ### Changed
 
-- Update the JetBrains CLI pin from Kilo Core 7.4.15 to 7.4.16.
+- Update the JetBrains CLI pin from Semafour Core 7.4.15 to 7.4.16.
 
 ## [7.0.10] - 2026-07-24
 
@@ -1756,11 +1756,11 @@
 ### Fixed
 
 - Improve session performance for large transcripts.
-- Fix Kilo Core failures caused by strict OpenAI-compatible compaction requests, unexpected provider finish reasons, read-only database files at startup, AWS profile credentials, and config files being rewritten just by reading them.
+- Fix Semafour Core failures caused by strict OpenAI-compatible compaction requests, unexpected provider finish reasons, read-only database files at startup, AWS profile credentials, and config files being rewritten just by reading them.
 
 ### Changed
 
-- Update the JetBrains CLI pin from Kilo Core 7.4.13 to 7.4.15.
+- Update the JetBrains CLI pin from Semafour Core 7.4.13 to 7.4.15.
 
 ## [7.0.9] - 2026-07-21
 
@@ -1770,11 +1770,11 @@
 
 ### Fixed
 
-- Restore importing cloud-only session history by updating the JetBrains CLI pin to Kilo Core 7.4.13.
+- Restore importing cloud-only session history by updating the JetBrains CLI pin to Semafour Core 7.4.13.
 
 ### Changed
 
-- Improve xAI prompt cache usage in Kilo Core for better cache hit rates.
+- Improve xAI prompt cache usage in Semafour Core for better cache hit rates.
 
 ## [7.0.8] - 2026-07-21
 
@@ -1783,13 +1783,13 @@
 - Add settings for context controls, including context mentions and ignore patterns.
 - Add settings for skills, including editing local skills and viewing remote skills as read-only.
 - Add auto-approve settings for permission rules, with filters and wildcard labels.
-- Use Kilo Core for JetBrains file mention search so @-mentions match CLI indexing behavior.
+- Use Semafour Core for JetBrains file mention search so @-mentions match CLI indexing behavior.
 
 ### Fixed
 
 ### Changed
 
-- Update the JetBrains CLI pin from Kilo Core 7.4.5 to 7.4.11.
+- Update the JetBrains CLI pin from Semafour Core 7.4.5 to 7.4.11.
 
 ## [7.0.7] - 2026-07-15
 
@@ -1805,7 +1805,7 @@
 
 ### Changed
 
-- Keep the JetBrains plugin pinned to Kilo Core 7.4.5 for this release.
+- Keep the JetBrains plugin pinned to Semafour Core 7.4.5 for this release.
 
 ## [7.0.6] - 2026-07-14
 
@@ -1829,13 +1829,13 @@
 
 ### Changed
 
-- Keep the JetBrains plugin pinned to Kilo Core 7.4.5 for this release.
+- Keep the JetBrains plugin pinned to Semafour Core 7.4.5 for this release.
 
 ## [7.0.4] - 2026-07-10
 
 ### Fixed
 
-- Stop orphaned Kilo Core processes on Windows so closing the IDE no longer leaves a lingering `kilo serve` process or blocks the next IDE launch.
+- Stop orphaned Semafour Core processes on Windows so closing the IDE no longer leaves a lingering `kilo serve` process or blocks the next IDE launch.
 - Improve JetBrains CLI shutdown ordering so app close kills the process tree before closing streams, preventing Windows shutdown deadlocks.
 
 ## [7.0.3] - 2026-07-10
@@ -1844,18 +1844,18 @@
 
 - Add rollback redo controls in JetBrains sessions so reverted changes can be restored from the chat UI.
 - Add inline revert progress in JetBrains sessions, including localized status text and safer cancellation handling.
-- Add Kilo Core support for localized commit-message generation, AI image generation, large bash-output pruning, and improved model-usage display.
+- Add Semafour Core support for localized commit-message generation, AI image generation, large bash-output pruning, and improved model-usage display.
 
 ### Fixed
 
-- Harden Kilo Core startup and shutdown so startup failures show clearer diagnostics, app close stops the CLI process, and lingering child processes are cleaned up more reliably.
+- Harden Semafour Core startup and shutdown so startup failures show clearer diagnostics, app close stops the CLI process, and lingering child processes are cleaned up more reliably.
 - Fix workspace reload recovery so stale reload state no longer disrupts the session connection.
 - Fix JetBrains rollback and revert flows so prompt focus, scroll state, diff order, and turn state are preserved more reliably.
-- Fix Kilo Core Bedrock SSO credential resolution and commit-message error handling when no changes are available.
+- Fix Semafour Core Bedrock SSO credential resolution and commit-message error handling when no changes are available.
 
 ### Changed
 
-- Update the JetBrains plugin to download Kilo Core 7.4.5.
+- Update the JetBrains plugin to download Semafour Core 7.4.5.
 
 ## [Unreleased]
 
@@ -1863,9 +1863,9 @@
 
 ### Added
 
-- First GA release of the native Kilo extension for JetBrains IDEs.
-- Download the pinned Kilo Core release at runtime instead of bundling CLI binaries, keeping the JetBrains plugin smaller while verifying downloaded archives before use.
-- Show Kilo Core runtime details from the JetBrains plugin so users can see which Core release is active.
+- First GA release of the native Semafour extension for JetBrains IDEs.
+- Download the pinned Semafour Core release at runtime instead of bundling CLI binaries, keeping the JetBrains plugin smaller while verifying downloaded archives before use.
+- Show Semafour Core runtime details from the JetBrains plugin so users can see which Core release is active.
 
 ### Fixed
 
@@ -1881,7 +1881,7 @@
 ### Added
 
 - Show compact previews for collapsed reasoning blocks so long assistant reasoning stays readable without taking over the transcript.
-- Add clearer Kilo Core runtime information and diagnostics for release download failures.
+- Add clearer Semafour Core runtime information and diagnostics for release download failures.
 
 ### Fixed
 
@@ -1891,20 +1891,20 @@
 
 ### Changed
 
-- Download the required Kilo Core release at runtime and prune stale cached runtime binaries automatically.
+- Download the required Semafour Core release at runtime and prune stale cached runtime binaries automatically.
 - Polish JetBrains chat spacing, prompt input behavior, question/todo layout, history scrolling, code block padding, and session background colors.
 
 ## [7.0.2-rc.1] - 2026-07-07
 
 ### Added
 
-- Download the pinned Kilo Core release at runtime instead of bundling every CLI binary in the JetBrains plugin, keeping the Marketplace package smaller while still verifying downloaded artifacts.
+- Download the pinned Semafour Core release at runtime instead of bundling every CLI binary in the JetBrains plugin, keeping the Marketplace package smaller while still verifying downloaded artifacts.
 
 ## [7.0.1] - 2026-07-06
 
 ### Added
 
-- Launch the first public Kilo JetBrains release with native JetBrains sessions and remote development support.
+- Launch the first public Semafour JetBrains release with native JetBrains sessions and remote development support.
 
 ## [7.0.1-rc.15] - 2026-07-06
 
@@ -1918,7 +1918,7 @@
 
 - Add Agent Behavior settings
 - Show richer model picker details, including routed model information and clearer model badges.
-- Show Kilo Pass usage, bonus credits, renewal dates, and top-up actions in the JetBrains user profile.
+- Show Semafour Pass usage, bonus credits, renewal dates, and top-up actions in the JetBrains user profile.
 
 ### Fixed
 
@@ -2019,7 +2019,7 @@
 
 ### Changed
 
-- Update the bundled Kilo CLI runtime with the latest fixes used by the JetBrains plugin.
+- Update the bundled Semafour CLI runtime with the latest fixes used by the JetBrains plugin.
 
 ## [7.0.1-rc.7] - 2026-06-04
 
@@ -2049,9 +2049,9 @@
 
 ### Added
 
-- Initial JetBrains plugin release with a native Kilo Code tool window.
+- Initial JetBrains plugin release with a native Semafour tool window.
 - Chat sessions with streamed responses, tool output, reasoning, markdown, todos, and plan follow-ups.
 - Native mode/model selection, account sign-in, permission prompts, and question flows.
 - Local and cloud session history with search, reopen, rename/delete local sessions, and repository filtering.
 - Migration wizard for legacy JetBrains plugin settings and chat history.
-- Bundled Kilo CLI runtime for macOS, Linux, and Windows.
+- Bundled Semafour CLI runtime for macOS, Linux, and Windows.

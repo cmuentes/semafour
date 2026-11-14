@@ -27,14 +27,14 @@ export namespace ClaudeMigration {
   const SAFE_NAME = /^[A-Za-z0-9][A-Za-z0-9._-]*$/
   const log = Log.create({ service: "kilocode.claude-migration" })
   const REASONS: Record<string, string> = {
-    "destination-exists": "Kilo already has a destination with that name; existing content was kept.",
-    "skill-name-conflict": "Kilo already has a skill with that name; existing content was kept.",
-    "mcp-name-conflict": "Kilo already has an MCP server with that name; existing configuration was kept.",
+    "destination-exists": "Semafour already has a destination with that name; existing content was kept.",
+    "skill-name-conflict": "Semafour already has a skill with that name; existing content was kept.",
+    "mcp-name-conflict": "Semafour already has an MCP server with that name; existing configuration was kept.",
     "unsupported-markdown": "it contains dynamic content outside the supported migration subset.",
     "skill-frontmatter-unsupported": "it uses frontmatter fields outside the supported migration subset.",
-    "skill-frontmatter-invalid": "its frontmatter could not be parsed, even with Kilo's compatibility fallback.",
+    "skill-frontmatter-invalid": "its frontmatter could not be parsed, even with Semafour's compatibility fallback.",
     "skill-bundle-unsupported": "it contains additional files that this migration does not copy.",
-    "destination-write-failed": "Kilo could not write the destination.",
+    "destination-write-failed": "Semafour could not write the destination.",
     "destination-unsafe": "the destination path was not safe to write.",
     "source-changed": "the Claude source changed during migration, so it was not copied.",
     "source-unreadable": "the Claude source could not be read.",
@@ -54,9 +54,9 @@ export namespace ClaudeMigration {
     "mcp-transport-unsupported": "the MCP transport is not supported by this migration.",
     "mcp-url-invalid": "the MCP URL was not a valid HTTP(S) URL.",
     "mcp-headers-invalid": "the MCP headers were not static strings.",
-    "existing-config-unreadable": "an existing Kilo configuration could not be read safely.",
-    "existing-mcp-invalid": "an existing Kilo MCP configuration was invalid.",
-    "existing-skills-unreadable": "an existing Kilo skill could not be read safely.",
+    "existing-config-unreadable": "an existing Semafour configuration could not be read safely.",
+    "existing-mcp-invalid": "an existing Semafour MCP configuration was invalid.",
+    "existing-skills-unreadable": "an existing Semafour skill could not be read safely.",
     "skill-name-invalid": "the skill name was invalid.",
     "skill-description-invalid": "the skill description was not a string.",
     "migration-failed": "the migration stopped before this item could be completed.",
@@ -171,7 +171,7 @@ export namespace ClaudeMigration {
       id: NOTIFICATION_ID,
       title: "Claude Code configuration migration",
       message:
-        `${outcome} global Claude Code configuration into Kilo ` +
+        `${outcome} global Claude Code configuration into Semafour ` +
         `(imported ${imported}, skipped ${skipped}, failed ${failed}). ` +
         (details.length > 0 ? `\n${details.map((item) => `- ${item}`).join("\n")}` : "") +
         (omitted > 0
@@ -181,7 +181,7 @@ export namespace ClaudeMigration {
           ? `\nReview the original Claude files and receipt, then merge skipped instructions or skills manually and resolve failed items; this migration runs once.\n`
           : "") +
         `Original Claude files were left unchanged. ` +
-        `Imported MCP servers are disabled until you enable them. Future global changes belong in Kilo; keep the Claude files if you still use Claude Code. ` +
+        `Imported MCP servers are disabled until you enable them. Future global changes belong in Semafour; keep the Claude files if you still use Claude Code. ` +
         `Details: ${file}`,
       action: { actionText: "Learn more", actionURL: DOCS_URL },
       showIn: ["cli", "extension"],
@@ -198,7 +198,7 @@ export namespace ClaudeMigration {
           : `MCP server "${name}"`
     const text =
       item.category === "instructions" && item.reason === "destination-exists"
-        ? `Kilo already has ${path.basename(item.destination ?? "AGENTS.md")}; existing instructions were kept.`
+        ? `Semafour already has ${path.basename(item.destination ?? "AGENTS.md")}; existing instructions were kept.`
         : item.reason
           ? (REASONS[item.reason] ?? `migration skipped it for safety (${item.reason}).`)
           : "not imported."

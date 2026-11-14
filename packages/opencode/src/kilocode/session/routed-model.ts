@@ -19,7 +19,7 @@ export namespace KiloRoutedModel {
   }
 
   // ADR 0005: a client pick runs on the owner's own provider, so the served
-  // model identity cannot come from the Kilo gateway response. Record the
+  // model identity cannot come from the Semafour gateway response. Record the
   // provider and keep a response-reported model id when the provider sent one.
   export function writeRoute(meta: ProviderMetadata | undefined, route: { providerID: string; modelID: string }) {
     const existing = meta?.[ns]?.[key]

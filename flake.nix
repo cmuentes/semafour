@@ -1,5 +1,5 @@
 {
-  description = "Kilo development flake";
+  description = "Semafour development flake";
 
   inputs = {
     # kilocode_change - pin 26.05 security staging for patched Node/Brotli and x86_64-darwin support
@@ -213,7 +213,7 @@
         default =
           final: _prev:
           let
-            # kilocode_change start - match the Kilo package and its pinned dependency builder
+            # kilocode_change start - match the Semafour package and its pinned dependency builder
             bun = final.callPackage ./nix/bun.nix { };
             node_modules = final.callPackage ./nix/node_modules.nix {
               inherit bun rev;

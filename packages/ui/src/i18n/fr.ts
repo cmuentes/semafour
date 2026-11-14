@@ -75,7 +75,7 @@ export const dict = {
 
   "dialog.usageExceeded.freeTier.title": "Limite gratuite atteinte",
   "dialog.usageExceeded.freeTier.description":
-    "Abonnez-vous à Kilo Go pour 10 $ US par mois et accédez de manière fiable aux meilleurs modèles à code source ouvert.", // kilocode_change
+    "Abonnez-vous à Semafour Go pour 10 $ US par mois et accédez de manière fiable aux meilleurs modèles à code source ouvert.", // kilocode_change
   "dialog.usageExceeded.freeTier.actionLabel": "S'abonner",
   "dialog.usageExceeded.accountRateLimit.title": "Limite Go atteinte",
   "dialog.usageExceeded.accountRateLimit.description":
@@ -222,7 +222,7 @@ export const dict = {
   "ui.message.duration.seconds": "{{count}} s",
   "ui.message.duration.minutesSeconds": "{{minutes}} min {{seconds}} s",
 
-  // kilocode_change start - Kilo UI compatibility
+  // kilocode_change start - Semafour UI compatibility
   "ui.mermaid.copyPng": "Copier le PNG",
   "ui.mermaid.copySource": "Copier la source Mermaid",
   "ui.mermaid.copySvg": "Copier le SVG",

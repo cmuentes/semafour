@@ -97,7 +97,7 @@ export const Model = Schema.Struct({
       output: Schema.Array(Schema.Literals(["text", "audio", "image", "video", "pdf"])),
     }),
   ),
-  // kilocode_change start - preserve Kilo catalog metadata
+  // kilocode_change start - preserve Semafour catalog metadata
   recommendedIndex: Schema.optional(Schema.Finite),
   prompt: Schema.optional(Schema.String),
   isFree: Schema.optional(Schema.Boolean),

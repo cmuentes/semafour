@@ -44,7 +44,7 @@ export { ToolContent, ToolFileContent, ToolTextContent }
 
 export { StoredToolContent } from "@opencode-ai/schema/llm" // kilocode_change - shared with the durable event schema
 
-// kilocode_change start - Kilo keeps a tolerant tool-result value union
+// kilocode_change start - Semafour keeps a tolerant tool-result value union
 const toolResultValueSchema = Schema.Union([
   Schema.Struct({ type: Schema.Literal("json"), value: Schema.Unknown }),
   Schema.Struct({ type: Schema.Literal("text"), value: Schema.Unknown }),

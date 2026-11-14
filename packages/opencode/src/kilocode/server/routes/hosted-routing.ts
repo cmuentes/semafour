@@ -73,7 +73,7 @@ export function attachmentID(url: URL, headers: Headers) {
 /**
  * The native allowlist always wins over local classification. Everything else
  * that the shared router already treats as local stays local, so a client that
- * configures an attachment selector globally keeps its sidebar and Kilo routes
+ * configures an attachment selector globally keeps its sidebar and Semafour routes
  * working. Hosting control routes are local by construction.
  */
 export function isLocalRoute(method: string, path: string) {
@@ -293,8 +293,8 @@ const MESSAGE: Record<Failure | FailureCode, string> = {
   unavailable: "Hosted session is unavailable",
   too_large: "Native request body is too large",
   invalid_request: "Native request is not supported for this attachment",
-  auth_unavailable: "Kilo Cloud credentials could not be read",
-  signed_out: "Kilo Cloud credentials are unavailable",
+  auth_unavailable: "Semafour Cloud credentials could not be read",
+  signed_out: "Semafour Cloud credentials are unavailable",
   unauthorized: "Hosted session rejected these credentials",
   payment_required: "Hosted session requires additional balance",
   not_found: "Hosted session was not found",
@@ -312,9 +312,9 @@ const MESSAGE: Record<Failure | FailureCode, string> = {
   sync_unavailable: "Session sync is unavailable",
   sync_failed: "Sessions did not finish syncing",
   organization_mismatch: "Selected sessions belong to different accounts",
-  insufficient_balance: "Kilo Cloud requires additional balance",
-  continuation_incomplete: "Kilo Cloud created part of this workspace",
-  creation_in_progress: "Kilo Cloud is still completing this workspace",
+  insufficient_balance: "Semafour Cloud requires additional balance",
+  continuation_incomplete: "Semafour Cloud created part of this workspace",
+  creation_in_progress: "Semafour Cloud is still completing this workspace",
   operation_key_reuse_mismatch: "This operation key was used for a different request",
 }
 

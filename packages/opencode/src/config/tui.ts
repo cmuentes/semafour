@@ -42,7 +42,7 @@ export type HostMetadata = {
 
 export interface Interface {
   readonly get: () => Effect.Effect<Resolved>
-  readonly info: () => Effect.Effect<Info> // kilocode_change - editable config for Kilo console
+  readonly info: () => Effect.Effect<Info> // kilocode_change - editable config for Semafour console
   readonly pluginOrigins: () => Effect.Effect<ConfigPlugin.Origin[]>
   readonly waitForDependencies: () => Effect.Effect<void>
 }
@@ -185,7 +185,7 @@ const loadState = Effect.fn("TuiConfig.loadState")(function* (ctx: { directory: 
       acc.plugin_origins = plugins
     })
 
-  // kilocode_change start - discover canonical and legacy Kilo config directories
+  // kilocode_change start - discover canonical and legacy Semafour config directories
   // Every config dir we may read from: global config, .kilo and legacy .kilocode
   // folders between cwd and home, and KILO_CONFIG_DIR.
   // kilocode_change end
@@ -216,7 +216,7 @@ const loadState = Effect.fn("TuiConfig.loadState")(function* (ctx: { directory: 
     yield* mergeFile(acc, file, false, { root: ctx.directory, source: file }) // kilocode_change - untrusted, {file:} confined to project
   }
 
-  // kilocode_change start - load tui.json from supported Kilo config directories
+  // kilocode_change start - load tui.json from supported Semafour config directories
   // 4. `.kilo` and legacy `.kilocode` directories (and KILO_CONFIG_DIR)
   // discovered while walking up the tree. Also returned below so callers can
   // install plugin dependencies from each location.
@@ -243,9 +243,9 @@ const loadState = Effect.fn("TuiConfig.loadState")(function* (ctx: { directory: 
       terminalSuspend: process.platform !== "win32",
     },
   )
-  if (acc.result.attention?.sound_pack === undefined) result.attention.sound_pack = "kilo.default" // kilocode_change - preserve Kilo's default sound pack
+  if (acc.result.attention?.sound_pack === undefined) result.attention.sound_pack = "kilo.default" // kilocode_change - preserve Semafour's default sound pack
 
-  // kilocode_change start - inject Kilo default plugins to keep TUI aligned with server config
+  // kilocode_change start - inject Semafour default plugins to keep TUI aligned with server config
   const defaults = KilocodeDefaultPlugins.apply(
     { plugin: result.plugin ? [...result.plugin] : undefined, plugin_origins: acc.plugin_origins },
     { disabled: Flag.KILO_DISABLE_DEFAULT_PLUGINS },
@@ -255,7 +255,7 @@ const loadState = Effect.fn("TuiConfig.loadState")(function* (ctx: { directory: 
 
   return {
     config,
-    info: { ...acc.result, plugin: defaults.plugin }, // kilocode_change - include applied Kilo defaults
+    info: { ...acc.result, plugin: defaults.plugin }, // kilocode_change - include applied Semafour defaults
     pluginOrigins: defaults.plugin_origins ?? [], // kilocode_change - exclude builtins from dependency installation
     dirs: result.plugin?.length ? dirs : [],
   }

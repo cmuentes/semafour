@@ -558,9 +558,9 @@ class PromptPanelTest : BasePlatformTestCase() {
             editor.document.insertString(0, "hello")
         }
 
-        invokeComponentAction("Kilo Session Undo", editor)
+        invokeComponentAction("Semafour Session Undo", editor)
         assertEquals("", editor.document.text)
-        invokeComponentAction("Kilo Session Redo", editor)
+        invokeComponentAction("Semafour Session Redo", editor)
         assertEquals("hello", editor.document.text)
     }
 
@@ -870,7 +870,7 @@ class PromptPanelTest : BasePlatformTestCase() {
         val menu = buttons(panel).single { it.accessibleContext.accessibleName == KiloBundle.message("prompt.action.menu") }
         assertEquals(KiloBundle.message("prompt.action.menu"), menu.toolTipText)
 
-        // Kilo.Session.PromptMenu is not registered with ActionManager in the test fixture (the
+        // Semafour.Session.PromptMenu is not registered with ActionManager in the test fixture (the
         // plugin's declared actions never are — see SessionContextMenuActionsTest), so this exercises
         // the null-guard in showMenu() rather than a real popup.
         menu.doClick()
@@ -1652,7 +1652,7 @@ class PromptPanelTest : BasePlatformTestCase() {
     fun `test prompt button switches between send and stop state`() {
         val panel = PromptPanel(project = project, onSend = { _, _ -> }, onAbort = {}, onEnhance = { _, _ -> })
 
-        assertEquals(KeymapUtil.createTooltipText("Send", "Kilo.SendPrompt"), panel.buttonForTest().toolTipText)
+        assertEquals(KeymapUtil.createTooltipText("Send", "Semafour.SendPrompt"), panel.buttonForTest().toolTipText)
         assertFalse(panel.isStopEnabled)
 
         panel.setBusy(true)
@@ -1665,10 +1665,10 @@ class PromptPanelTest : BasePlatformTestCase() {
     fun `test selector tooltips include their cycle shortcut`() {
         val panel = PromptPanel(project = project, onSend = { _, _ -> }, onAbort = {}, onEnhance = { _, _ -> })
 
-        assertEquals(KeymapUtil.createTooltipText("Select mode", "Kilo.Session.CycleMode"), panel.mode.toolTipText)
-        assertEquals(KeymapUtil.createTooltipText("Select model", "Kilo.Session.CycleModel"), panel.model.toolTipText)
+        assertEquals(KeymapUtil.createTooltipText("Select mode", "Semafour.Session.CycleMode"), panel.mode.toolTipText)
+        assertEquals(KeymapUtil.createTooltipText("Select model", "Semafour.Session.CycleModel"), panel.model.toolTipText)
         assertEquals(
-            KeymapUtil.createTooltipText("Select reasoning effort", "Kilo.Session.CycleReasoning"),
+            KeymapUtil.createTooltipText("Select reasoning effort", "Semafour.Session.CycleReasoning"),
             panel.reasoning.toolTipText,
         )
     }
@@ -1679,7 +1679,7 @@ class PromptPanelTest : BasePlatformTestCase() {
 
         val reset = buttons(panel).first { it.accessibleContext.accessibleName == KiloBundle.message("model.picker.reset") }
 
-        assertEquals(KeymapUtil.createTooltipText(KiloBundle.message("model.picker.reset"), "Kilo.Session.ResetModel"), reset.toolTipText)
+        assertEquals(KeymapUtil.createTooltipText(KiloBundle.message("model.picker.reset"), "Semafour.Session.ResetModel"), reset.toolTipText)
     }
 
     fun `test send icon matches scroll button theme colors`() {
@@ -1704,7 +1704,7 @@ class PromptPanelTest : BasePlatformTestCase() {
         assertSame(AllIcons.Actions.Suspend, panel.buttonForTest().icon)
         val tip = panel.buttonForTest().toolTipText
         assertTrue(tip.contains(KiloBundle.message("prompt.button.stop")))
-        val send = KeymapUtil.getFirstKeyboardShortcutText("Kilo.SendPrompt")
+        val send = KeymapUtil.getFirstKeyboardShortcutText("Semafour.SendPrompt")
         if (send.isNotEmpty()) assertTrue(tip.contains(KiloBundle.message("prompt.button.stop.tooltip.send", send)))
 
         panel.setBusy(false)
@@ -2023,7 +2023,7 @@ class PromptPanelTest : BasePlatformTestCase() {
 
     private fun invokeCompletionAction(editor: Editor) {
         val action = ActionUtil.getActions(editor.contentComponent).first { item ->
-            item.templatePresentation.text == "Kilo Prompt Completion"
+            item.templatePresentation.text == "Semafour Prompt Completion"
         }
         val event = event(action, editor)
         ActionUtil.updateAction(action, event)

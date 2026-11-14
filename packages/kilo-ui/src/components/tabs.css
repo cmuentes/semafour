@@ -1,4 +1,4 @@
-/* Kilo Tabs overrides – sized to match @vscode/webview-ui-toolkit panels */
+/* Semafour Tabs overrides – sized to match @vscode/webview-ui-toolkit panels */
 
 [data-component="tabs"] {
   font-size: var(--kilo-font-size-13);

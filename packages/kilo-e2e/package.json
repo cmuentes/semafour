@@ -5,7 +5,7 @@
   "private": true,
   "type": "module",
   "license": "MIT",
-  "description": "IDE-neutral end-to-end contracts, fixtures, evidence, and coordinator for Kilo clients",
+  "description": "IDE-neutral end-to-end contracts, fixtures, evidence, and coordinator for Semafour clients",
   "exports": {
     ".": "./src/index.ts",
     "./schema": "./src/schema.ts",

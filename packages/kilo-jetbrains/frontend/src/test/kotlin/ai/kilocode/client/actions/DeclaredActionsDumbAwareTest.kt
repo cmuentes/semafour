@@ -8,7 +8,7 @@ import com.intellij.openapi.project.DumbAware
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 /**
- * Kilo owns no index-backed action: every one of them resolves its context from a `DataKey` and then
+ * Semafour owns no index-backed action: every one of them resolves its context from a `DataKey` and then
  * calls the CLI, git, or Swing. So none of them may be gated on indexing.
  *
  * The platform decides that per action rather than per plugin, and it does not default the way you

@@ -13,8 +13,8 @@ import com.intellij.openapi.project.DumbAware
 import javax.swing.JComponent
 
 class NewSessionAction : AnAction(
-    KiloBundle.message("action.Kilo.NewSession.text"),
-    KiloBundle.message("action.Kilo.NewSession.description"),
+    KiloBundle.message("action.Semafour.NewSession.text"),
+    KiloBundle.message("action.Semafour.NewSession.description"),
     KiloActionIcons.add,
 ), DumbAware, CustomComponentAction {
     override fun actionPerformed(e: AnActionEvent) {
@@ -27,7 +27,7 @@ class NewSessionAction : AnAction(
         e.presentation.isEnabled = e.getData(SessionManager.KEY) != null
         e.presentation.icon = KiloActionIcons.add
         if (!e.isFromActionToolbar) return
-        e.presentation.text = KiloBundle.message("action.Kilo.NewSession.toolbar")
+        e.presentation.text = KiloBundle.message("action.Semafour.NewSession.toolbar")
     }
 
     override fun createCustomComponent(presentation: Presentation, place: String): JComponent =

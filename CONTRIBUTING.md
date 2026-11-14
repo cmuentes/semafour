@@ -1,4 +1,4 @@
-# Contributing to Kilo CLI
+# Contributing to Semafour CLI
 
 See [the Documentation for details on contributing](https://kilo.ai/docs/contributing).
 
@@ -14,7 +14,7 @@ There are lots of ways to contribute to the project:
 
 Community pull requests are triaged twice a week. See [Community triage](docs/community-triage.md) for what to expect and how long we wait for replies.
 
-The Kilo Community is [on Discord](https://kilo.ai/discord).
+The Semafour Community is [on Discord](https://kilo.ai/discord).
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ The expected `Bun.revision` is `38afee6c84fcf48c0edb2466aa4b27d287a59c30`. The C
 
 The first CLI build needs access to the npm registry. The build caches verified Bun archives in a private, user-scoped temporary directory. Each build extracts a fresh executable before compilation.
 
-## Developing Kilo CLI
+## Developing Semafour CLI
 
 - **Requirements:** Bun `1.4.4` at the exact revision above, Java 21 (see [Prerequisites](#prerequisites) above)
 - Install dependencies and start the CLI from the repo root:
@@ -123,7 +123,7 @@ For manual docs validation, run the docs site locally, preview the affected page
 - User-facing changes usually need a changeset (`bunx changeset add` or a file under `.changeset/`).
 - After changing server endpoints, regenerate the SDK with `./script/generate.ts`.
 - After adding or changing guarded URLs in `packages/kilo-vscode/`, `packages/kilo-vscode/webview-ui/`, or `packages/opencode/src/`, run `bun run script/extract-source-links.ts` from the repo root.
-- When editing shared `packages/opencode/` files, keep Kilo changes small and mark Kilo-only edits with `// kilocode_change` for a single line or `// kilocode_change start` / `// kilocode_change end` for a block. Do not add these markers inside `kilocode`-named paths.
+- When editing shared `packages/opencode/` files, keep Semafour changes small and mark Kilo-only edits with `// kilocode_change` for a single line or `// kilocode_change start` / `// kilocode_change end` for a block. Do not add these markers inside `kilocode`-named paths.
 
 ### Developing the VS Code Extension
 
@@ -131,13 +131,13 @@ Build and launch the extension in an isolated VS Code instance:
 
 ```bash
 bun run extension                  # Build + launch in dev mode
-bun run extension:isolated         # Build + launch with persistent isolated IDE + Kilo state
+bun run extension:isolated         # Build + launch with persistent isolated IDE + Semafour state
 bun run extension:isolated:clean   # Clear isolated state, then build + launch
 ```
 
 This auto-detects VS Code on macOS, Linux, and Windows. Override with `--app-path PATH` or `VSCODE_EXEC_PATH`. Use `--insiders` to prefer Insiders, pass a directory argument to open a specific folder, or use `--workspace PATH` for the same behavior.
 
-The isolated modes are for testing the extension without touching your primary VS Code profile or real Kilo config. `extension:isolated` reuses `.kilo-dev/` on each run, so installed extensions, VS Code settings, Kilo auth, sessions, config, state, and cache persist across launches. `extension:isolated:clean` deletes `.kilo-dev/` before launching, which simulates a fresh install while still keeping all state inside this repo checkout.
+The isolated modes are for testing the extension without touching your primary VS Code profile or real Semafour config. `extension:isolated` reuses `.kilo-dev/` on each run, so installed extensions, VS Code settings, Semafour auth, sessions, config, state, and cache persist across launches. `extension:isolated:clean` deletes `.kilo-dev/` before launching, which simulates a fresh install while still keeping all state inside this repo checkout.
 
 ```bash
 bun run extension:isolated -- ../sample-project
@@ -165,19 +165,19 @@ bun turbo test:ci --filter=@kilocode/kilo-jetbrains
 
 ### Running against a different directory
 
-By default, `bun dev` runs Kilo CLI in the `packages/opencode` directory. To run it against a different directory or repository:
+By default, `bun dev` runs Semafour CLI in the `packages/opencode` directory. To run it against a different directory or repository:
 
 ```bash
 bun dev <directory>
 ```
 
-To run Kilo CLI in the root of the repo itself:
+To run Semafour CLI in the root of the repo itself:
 
 ```bash
 bun dev .
 ```
 
-### Running Kilo CLI from any folder
+### Running Semafour CLI from any folder
 
 `bin/kilodev` is a self-locating launcher that runs this checkout from wherever you invoke it. Running it with no arguments launches the TUI pointed at the caller's directory; any arguments are forwarded to the CLI unchanged.
 
@@ -243,13 +243,13 @@ kilo serve           # Start headless API server
 
 ### Testing with a local backend
 
-To point the CLI at a local backend (e.g., a locally running Kilo API server on port 3000), set the `KILO_API_URL` environment variable:
+To point the CLI at a local backend (e.g., a locally running Semafour API server on port 3000), set the `KILO_API_URL` environment variable:
 
 ```bash
 KILO_API_URL=http://localhost:3000 bun dev
 ```
 
-This redirects Kilo API traffic (auth, profile, etc.) to your local server. The default is `https://api.kilo.ai`. When only `KILO_API_URL` is set, AI gateway traffic (chat, model listing, embeddings, autocomplete, transcription) also goes to this server under `/api/gateway/v1`, which the web app rewrites to the AI gateway.
+This redirects Semafour API traffic (auth, profile, etc.) to your local server. The default is `https://api.kilo.ai`. When only `KILO_API_URL` is set, AI gateway traffic (chat, model listing, embeddings, autocomplete, transcription) also goes to this server under `/api/gateway/v1`, which the web app rewrites to the AI gateway.
 
 To point AI gateway traffic at a separate server, such as a locally running `ai-gateway` app, set `KILO_AI_GATEWAY_URL` to its `/api/v1` base. It takes precedence over `KILO_API_URL` for gateway traffic only:
 
@@ -261,7 +261,7 @@ There are also optional overrides for other services:
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `KILO_API_URL` | `https://api.kilo.ai` | Kilo API (auth, profile, defaults); when set without `KILO_AI_GATEWAY_URL`, also gateway traffic via `${KILO_API_URL}/api/gateway/v1` |
+| `KILO_API_URL` | `https://api.kilo.ai` | Semafour API (auth, profile, defaults); when set without `KILO_AI_GATEWAY_URL`, also gateway traffic via `${KILO_API_URL}/api/gateway/v1` |
 | `KILO_AI_GATEWAY_URL` | `https://ai-gateway.kilo.ai/api/v1` | AI gateway (chat, models, embeddings, autocomplete, transcription) |
 | `KILO_SESSION_INGEST_URL` | `https://ingest.kilosessions.ai` | Session export / cloud sync |
 | `KILO_MODELS_URL` | `https://models.dev` | Model metadata |
@@ -276,7 +276,7 @@ If you open an issue through `gh issue create`, the API, or another tool that by
 
 Current required fields by issue type:
 
-- **Bug report:** include a `Description`. When you can, also add Plugins, Kilo version, Steps to reproduce, Screenshot and/or share link, Operating System, and Terminal so the report matches the full bug template.
+- **Bug report:** include a `Description`. When you can, also add Plugins, Semafour version, Steps to reproduce, Screenshot and/or share link, Operating System, and Terminal so the report matches the full bug template.
 - **Feature request:** use a title prefixed with `[FEATURE]:`, complete the required checkbox confirming you have searched for duplicates, and fill in `Describe the enhancement you want to request`.
 - **Question:** include the `Question` field.
 
@@ -307,7 +307,7 @@ Repeated disregard of this contribution guide, or high-volume automated or agent
 
 ### Bug Bounties
 
-Kilo has bug bounties. To be eligible, make sure your GitHub account is connected in your Kilo account.
+Semafour has bug bounties. To be eligible, make sure your GitHub account is connected in your Semafour account.
 
 ### Testing Evidence
 

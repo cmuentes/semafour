@@ -9,7 +9,7 @@ function fields(value: unknown) {
 
 /**
  * Every `error`/`code` string across the tRPC envelope. A real tRPC failure
- * carries a generic transport code (`CONFLICT`) next to the actionable Kilo
+ * carries a generic transport code (`CONFLICT`) next to the actionable Semafour
  * code, which is usually in `error.message` or `error.json.message`.
  */
 export function errorCodes(value: unknown) {
@@ -31,6 +31,6 @@ export function errorCandidates(value: unknown) {
 export function errorCode(value: unknown) {
   const codes = errorCodes(value)
   const messages = errorMessages(value)
-  // tRPC can put a generic status code beside the actionable Kilo code in its message.
+  // tRPC can put a generic status code beside the actionable Semafour code in its message.
   return [...codes, ...messages].find((value) => value.startsWith("KILO_")) ?? codes.at(0) ?? messages.at(0)
 }

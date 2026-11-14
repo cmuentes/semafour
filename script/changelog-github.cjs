@@ -18,7 +18,7 @@ const team = new Set([
   "emilieschario",
   "eshurakov",
   "evanjacobson",
-  "Helix-Kilo",
+  "Helix-Semafour",
   "iscekic",
   "jeanduplessis",
   "jobrietbergen",

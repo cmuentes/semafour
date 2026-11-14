@@ -79,12 +79,12 @@ const SCRIPT_REPLACEMENTS: ScriptReplacement[] = [
   // OpenCode branding in strings
   {
     pattern: /"OpenCode"/g,
-    replacement: '"Kilo"',
+    replacement: '"Semafour"',
     description: "Product name in string",
   },
   {
     pattern: /'OpenCode'/g,
-    replacement: "'Kilo'",
+    replacement: "'Semafour'",
     description: "Product name in single quotes",
   },
 ]

@@ -25,7 +25,7 @@ export const AutomateNav: NavSection[] = [
     ],
   },
   {
-    title: "Extending Kilo",
+    title: "Extending Semafour",
     links: [
       { href: "/automate/extending/local-models", children: "Local Models" },
       {
@@ -43,7 +43,7 @@ export const AutomateNav: NavSection[] = [
         subLinks: [
           {
             href: "/automate/mcp/using-in-kilo-code",
-            children: "Using MCP in Kilo Code",
+            children: "Using MCP in Semafour",
           },
           { href: "/automate/mcp/using-in-cli", children: "Using MCP in CLI" },
           { href: "/automate/mcp/what-is-mcp", children: "What is MCP" },

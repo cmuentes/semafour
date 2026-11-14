@@ -129,7 +129,7 @@ describe("kilo_memory_save", () => {
         {
           action: "remember",
           key: "kilo_cli_tui",
-          text: "Kilo CLI is a TUI.",
+          text: "Semafour CLI is a TUI.",
         },
         gate,
       )
@@ -138,21 +138,21 @@ describe("kilo_memory_save", () => {
         {
           action: "correct",
           key: "kilo_cli_tui",
-          text: "Kilo CLI should be treated as a terminal UI.",
+          text: "Semafour CLI should be treated as a terminal UI.",
         },
         gate,
       )
       const shown = await KiloMemory.show({ ctx: memory })
 
-      expect(saved.title).toBe("Kilo memory saved: 1 op")
-      expect(corrected.title).toBe("Kilo memory correction saved: 1 op")
-      expect(shown.sources.project).toContain("- kilo_cli_tui :: Kilo CLI is a TUI.")
-      expect(shown.sources.corrections).toContain("- kilo_cli_tui :: Kilo CLI should be treated as a terminal UI.")
+      expect(saved.title).toBe("Semafour memory saved: 1 op")
+      expect(corrected.title).toBe("Semafour memory correction saved: 1 op")
+      expect(shown.sources.project).toContain("- kilo_cli_tui :: Semafour CLI is a TUI.")
+      expect(shown.sources.corrections).toContain("- kilo_cli_tui :: Semafour CLI should be treated as a terminal UI.")
 
       const forgotten = await execute(dir.path, { action: "forget", query: "kilo_cli_tui" }, gate)
       const next = await KiloMemory.show({ ctx: memory })
 
-      expect(forgotten.title).toBe("Kilo memory updated: 2 removed")
+      expect(forgotten.title).toBe("Semafour memory updated: 2 removed")
       expect(next.sources.project).not.toContain("kilo_cli_tui")
       expect(next.sources.corrections).not.toContain("kilo_cli_tui")
       expect(asks.map((req) => req.permission)).toEqual(["kilo_memory_save", "kilo_memory_save", "kilo_memory_save"])
@@ -162,12 +162,12 @@ describe("kilo_memory_save", () => {
       expect(asks[0].metadata).toMatchObject({
         action: "remember",
         key: "kilo_cli_tui",
-        text: "Kilo CLI is a TUI.",
+        text: "Semafour CLI is a TUI.",
       })
       expect(asks[1].metadata).toMatchObject({
         action: "correct",
         key: "kilo_cli_tui",
-        text: "Kilo CLI should be treated as a terminal UI.",
+        text: "Semafour CLI should be treated as a terminal UI.",
       })
       expect(asks[2].metadata).toMatchObject({
         action: "forget",
@@ -181,7 +181,7 @@ describe("kilo_memory_save", () => {
     await withConfig(path.join(dir.path, "global", ".kilo"), async () => {
       const result = await execute(dir.path, { action: "remember", text: "Do not write while disabled." })
 
-      expect(result.title).toBe("Kilo memory: disabled")
+      expect(result.title).toBe("Semafour memory: disabled")
       expect(result.output).toContain("disabled")
     })
   })
@@ -278,12 +278,12 @@ describe("kilo_memory_save", () => {
       })
       const shown = await KiloMemory.show({ ctx: memory })
 
-      expect(skipped.title).toBe("Kilo memory skipped: out of scope")
+      expect(skipped.title).toBe("Semafour memory skipped: out of scope")
       expect(skipped.output).toContain("user-level memory is not supported yet")
-      expect(blocked.title).toBe("Kilo memory unchanged")
+      expect(blocked.title).toBe("Semafour memory unchanged")
       expect(blocked.output).toContain("operationCount=0")
       expect(blocked.metadata.operationCount).toBe(0)
-      expect(saved.title).toBe("Kilo memory saved: 1 op")
+      expect(saved.title).toBe("Semafour memory saved: 1 op")
       expect(shown.sources.project).not.toContain("rubicon fennel")
       expect(shown.sources.project).not.toContain("reply_style")
       expect(shown.sources.project).not.toContain("I prefer terse summaries")
@@ -311,11 +311,11 @@ describe("kilo_memory_save", () => {
       })
       const shown = await KiloMemory.show({ ctx: memory })
 
-      expect(missing.title).toBe("Kilo memory remember: no text")
-      expect(forget.title).toBe("Kilo memory forget: no query")
-      expect(secret.title).toBe("Kilo memory: error")
+      expect(missing.title).toBe("Semafour memory remember: no text")
+      expect(forget.title).toBe("Semafour memory forget: no query")
+      expect(secret.title).toBe("Semafour memory: error")
       expect(secret.output).toContain("rejected secret-like content")
-      expect(noisy.title).toBe("Kilo memory saved: 1 op")
+      expect(noisy.title).toBe("Semafour memory saved: 1 op")
       expect(shown.sources.project).not.toContain("secret_input")
       expect(shown.sources.project).not.toContain("api_key")
       expect(shown.sources.project).toContain("- noisy_key :: Keep noisy oversized memory input bounded.")

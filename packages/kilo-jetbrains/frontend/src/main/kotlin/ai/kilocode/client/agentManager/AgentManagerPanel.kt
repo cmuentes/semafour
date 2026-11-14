@@ -148,7 +148,7 @@ class AgentManagerPanel(
 ) : BorderLayoutPanel(), Disposable, UiDataProvider {
     private val provider = WorktreeDeleteProvider()
     private val edit = RenameAction()
-    private val group = ActionManager.getInstance().getAction("Kilo.Worktree.RowMenu") as? ActionGroup ?: DefaultActionGroup()
+    private val group = ActionManager.getInstance().getAction("Semafour.Worktree.RowMenu") as? ActionGroup ?: DefaultActionGroup()
     private val groupRow = LocalWorktreesRow()
     private val tree = ActiveTree(
         KiloBundle.message("worktree.empty"),

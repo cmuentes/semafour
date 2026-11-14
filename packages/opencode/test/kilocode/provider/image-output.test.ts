@@ -29,7 +29,7 @@ const options = (input: Parameters<typeof model>[0]) =>
   ProviderTransform.options({ model: model(input), sessionID: "test-session" })
 
 describe("image output modalities", () => {
-  test("requests images from Kilo Gateway image models", () => {
+  test("requests images from Semafour Gateway image models", () => {
     expect(
       options({
         providerID: "kilo",

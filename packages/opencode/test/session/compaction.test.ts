@@ -2228,7 +2228,7 @@ describe("SessionNs.getUsage", () => {
     expect(result.cost).toBe(3 + 1.5)
   })
 
-  test("uses upstreamInferenceCost for Kilo provider", () => {
+  test("uses upstreamInferenceCost for Semafour provider", () => {
     const model = createModel({
       context: 100_000,
       output: 32_000,
@@ -2255,7 +2255,7 @@ describe("SessionNs.getUsage", () => {
       },
     })
 
-    // Should use upstreamInferenceCost for Kilo provider (BYOK)
+    // Should use upstreamInferenceCost for Semafour provider (BYOK)
     expect(result.cost).toBe(0.2)
   })
 
@@ -2319,7 +2319,7 @@ describe("SessionNs.getUsage", () => {
     expect(result.cost).toBe(0.3)
   })
 
-  test("uses regular cost when upstreamInferenceCost is missing for Kilo", () => {
+  test("uses regular cost when upstreamInferenceCost is missing for Semafour", () => {
     const model = createModel({
       context: 100_000,
       output: 32_000,
@@ -2344,7 +2344,7 @@ describe("SessionNs.getUsage", () => {
       },
     })
 
-    // When upstream cost is missing for Kilo, fall back to regular cost field
+    // When upstream cost is missing for Semafour, fall back to regular cost field
     expect(result.cost).toBe(0.01)
   })
 

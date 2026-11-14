@@ -59,7 +59,7 @@ val PROVIDER_MAP: Map<String, ProviderMapping> = mapOf(
     "sambanova" to ProviderMapping(id = "sambanova", key = "sambaNovaApiKey", name = "SambaNova"),
     "ollama" to ProviderMapping(id = "ollama", key = "ollamaApiKey", name = "Ollama", modelField = "ollamaModelId", urlField = "ollamaBaseUrl"),
     "lmstudio" to ProviderMapping(id = "lmstudio", key = "lmStudioBaseUrl", name = "LM Studio", modelField = "lmStudioModelId", urlField = "lmStudioBaseUrl"),
-    "kilocode" to ProviderMapping(id = "kilo", key = "kilocodeToken", name = "Kilo (Gateway)", modelField = "kilocodeModel", organizationIdField = "kilocodeOrganizationId"),
+    "kilocode" to ProviderMapping(id = "kilo", key = "kilocodeToken", name = "Semafour (Gateway)", modelField = "kilocodeModel", organizationIdField = "kilocodeOrganizationId"),
     "litellm" to ProviderMapping(id = "litellm", key = "litellmApiKey", name = "LiteLLM", modelField = "litellmModelId", urlField = "litellmBaseUrl"),
     "deepinfra" to ProviderMapping(id = "deepinfra", key = "deepInfraApiKey", name = "DeepInfra", modelField = "deepInfraModelId", urlField = "deepInfraBaseUrl"),
     "chutes" to ProviderMapping(id = "chutes", key = "chutesApiKey", name = "Chutes"),

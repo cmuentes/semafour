@@ -44,7 +44,7 @@ object SessionUiStyle {
          * otherwise compute the backdrop, wrapped in `JBColor.lazy` so it re-resolves on LaF changes.
          */
         fun sessionBackground(): Color = JBColor.lazy {
-            UIManager.getColor("Kilo.Session.background") ?: run {
+            UIManager.getColor("Semafour.Session.background") ?: run {
                 val raised = codeBlockBackground()
                 val panel = UIManager.getColor("Panel.background") ?: raised
                 if (panel.rgb == raised.rgb) UiStyle.Colors.contrast(raised, SESSION_DELTA) else panel
@@ -53,12 +53,12 @@ object SessionUiStyle {
 
         /** Single raised surface (code blocks, tool/shell output, prompt bubble, prompt input): the editor background. */
         fun codeBlockBackground(): Color = JBColor.namedColor(
-            "Kilo.Session.codeBlockBackground",
+            "Semafour.Session.codeBlockBackground",
             UiStyle.Colors.editorBackground(),
         )
 
         fun foreground(): Color = JBColor.namedColor(
-            "Kilo.Session.foreground",
+            "Semafour.Session.foreground",
             UiStyle.Colors.fg(),
         )
     }
@@ -362,18 +362,18 @@ object SessionUiStyle {
             const val BODY_HORIZONTAL_PADDING = 8
         }
 
-        /** Markdown colors that mirror Kilo's VS Code webview tokens. */
+        /** Markdown colors that mirror Semafour's VS Code webview tokens. */
         object Markdown {
             fun string(): Color = JBColor.namedColor(
-                "Kilo.Session.Markdown.String",
+                "Semafour.Session.Markdown.String",
                 JBColor(0xA31515, 0xCE9178),
             )
         }
 
         object Todo {
-            fun checkBg(): Color = JBColor.namedColor("Kilo.Session.Todo.Checkbox.Background", Color.WHITE)
+            fun checkBg(): Color = JBColor.namedColor("Semafour.Session.Todo.Checkbox.Background", Color.WHITE)
 
-            fun checkFg(): Color = JBColor.namedColor("Kilo.Session.Todo.Checkbox.Foreground", Color(0x1F, 0x23, 0x28))
+            fun checkFg(): Color = JBColor.namedColor("Semafour.Session.Todo.Checkbox.Foreground", Color(0x1F, 0x23, 0x28))
 
             fun checkBorder(): Color = UiStyle.Colors.contentBorder()
         }
@@ -457,12 +457,12 @@ object SessionUiStyle {
 
     /** Colors for timeline/activity indicators in the session header. */
     object Timeline {
-        val READ: Color = JBColor.namedColor("Kilo.Session.Timeline.Read", Color(0x37, 0x94, 0xff))
-        val WRITE: Color = JBColor.namedColor("Kilo.Session.Timeline.Write", Color(0x00, 0x7f, 0xd4))
-        val TOOL: Color = JBColor.namedColor("Kilo.Session.Timeline.Tool", Color(0x00, 0x7a, 0xcc))
+        val READ: Color = JBColor.namedColor("Semafour.Session.Timeline.Read", Color(0x37, 0x94, 0xff))
+        val WRITE: Color = JBColor.namedColor("Semafour.Session.Timeline.Write", Color(0x00, 0x7f, 0xd4))
+        val TOOL: Color = JBColor.namedColor("Semafour.Session.Timeline.Tool", Color(0x00, 0x7a, 0xcc))
         val SUCCESS: Color = JBColor.namedColor("Label.successForeground", UIUtil.getLabelSuccessForeground())
-        val ERROR: Color = JBColor.namedColor("Kilo.Session.Timeline.Error", UIUtil.getErrorForeground())
+        val ERROR: Color = JBColor.namedColor("Semafour.Session.Timeline.Error", UIUtil.getErrorForeground())
         val TEXT: Color = Text.Secondary.foreground()
-        val STEP: Color = JBColor.namedColor("Kilo.Session.Timeline.Step", JBColor.border())
+        val STEP: Color = JBColor.namedColor("Semafour.Session.Timeline.Step", JBColor.border())
     }
 }

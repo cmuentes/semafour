@@ -1694,7 +1694,7 @@ describe("ProviderTransform.schema - gemini non-object properties removal", () =
     expect(result.properties.issue_fields.items.required).toBeUndefined()
   })
 
-  test("sanitizes gemini schemas routed through the Kilo Gateway", () => {
+  test("sanitizes gemini schemas routed through the Semafour Gateway", () => {
     const gatewayGeminiModel = {
       providerID: "kilocode",
       api: {
@@ -2690,7 +2690,7 @@ describe("ProviderTransform.message - anthropic empty content filtering", () => 
           selected,
           {},
         )
-        // kilocode_change start - Kilo applies the Bedrock replay filter only to Claude models, so a
+        // kilocode_change start - Semafour applies the Bedrock replay filter only to Claude models, so a
         // non-Claude Bedrock model keeps the unsigned reasoning message. The wire-shape assertion below
         // is upstream's Claude-model expectation.
         if (!cached) {

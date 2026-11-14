@@ -31,7 +31,7 @@ export const Info = Schema.Union([
   Schema.Struct({
     type: Schema.Literal("busy"),
   }),
-  // kilocode_change start - represent a session paused for an offline Kilo question
+  // kilocode_change start - represent a session paused for an offline Semafour question
   Schema.Struct({
     type: Schema.Literal("offline"),
     requestID: QuestionID,

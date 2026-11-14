@@ -6,8 +6,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.ProjectManager
 
 class OpenSettingsAction : OpenSettingsPageAction(
-    KiloBundle.message("action.Kilo.OpenSettings.text"),
-    KiloBundle.message("action.Kilo.OpenSettings.description"),
+    KiloBundle.message("action.Semafour.OpenSettings.text"),
+    KiloBundle.message("action.Semafour.OpenSettings.description"),
     surface = "tool_window",
 ) {
     /** Reopens wherever the user last was, so this entry resumes rather than jumps somewhere fixed. */

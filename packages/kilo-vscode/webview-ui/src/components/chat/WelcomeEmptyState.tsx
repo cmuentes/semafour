@@ -18,8 +18,8 @@ interface WelcomeEmptyStateProps {
 }
 
 /**
- * Square Kilo mark. Hover rotates the mark and crossfades to the yellow Lottie animation,
- * matching Kilo Cloud's header logo. The player mounts on first hover so the WASM renderer
+ * Square Semafour mark. Hover rotates the mark and crossfades to the yellow Lottie animation,
+ * matching Semafour Cloud's header logo. The player mounts on first hover so the WASM renderer
  * never delays the empty state; the static mark stays visible until the player can draw, so a
  * slow or failed load never leaves an empty square.
  */

@@ -10,7 +10,7 @@ import { Hash } from "@opencode-ai/core/util/hash"
 import { Plugin } from "../plugin"
 import { serviceUse } from "@opencode-ai/core/effect/service-use"
 import { type LanguageModelV3 } from "@ai-sdk/provider"
-import * as ModelsDev from "./models" // kilocode_change - assemble dynamic Kilo models around upstream core catalog
+import * as ModelsDev from "./models" // kilocode_change - assemble dynamic Semafour models around upstream core catalog
 import { failure } from "@/kilocode/provider/catalog-recovery" // kilocode_change
 import { Auth } from "../auth"
 import { Env } from "../env"
@@ -500,7 +500,7 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
         options: {
           headers: {
             "HTTP-Referer": "https://kilo.ai/", // kilocode_change
-            "X-Title": "Kilo Code", // kilocode_change
+            "X-Title": "Semafour", // kilocode_change
             "X-Source": "kilo", // kilocode_change
           },
         },
@@ -511,7 +511,7 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
         options: {
           headers: {
             "HTTP-Referer": "https://kilo.ai/", // kilocode_change
-            "X-Title": "Kilo Code", // kilocode_change
+            "X-Title": "Semafour", // kilocode_change
           },
         },
       }),
@@ -521,7 +521,7 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
         options: {
           headers: {
             "HTTP-Referer": "https://kilo.ai/", // kilocode_change
-            "X-Title": "Kilo Code", // kilocode_change
+            "X-Title": "Semafour", // kilocode_change
             "X-BILLING-INVOKE-ORIGIN": "KiloCode", // kilocode_change
           },
         },
@@ -532,7 +532,7 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
         options: {
           headers: {
             "http-referer": "https://kilo.ai/", // kilocode_change
-            "x-title": "Kilo Code", // kilocode_change
+            "x-title": "Semafour", // kilocode_change
           },
         },
       }),
@@ -646,7 +646,7 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
         options: {
           headers: {
             "HTTP-Referer": "https://kilo.ai/", // kilocode_change
-            "X-Title": "Kilo Code", // kilocode_change
+            "X-Title": "Semafour", // kilocode_change
           },
         },
       }),
@@ -926,7 +926,7 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
         autoload: false,
         options: {
           headers: {
-            "X-Cerebras-3rd-Party-Integration": "Kilo Code", // kilocode_change
+            "X-Cerebras-3rd-Party-Integration": "Semafour", // kilocode_change
           },
         },
       }),
@@ -936,7 +936,7 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
         options: {
           headers: {
             "HTTP-Referer": "https://kilo.ai/", // kilocode_change
-            "X-Title": "Kilo Code", // kilocode_change
+            "X-Title": "Semafour", // kilocode_change
           },
         },
       }),
@@ -963,7 +963,7 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
           autoload: false,
           async getModel() {
             throw new Error(
-              `Snowflake Cortex: missing credentials (${missing}). Provide a bearer token (OAuth, JWT, or PAT) via env var, Kilo auth, or provider options.`, // kilocode_change
+              `Snowflake Cortex: missing credentials (${missing}). Provide a bearer token (OAuth, JWT, or PAT) via env var, Semafour auth, or provider options.`, // kilocode_change
             )
           },
         }
@@ -1709,7 +1709,7 @@ const layer = Layer.effect(
           const options = yield* Effect.promise(() =>
             plugin.auth!.loader!(
               () => bridge.promise(auth.get(providerID).pipe(Effect.orDie)) as any,
-              toPublicInfo(entry), // kilocode_change - hide Kilo credentials from the loader input
+              toPublicInfo(entry), // kilocode_change - hide Semafour credentials from the loader input
             ),
           )
           const opts = options ?? {}
@@ -2097,7 +2097,7 @@ const layer = Layer.effect(
         return undefined
       }
 
-      // kilocode_change start - Kilo's auto model is an ID, while upstream priorities are model families.
+      // kilocode_change start - Semafour's auto model is an ID, while upstream priorities are model families.
       const kiloPriority = kiloSmallModelPriority(providerID)
       if (kiloPriority) {
         for (const id of kiloPriority) {
@@ -2184,7 +2184,7 @@ const layer = Layer.effect(
       }
 
       const configured = Object.keys(cfg.provider ?? {})
-      // kilocode_change start - prefer local/BYOK openai-compatible providers over the Kilo gateway
+      // kilocode_change start - prefer local/BYOK openai-compatible providers over the Semafour gateway
       const candidates = Object.values(s.providers).filter((p) => configured.length === 0 || configured.includes(p.id))
       const provider =
         candidates.find((p) => p.id !== "kilo" && Object.values(p.models).some((m) => m.api.npm === "@ai-sdk/openai-compatible")) ??

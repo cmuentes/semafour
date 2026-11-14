@@ -1741,7 +1741,7 @@ describe("WorktreeManager.createWorktree advanced", () => {
 
     const prev = { visual: process.env.VISUAL, author: process.env.GIT_AUTHOR_NAME }
     process.env.VISUAL = "true"
-    process.env.GIT_AUTHOR_NAME = "Kilo"
+    process.env.GIT_AUTHOR_NAME = "Semafour"
     const result = await createManager(clone)
       .createWorktree({ baseBranch: "topic", prompt: "from topic" })
       .finally(() => {

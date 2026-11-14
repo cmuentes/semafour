@@ -21,7 +21,7 @@ const ALLOWED_MODELS = new Set([
   "gpt-5.3-codex-spark",
   "gpt-5.4",
   "gpt-5.4-mini",
-  // kilocode_change start - additional codex models supported by Kilo
+  // kilocode_change start - additional codex models supported by Semafour
   "gpt-5.1-codex",
   "gpt-5.1-codex-max",
   "gpt-5.1-codex-mini",
@@ -168,12 +168,12 @@ async function refreshAccessToken(refreshToken: string, issuer = ISSUER, signal?
   return response.json()
 }
 
-// kilocode_change start - retain Kilo-branded OAuth callback until the shared page supports Kilo branding
+// kilocode_change start - retain Kilo-branded OAuth callback until the shared page supports Semafour branding
 const HTML_SUCCESS = `<!doctype html>
 <html>
   <head>
     <!-- kilocode_change start -->
-    <title>Kilo - Codex Authorization Successful</title>
+    <title>Semafour - Codex Authorization Successful</title>
     <!-- kilocode_change end -->
     <style>
       body {
@@ -206,7 +206,7 @@ const HTML_SUCCESS = `<!doctype html>
     <div class="container">
       <h1>Authorization Successful</h1>
       <!-- kilocode_change start -->
-      <p>You can close this window and return to Kilo.</p>
+      <p>You can close this window and return to Semafour.</p>
       <!-- kilocode_change end -->
     </div>
     <script>
@@ -219,7 +219,7 @@ export const renderOAuthError = (error: string) => `<!doctype html>
 <html>
   <head>
     <!-- kilocode_change start -->
-    <title>Kilo - Codex Authorization Failed</title>
+    <title>Semafour - Codex Authorization Failed</title>
     <!-- kilocode_change end -->
     <style>
       body {

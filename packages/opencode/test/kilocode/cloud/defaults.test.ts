@@ -133,7 +133,7 @@ const lookups = Effect.gen(function* () {
   yield* catalog.defaultModel({ token, organizationID: "org-1" })
 })
 
-it.instance("lists models from the AI gateway and defaults from the Kilo API by default", () => {
+it.instance("lists models from the AI gateway and defaults from the Semafour API by default", () => {
   const urls: string[] = []
   return lookups.pipe(
     Effect.provide(recorder({}, urls)),

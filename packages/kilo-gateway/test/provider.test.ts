@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
 import { buildRequestHeaders } from "../src/provider"
 
-describe("Kilo provider request headers", () => {
+describe("Semafour provider request headers", () => {
   test("request headers override provider defaults", () => {
     const headers = buildRequestHeaders(
       {

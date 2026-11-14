@@ -30,12 +30,12 @@ The underlying models behind each Auto Model tier are updated server-side as bet
 ## Tiers
 
 - **Frontier** — Routes to the latest and most capable paid models. Uses different models for reasoning-heavy tasks (planning, architecture, debugging) versus implementation tasks (coding, building, exploring), pairing the right capability to each type of work.
-- **Efficient** — Session-aware routing that classifies the difficulty of each request in real time and routes it to the cheapest model proven accurate enough for that task, based on Kilo's continuously-run benchmarks. Routine work stays lean while harder tasks get a more capable model. Because it watches your session in context, it keeps using a model across related turns and only switches when a cheaper option is clearly worth it. If a routing decision can't be made, it falls back to a fixed, cost-effective baseline model, so quality never drops below that baseline. A good default for most developers who want strong AI assistance without paying frontier prices.
+- **Efficient** — Session-aware routing that classifies the difficulty of each request in real time and routes it to the cheapest model proven accurate enough for that task, based on Semafour's continuously-run benchmarks. Routine work stays lean while harder tasks get a more capable model. Because it watches your session in context, it keeps using a model across related turns and only switches when a cheaper option is clearly worth it. If a routing decision can't be made, it falls back to a fixed, cost-effective baseline model, so quality never drops below that baseline. A good default for most developers who want strong AI assistance without paying frontier prices.
 - **Free** — Routes to the best available free models on OpenRouter, splitting traffic across them. Because free model availability shifts over time as providers change promotional periods, the mapping is updated server-side — you always get the best free option without having to track what's currently available. Quality will be lower than paid tiers, and the models may change over time.
 
 ### How Auto Efficient routing works
 
-1. Kilo observes your coding session in context
+1. Semafour observes your coding session in context
 2. It classifies each task by complexity
 3. It routes to the benchmark-proven best model for that task automatically
 
@@ -94,10 +94,10 @@ Auto Model requires **VS Code/JetBrains extension v5.2.3+** or **CLI v1.0.15+** 
 ## Getting Started
 
 {% callout type="tip" title="Quick Setup" %}
-Select an Auto Model tier from the model dropdown in the Kilo Code chat interface. That's all you need to do.
+Select an Auto Model tier from the model dropdown in the Semafour chat interface. That's all you need to do.
 {% /callout %}
 
-1. Open Kilo Code in VS Code or JetBrains
+1. Open Semafour in VS Code or JetBrains
 2. Click the model selector dropdown
 3. Choose an Auto Model such as `kilo-auto/frontier` or `kilo-auto/efficient`
 4. Start chatting - the right model is selected automatically based on your current mode
@@ -109,7 +109,7 @@ Auto Model is ideal for:
 - **Developers who frequently switch between planning and coding** - No need to remember which model works best for each task
 - **Teams wanting consistent model selection** - Everyone gets optimal routing without individual configuration
 - **Cost-conscious developers** - Automatically balances cost and capability
-- **New Kilo Code users** - Great defaults without needing to understand model differences
+- **New Semafour users** - Great defaults without needing to understand model differences
 
 ## When to Use a Specific Model
 
@@ -129,5 +129,5 @@ Auto Model is actively being improved. We'd love to hear how it's working for yo
 ## Related
 
 - [Model Selection Guide](/docs/code-with-ai/agents/model-selection) - General guidance on choosing models
-- [Using Agents](/docs/code-with-ai/agents/using-agents) - Learn about different Kilo Code agents
-- [Using Kilo for Free](/docs/getting-started/using-kilo-for-free) - Cost-effective alternatives
+- [Using Agents](/docs/code-with-ai/agents/using-agents) - Learn about different Semafour agents
+- [Using Semafour for Free](/docs/getting-started/using-kilo-for-free) - Cost-effective alternatives

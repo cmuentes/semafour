@@ -1,5 +1,5 @@
 // kilocode_change - new file
-// When the injected Kilo models source returns a 401 error result, ModelCache surfaces
+// When the injected Semafour models source returns a 401 error result, ModelCache surfaces
 // the failure and caches empty models (allowing re-auth via /connect).
 // The real fetchKiloModels 401-fallback unit test lives in packages/kilo-gateway/test/api/models.test.ts.
 
@@ -35,7 +35,7 @@ const layer = Layer.fresh(ModelCache.layer).pipe(
 
 const it = testEffect(layer)
 
-it.live("401 from Kilo models sets provider as failed in ModelCache", () =>
+it.live("401 from Semafour models sets provider as failed in ModelCache", () =>
   Effect.gen(function* () {
     const cache = yield* ModelCache.Service
     yield* cache.fetch("kilo")
@@ -44,7 +44,7 @@ it.live("401 from Kilo models sets provider as failed in ModelCache", () =>
   }),
 )
 
-it.live("401 from Kilo models caches empty models (not undefined)", () =>
+it.live("401 from Semafour models caches empty models (not undefined)", () =>
   Effect.gen(function* () {
     const cache = yield* ModelCache.Service
     yield* cache.fetch("kilo")

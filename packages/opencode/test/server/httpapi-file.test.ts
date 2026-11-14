@@ -52,7 +52,7 @@ describe("file HttpApi", () => {
     expect(await status.json()).toEqual([])
   })
 
-  // kilocode_change - skip on Windows: Kilo file search returns [] for hello.txt.
+  // kilocode_change - skip on Windows: Semafour file search returns [] for hello.txt.
   // Tracked in Kilo-Org/kilocode#9831.
   const searchTest = process.platform === "win32" ? test.skip : test
   searchTest("serves search endpoints", async () => {

@@ -27,15 +27,15 @@ abstract class ConfigAction(
     }
 
     protected fun failed() {
-        KiloNotifications.error(KiloBundle.message("action.Kilo.OpenConfig.failed"))
+        KiloNotifications.error(KiloBundle.message("action.Semafour.OpenConfig.failed"))
     }
 }
 
 class OpenLocalConfigAction : ConfigAction(
-    open = "action.Kilo.OpenLocalConfig.text",
-    create = "action.Kilo.CreateLocalConfig.text",
-    text = KiloBundle.message("action.Kilo.OpenLocalConfig.text", "..."),
-    description = KiloBundle.message("action.Kilo.OpenLocalConfig.description"),
+    open = "action.Semafour.OpenLocalConfig.text",
+    create = "action.Semafour.CreateLocalConfig.text",
+    text = KiloBundle.message("action.Semafour.OpenLocalConfig.text", "..."),
+    description = KiloBundle.message("action.Semafour.OpenLocalConfig.description"),
 ) {
     override fun update(e: AnActionEvent) {
         val dir = e.workspaceDirectory()
@@ -59,10 +59,10 @@ class OpenLocalConfigAction : ConfigAction(
 }
 
 class OpenGlobalConfigAction : ConfigAction(
-    open = "action.Kilo.OpenGlobalConfig.text",
-    create = "action.Kilo.CreateGlobalConfig.text",
-    text = KiloBundle.message("action.Kilo.OpenGlobalConfig.text", "..."),
-    description = KiloBundle.message("action.Kilo.OpenGlobalConfig.description"),
+    open = "action.Semafour.OpenGlobalConfig.text",
+    create = "action.Semafour.CreateGlobalConfig.text",
+    text = KiloBundle.message("action.Semafour.OpenGlobalConfig.text", "..."),
+    description = KiloBundle.message("action.Semafour.OpenGlobalConfig.description"),
 ) {
     override fun update(e: AnActionEvent) {
         val service = service<KiloWorkspaceService>()
@@ -83,8 +83,8 @@ class OpenGlobalConfigAction : ConfigAction(
 }
 
 class OpenSetupScriptAction : AnAction(
-    KiloBundle.message("action.Kilo.OpenSetupScript.text"),
-    KiloBundle.message("action.Kilo.OpenSetupScript.description"),
+    KiloBundle.message("action.Semafour.OpenSetupScript.text"),
+    KiloBundle.message("action.Semafour.OpenSetupScript.description"),
     null,
 ), DumbAware {
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
@@ -102,7 +102,7 @@ class OpenSetupScriptAction : AnAction(
         val target = dir?.let { service.setupScript[it] }
         e.presentation.isEnabledAndVisible = dir != null
         e.presentation.text = KiloBundle.message(
-            if (target?.exists == false) "action.Kilo.CreateSetupScript.text" else "action.Kilo.OpenSetupScript.text",
+            if (target?.exists == false) "action.Semafour.CreateSetupScript.text" else "action.Semafour.OpenSetupScript.text",
         )
 
         if (dir != null && target == null) {
@@ -115,7 +115,7 @@ class OpenSetupScriptAction : AnAction(
         val dir = e.workspaceDirectory() ?: return
         Telemetry.send("Worktree Setup Script Opened", mapOf("surface" to "worktree_row"))
         service<KiloWorkspaceService>().openSetupScript(dir) { ok ->
-            if (!ok) KiloNotifications.error(KiloBundle.message("action.Kilo.OpenConfig.failed"))
+            if (!ok) KiloNotifications.error(KiloBundle.message("action.Semafour.OpenConfig.failed"))
         }
     }
 }

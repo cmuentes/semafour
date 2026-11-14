@@ -13,7 +13,7 @@ flowchart TD
 `
 
 export default {
-  title: "Kilo/Markdown Mermaid",
+  title: "Semafour/Markdown Mermaid",
   id: "kilocode-markdown-mermaid",
 }
 

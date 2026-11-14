@@ -85,7 +85,7 @@ function loadParcelWatcher(): typeof import("@parcel/watcher") | undefined {
   return parcelModule ?? undefined
 }
 
-// Kilo's always-ignored infrastructure dirs as globs the native watcher prunes.
+// Semafour's always-ignored infrastructure dirs as globs the native watcher prunes.
 // Per-repo .gitignore/.kilocodeignore dirs are unioned in initialize() from the
 // ignore matcher; correctness for indexed files stays in shouldIndex().
 function watcherIgnoreGlobs(): string[] {
@@ -251,7 +251,7 @@ export class FileWatcher implements IFileWatcher {
 
     log.info("initializing file watcher", { workspacePath: this.workspacePath })
 
-    // Prune Kilo's infra dirs plus (best-effort) the per-repo gitignored dirs
+    // Prune Semafour's infra dirs plus (best-effort) the per-repo gitignored dirs
     // from the native watch, so a large repo doesn't exhaust inotify descriptors
     // (ENOSPC) watching trees we never index.
     const ignore = [...new Set([...watcherIgnoreGlobs(), ...(this.ignoreInstance?.watchIgnoreGlobs?.() ?? [])])]

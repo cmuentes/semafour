@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kilo.ai"><img width="250" alt="Kilo Code logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
+  <a href="https://kilo.ai"><img width="250" alt="Semafour logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
 </p>
 
 <p align="center">VS Code, JetBrains veya CLI'de AI ile geliştirme yapmak için açık kaynak kodlama ajanı.</p>
@@ -21,18 +21,18 @@
 
 ---
 
-Kilo Code, çalıştığınız her yerde size eşlik eden bir AI kodlama ajanıdır: [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) ve [CLI](https://kilo.ai/cli). Açık kaynaktır ve açık fiyatlandırma sunar. 500'den fazla model arasından seçim yapabilir, görev sırasında model değiştirebilir ve hiçbir ek ücret olmadan model sağlayıcısının fiyatını ödersiniz. Başlamak için API anahtarı gerekmez.
+Semafour, çalıştığınız her yerde size eşlik eden bir AI kodlama ajanıdır: [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) ve [CLI](https://kilo.ai/cli). Açık kaynaktır ve açık fiyatlandırma sunar. 500'den fazla model arasından seçim yapabilir, görev sırasında model değiştirebilir ve hiçbir ek ücret olmadan model sağlayıcısının fiyatını ödersiniz. Başlamak için API anahtarı gerekmez.
 
 ### Kurulum
 
-Kilo'yu nerede çalıştırmak istediğinizi seçin.
+Semafour'yu nerede çalıştırmak istediğinizi seçin.
 
 <details open>
 <summary><strong>VS Code</strong></summary>
 
 <br>
 
-[Kilo Code uzantısını](vscode:extension/kilocode.kilo-code) doğrudan kurun veya [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code) üzerinden edinin. Bir hesap oluşturduğunuzda GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 ve Gemini 3.1 Pro Preview dahil 500'den fazla modele sağlayıcı fiyatıyla erişebilirsiniz.
+[Semafour uzantısını](vscode:extension/kilocode.kilo-code) doğrudan kurun veya [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code) üzerinden edinin. Bir hesap oluşturduğunuzda GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 ve Gemini 3.1 Pro Preview dahil 500'den fazla modele sağlayıcı fiyatıyla erişebilirsiniz.
 
 </details>
 
@@ -70,7 +70,7 @@ Ardından başlamak için herhangi bir proje dizininde `kilo` çalıştırın.
 
 <br>
 
-[Kilo Code eklentisini](https://plugins.jetbrains.com/plugin/28350-kilo-code) JetBrains Marketplace'ten kurun veya herhangi bir JetBrains IDE içinde `Settings → Plugins` bölümünde "Kilo Code" arayın.
+[Semafour eklentisini](https://plugins.jetbrains.com/plugin/28350-kilo-code) JetBrains Marketplace'ten kurun veya herhangi bir JetBrains IDE içinde `Settings → Plugins` bölümünde "Semafour" arayın.
 
 </details>
 
@@ -79,7 +79,7 @@ Ardından başlamak için herhangi bir proje dizininde `kilo` çalıştırın.
 
 <br>
 
-Kilo'yu yerel makine gerekmeden web üzerinden [app.kilo.ai/cloud](https://app.kilo.ai/cloud) adresinde çalıştırın.
+Semafour'yu yerel makine gerekmeden web üzerinden [app.kilo.ai/cloud](https://app.kilo.ai/cloud) adresinde çalıştırın.
 
 </details>
 
@@ -111,7 +111,7 @@ Notlar: `x64-baseline`, AVX olmayan eski CPU'lar için uyumluluk derlemesidir. `
 
 ### Agents
 
-Kilo, göreve göre aralarında geçiş yapabileceğiniz özelleşmiş agents ile gelir. Kendi özel agents'larınızı da oluşturabilirsiniz.
+Semafour, göreve göre aralarında geçiş yapabileceğiniz özelleşmiş agents ile gelir. Kendi özel agents'larınızı da oluşturabilirsiniz.
 
 - **Code** - Varsayılan. Doğal dilden kod uygular ve düzenler.
 - **Plan** - Kod yazılmadan önce mimari tasarlar ve uygulama planları yazar.
@@ -157,9 +157,9 @@ MIT. Atıf ve lisans bildirimlerini koruduğunuz sürece bu kodu ticari olarak d
 ### FAQ
 
 <details>
-<summary>Kilo CLI nereden geldi?</summary>
+<summary>Semafour CLI nereden geldi?</summary>
 
-Kilo CLI, Kilo agentic engineering platformunda çalışacak şekilde geliştirilmiş bir [OpenCode](https://github.com/anomalyco/opencode) fork'udur.
+Semafour CLI, Semafour agentic engineering platformunda çalışacak şekilde geliştirilmiş bir [OpenCode](https://github.com/anomalyco/opencode) fork'udur.
 
 </details>
 

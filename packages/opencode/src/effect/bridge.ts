@@ -12,7 +12,7 @@ export interface Shape {
   readonly bind: <Args extends readonly unknown[], Result>(fn: (...args: Args) => Result) => (...args: Args) => Result
 }
 
-// kilocode_change start - preserve legacy Kilo contexts across Promise callbacks
+// kilocode_change start - preserve legacy Semafour contexts across Promise callbacks
 function restore<R>(instance: InstanceContext | undefined, workspace: WorkspaceV2.ID | undefined, fn: () => R): R {
   if (instance && workspace !== undefined) {
     return WorkspaceContext.restore(workspace, () => Instance.restore(instance, fn))
@@ -50,7 +50,7 @@ export const bind = <Args extends readonly unknown[], Result>(fn: (...args: Args
  * Bridge from Effect into a Promise-returning JS callback while preserving
  * legacy AsyncLocalStorage contexts for callback code that still reads them. // kilocode_change
  *
- * Mirrors `Effect.promise` but restores Kilo compatibility contexts first. // kilocode_change
+ * Mirrors `Effect.promise` but restores Semafour compatibility contexts first. // kilocode_change
  */
 export const fromPromise = <T>(fn: () => Promise<T> | T): Effect.Effect<T> =>
   Effect.gen(function* () {

@@ -5,16 +5,16 @@ description: "Track team usage and performance analytics"
 
 # Analytics
 
-Using Kilo seats with an Enterprise or Teams subscription provides detailed usage analytics to help you monitor and understand your organization’s AI usage patterns, costs, and activity through the Kilo Gateway provider.
+Using Semafour seats with an Enterprise or Teams subscription provides detailed usage analytics to help you monitor and understand your organization’s AI usage patterns, costs, and activity through the Semafour Gateway provider.
 
 ## Analytics Dashboard Overview
 
-Access your organization’s usage analytics through the **Usage Details** section in your dashboard. The analytics show comprehensive data about your team's usage of the Kilo Gateway provider.
+Access your organization’s usage analytics through the **Usage Details** section in your dashboard. The analytics show comprehensive data about your team's usage of the Semafour Gateway provider.
 
 {% callout type="info" title="Usage Scope" %}
-This usage overview includes all of your usage of the Kilo Gateway provider. It does **NOT** include any usage made via the Kilo Code extension to other, non-Kilo Code providers. You can choose which API provider to use from the extension's main settings page.
+This usage overview includes all of your usage of the Semafour Gateway provider. It does **NOT** include any usage made via the Semafour extension to other, non-Semafour providers. You can choose which API provider to use from the extension's main settings page.
 
-Sign in with ChatGPT requests routed through Kilo are included. Filter **Usage → Provider → `openai-chatgpt`** to isolate those requests and token totals. Cost is **$0** for every Sign in with ChatGPT request.
+Sign in with ChatGPT requests routed through Semafour are included. Filter **Usage → Provider → `openai-chatgpt`** to isolate those requests and token totals. Cost is **$0** for every Sign in with ChatGPT request.
 {% /callout %}
 
 ## Summary Metrics

@@ -21,7 +21,7 @@ export const CodeWithAiNav: NavSection[] = [
       },
       {
         href: "/code-with-ai/platforms/kilo-connect",
-        children: "Kilo Connect",
+        children: "Semafour Connect",
         subLinks: [
           { href: "/code-with-ai/platforms/slack", children: "Slack" },
           { href: "/code-with-ai/platforms/github", children: "GitHub" },
@@ -37,7 +37,7 @@ export const CodeWithAiNav: NavSection[] = [
     links: [
       {
         href: "/code-with-ai/gastown",
-        children: "Gas Town by Kilo",
+        children: "Gas Town by Semafour",
         subLinks: [
           { href: "/code-with-ai/gastown/quick-start", children: "Quick Start" },
           { href: "/code-with-ai/gastown/concepts", children: "Concepts" },

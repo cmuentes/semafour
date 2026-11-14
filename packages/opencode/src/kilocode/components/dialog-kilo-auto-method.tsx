@@ -1,5 +1,5 @@
 /**
- * Custom OAuth handler for Kilo Gateway
+ * Custom OAuth handler for Semafour Gateway
  *
  * Handles the device authorization flow and organization selection
  * before completing authentication.
@@ -103,7 +103,7 @@ export function KiloAutoMethod(props: KiloAutoMethodProps) {
       if (error instanceof DOMException && error.name === "AbortError") return
 
       // Error fetching profile - fallback to personal account
-      console.warn("Failed to fetch Kilo profile, using personal account:", error)
+      console.warn("Failed to fetch Semafour profile, using personal account:", error)
       setStatus("error")
 
       toast.show({

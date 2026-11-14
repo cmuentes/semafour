@@ -62,8 +62,8 @@ internal class SessionAccountOverlay(
 
     private val profileBtn = HoverIcon().apply {
         icon = AllIcons.General.User
-        toolTipText = KiloBundle.message("action.Kilo.ShowProfile.description")
-        accessibleContext.accessibleName = KiloBundle.message("action.Kilo.ShowProfile.text")
+        toolTipText = KiloBundle.message("action.Semafour.ShowProfile.description")
+        accessibleContext.accessibleName = KiloBundle.message("action.Semafour.ShowProfile.text")
         addActionListener { profile() }
     }
 

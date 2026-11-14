@@ -132,7 +132,7 @@ export const layer = Layer.effect(
   }),
 )
 
-// kilocode_change - preserve legacy layer composition for Kilo callers
+// kilocode_change - preserve legacy layer composition for Semafour callers
 export const defaultLayer = layer.pipe(Layer.provide(EventV2Bridge.defaultLayer))
 
 export const node = LayerNode.make({ service: Service, layer: layer, deps: [EventV2Bridge.node] })

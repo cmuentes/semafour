@@ -1,13 +1,13 @@
 ---
-title: "What's New in Kilo Code (April 2026)"
-description: "The Kilo Code extension has been rebuilt from the ground up on the Kilo CLI — faster, more flexible, and with access to 500+ models."
+title: "What's New in Semafour (April 2026)"
+description: "The Semafour extension has been rebuilt from the ground up on the Semafour CLI — faster, more flexible, and with access to 500+ models."
 ---
 
-# What's New in Kilo Code
+# What's New in Semafour
 
-The Kilo Code extension has been completely rebuilt on a portable, open-source core shared across VS Code, the CLI, and Cloud Agents. This is the biggest update since launch: faster execution with parallel tool calls and subagents, the new Agent Manager for running multiple agents side by side, inline code review with line-level comments, multi-model comparisons, and access to 500+ models.
+The Semafour extension has been completely rebuilt on a portable, open-source core shared across VS Code, the CLI, and Cloud Agents. This is the biggest update since launch: faster execution with parallel tool calls and subagents, the new Agent Manager for running multiple agents side by side, inline code review with line-level comments, multi-model comparisons, and access to 500+ models.
 
-Whether you're writing features in VS Code, debugging over SSH, or reviewing code on Slack, Kilo now goes with you. Read the [full announcement on the Kilo Blog](https://blog.kilo.ai/p/new-kilo-for-vs-code-is-live) for everything that's new.
+Whether you're writing features in VS Code, debugging over SSH, or reviewing code on Slack, Semafour now goes with you. Read the [full announcement on the Semafour Blog](https://blog.kilo.ai/p/new-kilo-for-vs-code-is-live) for everything that's new.
 
 ---
 

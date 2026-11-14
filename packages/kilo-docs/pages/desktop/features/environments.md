@@ -1,6 +1,6 @@
 ---
 title: "Conda Environments"
-description: "Create, import, and manage conda environments and their packages from Kilo Desktop."
+description: "Create, import, and manage conda environments and their packages from Semafour Desktop."
 ---
 
 # Conda environments
@@ -8,7 +8,7 @@ description: "Create, import, and manage conda environments and their packages f
 Manage conda environments and their packages from within the app, so you can set up the Python environment your work needs without dropping to a separate terminal. You'll find **Conda Environments** in [Settings](/docs/desktop/settings/general#conda-environments), under **General**.
 
 {% callout type="info" %}
-Conda environments require a [Kilo account](/docs/desktop/settings/ai#ai-providers). Sign in to create and manage them.
+Conda environments require a [Semafour account](/docs/desktop/settings/ai#ai-providers). Sign in to create and manage them.
 
 If you're signed out when the agent tries to use conda, the chat asks you to sign in (*Enable use of secure & governed Anaconda packages for Python environments?*). Select **Sign in** and the agent continues, or **Not now** to turn off the agent's conda tools until you sign in or restart the app. Other features still ask on their own.
 {% /callout %}
@@ -46,7 +46,7 @@ The most durable approach is to have the agent write an `environment.yml` into t
 
 The agent can create environments and install, update, or remove packages for you. It asks you to approve each change and shows the channels it will use. It won't install packages from local files or from URL or local-path channels. When you're signed in, the agent prefers Anaconda's channels (`defaults` or your organization's channels) and uses `conda-forge` only when a package isn't available there.
 
-The agent can also add or remove conda channels for you, but only named channels (such as `defaults` or `conda-forge`). Because a channel change affects every later install, Kilo Desktop asks you each time: **Allow adding a conda channel?** or **Allow removing a conda channel?**, with the channel listed under **Channels**. Choose **Allow once** or **Reject** — there's no **Always allow** for channel changes. A warning appears when the channel isn't `main`, `defaults`, or `conda-forge`, and when a new channel would take priority over all your existing ones. Approved changes update your user conda settings (`~/.condarc`). If no channels are configured and you haven't named one, the agent asks whether to use Anaconda's `defaults` channel before it continues. It doesn't pick a channel on its own.
+The agent can also add or remove conda channels for you, but only named channels (such as `defaults` or `conda-forge`). Because a channel change affects every later install, Semafour Desktop asks you each time: **Allow adding a conda channel?** or **Allow removing a conda channel?**, with the channel listed under **Channels**. Choose **Allow once** or **Reject** — there's no **Always allow** for channel changes. A warning appears when the channel isn't `main`, `defaults`, or `conda-forge`, and when a new channel would take priority over all your existing ones. Approved changes update your user conda settings (`~/.condarc`). If no channels are configured and you haven't named one, the agent asks whether to use Anaconda's `defaults` channel before it continues. It doesn't pick a channel on its own.
 
 ## If installs fail
 
@@ -66,7 +66,7 @@ On the Create environment page, configure your environment:
 - **Name** — the environment's name.
 - **Python version** — a specific version, or **Latest**.
 
-As you type, Kilo checks that the name and location are available and that you can write there. **Create Environment** stays disabled until the check passes. If an environment already exists at that path, or you don't have permission, the dialog tells you.
+As you type, Semafour checks that the name and location are available and that you can write there. **Create Environment** stays disabled until the check passes. If an environment already exists at that path, or you don't have permission, the dialog tells you.
 
 Under **Select packages**, search the list and check the packages to include. Each package has a version dropdown (defaulting to **latest**), and your choices collect in the **Selected Packages** panel. Use the {% svgIcon src="/docs/img/desktop/list-filter.svg" /%} **Channels** control to choose where packages come from (see [Choose a channel](#choose-a-channel)). Select **Create Environment** to build it.
 

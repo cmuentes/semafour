@@ -1,7 +1,7 @@
 /**
  * CycloneDX 1.6 document model and composer.
  *
- * Kilo publishes one SBOM per shipped artifact (CLI archive, npm tarball, OCI
+ * Semafour publishes one SBOM per shipped artifact (CLI archive, npm tarball, OCI
  * manifest, VSIX, JetBrains plugin ZIP). Every document is composed here so the
  * shape, property namespace, and determinism rules stay identical across
  * products instead of drifting per build script.
@@ -20,7 +20,7 @@ export const PROPERTY_NAMESPACE = "kilocode"
  * - `contained` is physically inside the artifact bytes.
  * - `provided` is supplied by the host (IDE platform modules, JNA, coroutines)
  *   and must not be claimed as part of the artifact.
- * - `runtime` is downloaded or installed later by Kilo against a pinned
+ * - `runtime` is downloaded or installed later by Semafour against a pinned
  *   version (JetBrains lean CLI assets, optional LanceDB, ripgrep).
  */
 export type Delivery = "contained" | "provided" | "runtime"
@@ -118,7 +118,7 @@ export type Bom = {
   dependencies: { ref: string; dependsOn: string[] }[]
 }
 
-const SUPPLIER = { name: "Kilo Code", url: ["https://kilo.ai"] }
+const SUPPLIER = { name: "Semafour", url: ["https://kilo.ai"] }
 
 /**
  * Deterministic serial number.
@@ -228,7 +228,7 @@ function strongest(a?: Delivery, b?: Delivery): Delivery {
 /**
  * Merge components from several generators into one list.
  *
- * Kilo composes each SBOM from a bundler graph, a physical artifact scan, and
+ * Semafour composes each SBOM from a bundler graph, a physical artifact scan, and
  * explicitly modelled native components, so the same package routinely arrives
  * more than once. Identity is the purl (or explicit ref); conflicting delivery
  * claims resolve to the strongest one rather than producing two components that

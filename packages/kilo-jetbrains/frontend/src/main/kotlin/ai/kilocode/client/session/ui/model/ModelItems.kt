@@ -5,7 +5,7 @@ import ai.kilocode.rpc.dto.ProvidersDto
 private const val KILO_PROVIDER = "kilo"
 
 /**
- * Builds the model picker item list from workspace [providers], filtered to the Kilo provider and
+ * Builds the model picker item list from workspace [providers], filtered to the Semafour provider and
  * any connected providers. Small models are dropped unless [includeSmall] is set. Shared by the
  * models settings page and the New Worktree dialog so the mapping stays in one place.
  */

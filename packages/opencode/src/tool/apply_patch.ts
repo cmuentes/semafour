@@ -322,7 +322,7 @@ export const ApplyPatchTool = Tool.define(
         output += `\n\nLSP errors detected in ${rel}, please fix:\n${block}`
       }
 
-      // kilocode_change start - append Kilo config validation warnings
+      // kilocode_change start - append Semafour config validation warnings
       for (const changed of fileChanges) {
         if (changed.type === "delete") continue
         output += yield* Effect.promise(() => ConfigValidation.check(changed.movePath ?? changed.filePath))

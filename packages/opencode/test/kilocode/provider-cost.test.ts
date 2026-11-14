@@ -98,7 +98,7 @@ describe("KiloSession.providerCost — Vercel AI Gateway", () => {
       metadata: {
         gateway: {
           // Strings, exactly as emitted by the AI Gateway. `cost` is the gateway fee,
-          // which Kilo doesn't pass on to end users — must be ignored.
+          // which Semafour doesn't pass on to end users — must be ignored.
           cost: "0",
           marketCost: "0.35349075",
         },
@@ -208,7 +208,7 @@ describe("KiloSession.providerCost — OpenRouter chat completions", () => {
     expect(result.cost).toBe(0.0123)
   })
 
-  test("prefers upstream_inference_cost for the Kilo provider", () => {
+  test("prefers upstream_inference_cost for the Semafour provider", () => {
     const result = SessionNs.getUsage({
       model: model(),
       provider: kilo,

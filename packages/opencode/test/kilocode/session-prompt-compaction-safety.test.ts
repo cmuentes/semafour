@@ -1,5 +1,5 @@
 // Regressions for SessionPrompt.runLoop compaction-history safety.
-// Ensures Kilo's post-filterCompacted trim and post-summary media strip are
+// Ensures Semafour's post-filterCompacted trim and post-summary media strip are
 // applied before messages are serialized for the provider request.
 
 import path from "path"
@@ -306,7 +306,7 @@ const dangling = Effect.fn("prompt-safety.dangling")(function* (sessionID: Sessi
   } satisfies MessageV2.Assistant)
 })
 
-// Starts a separate Kilo process that holds a turn on the session, as a second `kilo serve` does while it waits on the provider.
+// Starts a separate Semafour process that holds a turn on the session, as a second `kilo serve` does while it waits on the provider.
 const owner = Effect.fn("prompt-safety.owner")(function* (sessionID: SessionID) {
   const script = [
     `import { Effect } from "effect"`,
@@ -761,7 +761,7 @@ describe("SessionPrompt recovery", () => {
     ),
   )
 
-  it.live("marks the session turn on disk while a reply runs, for other Kilo processes", () =>
+  it.live("marks the session turn on disk while a reply runs, for other Semafour processes", () =>
     provideTmpdirServer(
       Effect.fnUntraced(function* ({ llm }) {
         const prompt = yield* SessionPrompt.Service

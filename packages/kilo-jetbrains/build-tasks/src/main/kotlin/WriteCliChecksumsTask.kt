@@ -46,7 +46,7 @@ abstract class WriteCliChecksumsTask : DefaultTask() {
         val assets = assets(ver)
         val values = PLATFORMS.associateWith { platform ->
             val name = "kilo-$platform.${ext(platform)}"
-            assets[name] ?: throw GradleException("Kilo CLI release $ver did not include $name")
+            assets[name] ?: throw GradleException("Semafour CLI release $ver did not include $name")
         }
 
         val out = checksums.get().asFile
@@ -60,11 +60,11 @@ abstract class WriteCliChecksumsTask : DefaultTask() {
 
     private fun assets(ver: String): Map<String, String> {
         val url = "$API/v$ver"
-        logger.lifecycle("Fetching pinned Kilo CLI release checksums from $url")
+        logger.lifecycle("Fetching pinned Semafour CLI release checksums from $url")
         val conn = connect(url)
         try {
             val code = conn.responseCode
-            if (code !in 200..299) fail(conn, code, "Failed to fetch pinned Kilo CLI release checksums")
+            if (code !in 200..299) fail(conn, code, "Failed to fetch pinned Semafour CLI release checksums")
             val body = conn.inputStream.bufferedReader().use { it.readText() }
             return JSON.parseToJsonElement(body).jsonObject["assets"]?.jsonArray
                 ?.associate { item ->
@@ -78,7 +78,7 @@ abstract class WriteCliChecksumsTask : DefaultTask() {
                 ?.mapValues { item ->
                     val digest = item.value
                     if (!digest.matches(DIGEST)) {
-                        throw GradleException("Pinned Kilo CLI release $ver asset ${item.key} has invalid digest")
+                        throw GradleException("Pinned Semafour CLI release $ver asset ${item.key} has invalid digest")
                     }
                     digest
                 }
@@ -108,7 +108,7 @@ abstract class WriteCliChecksumsTask : DefaultTask() {
             ?.take(500)
         val detail = if (body.isNullOrBlank()) "" else ": $body"
         if (limited(conn, code)) {
-            throw GradleException("GitHub API rate limit exceeded while fetching Kilo CLI checksums ($info)$detail")
+            throw GradleException("GitHub API rate limit exceeded while fetching Semafour CLI checksums ($info)$detail")
         }
         throw GradleException("$msg: HTTP $code from ${conn.url} ($info)$detail")
     }

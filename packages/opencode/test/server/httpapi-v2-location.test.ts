@@ -78,7 +78,7 @@ afterEach(async () => {
 })
 
 describe("v2 location HttpApi", () => {
-  // kilocode_change start - malformed Kilo location headers are client errors
+  // kilocode_change start - malformed Semafour location headers are client errors
   test("rejects malformed encoded directory headers", async () => {
     const response = await request("/api/location", "%E0%A4%A")
 
@@ -129,7 +129,7 @@ describe("v2 location HttpApi", () => {
     const created = await request("/session", publisher.path, { method: "POST" })
     expect(created.status).toBe(200)
 
-    // kilocode_change start - the native handler must encode Kilo events omitted from upstream's narrower manifest
+    // kilocode_change start - the native handler must encode Semafour events omitted from upstream's narrower manifest
     const session = (await created.json()) as { id: string }
     expect(await readEventType(reader, "session.created")).toMatchObject({
       type: "session.created",

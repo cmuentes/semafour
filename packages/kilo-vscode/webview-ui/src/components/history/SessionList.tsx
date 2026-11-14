@@ -60,7 +60,7 @@ const SessionList: Component<SessionListProps> = (props) => {
   })
 
   onMount(() => {
-    console.log("[Kilo New] SessionList mounted, loading sessions")
+    console.log("[Semafour New] SessionList mounted, loading sessions")
     session.loadSessions()
   })
 

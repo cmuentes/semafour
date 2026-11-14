@@ -96,7 +96,7 @@ describe("opencode run (non-interactive subprocess)", () => {
         )
         yield* llm.fail("upstream provider exploded mid-stream")
         // kilocode_change - settle bash up front so the run exercises the stream finish rather than
-        // Kilo's auto-reject exit contract, which a plain headless run would trip first.
+        // Semafour's auto-reject exit contract, which a plain headless run would trip first.
         const result = yield* opencode.run("trigger midstream error", {
           timeoutMs: 30_000,
           permission: { bash: "deny" },
@@ -108,7 +108,7 @@ describe("opencode run (non-interactive subprocess)", () => {
     60_000,
   )
 
-  // kilocode_change start - Kilo headless runs must signal an unsuccessful session to automation
+  // kilocode_change start - Semafour headless runs must signal an unsuccessful session to automation
   cliIt.concurrent(
     "mid-stream session error exits nonzero with a stderr diagnostic",
     ({ llm, opencode }) =>
@@ -216,7 +216,7 @@ describe("opencode run (non-interactive subprocess)", () => {
 
         expect(result.exitCode).not.toBe(0)
         const events = opencode.parseJsonEvents(result.stdout)
-        // kilocode_change - upstream expects a single record. Kilo emits two, and has since before
+        // kilocode_change - upstream expects a single record. Semafour emits two, and has since before
         // this merge: session/prompt.ts getModel publishes a readable "Model not found" session.error
         // and then dies, and the die is masked into the generic request failure. Upstream only has the
         // masked one, and asserts shape rather than message, so its count is one. Assert both records
@@ -315,7 +315,7 @@ describe("opencode run (non-interactive subprocess)", () => {
         )
         // kilocode_change end
         // kilocode_change - upstream asserts reason "unknown" here. Reaching that requires the bash call
-        // to proceed without permission friction, which a Kilo headless run never does: left alone the ask
+        // to proceed without permission friction, which a Semafour headless run never does: left alone the ask
         // is auto-rejected (exit 1, no second step), and settling it up front changes the request sequence
         // so the queued stream error is not what ends the turn. The reason is left unasserted rather than
         // pinned to a value produced by a different sequence; partial output, the named subject, still holds.

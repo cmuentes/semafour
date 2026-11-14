@@ -252,7 +252,7 @@ function createThemeInstaller(
     const src = Filesystem.resolveFilePath(root, file)
     const name = path.basename(src, path.extname(src))
     const source_dir = path.dirname(meta.source)
-    // kilocode_change start - install local themes into supported Kilo config directories
+    // kilocode_change start - install local themes into supported Semafour config directories
     const base = path.basename(source_dir)
     const local_dir =
       base === ".kilo" || base === ".kilocode"

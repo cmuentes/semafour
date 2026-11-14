@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kilo.ai"><img width="250" alt="Kilo Code logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
+  <a href="https://kilo.ai"><img width="250" alt="Semafour logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
 </p>
 
 <p align="center">用于在 VS Code、JetBrains 或 CLI 中借助 AI 构建的开源编码代理。</p>
@@ -21,18 +21,18 @@
 
 ---
 
-Kilo Code 是一个 AI 编码代理，可以在你工作的任何地方使用：[VS Code](https://kilo.ai/landing/vs-code)、[JetBrains](https://kilo.ai/features/jetbrains-native) 和 [CLI](https://kilo.ai/cli)。它是开源的，并采用开放定价。你可以从 500 多个模型中选择，在任务中途切换模型，并按模型提供商的价格付费，没有加价。开始使用无需 API 密钥。
+Semafour 是一个 AI 编码代理，可以在你工作的任何地方使用：[VS Code](https://kilo.ai/landing/vs-code)、[JetBrains](https://kilo.ai/features/jetbrains-native) 和 [CLI](https://kilo.ai/cli)。它是开源的，并采用开放定价。你可以从 500 多个模型中选择，在任务中途切换模型，并按模型提供商的价格付费，没有加价。开始使用无需 API 密钥。
 
 ### 安装
 
-选择你想运行 Kilo 的位置。
+选择你想运行 Semafour 的位置。
 
 <details open>
 <summary><strong>VS Code</strong></summary>
 
 <br>
 
-直接安装 [Kilo Code 扩展](vscode:extension/kilocode.kilo-code)，或从 [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code) 获取。创建账户后，你可以按提供商价格访问 500 多个模型，包括 GPT-5.5、Claude Opus 4.7、Claude Sonnet 4.6 和 Gemini 3.1 Pro Preview。
+直接安装 [Semafour 扩展](vscode:extension/kilocode.kilo-code)，或从 [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code) 获取。创建账户后，你可以按提供商价格访问 500 多个模型，包括 GPT-5.5、Claude Opus 4.7、Claude Sonnet 4.6 和 Gemini 3.1 Pro Preview。
 
 </details>
 
@@ -70,7 +70,7 @@ paru -S kilo-bin
 
 <br>
 
-从 JetBrains Marketplace 安装 [Kilo Code 插件](https://plugins.jetbrains.com/plugin/28350-kilo-code)，或在任意 JetBrains IDE 的 `Settings → Plugins` 中搜索 "Kilo Code"。
+从 JetBrains Marketplace 安装 [Semafour 插件](https://plugins.jetbrains.com/plugin/28350-kilo-code)，或在任意 JetBrains IDE 的 `Settings → Plugins` 中搜索 "Semafour"。
 
 </details>
 
@@ -79,7 +79,7 @@ paru -S kilo-bin
 
 <br>
 
-无需本地机器，在 Web 上通过 [app.kilo.ai/cloud](https://app.kilo.ai/cloud) 运行 Kilo。
+无需本地机器，在 Web 上通过 [app.kilo.ai/cloud](https://app.kilo.ai/cloud) 运行 Semafour。
 
 </details>
 
@@ -111,7 +111,7 @@ paru -S kilo-bin
 
 ### Agents
 
-Kilo 内置了可按任务切换的专用 Agents。你也可以构建自己的自定义 Agents。
+Semafour 内置了可按任务切换的专用 Agents。你也可以构建自己的自定义 Agents。
 
 - **Code** - 默认模式。根据自然语言实现和编辑代码。
 - **Plan** - 在编写任何代码之前设计架构并编写实现计划。
@@ -157,9 +157,9 @@ MIT。你可以使用、修改和分发此代码，包括商业用途，只要�
 ### FAQ
 
 <details>
-<summary>Kilo CLI 从哪里来？</summary>
+<summary>Semafour CLI 从哪里来？</summary>
 
-Kilo CLI 是 [OpenCode](https://github.com/anomalyco/opencode) 的一个 fork，并增强为可在 Kilo agentic engineering 平台中使用。
+Semafour CLI 是 [OpenCode](https://github.com/anomalyco/opencode) 的一个 fork，并增强为可在 Semafour agentic engineering 平台中使用。
 
 </details>
 

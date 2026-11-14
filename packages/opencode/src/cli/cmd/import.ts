@@ -26,7 +26,7 @@ export type ShareData =
   | { type: "model"; data: unknown }
 
 // kilocode_change start
-/** Extract share token from a Kilo share URL like https://app.kilo.ai/s/<jwt> */
+/** Extract share token from a Semafour share URL like https://app.kilo.ai/s/<jwt> */
 export function parseShareUrl(url: string): string | null {
   const match = url.match(/^https?:\/\/app\.kilo\.ai\/s\/([A-Za-z0-9_.-]+)$/)
   return match ? match[1] : null

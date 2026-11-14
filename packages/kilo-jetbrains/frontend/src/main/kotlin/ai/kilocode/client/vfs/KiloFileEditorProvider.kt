@@ -23,9 +23,9 @@ class KiloFileEditorProvider : FileEditorProvider, DumbAware {
 
     override fun createEditor(project: Project, file: VirtualFile): FileEditor {
         ensureKiloKinds()
-        val path = kiloPath(file) ?: error("Invalid Kilo virtual file: ${file.path}")
+        val path = kiloPath(file) ?: error("Invalid Semafour virtual file: ${file.path}")
         val kilo = file as? KiloVirtualFile ?: KiloVirtualFile(path)
-        val kind = service<KiloEditorKindRegistry>().get(kilo.path.kind) ?: error("Unknown Kilo editor kind: ${kilo.path.kind}")
+        val kind = service<KiloEditorKindRegistry>().get(kilo.path.kind) ?: error("Unknown Semafour editor kind: ${kilo.path.kind}")
         return KiloFileEditor(project, file, kilo, kind)
     }
 

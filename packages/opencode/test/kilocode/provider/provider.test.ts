@@ -59,7 +59,7 @@ it.instance(
 )
 
 it.instance(
-  "getSmallModel falls back to Kilo auto when the kilo provider is configured",
+  "getSmallModel falls back to Semafour auto when the kilo provider is configured",
   Effect.gen(function* () {
     const model = yield* Provider.use.getSmallModel(ProviderV2.ID.make("test-provider"))
     expect(model).toMatchObject({ providerID: "kilo", id: "kilo-auto/small" })

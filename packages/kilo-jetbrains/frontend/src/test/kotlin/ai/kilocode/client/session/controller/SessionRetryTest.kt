@@ -31,7 +31,7 @@ class SessionRetryTest : SessionControllerTestBase() {
     private fun providers() = listOf(
         ProviderDto(
             id = "kilo",
-            name = "Kilo",
+            name = "Semafour",
             models = mapOf(
                 "gpt-5" to ModelDto(
                     id = "gpt-5",
@@ -236,7 +236,7 @@ class SessionRetryTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf("kilo-auto/free" to ModelDto(id = "kilo-auto/free", name = "Auto Free")),
                 ),
                 ProviderDto(

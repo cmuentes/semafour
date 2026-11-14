@@ -1,7 +1,7 @@
 /**
  * Authentication handlers — extracted from KiloProvider.
  *
- * Kilo Cloud sign-in has been removed: these handlers are stubs that return
+ * Semafour Cloud sign-in has been removed: these handlers are stubs that return
  * early so any residual webview auth requests become no-ops.
  */
 
@@ -19,22 +19,22 @@ export interface AuthContext {
   fetchAndSendSpeechToTextModels(): Promise<void>
 }
 
-/** Kilo Cloud login is disabled. */
+/** Semafour Cloud login is disabled. */
 export async function handleLogin(_ctx: AuthContext, _attempt: number, _getAttempt: () => number): Promise<void> {
   return
 }
 
-/** Kilo Cloud logout is disabled. */
+/** Semafour Cloud logout is disabled. */
 export async function handleLogout(_ctx: AuthContext): Promise<void> {
   return
 }
 
-/** Kilo Cloud organization switching is disabled. */
+/** Semafour Cloud organization switching is disabled. */
 export async function handleSetOrganization(_ctx: AuthContext, _organizationId: string | null): Promise<void> {
   return
 }
 
-/** Kilo Cloud profile refresh is disabled. */
+/** Semafour Cloud profile refresh is disabled. */
 export async function handleRefreshProfile(_ctx: AuthContext): Promise<void> {
   return
 }

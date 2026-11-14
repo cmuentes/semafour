@@ -275,16 +275,16 @@ describe("KiloCustomRouter routing decision", () => {
     await expect(KiloCustomRouter.resolve(resolveInput(fetch, "token-e"))).rejects.toThrow("was not found")
   })
 
-  test("fails without a Kilo token", async () => {
+  test("fails without a Semafour token", async () => {
     const { fetch } = respond([])
-    await expect(KiloCustomRouter.resolve(resolveInput(fetch, ""))).rejects.toThrow("Sign in to Kilo")
+    await expect(KiloCustomRouter.resolve(resolveInput(fetch, ""))).rejects.toThrow("Sign in to Semafour")
   })
 
   test("surfaces worker error codes with specific messages", async () => {
     const codes = [
       ["insufficient_balance", "balance is too low"],
       ["quota_exceeded", "benchmark limit for this router owner is reached. Try again later"],
-      ["unauthorized", "Sign in to Kilo"],
+      ["unauthorized", "Sign in to Semafour"],
       ["forbidden", "do not have access"],
       ["router_not_found", "was not found"],
       ["invalid_request", "rejected the custom router request"],

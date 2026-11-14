@@ -60,7 +60,7 @@ class KiloAgentBehaviorRpcApiImpl(private val backend: KiloBackendAppService? = 
 
     override suspend fun agents(directory: String): List<AgentDetailDto> {
         app.requireReady()
-        val api = app.api ?: throw IllegalStateException("Kilo API is unavailable")
+        val api = app.api ?: throw IllegalStateException("Semafour API is unavailable")
         val removable = KiloCliDataParser.parseAgentRemovable(request(directory, "/agent", null))
         return withContext(Dispatchers.IO) { api.appAgents(directory = directory) }.map { item ->
             AgentDetailDto(
@@ -135,7 +135,7 @@ class KiloAgentBehaviorRpcApiImpl(private val backend: KiloBackendAppService? = 
 
     override suspend fun createAgent(directory: String, input: AgentCreateDto): Boolean {
         app.requireReady()
-        val api = app.api ?: throw IllegalStateException("Kilo API is unavailable")
+        val api = app.api ?: throw IllegalStateException("Semafour API is unavailable")
         val req = AgentBuilderSaveRequest(
             prompt = input.prompt,
             id = input.name,
@@ -453,7 +453,7 @@ class KiloAgentBehaviorRpcApiImpl(private val backend: KiloBackendAppService? = 
     }
 
     private suspend fun patchConfig(path: String, body: String): Unit = withContext(Dispatchers.IO) {
-        val http = app.http ?: throw IllegalStateException("Kilo HTTP client is unavailable")
+        val http = app.http ?: throw IllegalStateException("Semafour HTTP client is unavailable")
         val url = "http://127.0.0.1:${app.port}$path"
         val request = Request.Builder().url(url).patch(body.toRequestBody(JSON)).build()
         http.newCall(request).execute().use { response ->
@@ -472,7 +472,7 @@ class KiloAgentBehaviorRpcApiImpl(private val backend: KiloBackendAppService? = 
         method: String,
         body: JsonObject = JsonObject(emptyMap()),
     ): Reply = withContext(Dispatchers.IO) {
-        val http = app.http ?: throw IllegalStateException("Kilo HTTP client is unavailable")
+        val http = app.http ?: throw IllegalStateException("Semafour HTTP client is unavailable")
         val url = "http://127.0.0.1:${app.port}$path?directory=${encode(directory)}"
         val builder = Request.Builder().url(url)
         when (method) {
@@ -485,7 +485,7 @@ class KiloAgentBehaviorRpcApiImpl(private val backend: KiloBackendAppService? = 
     }
 
     private suspend fun request(directory: String, path: String, body: JsonObject?): String = withContext(Dispatchers.IO) {
-        val http = app.http ?: throw IllegalStateException("Kilo HTTP client is unavailable")
+        val http = app.http ?: throw IllegalStateException("Semafour HTTP client is unavailable")
         val url = "http://127.0.0.1:${app.port}$path?directory=${encode(directory)}"
         val request = Request.Builder().url(url).let { builder ->
             if (body == null) builder.get() else builder.post(body.toString().toRequestBody(JSON))

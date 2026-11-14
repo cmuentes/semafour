@@ -79,8 +79,8 @@ class ModelPopupTest : BasePlatformTestCase() {
     )
 
     private fun items() = listOf(
-        ModelPicker.Item("gpt-5", "GPT-5", "kilo", "Kilo"),
-        ModelPicker.Item("sonnet", "Sonnet 4.6", "kilo", "Kilo"),
+        ModelPicker.Item("gpt-5", "GPT-5", "kilo", "Semafour"),
+        ModelPicker.Item("sonnet", "Sonnet 4.6", "kilo", "Semafour"),
     )
 
     private fun Component.icons(): List<Icon> {

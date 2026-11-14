@@ -17,7 +17,7 @@ internal val PROMPT_TEXT_PASTE_HANDLER_KEY: Key<PromptTextPasteHandler> =
     Key.create("ai.kilocode.client.session.ui.prompt.PromptTextPasteHandler")
 
 /**
- * Claims plain-text pastes large enough to collapse ([collapsible]) inside a Kilo prompt editor,
+ * Claims plain-text pastes large enough to collapse ([collapsible]) inside a Semafour prompt editor,
  * leaving every other paste (files, images, short text) to IntelliJ's default paste handling.
  */
 internal class PromptTextPasteProvider : PasteProvider {

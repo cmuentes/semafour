@@ -12,7 +12,7 @@ class KiloBackendDynamicPluginListener : DynamicPluginListener {
 
     override fun beforePluginUnload(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean) {
         if (pluginDescriptor.pluginId != KiloPlugin.id) return
-        log.info("Shutting down Kilo backend for plugin unload (isUpdate=$isUpdate)")
+        log.info("Shutting down Semafour backend for plugin unload (isUpdate=$isUpdate)")
         service<KiloBackendAppService>().shutdownForUnload()
     }
 }

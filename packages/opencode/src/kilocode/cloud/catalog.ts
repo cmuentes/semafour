@@ -81,7 +81,7 @@ export namespace CloudCatalog {
         catch: () =>
           new CatalogError({
             kind: "schema",
-            message: "Kilo catalog URL is invalid",
+            message: "Semafour catalog URL is invalid",
           }),
       })
       const response = yield* Effect.tryPromise({
@@ -89,7 +89,7 @@ export namespace CloudCatalog {
         catch: () =>
           new CatalogError({
             kind: "network",
-            message: "Unable to reach the Kilo model catalog",
+            message: "Unable to reach the Semafour model catalog",
           }),
       })
       if (!response.ok) {
@@ -100,8 +100,8 @@ export namespace CloudCatalog {
             status: response.status,
             message:
               kind === "auth"
-                ? "Kilo credentials or organization were rejected by the model catalog"
-                : "The Kilo model catalog is unavailable",
+                ? "Semafour credentials or organization were rejected by the model catalog"
+                : "The Semafour model catalog is unavailable",
           }),
         )
       }
@@ -111,7 +111,7 @@ export namespace CloudCatalog {
         catch: () =>
           new CatalogError({
             kind: "schema",
-            message: "The Kilo model catalog returned an invalid response",
+            message: "The Semafour model catalog returned an invalid response",
           }),
       })
       const parsed = schema.safeParse(body)
@@ -119,7 +119,7 @@ export namespace CloudCatalog {
         return yield* Effect.fail(
           new CatalogError({
             kind: "schema",
-            message: "The Kilo model catalog returned an invalid response",
+            message: "The Semafour model catalog returned an invalid response",
           }),
         )
       }
@@ -137,7 +137,7 @@ export namespace CloudCatalog {
         catch: () =>
           new CatalogError({
             kind: "schema",
-            message: "Kilo catalog URL must be secure",
+            message: "Semafour catalog URL must be secure",
           }),
       })
 

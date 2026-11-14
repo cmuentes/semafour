@@ -69,7 +69,7 @@ internal object KiloDiffEditorKind : KiloEditorKind {
         var current: Disposable? = null
         fun render(data: DiffEditorData) {
             current?.let { Disposer.dispose(it) }
-            val child = Disposer.newDisposable(parent, "Kilo diff editor content")
+            val child = Disposer.newDisposable(parent, "Semafour diff editor content")
             current = child
             panel.removeAll()
             panel.add(

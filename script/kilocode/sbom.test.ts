@@ -396,7 +396,7 @@ describe("deps", () => {
   test("records workspace packages as first-party without inventing npm purls", () => {
     const result = Deps.closure({ lock, workspace: "packages/app" })
     const workspace = result.components.find((item) => item.name === "@kilo/lib")
-    expect(workspace).toMatchObject({ version: "2.0.0", supplier: "Kilo Code", properties: { origin: "workspace" } })
+    expect(workspace).toMatchObject({ version: "2.0.0", supplier: "Semafour", properties: { origin: "workspace" } })
     expect(workspace?.purl).toBeUndefined()
     expect(result.components.map((item) => item.name)).toContain("nested")
   })

@@ -521,7 +521,7 @@ export const UserMessageBrowserFeedback: Story = {
 }
 
 /**
- * Builds the user message a prompt Kilo composed produces. `title` marks the
+ * Builds the user message a prompt Semafour composed produces. `title` marks the
  * part through `metadata.kilo.injected`; without a title the body itself is
  * inspected, which is how the pull request fix instruction is recognised.
  */
@@ -556,7 +556,7 @@ function InjectedStory(props: { text: string; title?: string }) {
 }
 
 const REVIEW_TEMPLATE_BODY = [
-  "You are Kilo Code, an expert code reviewer focused on high-confidence security, performance, business logic, deploy safety, duplication, and dead-code findings.",
+  "You are Semafour, an expert code reviewer focused on high-confidence security, performance, business logic, deploy safety, duplication, and dead-code findings.",
   "",
   "During the initial review phase, your role is advisory: provide clear, actionable feedback but DO NOT modify any files.",
   "",
@@ -1631,7 +1631,7 @@ const usageData = {
 const usageProviders = {
   kilo: {
     id: "kilo",
-    name: "Kilo Gateway",
+    name: "Semafour Gateway",
     models: {
       "qwen/qwen3.7-plus": { id: "qwen/qwen3.7-plus", name: "Qwen: Qwen3.7 Plus (20% off)" },
     },
@@ -1694,8 +1694,8 @@ export const TaskUsageExpanded200: Story = {
 
 const MOCK_NOTIFICATION = {
   id: "notif-1",
-  title: "Try BYOK for Kilo Gateway",
-  message: "Bring your own API key for even more flexibility with Kilo Gateway models.",
+  title: "Try BYOK for Semafour Gateway",
+  message: "Bring your own API key for even more flexibility with Semafour Gateway models.",
   action: { actionText: "Learn more", actionURL: "https://kilo.ai/docs" },
 }
 
@@ -1711,7 +1711,7 @@ const mockServer = {
     profile: {
       email: "dev@kilo.dev",
       name: "Dev User",
-      organizations: [{ id: "org-1", name: "Kilo Org", role: "member" }],
+      organizations: [{ id: "org-1", name: "Semafour Org", role: "member" }],
     },
     balance: { balance: 5.0 },
     currentOrgId: "org-1",

@@ -27,7 +27,7 @@ function eventResponse(events: EventV2.Interface) {
   return Effect.gen(function* () {
     const instance = yield* InstanceState.context
     const workspaceID = yield* InstanceState.workspaceID
-    // kilocode_change start - GlobalBus includes encoded EventV2 events, sync envelopes, and Kilo's legacy
+    // kilocode_change start - GlobalBus includes encoded EventV2 events, sync envelopes, and Semafour's legacy
     // Bus events. EventV2.listen would silently drop the latter two groups. Register eagerly to avoid gaps.
     const queue = yield* Queue.unbounded<GlobalEvent["payload"]>()
     const listener = (event: GlobalEvent) => {

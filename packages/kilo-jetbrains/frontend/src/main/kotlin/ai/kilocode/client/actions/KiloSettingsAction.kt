@@ -13,16 +13,16 @@ import com.intellij.openapi.ui.popup.JBPopupFactory
 import kotlinx.coroutines.Job
 
 /**
- * Gear icon action placed in the Kilo tool window title bar.
+ * Gear icon action placed in the Semafour tool window title bar.
  *
- * Looks up [Kilo.SettingsGroup] from [ActionManager] and shows it
+ * Looks up [Semafour.SettingsGroup] from [ActionManager] and shows it
  * as a popup. The group composition is declared in
  * `kilo.jetbrains.frontend.xml`.
  */
 class KiloSettingsAction : AnAction(), DumbAware {
 
     companion object {
-        const val GROUP_ID = "Kilo.SettingsGroup"
+        const val GROUP_ID = "Semafour.SettingsGroup"
 
         internal fun popupGroup(group: ActionGroup): ActionGroup {
             return ActionGroupUtil.forceRecursiveUpdateInBackground(group)

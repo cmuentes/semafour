@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 
-// This script runs a separate Kilo server to be used as a remote // kilocode_change
+// This script runs a separate Semafour server to be used as a remote // kilocode_change
 // workspace, simulating a remote environment but all local to make
 // debugger easier
 //

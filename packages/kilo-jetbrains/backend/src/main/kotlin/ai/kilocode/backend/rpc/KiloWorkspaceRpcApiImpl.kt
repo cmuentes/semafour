@@ -140,7 +140,7 @@ class KiloWorkspaceRpcApiImpl internal constructor(
 
     override suspend fun reloadCoreSettings(directory: String): Boolean {
         app.requireReady()
-        val api = app.api ?: throw IllegalStateException("Kilo API is unavailable")
+        val api = app.api ?: throw IllegalStateException("Semafour API is unavailable")
         return try {
             withContext(Dispatchers.IO) { api.instanceReload(directory = directory) }
         } catch (e: ClientException) {
@@ -151,8 +151,8 @@ class KiloWorkspaceRpcApiImpl internal constructor(
 
     override suspend fun models(directory: String): ModelsWorkspaceDto {
         app.requireReady()
-        val api = app.api ?: throw IllegalStateException("Kilo API is unavailable")
-        val http = app.http ?: throw IllegalStateException("Kilo HTTP client is unavailable")
+        val api = app.api ?: throw IllegalStateException("Semafour API is unavailable")
+        val http = app.http ?: throw IllegalStateException("Semafour HTTP client is unavailable")
         val errors = mutableListOf<LoadError>()
 
         val prov = try {
@@ -198,7 +198,7 @@ class KiloWorkspaceRpcApiImpl internal constructor(
 
     override suspend fun config(directory: String): ConfigDto {
         app.requireReady()
-        val http = app.http ?: throw IllegalStateException("Kilo HTTP client is unavailable")
+        val http = app.http ?: throw IllegalStateException("Semafour HTTP client is unavailable")
         val raw = withContext(Dispatchers.IO) {
             val request = Request.Builder()
                 .url("http://127.0.0.1:${app.port}/config?directory=${encode(directory)}")
@@ -215,7 +215,7 @@ class KiloWorkspaceRpcApiImpl internal constructor(
 
     override suspend fun updateConfig(directory: String, patch: ConfigPatchDto): ConfigDto {
         app.requireReady()
-        val http = app.http ?: throw IllegalStateException("Kilo HTTP client is unavailable")
+        val http = app.http ?: throw IllegalStateException("Semafour HTTP client is unavailable")
         val body = KiloCliDataParser.buildConfigPatch(patch)
         withContext(Dispatchers.IO) {
             val request = Request.Builder()
@@ -265,7 +265,7 @@ class KiloWorkspaceRpcApiImpl internal constructor(
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            LOG.warn("Kilo Core file search failed for directory=$directory query=$query", e)
+            LOG.warn("Semafour Core file search failed for directory=$directory query=$query", e)
             FileSearchResultDto(git = git)
         }
     }
@@ -277,7 +277,7 @@ class KiloWorkspaceRpcApiImpl internal constructor(
         limit: Int,
         dir: Boolean,
     ): List<WorkspaceFileDto> {
-        val http = app.http ?: throw IllegalStateException("Kilo HTTP client is unavailable")
+        val http = app.http ?: throw IllegalStateException("Semafour HTTP client is unavailable")
         val raw = withContext(Dispatchers.IO) {
             val request = Request.Builder()
                 .url("http://127.0.0.1:${app.port}/find/file?directory=${encode(directory)}&query=${encode(query)}&type=$type&limit=$limit")

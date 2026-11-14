@@ -1,7 +1,7 @@
 /**
- * Kilo Notifications Dialog
+ * Semafour Notifications Dialog
  *
- * Displays all notifications from Kilo API in a scrollable dialog.
+ * Displays all notifications from Semafour API in a scrollable dialog.
  * Each notification shows title, message, and clickable action link.
  */
 

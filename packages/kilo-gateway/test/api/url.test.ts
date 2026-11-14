@@ -120,7 +120,7 @@ describe("gateway traffic by environment", () => {
   })
 })
 
-describe("Kilo API URL resolvers", () => {
+describe("Semafour API URL resolvers", () => {
   test("resolves the AI gateway root by default", () => {
     expect(resolveKiloGatewayBaseUrl()).toBe("https://ai-gateway.kilo.ai/api/v1/")
     expect(resolveKiloOpenRouterBaseUrl()).toBe("https://ai-gateway.kilo.ai/api/v1/")
@@ -152,7 +152,7 @@ describe("Kilo API URL resolvers", () => {
     )
   })
 
-  test("replaces existing Kilo API route paths", () => {
+  test("replaces existing Semafour API route paths", () => {
     expect(resolveKiloGatewayBaseUrl({ baseURL: "https://example.test/api/openrouter/" })).toBe(
       "https://example.test/api/gateway/",
     )

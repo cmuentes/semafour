@@ -86,7 +86,7 @@ export const Info = Schema.Struct({
     Schema.Struct({
       enabled: Schema.optional(Schema.Boolean).annotate({
         description:
-          "Enable automatic deletion of old sessions across all projects and every Kilo client on this machine. Defaults to false; deletion is permanent.",
+          "Enable automatic deletion of old sessions across all projects and every Semafour client on this machine. Defaults to false; deletion is permanent.",
       }),
       maxAgeDays: Schema.optional(Schema.Number).annotate({
         description: "Days a session is kept before retention deletes it. Defaults to 30, minimum 1.",
@@ -119,7 +119,7 @@ export const Info = Schema.Struct({
   // apps/web/src/app/config.json/extras.ts in the cloud repo, otherwise
   // $schema: https://app.kilo.ai/config.json will not recognize it.
   remote_control: Schema.optional(Schema.Boolean).annotate({
-    description: "Enable remote control of sessions via Kilo Cloud. Equivalent to running /remote on startup.",
+    description: "Enable remote control of sessions via Semafour Cloud. Equivalent to running /remote on startup.",
   }),
   auto_collapse_reasoning: Schema.optional(Schema.Boolean).annotate({
     description:
@@ -136,14 +136,14 @@ export const Info = Schema.Struct({
     Schema.Struct({
       context_sidebar_width: Schema.optional(
         Schema.Int.check(Schema.isBetween({ minimum: 250, maximum: 800 })).annotate({
-          description: "Width of the Kilo Console project context sidebar in pixels",
+          description: "Width of the Semafour Console project context sidebar in pixels",
         }),
       ),
       diff_style: Schema.optional(Schema.Literals(["unified", "split"])).annotate({
-        description: "Default diff layout in Kilo Console project reviews",
+        description: "Default diff layout in Semafour Console project reviews",
       }),
     }),
-  ).annotate({ description: "Kilo Console user interface configuration" }),
+  ).annotate({ description: "Semafour Console user interface configuration" }),
   terminal_command_display: Schema.optional(Schema.Literals(["expanded", "collapsed"])).annotate({
     description: "Controls whether terminal command blocks are expanded or collapsed by default in the VS Code chat UI",
   }),
@@ -156,7 +156,7 @@ export const Info = Schema.Struct({
       "Controls whether MCP and generic tool blocks are expanded or collapsed by default in the VS Code chat UI",
   }),
   hide_prompt_training_models: Schema.optional(Schema.Boolean).annotate({
-    description: "Hide Kilo Gateway models that may train on your prompts from model listings",
+    description: "Hide Semafour Gateway models that may train on your prompts from model listings",
   }),
   privacy_mode: Schema.optional(Schema.Boolean).annotate({
     description:
@@ -307,7 +307,7 @@ export const Info = Schema.Struct({
         description: "Enable pruning of old tool outputs (default: true)",
       }),
       tail_turns: Schema.optional(NonNegativeInt).annotate({
-        // kilocode_change - Kilo pins an unset tail_turns to 2 turns, so the description must state the cap
+        // kilocode_change - Semafour pins an unset tail_turns to 2 turns, so the description must state the cap
         description:
           "Maximum number of recent user turns, including their following assistant/tool responses, to keep verbatim during compaction. By default at most 2 turns are kept, further limited by the preserved token budget.", // kilocode_change
       }),
@@ -344,7 +344,7 @@ export const Info = Schema.Struct({
       }),
       speech_to_text_base_url: Schema.optional(Schema.String).annotate({
         description:
-          "Base URL of an OpenAI-compatible transcription API to use instead of the Kilo Gateway, for example https://api.openai.com/v1",
+          "Base URL of an OpenAI-compatible transcription API to use instead of the Semafour Gateway, for example https://api.openai.com/v1",
       }),
       speech_to_text_api_key: Schema.optional(Schema.String).annotate({
         description: "API key sent as a bearer token to the custom speech-to-text base URL",
@@ -362,7 +362,7 @@ export const Info = Schema.Struct({
       // kilocode_change start
       sandbox: Schema.optional(Schema.Boolean).annotate({
         description:
-          "Run agent tools inside a sandbox that restricts writes to project and Kilo state directories and can restrict outbound network access",
+          "Run agent tools inside a sandbox that restricts writes to project and Semafour state directories and can restrict outbound network access",
       }),
       sandbox_restrict_network: Schema.optional(Schema.Boolean).annotate({
         description:

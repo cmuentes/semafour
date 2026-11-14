@@ -16,11 +16,11 @@ class CoreInfoAction : AnAction(), DumbAware {
         val info = app.core
         if (info == null) app.fetchCoreInfoAsync()
         app.fetchBundledAsync()
-        val key = if (app.bundled == true) "action.Kilo.CoreInfo.bundled" else "action.Kilo.CoreInfo.text"
+        val key = if (app.bundled == true) "action.Semafour.CoreInfo.bundled" else "action.Semafour.CoreInfo.text"
         e.presentation.text = info?.let {
             KiloBundle.message(key, it.version, it.platform)
-        } ?: KiloBundle.message("action.Kilo.CoreInfo.loading")
-        e.presentation.description = KiloBundle.message("action.Kilo.CoreInfo.description")
+        } ?: KiloBundle.message("action.Semafour.CoreInfo.loading")
+        e.presentation.description = KiloBundle.message("action.Semafour.CoreInfo.description")
         e.presentation.isEnabled = false
         e.presentation.isVisible = true
     }

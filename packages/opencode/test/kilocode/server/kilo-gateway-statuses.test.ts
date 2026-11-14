@@ -103,7 +103,7 @@ function post(path: string, body: Record<string, unknown>) {
   return HttpClientRequest.post(path).pipe(HttpClientRequest.bodyJson(body), Effect.flatMap(HttpClient.execute))
 }
 
-describe("Kilo gateway HttpApi statuses", () => {
+describe("Semafour gateway HttpApi statuses", () => {
   const error = new Error("ConnectionRefused")
   for (const failure of [
     {

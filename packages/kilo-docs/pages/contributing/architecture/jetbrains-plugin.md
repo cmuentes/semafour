@@ -1,11 +1,11 @@
 ---
 title: "JetBrains Plugin Architecture"
-description: "Architecture of the Kilo JetBrains split-mode plugin"
+description: "Architecture of the Semafour JetBrains split-mode plugin"
 ---
 
 # JetBrains Plugin Architecture
 
-The JetBrains plugin (`packages/kilo-jetbrains/`) is a split-mode Swing client of [Kilo CLI runtime](/docs/contributing/architecture/cli-runtime). Frontend module renders IDE UI. Backend module owns project-local logic and one bundled `kilo serve` server. Shared module defines cross-process RPC contracts and serializable payloads.
+The JetBrains plugin (`packages/kilo-jetbrains/`) is a split-mode Swing client of [Semafour CLI runtime](/docs/contributing/architecture/cli-runtime). Frontend module renders IDE UI. Backend module owns project-local logic and one bundled `kilo serve` server. Shared module defines cross-process RPC contracts and serializable payloads.
 
 {% callout type="info" title="Scope" %}
 This page describes repository-defined plugin architecture and development checks. It does not claim Marketplace rollout state or remote-host deployment configuration.
@@ -38,7 +38,7 @@ flowchart LR
     cli["Extracted kilo serve --port 0"]
   end
 
-  runtime["Kilo CLI runtime"]
+  runtime["Semafour CLI runtime"]
 
   swing --> rpcClient --> rpcImpl --> app
   app --> conn --> cli --> runtime

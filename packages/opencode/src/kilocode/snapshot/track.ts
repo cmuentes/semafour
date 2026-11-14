@@ -613,7 +613,7 @@ export namespace KiloSnapshotTrack {
                       label: ANSWER_DISABLE,
                       labelKey: "snapshot.slowRepo.answer.disable",
                       description:
-                        "Turn off Kilo's snapshots for this project. You will lose undo/redo of Kilo file changes, but git still tracks everything.",
+                        "Turn off Semafour's snapshots for this project. You will lose undo/redo of Semafour file changes, but git still tracks everything.",
                       descriptionKey: "snapshot.slowRepo.answer.disable.description",
                     },
                   ],

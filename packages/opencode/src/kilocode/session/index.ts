@@ -177,7 +177,7 @@ export namespace KiloSession {
   }
 
   // ---------------------------------------------------------------------------
-  // Provider-reported cost (Kilo / OpenRouter / Vercel AI Gateway)
+  // Provider-reported cost (Semafour / OpenRouter / Vercel AI Gateway)
   // ---------------------------------------------------------------------------
 
   /**
@@ -185,14 +185,14 @@ export namespace KiloSession {
    *
    * Supports the following internal transports:
    *   1. OpenRouter chat completions  -> `metadata.openrouter.usage.cost`
-   *                                      (`costDetails.upstreamInferenceCost` for Kilo
+   *                                      (`costDetails.upstreamInferenceCost` for Semafour
    *                                      and for BYOK-routed requests)
    *   2. Anthropic Messages or OpenAI Responses via OpenRouter
    *                                   -> `usage.providerMetadata.aiSdk.cost_details`
    *   3. Anthropic Messages or OpenAI Responses via Vercel AI Gateway
    *                                   -> `metadata.gateway.marketCost`
    *
-   * Kilo does not charge end users a per-request fee, so for the Kilo provider the
+   * Semafour does not charge end users a per-request fee, so for the Semafour provider the
    * top-level `cost` field (the gateway/marketplace fee) would understate the user's
    * actual upstream spend. Always prefer the upstream/market cost when present.
    *
@@ -213,7 +213,7 @@ export namespace KiloSession {
     provider?: Provider.Info
     providerID: string
   }): number | undefined {
-    const isKilo = (input.provider?.id ?? input.providerID) === "kilo"
+    const isSemafour = (input.provider?.id ?? input.providerID) === "kilo"
 
     const num = (value: unknown): number | undefined => {
       if (value === undefined || value === null) return undefined
@@ -228,7 +228,7 @@ export namespace KiloSession {
     if (orUsage) {
       const upstream = num(orUsage.costDetails?.upstreamInferenceCost)
       const regular = num(orUsage.cost)
-      // Kilo doesn't charge a fee on top of the upstream inference cost, so for Kilo
+      // Semafour doesn't charge a fee on top of the upstream inference cost, so for Semafour
       // prefer the upstream cost (the user's true spend). For the OpenRouter provider
       // itself, the regular `cost` field is what the user is billed — except when the
       // request routes through a BYOK provider key: then OpenRouter bills the account
@@ -236,21 +236,21 @@ export namespace KiloSession {
       // inference cost. True spend is the sum. A non-BYOK response always bills at
       // least the upstream cost, so summing only when upstream exceeds the billed
       // amount never changes non-BYOK sessions.
-      if (isKilo && upstream !== undefined) return upstream
+      if (isSemafour && upstream !== undefined) return upstream
       if (upstream !== undefined && upstream > (regular ?? -Infinity)) return upstream + (regular ?? 0)
       if (regular !== undefined) return regular
     }
 
-    // 2. Anthropic Messages or OpenAI Responses via OpenRouter. The Kilo Gateway wrapper
+    // 2. Anthropic Messages or OpenAI Responses via OpenRouter. The Semafour Gateway wrapper
     //    restores the verbatim usage payload under the AI SDK's raw usage escape hatch.
-    //    Kilo doesn't charge end users a per-request fee, so only upstream cost is relevant.
+    //    Semafour doesn't charge end users a per-request fee, so only upstream cost is relevant.
     const usage = input.usage?.providerMetadata
     const aiSdk = usage?.["aiSdk"]?.["cost_details"] as { upstream_inference_cost?: number } | undefined
     const upstream = num(aiSdk?.upstream_inference_cost)
     if (upstream !== undefined) return upstream
 
     // 3. Anthropic Messages or OpenAI Responses via Vercel AI Gateway. `cost` is the
-    //    gateway fee that Kilo would pass through, but Kilo doesn't charge end users a
+    //    gateway fee that Semafour would pass through, but Semafour doesn't charge end users a
     //    per-request fee, so always use `marketCost` (the upstream provider's price).
     //    Values are emitted as strings on the wire.
     const gateway = input.metadata?.["gateway"] as { marketCost?: string | number } | undefined

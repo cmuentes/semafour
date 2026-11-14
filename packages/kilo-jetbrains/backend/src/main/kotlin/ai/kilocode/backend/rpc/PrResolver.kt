@@ -120,7 +120,7 @@ internal fun richRefusal(stderr: String): RichRefusal? {
 
 /**
  * Resolves the pull request a checkout belongs to. A worktree can reach a PR in several ways —
- * Kilo's PR import, `gh pr checkout`, a hand-made `git worktree add`, a branch renamed locally, a
+ * Semafour's PR import, `gh pr checkout`, a hand-made `git worktree add`, a branch renamed locally, a
  * fork PR — so identity is resolved by branch config or head commit rather than by branch name
  * alone, in increasing order of cost:
  *

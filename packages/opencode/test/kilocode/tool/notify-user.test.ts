@@ -153,7 +153,7 @@ describe("notify_user tool", () => {
     const result = await runNotifyTool({ message: "hello" }, sessions)
 
     expect(result.metadata.ok).toBe(false)
-    expect(result.output).toContain("not connected to Kilo cloud")
+    expect(result.output).toContain("not connected to Semafour cloud")
   })
 
   test("does not send when remote is disabled", async () => {

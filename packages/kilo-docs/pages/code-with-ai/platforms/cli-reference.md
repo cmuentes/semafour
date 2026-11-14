@@ -1,6 +1,6 @@
 ---
 title: "CLI Command Reference"
-description: "Complete reference for all Kilo CLI commands and subcommands"
+description: "Complete reference for all Semafour CLI commands and subcommands"
 ---
 
 # CLI Command Reference
@@ -697,7 +697,7 @@ Options:
 ## kilo profile
 
 ```
-show Kilo account profile
+show Semafour account profile
 
 Options:
   --help     Show help  [boolean]
@@ -1069,10 +1069,10 @@ Options:
 ## kilo console
 
 ```
-open or stop the local Kilo Console (deprecated)
+open or stop the local Semafour Console (deprecated)
 
 Commands:
-  kilo console       open the local Kilo Console (deprecated)  [default]
+  kilo console       open the local Semafour Console (deprecated)  [default]
   kilo console stop  stop the local kilo daemon
 
 Options:
@@ -1128,7 +1128,7 @@ Options:
   --branch        repository branch  [string]
   --model         Cloud Agent model  [string]
   --mode          Cloud Agent mode  [string]
-  --org-id        Kilo organization ID  [string]
+  --org-id        Semafour organization ID  [string]
   --stream        connect to the WebSocket stream and print events as JSONL  [boolean]
 ```
 

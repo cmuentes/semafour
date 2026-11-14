@@ -15,7 +15,7 @@
 | `kilo serve` | starts a headless kilo server |
 | `kilo models [provider]` | list all available models |
 | `kilo roll-call <filter>` | batch-test text models matching a filter for connectivity and latency |
-| `kilo profile` | show Kilo account profile |
+| `kilo profile` | show Semafour account profile |
 | `kilo auto` | custom auto routers: register client models and run client evals |
 | `kilo stats` | show token usage and cost statistics |
 | `kilo export [sessionID]` | export session data as JSON |
@@ -25,7 +25,7 @@
 | `kilo session` | manage sessions |
 | `kilo remote` | enable remote connection for real-time session relay |
 | `kilo daemon` | manage the local kilo daemon |
-| `kilo console` | open or stop the local Kilo Console (deprecated) |
+| `kilo console` | open or stop the local Semafour Console (deprecated) |
 | `kilo cloud` | run Cloud Agent tasks |
 | `kilo db` | database tools |
 | `kilo config` | configuration tools |

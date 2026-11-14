@@ -156,6 +156,6 @@ internal class DiffStatBadge(
 }
 
 private fun backgroundColor(): Color = JBColor.namedColor(
-    "Kilo.DiffStat.background",
+    "Semafour.DiffStat.background",
     JBColor(Color(0x26, 0x26, 0x26), Color(0x26, 0x26, 0x26)),
 )

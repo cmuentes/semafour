@@ -212,31 +212,31 @@ class KiloRecoveryActionsTest : BasePlatformTestCase() {
             .bufferedReader()
             .use { it.readText() }
 
-        assertTrue(xml.contains("<group id=\"Kilo.CliGroup\" text=\"Core\" popup=\"true\">"))
-        val reload = xml.indexOf("<reference ref=\"Kilo.ReloadCoreSettings\"/>")
-        val cloud = xml.indexOf("<reference ref=\"Kilo.RefreshCloud\"/>")
-        val restart = xml.indexOf("<reference ref=\"Kilo.Restart\"/>")
+        assertTrue(xml.contains("<group id=\"Semafour.CliGroup\" text=\"Core\" popup=\"true\">"))
+        val reload = xml.indexOf("<reference ref=\"Semafour.ReloadCoreSettings\"/>")
+        val cloud = xml.indexOf("<reference ref=\"Semafour.RefreshCloud\"/>")
+        val restart = xml.indexOf("<reference ref=\"Semafour.Restart\"/>")
         assertTrue(reload < cloud && cloud < restart)
         assertTrue(xml.substring(reload, restart).contains("<separator/>"))
-        assertTrue(xml.contains("<reference ref=\"Kilo.Restart\"/>"))
-        assertTrue(xml.contains("<reference ref=\"Kilo.Reinstall\"/>"))
-        assertTrue(xml.contains("<reference ref=\"Kilo.CoreInfo\"/>"))
-        assertTrue(xml.contains("<group id=\"Kilo.OpenConfigGroup\" text=\"Config Files\" popup=\"true\">"))
-        assertTrue(xml.contains("<reference ref=\"Kilo.OpenConfigGroup\"/>"))
-        assertFalse(xml.contains("<action id=\"Kilo.ShowProfile\""))
-        assertFalse(xml.contains("<reference ref=\"Kilo.ShowProfile\"/>"))
+        assertTrue(xml.contains("<reference ref=\"Semafour.Restart\"/>"))
+        assertTrue(xml.contains("<reference ref=\"Semafour.Reinstall\"/>"))
+        assertTrue(xml.contains("<reference ref=\"Semafour.CoreInfo\"/>"))
+        assertTrue(xml.contains("<group id=\"Semafour.OpenConfigGroup\" text=\"Config Files\" popup=\"true\">"))
+        assertTrue(xml.contains("<reference ref=\"Semafour.OpenConfigGroup\"/>"))
+        assertFalse(xml.contains("<action id=\"Semafour.ShowProfile\""))
+        assertFalse(xml.contains("<reference ref=\"Semafour.ShowProfile\"/>"))
 
         // The setup-script action lives only in the worktree row menu, not the tool-window popup.
-        val settingsGroupStart = xml.indexOf("<group id=\"Kilo.SettingsGroup\">")
+        val settingsGroupStart = xml.indexOf("<group id=\"Semafour.SettingsGroup\">")
         val settingsGroupEnd = xml.indexOf("</group>", settingsGroupStart)
-        assertFalse(xml.substring(settingsGroupStart, settingsGroupEnd).contains("Kilo.OpenSetupScript"))
+        assertFalse(xml.substring(settingsGroupStart, settingsGroupEnd).contains("Semafour.OpenSetupScript"))
     }
 
     fun `test settings menu offers page shortcuts between open settings and the config groups`() {
         val xml = requireNotNull(javaClass.classLoader.getResourceAsStream("kilo.jetbrains.frontend.xml"))
             .bufferedReader()
             .use { it.readText() }
-        val start = xml.indexOf("<group id=\"Kilo.SettingsGroup\">")
+        val start = xml.indexOf("<group id=\"Semafour.SettingsGroup\">")
         val group = xml.substring(start, xml.indexOf("</group>", start))
 
         val order = Regex("<separator\\s*/>|<reference\\s+ref=\"([^\"]+)\"\\s*/>")
@@ -246,19 +246,19 @@ class KiloRecoveryActionsTest : BasePlatformTestCase() {
 
         assertEquals(
             listOf(
-                "Kilo.OpenSettings",
+                "Semafour.OpenSettings",
                 "---",
-                "Kilo.OpenUserProfileSettings",
-                "Kilo.OpenMarketplaceSettings",
+                "Semafour.OpenUserProfileSettings",
+                "Semafour.OpenMarketplaceSettings",
                 "---",
-                "Kilo.OpenConfigGroup",
+                "Semafour.OpenConfigGroup",
                 "---",
-                "Kilo.CliGroup",
+                "Semafour.CliGroup",
             ),
             order,
         )
-        assertTrue(xml.contains("<action id=\"Kilo.OpenUserProfileSettings\""))
-        assertTrue(xml.contains("<action id=\"Kilo.OpenMarketplaceSettings\""))
+        assertTrue(xml.contains("<action id=\"Semafour.OpenUserProfileSettings\""))
+        assertTrue(xml.contains("<action id=\"Semafour.OpenMarketplaceSettings\""))
     }
 
     fun `test settings shortcuts target their own pages while open settings resumes the last one`() {

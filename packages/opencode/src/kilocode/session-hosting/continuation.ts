@@ -399,11 +399,11 @@ export namespace Continuation {
 
       const cloudOrigin = yield* Effect.try({
         try: () => resolveCloudAgentOrigin(env),
-        catch: () => failure("rejected", "Kilo Cloud base URL is invalid", false),
+        catch: () => failure("rejected", "Semafour Cloud base URL is invalid", false),
       })
       const webOrigin = yield* Effect.try({
         try: () => resolveWebAppOrigin(env),
-        catch: () => failure("rejected", "Kilo web app URL is invalid", false),
+        catch: () => failure("rejected", "Semafour web app URL is invalid", false),
       })
 
       // One bearer for the whole operation: it reads the principal, resolves
@@ -415,7 +415,7 @@ export namespace Continuation {
           Effect.fail(
             error.kind === "missing"
               ? failure("signed_out", error.message, false)
-              : failure("auth_unavailable", "Kilo credentials could not be read", true),
+              : failure("auth_unavailable", "Semafour credentials could not be read", true),
           ),
         ),
       )

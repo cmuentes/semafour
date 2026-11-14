@@ -39,7 +39,7 @@ describe("model not found errors", () => {
 })
 
 describe("remote config authentication errors", () => {
-  test("uses the Kilo login command", () => {
+  test("uses the Semafour login command", () => {
     const error = FormatError({
       _tag: "ConfigRemoteAuthError",
       url: "https://example.com/config.json",

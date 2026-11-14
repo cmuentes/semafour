@@ -1,6 +1,6 @@
 # `@kilocode/kilo-e2e`
 
-Private, non-shipping end-to-end contract package for Kilo IDE clients. It owns the IDE-neutral fixture descriptor, scenario manifest, provider/driver subprocess protocol, redacted evidence report, cleanup result, and the coordinator that runs them in order. It is not a product dependency and must not be imported by shipping packages.
+Private, non-shipping end-to-end contract package for Semafour IDE clients. It owns the IDE-neutral fixture descriptor, scenario manifest, provider/driver subprocess protocol, redacted evidence report, cleanup result, and the coordinator that runs them in order. It is not a product dependency and must not be imported by shipping packages.
 
 IDE-specific UI drivers and the Cloud fixture provider live in their own consumers; this package only defines and validates the shared contract and lifecycle.
 

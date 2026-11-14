@@ -147,7 +147,7 @@ export const MemoryApi = HttpApi.make("memory")
       .annotateMerge(
         OpenApi.annotations({
           title: "memory",
-          description: "Kilo memory routes.",
+          description: "Semafour memory routes.",
         }),
       )
       .middleware(InstanceContextMiddleware)
@@ -158,6 +158,6 @@ export const MemoryApi = HttpApi.make("memory")
     OpenApi.annotations({
       title: "kilo HttpApi",
       version: "0.0.1",
-      description: "Kilo HttpApi surface.",
+      description: "Semafour HttpApi surface.",
     }),
   )

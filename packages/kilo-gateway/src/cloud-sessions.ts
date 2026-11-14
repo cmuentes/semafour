@@ -222,7 +222,7 @@ export async function fetchCloudSessionForImport(
   }
   if (!response.ok) {
     const text = await response.text()
-    console.error("[Kilo Gateway] cloud/session/import: export failed", {
+    console.error("[Semafour Gateway] cloud/session/import: export failed", {
       status: response.status,
       body: text.slice(0, 500),
     })

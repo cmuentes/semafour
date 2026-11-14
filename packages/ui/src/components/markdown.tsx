@@ -790,7 +790,7 @@ function updateCodeBlock(
   const wrapper = document.createElement("div")
   wrapper.setAttribute("data-component", "markdown-code")
   const pre = document.createElement("pre")
-  pre.className = "shiki Kilo"
+  pre.className = "shiki Semafour"
   pre.setAttribute("dir", "auto") // kilocode_change
   const codeElement = document.createElement("code")
   codeElement.className = `language-${block.language}`

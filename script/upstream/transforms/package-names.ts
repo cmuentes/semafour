@@ -66,7 +66,7 @@ const PACKAGE_PATTERNS = [
   { pattern: /npm install opencode-ai/g, replacement: "npm install @kilocode/cli" },
   { pattern: /bun add opencode-ai/g, replacement: "bun add @kilocode/cli" },
 
-  // SDK public API renames (Opencode → Kilo)
+  // SDK public API renames (Opencode → Semafour)
   // Order matters: longer names first to avoid partial matches
   { pattern: /OpencodeClientConfig/g, replacement: "KiloClientConfig" },
   { pattern: /createOpencodeClient/g, replacement: "createKiloClient" },

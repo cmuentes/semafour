@@ -9,7 +9,7 @@ import { isRecord } from "@/util/record"
 
 export type Err = ReturnType<NamedError["toObject"]>
 
-export type RetryReason = string & {} // kilocode_change - Kilo does not support OpenCode Go upsell reasons
+export type RetryReason = string & {} // kilocode_change - Semafour does not support OpenCode Go upsell reasons
 
 export type Retryable = {
   message: string
@@ -82,13 +82,13 @@ function exponential(attempt: number, random: number) {
   return Math.ceil(base + base * RETRY_JITTER_FACTOR * random)
 }
 
-// kilocode_change - Kilo does not emit OpenCode Go actions
+// kilocode_change - Semafour does not emit OpenCode Go actions
 export function retryable(error: Err, _provider?: string): Retryable | undefined {
   // context overflow errors should not be retried
   if (SessionV1.ContextOverflowError.isInstance(error)) return undefined
   if (SessionV1.APIError.isInstance(error)) {
     const status = error.data.statusCode
-    // kilocode_change start - Current Kilo errors require user action (login/signup), don't retry
+    // kilocode_change start - Current Semafour errors require user action (login/signup), don't retry
     if (isKiloError(error)) return undefined
     if (error.data.isRetryable === false && (status === undefined || status < 500) && !error.data.responseBody) return undefined
     // kilocode_change end
@@ -103,7 +103,7 @@ export function retryable(error: Err, _provider?: string): Retryable | undefined
     )
       return undefined
 
-    // kilocode_change start - Kilo does not support OpenCode Go upsells. FreeUsageLimitError is not retryable: retrying
+    // kilocode_change start - Semafour does not support OpenCode Go upsells. FreeUsageLimitError is not retryable: retrying
     // the same capped model is futile and the backoff loop cannot be broken by switching models in the chat selector
     // because the retry loop holds a stale model ref.
     if (error.data.responseBody?.includes("FreeUsageLimitError")) return undefined

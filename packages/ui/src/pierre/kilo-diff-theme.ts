@@ -1,11 +1,11 @@
 // kilocode_change - new file
 import { registerCustomTheme, type ThemeRegistrationResolved } from "@pierre/diffs"
 
-// The "Kilo" Pierre/Shiki theme used by every diff review surface (Code / Diff /
+// The "Semafour" Pierre/Shiki theme used by every diff review surface (Code / Diff /
 // File / SessionReview) and by markdown code highlighting. Pierre resolves the
-// theme by name when a worker pool initializes (resolveThemes(["Kilo"])) or when
+// theme by name when a worker pool initializes (resolveThemes(["Semafour"])) or when
 // getSharedHighlighter() attaches it; if the name was never registered it throws
-// "resolveTheme: No valid loader for Kilo".
+// "resolveTheme: No valid loader for Semafour".
 //
 // This registration lives next to the worker pool factory (./worker) so that it
 // is a guaranteed, synchronous precondition of using the diff machinery: every
@@ -21,7 +21,7 @@ import { registerCustomTheme, type ThemeRegistrationResolved } from "@pierre/dif
 // context/marked.tsx. Do not restore that inline block on upstream merges — route
 // the registration through ensureKiloDiffTheme() instead.
 
-export const KILO_DIFF_THEME = "Kilo"
+export const KILO_DIFF_THEME = "Semafour"
 
 const registrations = (() => {
   const key = Symbol.for("kilocode.ui.pierre.kilo-diff-theme")
@@ -35,7 +35,7 @@ const registrations = (() => {
 
 // Idempotent: this is reached from both the markdown context and the diff worker
 // factory. Pierre no longer exposes its registered-theme set, so use a realm-wide
-// guard keyed by the public registration function. Duplicate Kilo modules sharing
+// guard keyed by the public registration function. Duplicate Semafour modules sharing
 // one Pierre instance stay no-ops, while separately bundled Pierre instances still
 // receive their own registration.
 export function ensureKiloDiffTheme(): void {

@@ -502,7 +502,7 @@ class KiloBackendSessionManager(
      * Share session [id] via `POST /session/{id}/share?directory={dir}` with an empty body, returning
      * the updated session carrying `share.url`.
      *
-     * Raw HTTP for the same reason as [fork]. The CLI requires Kilo credentials and refuses when
+     * Raw HTTP for the same reason as [fork]. The CLI requires Semafour credentials and refuses when
      * `share` is disabled by config, but it maps every cause to a bare HTTP 500 with no body detail,
      * so the message thrown here is all the UI can report.
      */

@@ -333,7 +333,7 @@ export const githubInstall = Effect.fn("Cli.github.install")(function* () {
       }
 
       async function addWorkflowFiles() {
-        // kilocode_change start - updated workflow template with Kilo branding and gateway secrets
+        // kilocode_change start - updated workflow template with Semafour branding and gateway secrets
         const providerEnvStr =
           provider === "amazon-bedrock"
             ? ""
@@ -375,7 +375,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run Kilo
+      - name: Run Semafour
         uses: Kilo-Org/kilocode/github@latest${envStr}
         with:
           model: ${provider}/${model}`,
@@ -1380,7 +1380,7 @@ export const githubRun = Effect.fn("Cli.github.run")(function* (args: { event?: 
     function footer(opts?: { image?: boolean }) {
       // kilocode_change start - simplified footer with text branding (no image backend yet)
       const share = shareId ? `[kilo session](${shareBaseUrl}/s/${shareId})&nbsp;&nbsp;|&nbsp;&nbsp;` : ""
-      return `\n\n---\n*Powered by [Kilo](https://kilo.ai)*&nbsp;&nbsp;|&nbsp;&nbsp;${share}[github run](${runUrl})`
+      return `\n\n---\n*Powered by [Semafour](https://kilo.ai)*&nbsp;&nbsp;|&nbsp;&nbsp;${share}[github run](${runUrl})`
       // kilocode_change end
     }
 

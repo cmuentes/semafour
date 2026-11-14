@@ -11,7 +11,7 @@ describe("KiloEmbedder", () => {
     setOpenAIConstructorHook(undefined)
   })
 
-  test("uses Kilo Gateway headers and configured embedding model", async () => {
+  test("uses Semafour Gateway headers and configured embedding model", async () => {
     const seen: unknown[] = []
     setOpenAIConstructorHook((cfg) => seen.push(cfg))
     mockEmbeddingsCreate.mockResolvedValue({

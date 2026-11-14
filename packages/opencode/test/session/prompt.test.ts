@@ -176,7 +176,7 @@ const lsp = Layer.succeed(
 // kilocode_change start - one compiled graph per env. Effect v4 does not memoize nested layers, so
 // LayerNode.compile's cache is the only dedupe; building services with separate AppNodeBuilder.build
 // calls gave this file three Database instances and every prompt died with "Session not found".
-// Mirrors upstream's harness, with Kilo's KiloSessions/MemoryService/fastAgents deltas.
+// Mirrors upstream's harness, with Semafour's KiloSessions/MemoryService/fastAgents deltas.
 const agent: AgentSvc.Info = {
   name: "build",
   mode: "primary",
@@ -1129,8 +1129,8 @@ it.instance("loop continues when finish is unknown", () =>
     yield* llm.text("second")
 
     const result = yield* prompt.loop({ sessionID: session.id })
-    // kilocode_change start - Kilo settles a finish-less response instead of
-    // continuing the prompt loop. Kilo preserves the AI SDK's unexpected
+    // kilocode_change start - Semafour settles a finish-less response instead of
+    // continuing the prompt loop. Semafour preserves the AI SDK's unexpected
     // provider finish reason as "other" (packages/llm/src/schema/ids.ts), which
     // is a terminal finish for the loop-exit check in session/prompt.ts, and
     // src/kilocode/session/processor.ts only retries genuinely incomplete
@@ -2178,7 +2178,7 @@ it.instance("prompt submitted during an active run is included in the next LLM i
     expect(inputs).toHaveLength(2)
     const messages = inputs.at(-1)?.messages
     if (!Array.isArray(messages)) throw new Error("expected LLM messages")
-    // kilocode_change start - Kilo appends environment details to queued user prompts
+    // kilocode_change start - Semafour appends environment details to queued user prompts
     expect(messages.at(-1)).toMatchObject({
       role: "user",
       content: expect.arrayContaining([{ type: "text", text: "second" }]),

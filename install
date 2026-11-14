@@ -10,7 +10,7 @@ NC='\033[0m' # No Color
 # kilocode_change start - usage text
 usage() {
     cat <<EOF
-Kilo Code Installer
+Semafour Installer
 
 Usage: install [options]
 
@@ -334,7 +334,7 @@ download_with_progress() {
 
 download_and_install() {
     # kilocode_change start
-    print_message info "\n${MUTED}Installing ${NC}Kilo Code ${MUTED}version: ${NC}$specific_version"
+    print_message info "\n${MUTED}Installing ${NC}Semafour ${MUTED}version: ${NC}$specific_version"
     local tmp_dir="${TMPDIR:-/tmp}/kilo_install_$$"
     # kilocode_change end
     mkdir -p "$tmp_dir"
@@ -363,7 +363,7 @@ download_and_install() {
 
 install_from_binary() {
     # kilocode_change start
-    print_message info "\n${MUTED}Installing ${NC}Kilo Code ${MUTED}from: ${NC}$binary_path"
+    print_message info "\n${MUTED}Installing ${NC}Semafour ${MUTED}from: ${NC}$binary_path"
     cp "$binary_path" "${INSTALL_DIR}/kilo"
     chmod 755 "${INSTALL_DIR}/kilo"
     # kilocode_change end
@@ -567,10 +567,10 @@ echo -e ""
 print_logo
 echo -e ""
 echo -e ""
-echo -e "${MUTED}Kilo includes free models so you can start immediately:${NC}"
+echo -e "${MUTED}Semafour includes free models so you can start immediately:${NC}"
 echo -e ""
 echo -e "cd <project>  ${MUTED}# Open directory${NC}"
-echo -e "kilo          ${MUTED}# Run Kilo${NC}"
+echo -e "kilo          ${MUTED}# Run Semafour${NC}"
 echo -e ""
 echo -e "${MUTED}For more information visit ${NC}https://kilo.ai/docs"
 echo -e ""

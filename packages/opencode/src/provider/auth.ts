@@ -231,7 +231,7 @@ const layer: Layer.Layer<Service, never, Auth.Service | Plugin.Service | ModelCa
         })
       }
 
-      // kilocode_change start - Update telemetry identity on Kilo auth
+      // kilocode_change start - Update telemetry identity on Semafour auth
       if (input.providerID === "kilo") {
         const info = yield* auth.get(input.providerID)
         if (info) {

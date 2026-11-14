@@ -26,7 +26,7 @@ class MigrationOnboardingProviderTest : BasePlatformTestCase() {
         val need = provider.detect()
         assertNotNull(need)
         // Short label for the session card bullet and the dialog rail.
-        assertEquals("Migrate from Kilo v5", need!!.title)
+        assertEquals("Migrate from Semafour v5", need!!.title)
         // Longer text, shown only in the dedicated dialog UI.
         assertTrue(need.detail.startsWith("We found settings from your previous installation"))
     }

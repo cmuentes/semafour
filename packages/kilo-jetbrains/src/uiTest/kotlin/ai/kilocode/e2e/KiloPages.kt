@@ -88,13 +88,13 @@ class KiloIdePage(val driver: Driver, val watchdog: Watchdog, val evidence: Driv
 class KiloToolWindowPage(private val driver: Driver, private val watchdog: Watchdog) {
     fun open(project: Project): ToolWindow {
         val manager = driver.utility(ToolWindowManager::class).getInstance(project)
-        val window = watchdog.value("Kilo tool window registered") {
+        val window = watchdog.value("Semafour tool window registered") {
             manager.getToolWindow(KILO_TOOL_WINDOW_ID)
         }
         if (!window.isVisible()) {
             driver.withContext(OnDispatcher.EDT) { window.show() }
         }
-        watchdog.await("Kilo tool window visible") { window.isVisible() }
+        watchdog.await("Semafour tool window visible") { window.isVisible() }
         return window
     }
 
@@ -125,7 +125,7 @@ class AgentManagerPage(private val ide: KiloIdePage, private val watchdog: Watch
 
 class TranscriptPage(private val ide: KiloIdePage, private val watchdog: Watchdog) {
     fun awaitVisible(window: KiloToolWindowPage? = null, ref: ToolWindow? = null) {
-        watchdog.await("Kilo chat content visible") {
+        watchdog.await("Semafour chat content visible") {
             ROOTS.any(ide::shows) || (window != null && ref != null && window.selectedVisible(ref))
         }
     }

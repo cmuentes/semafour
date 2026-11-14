@@ -1,9 +1,9 @@
 #!/usr/bin/env bun
 /**
- * Transform extension files (Zed, etc.) with Kilo branding
+ * Transform extension files (Zed, etc.) with Semafour branding
  *
  * This script handles extension configuration files by transforming
- * OpenCode references to Kilo.
+ * OpenCode references to Semafour.
  */
 
 import { $ } from "bun"
@@ -47,7 +47,7 @@ const EXTENSION_REPLACEMENTS: ExtensionReplacement[] = [
   },
   {
     pattern: /description\s*=\s*"OpenCode[^"]*"/g,
-    replacement: 'description = "Kilo - AI coding assistant"',
+    replacement: 'description = "Semafour - AI coding assistant"',
     description: "Extension description",
     fileTypes: [".toml"],
   },
@@ -78,10 +78,10 @@ const EXTENSION_REPLACEMENTS: ExtensionReplacement[] = [
     fileTypes: [".toml"],
   },
 
-  // Generic OpenCode -> Kilo in strings
+  // Generic OpenCode -> Semafour in strings
   {
     pattern: /"OpenCode"/g,
-    replacement: '"Kilo"',
+    replacement: '"Semafour"',
     description: "Product name",
   },
 
@@ -93,7 +93,7 @@ const EXTENSION_REPLACEMENTS: ExtensionReplacement[] = [
   },
   {
     pattern: /OpenCode\s+language\s+server/gi,
-    replacement: "Kilo language server",
+    replacement: "Semafour language server",
     description: "Language server name",
   },
 ]

@@ -72,7 +72,7 @@ export const AgentUsageApi = HttpApi.make("agent-usage")
       .annotateMerge(
         OpenApi.annotations({
           title: "agent-usage",
-          description: "Kilo agent usage routes.",
+          description: "Semafour agent usage routes.",
         }),
       )
       .middleware(InstanceContextMiddleware)
@@ -83,6 +83,6 @@ export const AgentUsageApi = HttpApi.make("agent-usage")
     OpenApi.annotations({
       title: "kilo HttpApi",
       version: "0.0.1",
-      description: "Kilo HttpApi surface.",
+      description: "Semafour HttpApi surface.",
     }),
   )

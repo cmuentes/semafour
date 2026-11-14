@@ -1,8 +1,8 @@
-# Feature Parity Plan — Kilo Code VS Code Extension (Rebuild)
+# Feature Parity Plan — Semafour VS Code Extension (Rebuild)
 
 ## Overview
 
-This extension is a **ground-up rebuild** of the [old Kilo Code extension](https://github.com/Kilo-Org/kilocode-legacy) using Kilo CLI as the backend. Rather than migrating the old extension's codebase, we started fresh with a Solid.js webview, a CLI server manager, and a message-based protocol between extension host and webview. This new extension lives in the [kilocode monorepo](https://github.com/Kilo-Org/kilocode/tree/main/packages/kilo-vscode).
+This extension is a **ground-up rebuild** of the [old Semafour extension](https://github.com/Kilo-Org/kilocode-legacy) using Semafour CLI as the backend. Rather than migrating the old extension's codebase, we started fresh with a Solid.js webview, a CLI server manager, and a message-based protocol between extension host and webview. This new extension lives in the [kilocode monorepo](https://github.com/Kilo-Org/kilocode/tree/main/packages/kilo-vscode).
 
 This document tracks remaining work needed for feature parity with the old extension. Each feature links to its detailed parity requirement doc. Features sourced from the [GitHub project board](https://github.com/orgs/Kilo-Org/projects/25/views/1) include issue links.
 
@@ -26,7 +26,7 @@ This document tracks remaining work needed for feature parity with the old exten
 |---|---|---|---|
 | [Authentication & Enterprise](non-agent-features/authentication-organization-enterprise-enforcement.md) | Org feature flags, MDM policy enforcement | CLI handles its auth; extension handles org/MDM | P1 |
 | [Auto-Purge](non-agent-features/auto-purge.md) | Scheduled cleanup of old session/task storage | Extension-side (storage ownership TBD) | P3 |
-| [Cloud Task Support](non-agent-features/cloud-task-support.md) | Upload local sessions to cloud, real-time sync, conflict resolution | Kilo cloud API + CLI; extension provides UI | P2 |
+| [Cloud Task Support](non-agent-features/cloud-task-support.md) | Upload local sessions to cloud, real-time sync, conflict resolution | Semafour cloud API + CLI; extension provides UI | P2 |
 | [Code Reviews](non-agent-features/code-reviews.md) | Local review mode, automated AI review of uncommitted/branch changes | CLI (partial); extension for VS Code review UX | P2 |
 | [Codebase Indexing & Semantic Search](non-agent-features/codebase-indexing-semantic-search.md) | Vector indexing, semantic search, embeddings infrastructure | CLI has grep/glob endpoints; semantic indexing is extension or cloud | P2 |
 | [Contribution Tracking](non-agent-features/contribution-tracking.md) | AI attribution tracking, line fingerprinting, reporting | Extension-side | P3 |
@@ -95,7 +95,7 @@ Open issues from the [GitHub project board](https://github.com/orgs/Kilo-Org/pro
 | [Publish to OpenVSX](infrastructure/openvsx-publish.md) | Add `ovsx publish` step to CI/CD pipeline after VS Code Marketplace publish | P3 |
 | [HTTP Request Timeouts](infrastructure/http-request-timeouts.md) | Add timeouts to SDK calls (only health check has timeout currently) | P1 |
 | [VSCode Error Notifications](infrastructure/vscode-error-notifications.md) | Error notifications for CLI start failure, SSE disconnect | P1 |
-| [Dedicated Output Channel](infrastructure/dedicated-output-channel.md) | General "Kilo Code" output channel and centralized logging utility | P2 |
+| [Dedicated Output Channel](infrastructure/dedicated-output-channel.md) | General "Semafour" output channel and centralized logging utility | P2 |
 
 ### CLI-Side (tracked here for awareness)
 
@@ -144,7 +144,7 @@ Before publishing this extension to the VS Code Marketplace or deploying to user
 
 ### Logging & Observability
 
-- [ ] **Dedicated output channel** — All logging currently goes to `console.log` mixed with other extensions ([details](infrastructure/dedicated-output-channel.md)). Create a dedicated "Kilo Code" output channel before production
+- [ ] **Dedicated output channel** — All logging currently goes to `console.log` mixed with other extensions ([details](infrastructure/dedicated-output-channel.md)). Create a dedicated "Semafour" output channel before production
 - [ ] **Remove or guard verbose logging** — Many `console.log` calls with emojis and debug detail exist in [`KiloProvider.ts`](../src/KiloProvider.ts). Gate behind a debug flag or move to the output channel at appropriate log levels
 
 ---

@@ -560,7 +560,7 @@ describe("fetchProviderData", () => {
       expected: undefined,
     },
     {
-      name: "does not retain a default without a Kilo provider",
+      name: "does not retain a default without a Semafour provider",
       missing: true,
       recommended: "org/default",
       expected: undefined,
@@ -584,7 +584,7 @@ describe("fetchProviderData", () => {
                   : [
                       {
                         id: "kilo",
-                        name: "Kilo Gateway",
+                        name: "Semafour Gateway",
                         models: item.empty
                           ? {}
                           : { "org/first": { id: "org/first" }, "org/default": { id: "org/default" } },
@@ -621,7 +621,7 @@ describe("fetchProviderData", () => {
     })
   }
 
-  it.each([false, true])("removes unverified Kilo data without auth context (failure: %s)", async (fail) => {
+  it.each([false, true])("removes unverified Semafour data without auth context (failure: %s)", async (fail) => {
     const client = {
       provider: {
         list: async () => ({
@@ -708,12 +708,12 @@ describe("fetchProviderData", () => {
     expect("key" in item).toBe(false)
   })
 
-  it("uses local Kilo auth status instead of profile availability", async () => {
+  it("uses local Semafour auth status instead of profile availability", async () => {
     const client = {
       provider: {
         list: async () => ({
           data: {
-            all: [{ id: "kilo", name: "Kilo Gateway", source: "custom", env: [], models: {} }],
+            all: [{ id: "kilo", name: "Semafour Gateway", source: "custom", env: [], models: {} }],
             connected: ["kilo"],
             default: { kilo: "kilo-auto/frontier" },
           },
@@ -730,12 +730,12 @@ describe("fetchProviderData", () => {
     expect(result.authStates).toEqual({ kilo: "oauth" })
   })
 
-  it("does not infer Kilo speech access without stored Gateway auth", async () => {
+  it("does not infer Semafour speech access without stored Gateway auth", async () => {
     const client = {
       provider: {
         list: async () => ({
           data: {
-            all: [{ id: "kilo", name: "Kilo Gateway", source: "config", key: "configured", env: [], models: {} }],
+            all: [{ id: "kilo", name: "Semafour Gateway", source: "config", key: "configured", env: [], models: {} }],
             connected: ["kilo"],
             default: { kilo: "kilo-auto/frontier" },
           },

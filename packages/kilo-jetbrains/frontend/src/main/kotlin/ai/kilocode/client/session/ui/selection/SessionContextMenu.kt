@@ -19,7 +19,7 @@ import javax.swing.SwingUtilities
 
 internal object SessionContextMenu {
     private val KEY = Any()
-    private const val ID = "Kilo.Session.ContextMenu"
+    private const val ID = "Semafour.Session.ContextMenu"
 
     @RequiresEdt
     fun install(root: JComponent, parent: Disposable) {

@@ -65,7 +65,7 @@ function usage(value: unknown) {
     reasoningTokens: item.outputTokenDetails?.reasoningTokens ?? item.reasoningTokens,
     cacheReadInputTokens: item.inputTokenDetails?.cacheReadTokens ?? item.cachedInputTokens,
     cacheWriteInputTokens: item.inputTokenDetails?.cacheWriteTokens,
-    providerMetadata: item.raw ? { aiSdk: item.raw } : undefined, // kilocode_change - retain Kilo billing details
+    providerMetadata: item.raw ? { aiSdk: item.raw } : undefined, // kilocode_change - retain Semafour billing details
   }).filter((entry) => entry[1] !== undefined)
   return entries.length === 0 ? undefined : Object.fromEntries(entries)
 }

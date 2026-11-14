@@ -1,13 +1,13 @@
 ---
 title: "Slack"
-description: "Using Kilo Code in Slack"
+description: "Using Semafour in Slack"
 ---
 
-# Kilo for Slack
+# Semafour for Slack
 
-**Kilo for Slack** brings Kilo Code directly into your Slack workspace. Ask questions about your repositories, request code implementations, debug issues, and collaborate with your team — all without leaving Slack.
+**Semafour for Slack** brings Semafour directly into your Slack workspace. Ask questions about your repositories, request code implementations, debug issues, and collaborate with your team — all without leaving Slack.
 
-When you mention `@Kilo` in a thread, the bot:
+When you mention `@Semafour` in a thread, the bot:
 
 - Reads the full conversation
 - Accesses your connected repositories
@@ -21,21 +21,21 @@ When you mention `@Kilo` in a thread, the bot:
 ### Ask questions about your codebase
 
 ```
-@Kilo what does the UserService class do in our main backend repo?
+@Semafour what does the UserService class do in our main backend repo?
 ```
 
 ```
-@Kilo how is error handling implemented in the payment processing module?
+@Semafour how is error handling implemented in the payment processing module?
 ```
 
-{% image src="/docs/img/connect/slack/slackbot-ask-questions.webp" alt="Asking Kilo a question about the codebase in Slack" width="800" /%}
+{% image src="/docs/img/connect/slack/slackbot-ask-questions.webp" alt="Asking Semafour a question about the codebase in Slack" width="800" /%}
 
 ### Implement fixes and features from Slack discussions
 
 When your team identifies a bug or improvement in a thread, ask the bot to handle it:
 
 ```
-@Kilo based on this thread, can you implement the fix for the null pointer exception in the order processing service?
+@Semafour based on this thread, can you implement the fix for the null pointer exception in the order processing service?
 ```
 
 The bot will:
@@ -45,29 +45,29 @@ The bot will:
 - Create a branch with the implementation
 - Push a pull request to your repository
 
-{% image src="/docs/img/connect/slack/slackbot-turn-discussions-into-PRs.webp" alt="Kilo turning a Slack thread discussion into a pull request" width="800" /%}
+{% image src="/docs/img/connect/slack/slackbot-turn-discussions-into-PRs.webp" alt="Semafour turning a Slack thread discussion into a pull request" width="800" /%}
 
 ### Implement changes across multiple repositories
 
 If the same change needs to land in several repos, just tell the bot:
 
 ```
-@Kilo please fix this in the cloud, landing, and handbook repos
+@Semafour please fix this in the cloud, landing, and handbook repos
 ```
 
-{% image src="/docs/img/connect/slack/slackbot-coding.webp" alt="Kilo implementing changes across multiple repositories from Slack" width="800" /%}
+{% image src="/docs/img/connect/slack/slackbot-coding.webp" alt="Semafour implementing changes across multiple repositories from Slack" width="800" /%}
 
 ### Debug issues
 
 Paste an error message or stack trace and ask for help:
 
 ```
-@Kilo I'm seeing this error in production:
+@Semafour I'm seeing this error in production:
 [paste error message]
 Can you help me understand what's causing it?
 ```
 
-{% image src="/docs/img/connect/slack/slackbot-bugs.webp" alt="Kilo helping debug a production error in Slack" width="800" /%}
+{% image src="/docs/img/connect/slack/slackbot-bugs.webp" alt="Semafour helping debug a production error in Slack" width="800" /%}
 
 ---
 
@@ -75,7 +75,7 @@ Can you help me understand what's causing it?
 
 ### Direct Messages
 
-You can DM Kilo directly for private conversations. Find Kilo in your workspace's app list and start a direct message.
+You can DM Semafour directly for private conversations. Find Semafour in your workspace's app list and start a direct message.
 
 Good for:
 
@@ -88,7 +88,7 @@ Good for:
 Mention the bot in any channel where it's been added:
 
 ```
-@Kilo can you explain how the authentication flow works in our backend?
+@Semafour can you explain how the authentication flow works in our backend?
 ```
 
 Good for:
@@ -101,28 +101,28 @@ Good for:
 
 ## Prerequisites
 
-Before using Kilo for Slack:
+Before using Semafour for Slack:
 
-- You need a Kilo Code account with available credits
-- Your Git provider integration (GitHub or GitLab) must be configured via the Integrations tab at [app.kilo.ai](https://app.kilo.ai) so Kilo can access your repositories
+- You need a Semafour account with available credits
+- Your Git provider integration (GitHub or GitLab) must be configured via the Integrations tab at [app.kilo.ai](https://app.kilo.ai) so Semafour can access your repositories
 
 ---
 
 ## Setup
 
-To install Kilo for Slack, go to the Integrations menu in the sidebar at [app.kilo.ai](https://app.kilo.ai) and set up the Slack integration:
+To install Semafour for Slack, go to the Integrations menu in the sidebar at [app.kilo.ai](https://app.kilo.ai) and set up the Slack integration:
 
-{% image src="/docs/img/connect/slack/slackbot-integrations.webp" alt="Kilo Integrations page where you install the Slack integration" width="800" /%}
+{% image src="/docs/img/connect/slack/slackbot-integrations.webp" alt="Semafour Integrations page where you install the Slack integration" width="800" /%}
 
 Then hit the Configure button, which will take you to this page:
-{% image src="/docs/img/connect/slack/slackbot-integrations-2.webp" alt="Kilo Integrations page where you install the Slack integration, step 2" width="800" /%}
+{% image src="/docs/img/connect/slack/slackbot-integrations-2.webp" alt="Semafour Integrations page where you install the Slack integration, step 2" width="800" /%}
 
 Once you press "Connect with Slack", the Slack OAuth authorization page appears:
 {% image src="/docs/img/connect/slack/slackbot-slack-authorize.webp" alt="Slack OAuth authorization page" width="800" /%}
 
 Once this is completed you're good to go!
 
-To make proper use of all of the Kilo Slack bot's capabilities, it's important that you also connect your source control provider with Kilo:
+To make proper use of all of the Semafour Slack bot's capabilities, it's important that you also connect your source control provider with Semafour:
 
 | Platform | Integration Type | Details |
 |---|---|---|
@@ -133,28 +133,28 @@ To make proper use of all of the Kilo Slack bot's capabilities, it's important t
 
 ## How It Works
 
-1. **Message Kilo** through a DM or channel mention
-2. **Kilo processes your request** using your connected repositories for context
+1. **Message Semafour** through a DM or channel mention
+2. **Semafour processes your request** using your connected repositories for context
 3. **AI generates a response** analyzing your request and providing an answer
-4. **Code changes (if requested)** — Kilo creates a branch, commits the changes, and opens a pull or merge request
+4. **Code changes (if requested)** — Semafour creates a branch, commits the changes, and opens a pull or merge request
 
 ---
 
 ## Changing the Model
 
-You can customize which AI model Kilo uses for generating responses.
+You can customize which AI model Semafour uses for generating responses.
 
-1. Go to your Kilo Workspace at [app.kilo.ai](https://app.kilo.ai)
+1. Go to your Semafour Workspace at [app.kilo.ai](https://app.kilo.ai)
 2. Navigate to **Integrations > Slack**
 3. Select your preferred model
 
-Kilo for Slack supports 400+ models across different providers. The new model applies immediately to subsequent requests.
+Semafour for Slack supports 400+ models across different providers. The new model applies immediately to subsequent requests.
 
 ---
 
 ## Cost
 
-Kilo Code credits are used when Kilo performs work (model usage, operations, etc.). Credit usage is the same as using Kilo through any other interface.
+Semafour credits are used when Semafour performs work (model usage, operations, etc.). Credit usage is the same as using Semafour through any other interface.
 
 ---
 
@@ -169,14 +169,14 @@ Kilo Code credits are used when Kilo performs work (model usage, operations, etc
 
 ## Troubleshooting
 
-**Kilo isn't responding.**
-Make sure Kilo for Slack is installed in your workspace and has been added to the channel you're using.
+**Semafour isn't responding.**
+Make sure Semafour for Slack is installed in your workspace and has been added to the channel you're using.
 
-**Kilo can't access my repository.**
+**Semafour can't access my repository.**
 Verify your Git provider integration is configured correctly in the Integrations tab.
 
 **I'm getting incomplete responses.**
 Try breaking your request into smaller, more specific questions.
 
-**Kilo doesn't understand my codebase.**
+**Semafour doesn't understand my codebase.**
 Confirm that the repository you're asking about is connected and accessible through your Git provider integration.

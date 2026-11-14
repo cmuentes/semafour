@@ -68,7 +68,7 @@ interface KiloSessionRpcApi : RemoteApi<Unit> {
     /**
      * Create a public share link for a session.
      *
-     * Requires Kilo credentials and fails when sharing is disabled by config. The CLI collapses every
+     * Requires Semafour credentials and fails when sharing is disabled by config. The CLI collapses every
      * cause into a bare HTTP 500, so callers cannot tell those apart.
      */
     suspend fun share(id: String, directory: String): SessionDto

@@ -90,7 +90,7 @@ class KiloBackendWorkspace(
                 log.info("Loading workspace data for $directory")
                 val reason = RemoteDirectory.detect(directory)
                 if (reason != null) {
-                    log.info("Workspace directory is unsupported for host-side Kilo runtime: $reason [$directory]")
+                    log.info("Workspace directory is unsupported for host-side Semafour runtime: $reason [$directory]")
                     _state.value = KiloWorkspaceState.Unsupported(reason)
                     return@launch
                 }

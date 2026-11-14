@@ -1,7 +1,7 @@
 import { createMemo } from "solid-js"
 import { useSync } from "../context/sync"
 
-// kilocode_change start - anonymous Kilo and OpenCode providers do not prove authentication
+// kilocode_change start - anonymous Semafour and OpenCode providers do not prove authentication
 type Provider = {
   id: string
   models: Record<string, { cost?: { input: number } }>

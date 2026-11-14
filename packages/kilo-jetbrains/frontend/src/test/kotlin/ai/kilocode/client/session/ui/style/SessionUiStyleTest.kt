@@ -44,19 +44,19 @@ class SessionUiStyleTest : BasePlatformTestCase() {
 
     fun `test secondary text blends foreground toward session background and uses regular font`() {
         val style = SessionEditorStyle.create(family = "Courier New", size = 22)
-        val bg = UIManager.getColor("Kilo.Session.background")
-        val fg = UIManager.getColor("Kilo.Session.foreground")
+        val bg = UIManager.getColor("Semafour.Session.background")
+        val fg = UIManager.getColor("Semafour.Session.foreground")
         try {
-            UIManager.put("Kilo.Session.background", Color.BLACK)
-            UIManager.put("Kilo.Session.foreground", Color.WHITE)
+            UIManager.put("Semafour.Session.background", Color.BLACK)
+            UIManager.put("Semafour.Session.foreground", Color.WHITE)
             assertTrue(luminance(SessionUiStyle.Text.Secondary.foreground()) < luminance(SessionUiStyle.Colors.foreground()))
 
-            UIManager.put("Kilo.Session.background", Color.WHITE)
-            UIManager.put("Kilo.Session.foreground", Color.BLACK)
+            UIManager.put("Semafour.Session.background", Color.WHITE)
+            UIManager.put("Semafour.Session.foreground", Color.BLACK)
             assertTrue(luminance(SessionUiStyle.Text.Secondary.foreground()) > luminance(SessionUiStyle.Colors.foreground()))
         } finally {
-            UIManager.put("Kilo.Session.background", bg)
-            UIManager.put("Kilo.Session.foreground", fg)
+            UIManager.put("Semafour.Session.background", bg)
+            UIManager.put("Semafour.Session.foreground", fg)
         }
 
         assertEquals(UiStyle.Fonts.regular(), SessionUiStyle.Text.Secondary.font(style))

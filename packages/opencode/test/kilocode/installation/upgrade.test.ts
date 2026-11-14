@@ -57,7 +57,7 @@ function layer(
   ])
 }
 
-describe("Kilo installation upgrade", () => {
+describe("Semafour installation upgrade", () => {
   const release: string[] = []
   testEffect(
     layer(
@@ -88,7 +88,7 @@ describe("Kilo installation upgrade", () => {
         return json({ version: "8.8.8" })
       },
     ),
-  ).effect("reads yarn versions from the Kilo package registry", () =>
+  ).effect("reads yarn versions from the Semafour package registry", () =>
     Effect.gen(function* () {
       const result = yield* Installation.Service.use((svc) => svc.latest("yarn"))
       expect(result).toBe("8.8.8")
@@ -101,7 +101,7 @@ describe("Kilo installation upgrade", () => {
       if (cmd === "npm" && args.includes("list")) return "@kilocode/cli@7.3.45"
       return ""
     }),
-  ).effect("detects npm installs from the Kilo package", () =>
+  ).effect("detects npm installs from the Semafour package", () =>
     Effect.gen(function* () {
       const result = yield* Installation.Service.use((svc) => svc.method())
       expect(result).toBe("npm")
@@ -117,7 +117,7 @@ describe("Kilo installation upgrade", () => {
         return json({ d: { results: [{ Version: "8.8.8" }] } })
       },
     ),
-  ).effect("reads choco versions from the Kilo package", () =>
+  ).effect("reads choco versions from the Semafour package", () =>
     Effect.gen(function* () {
       const result = yield* Installation.Service.use((svc) => svc.latest("choco"))
       expect(result).toBe("8.8.8")
@@ -136,7 +136,7 @@ describe("Kilo installation upgrade", () => {
         return json({ version: "8.8.8" })
       },
     ),
-  ).effect("reads scoop versions from the Kilo manifest", () =>
+  ).effect("reads scoop versions from the Semafour manifest", () =>
     Effect.gen(function* () {
       const result = yield* Installation.Service.use((svc) => svc.latest("scoop"))
       expect(result).toBe("8.8.8")
@@ -150,28 +150,28 @@ describe("Kilo installation upgrade", () => {
     return ""
   })
 
-  testEffect(upgrade).effect("installs the Kilo npm package", () =>
+  testEffect(upgrade).effect("installs the Semafour npm package", () =>
     Effect.gen(function* () {
       yield* Installation.Service.use((svc) => svc.upgrade("npm", "9.9.9"))
       expect(calls).toContain("npm install -g @kilocode/cli@9.9.9")
     }),
   )
 
-  testEffect(upgrade).effect("installs the Kilo yarn package", () =>
+  testEffect(upgrade).effect("installs the Semafour yarn package", () =>
     Effect.gen(function* () {
       yield* Installation.Service.use((svc) => svc.upgrade("yarn", "9.9.9"))
       expect(calls).toContain("yarn global add @kilocode/cli@9.9.9")
     }),
   )
 
-  testEffect(upgrade).effect("installs the Kilo pnpm package", () =>
+  testEffect(upgrade).effect("installs the Semafour pnpm package", () =>
     Effect.gen(function* () {
       yield* Installation.Service.use((svc) => svc.upgrade("pnpm", "9.9.9"))
       expect(calls).toContain("pnpm install -g @kilocode/cli@9.9.9")
     }),
   )
 
-  testEffect(upgrade).effect("installs the Kilo bun package", () =>
+  testEffect(upgrade).effect("installs the Semafour bun package", () =>
     Effect.gen(function* () {
       yield* Installation.Service.use((svc) => svc.upgrade("bun", "9.9.9"))
       expect(calls).toContain("bun install -g @kilocode/cli@9.9.9")
@@ -186,7 +186,7 @@ describe("Kilo installation upgrade", () => {
     return ""
   })
 
-  testEffect(brewer).effect("upgrades the Kilo brew formula", () =>
+  testEffect(brewer).effect("upgrades the Semafour brew formula", () =>
     Effect.gen(function* () {
       yield* Installation.Service.use((svc) => svc.upgrade("brew", "9.9.9"))
       expect(brew).toContain("brew tap Kilo-Org/tap")
@@ -194,14 +194,14 @@ describe("Kilo installation upgrade", () => {
     }),
   )
 
-  testEffect(upgrade).effect("upgrades the Kilo choco package", () =>
+  testEffect(upgrade).effect("upgrades the Semafour choco package", () =>
     Effect.gen(function* () {
       yield* Installation.Service.use((svc) => svc.upgrade("choco", "9.9.9"))
       expect(calls).toContain("choco upgrade kilo --version=9.9.9 -y")
     }),
   )
 
-  testEffect(upgrade).effect("installs the Kilo scoop package", () =>
+  testEffect(upgrade).effect("installs the Semafour scoop package", () =>
     Effect.gen(function* () {
       yield* Installation.Service.use((svc) => svc.upgrade("scoop", "9.9.9"))
       expect(calls).toContain("scoop install kilo@9.9.9")
@@ -220,7 +220,7 @@ describe("Kilo installation upgrade", () => {
         return new Response("#!/usr/bin/env bash", { status: 200 })
       },
     ),
-  ).effect("uses the Kilo install script for curl upgrades", () =>
+  ).effect("uses the Semafour install script for curl upgrades", () =>
     Effect.gen(function* () {
       yield* Installation.Service.use((svc) => svc.upgrade("curl", "9.9.9"))
       expect(curl).toContain("https://kilo.ai/cli/install")

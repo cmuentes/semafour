@@ -26,7 +26,7 @@ Before you begin, make sure you have the following installed:
 
 1. **Fork and Clone the Repository**:
    - **Fork the Repository**:
-     - Visit the [Kilo Code GitHub repository](https://github.com/Kilo-Org/kilocode)
+     - Visit the [Semafour GitHub repository](https://github.com/Kilo-Org/kilocode)
      - Click the "Fork" button in the top-right corner to create your own copy.
    - **Clone Your Fork**:
      ```bash
@@ -70,13 +70,13 @@ AI and coding agents are allowed in this repo. If you use one, start it from the
 
 You remain responsible for the submitted work. Before opening a PR, personally review the diff, test the change, make sure you can explain it, and understand how it interacts with the affected package and the rest of the repo. Do not use agents to submit batches of agent-generated, untested, or weakly reviewed PRs. Prioritize high-impact issues first. Do not use automation or agents to mass-create issues without human review and prioritization.
 
-Kilo has bug bounties. To be eligible, make sure your GitHub account is connected in your Kilo account.
+Semafour has bug bounties. To be eligible, make sure your GitHub account is connected in your Semafour account.
 
 ### Project Structure
 
 The project is organized into several key packages:
 
-- **`packages/opencode/`** - Kilo CLI, agent runtime, local HTTP server, session management, and TUI
+- **`packages/opencode/`** - Semafour CLI, agent runtime, local HTTP server, session management, and TUI
 - **`packages/kilo-vscode/`** - VS Code extension, webview UI, Agent Manager, and extension packaging
 - **`packages/sdk/js/`** - Generated TypeScript SDK for the local server API
 - **`packages/kilo-docs/`** - Documentation site
@@ -127,9 +127,9 @@ bun run extension:isolated
 bun run extension:isolated:clean
 ```
 
-`extension:isolated` launches a separate VS Code process with user data and extensions under `.kilo-dev/vscode/`, and points Kilo at isolated XDG storage under `.kilo-dev/{data,config,state,cache}`. Re-running it keeps the same isolated environment, so installed extensions, VS Code settings, Kilo auth, sessions, config, state, and cache persist.
+`extension:isolated` launches a separate VS Code process with user data and extensions under `.kilo-dev/vscode/`, and points Semafour at isolated XDG storage under `.kilo-dev/{data,config,state,cache}`. Re-running it keeps the same isolated environment, so installed extensions, VS Code settings, Semafour auth, sessions, config, state, and cache persist.
 
-`extension:isolated:clean` deletes `.kilo-dev/` before launch. Use it to simulate a fresh VS Code + Kilo install without affecting your main VS Code profile or real Kilo config.
+`extension:isolated:clean` deletes `.kilo-dev/` before launch. Use it to simulate a fresh VS Code + Semafour install without affecting your main VS Code profile or real Semafour config.
 
 The command auto-detects VS Code on macOS, Linux, and Windows. Use these options when the default launch target is not the one you need:
 
@@ -162,7 +162,7 @@ $env:VSCODE_EXEC_PATH = "C:\Users\me\AppData\Local\Programs\Microsoft VS Code\Co
 bun run extension
 ```
 
-When the Extension Development Host opens, check the Kilo Code output channel and the Developer Tools console for startup or webview errors.
+When the Extension Development Host opens, check the Semafour output channel and the Developer Tools console for startup or webview errors.
 
 ### Building the Extension
 
@@ -177,7 +177,7 @@ Use `bun run compile` when you need a development build and `bun run package` wh
 
 ## Testing
 
-Kilo Code uses several types of tests to ensure quality:
+Semafour uses several types of tests to ensure quality:
 
 ### Repo-Level Checks
 
@@ -279,5 +279,5 @@ This project uses [Husky](https://typicode.github.io/husky/) to manage Git hooks
 ### Debugging Tips
 
 - Use `console.log()` statements in your code for debugging
-- Check the Output panel in VSCode (View > Output) and select "Kilo Code" from the dropdown
+- Check the Output panel in VSCode (View > Output) and select "Semafour" from the dropdown
 - For webview issues, use the browser developer tools in the webview (right-click > "Inspect Element")

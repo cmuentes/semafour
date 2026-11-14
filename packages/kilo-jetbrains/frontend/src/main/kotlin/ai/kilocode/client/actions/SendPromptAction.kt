@@ -16,12 +16,12 @@ import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.DumbAwareAction
 
 class SendPromptAction : DumbAwareAction(
-    KiloBundle.message("action.Kilo.SendPrompt.text"),
-    KiloBundle.message("action.Kilo.SendPrompt.description"),
+    KiloBundle.message("action.Semafour.SendPrompt.text"),
+    KiloBundle.message("action.Semafour.SendPrompt.description"),
     null,
 ), ActionPromoter {
     companion object {
-        const val ID = "Kilo.SendPrompt"
+        const val ID = "Semafour.SendPrompt"
     }
 
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.EDT

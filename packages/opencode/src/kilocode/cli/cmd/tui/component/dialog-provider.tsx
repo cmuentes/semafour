@@ -102,7 +102,7 @@ export const LOCAL_API_KEY_PLACEHOLDER = "local"
 // ---------------------------------------------------------------------------
 
 /**
- * If the provider is Kilo Gateway, renders the custom `KiloAutoMethod`
+ * If the provider is Semafour Gateway, renders the custom `KiloAutoMethod`
  * component that handles device-auth + org selection.
  *
  * Returns `undefined` for every other provider so the caller can fall
@@ -137,7 +137,7 @@ export function renderAutoMethod(opts: {
 
 /**
  * Returns a custom description element for the API-key dialog when the
- * provider is Kilo Gateway. Returns `undefined` otherwise.
+ * provider is Semafour Gateway. Returns `undefined` otherwise.
  */
 export function renderApiDescription(
   providerID: string,
@@ -154,7 +154,7 @@ export function renderApiDescription(
   return () => (
     <box gap={1}>
       <text fg={theme.textMuted}>
-        Kilo Gateway gives you access to all the best coding models at the cheapest prices with a single API key.
+        Semafour Gateway gives you access to all the best coding models at the cheapest prices with a single API key.
       </text>
       <text fg={theme.text}>
         Go to <span style={{ fg: theme.primary }}>https://kilo.ai/gateway</span> to get a key

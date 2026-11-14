@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kilo.ai"><img width="250" alt="Kilo Code logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
+  <a href="https://kilo.ai"><img width="250" alt="Semafour logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
 </p>
 
 <p align="center">Open source-агент для разработки с ИИ в VS Code, JetBrains или CLI.</p>
@@ -21,18 +21,18 @@
 
 ---
 
-Kilo Code — это AI-агент для написания кода, который работает там, где работаете вы: в [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) и [CLI](https://kilo.ai/cli). Он имеет открытый исходный код и открытую модель ценообразования. Вы выбираете из более чем 500 моделей, переключаетесь между ними во время задачи и платите по тарифу поставщика модели без наценки. Для начала не нужны API-ключи.
+Semafour — это AI-агент для написания кода, который работает там, где работаете вы: в [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) и [CLI](https://kilo.ai/cli). Он имеет открытый исходный код и открытую модель ценообразования. Вы выбираете из более чем 500 моделей, переключаетесь между ними во время задачи и платите по тарифу поставщика модели без наценки. Для начала не нужны API-ключи.
 
 ### Установка
 
-Выберите, где вы хотите запускать Kilo.
+Выберите, где вы хотите запускать Semafour.
 
 <details open>
 <summary><strong>VS Code</strong></summary>
 
 <br>
 
-Установите [расширение Kilo Code](vscode:extension/kilocode.kilo-code) напрямую или скачайте его из [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Создайте аккаунт и получите доступ к более чем 500 моделям, включая GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 и Gemini 3.1 Pro Preview, все по ценам поставщиков.
+Установите [расширение Semafour](vscode:extension/kilocode.kilo-code) напрямую или скачайте его из [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Создайте аккаунт и получите доступ к более чем 500 моделям, включая GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 и Gemini 3.1 Pro Preview, все по ценам поставщиков.
 
 </details>
 
@@ -70,7 +70,7 @@ paru -S kilo-bin
 
 <br>
 
-Установите [плагин Kilo Code](https://plugins.jetbrains.com/plugin/28350-kilo-code) из JetBrains Marketplace или найдите "Kilo Code" в `Settings → Plugins` в любой IDE JetBrains.
+Установите [плагин Semafour](https://plugins.jetbrains.com/plugin/28350-kilo-code) из JetBrains Marketplace или найдите "Semafour" в `Settings → Plugins` в любой IDE JetBrains.
 
 </details>
 
@@ -79,7 +79,7 @@ paru -S kilo-bin
 
 <br>
 
-Запускайте Kilo из веба без локальной машины на [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
+Запускайте Semafour из веба без локальной машины на [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
 
 </details>
 
@@ -111,7 +111,7 @@ paru -S kilo-bin
 
 ### Agents
 
-Kilo поставляется со специализированными agents, между которыми можно переключаться в зависимости от задачи. Вы также можете создавать собственные agents.
+Semafour поставляется со специализированными agents, между которыми можно переключаться в зависимости от задачи. Вы также можете создавать собственные agents.
 
 - **Code** - По умолчанию. Реализует и редактирует код по описанию на естественном языке.
 - **Plan** - Проектирует архитектуру и пишет планы реализации до написания кода.
@@ -157,9 +157,9 @@ MIT. Вы можете использовать, изменять и распр�
 ### FAQ
 
 <details>
-<summary>Откуда появился Kilo CLI?</summary>
+<summary>Откуда появился Semafour CLI?</summary>
 
-Kilo CLI — это fork [OpenCode](https://github.com/anomalyco/opencode), расширенный для работы в платформе agentic engineering Kilo.
+Semafour CLI — это fork [OpenCode](https://github.com/anomalyco/opencode), расширенный для работы в платформе agentic engineering Semafour.
 
 </details>
 

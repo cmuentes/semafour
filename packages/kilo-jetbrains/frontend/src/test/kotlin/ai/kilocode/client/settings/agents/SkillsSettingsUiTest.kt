@@ -259,11 +259,11 @@ class SkillsSettingsUiTest : BasePlatformTestCase() {
         edt {
             val content = SkillEditDialog(SkillDto("plan", "desc", CUSTOM, "# Plan\nUse steps"), true)
             val fallback = SkillEditDialog(SkillDto("plan", "desc", CUSTOM), true)
-            val readonly = SkillEditDialog(SkillDto("kilo-config", "desc", "builtin", "<h1>Kilo Config</h1>"), false)
+            val readonly = SkillEditDialog(SkillDto("kilo-config", "desc", "builtin", "<h1>Semafour Config</h1>"), false)
             try {
                 assertEquals("# Plan\nUse steps", content.content())
                 assertEquals("desc", fallback.content())
-                assertEquals("<h1>Kilo Config</h1>", readonly.content())
+                assertEquals("<h1>Semafour Config</h1>", readonly.content())
                 assertEquals("OK", content.okText())
             } finally {
                 content.close(DialogWrapper.CANCEL_EXIT_CODE)
@@ -277,11 +277,11 @@ class SkillsSettingsUiTest : BasePlatformTestCase() {
     fun `test skill editor file type follows content syntax before location`() {
         assertEquals(
             FileTypeManager.getInstance().getFileTypeByFileName("index.html"),
-            skillFileType("builtin", "<h1>Kilo CLI Configuration Reference</h1><p>All config lives in <code>kilo.json</code>.</p>"),
+            skillFileType("builtin", "<h1>Semafour CLI Configuration Reference</h1><p>All config lives in <code>kilo.json</code>.</p>"),
         )
         assertEquals(
             skillFileType("SKILL.md"),
-            skillFileType("builtin", "# Kilo CLI Configuration Reference\n\nAll config lives in `kilo.json`."),
+            skillFileType("builtin", "# Semafour CLI Configuration Reference\n\nAll config lives in `kilo.json`."),
         )
         assertEquals(PlainTextFileType.INSTANCE, skillFileType("builtin", "Plain fallback text"))
     }

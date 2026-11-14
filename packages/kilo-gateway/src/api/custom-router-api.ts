@@ -135,7 +135,7 @@ function join(base: string, path: string): string {
   return `${base.replace(/\/+$/, "")}${path}`
 }
 
-// Two hosts: the web app REST routes live on the Kilo API base (KILO_API_URL),
+// Two hosts: the web app REST routes live on the Semafour API base (KILO_API_URL),
 // the worker routes on the auto-routing base (KILO_AUTO_ROUTING_URL).
 function web(path: string): string {
   return join(KILO_API_BASE, path)

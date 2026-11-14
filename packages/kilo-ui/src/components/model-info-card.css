@@ -1,4 +1,4 @@
-/* Kilo Model Info Card overrides – harmonized with @vscode/webview-ui-toolkit */
+/* Semafour Model Info Card overrides – harmonized with @vscode/webview-ui-toolkit */
 
 [data-component="model-info-card"] {
   border: 1px solid var(--border-weak-base);

@@ -39,7 +39,7 @@ function takeoverFrom(port: number, hostHeader: string): Promise<{ released: boo
 
 type Later = { server: Server | undefined; port: number; path: string }
 
-describe("Kilo MCP OAuth callback", () => {
+describe("Semafour MCP OAuth callback", () => {
   afterEach(async () => {
     await McpOAuthCallback.stop()
   })

@@ -218,7 +218,7 @@ export const TaskTool = Tool.define(
       }
       // kilocode_change end
       const platform = KiloSession.resolvePlatform(ctx.sessionID) // kilocode_change - preserve parent attribution across task creation/resume
-      // kilocode_change start - create a child session with inherited Kilo restrictions
+      // kilocode_change start - create a child session with inherited Semafour restrictions
       const nextSession =
         session ??
         (yield* sessions.create({
@@ -226,7 +226,7 @@ export const TaskTool = Tool.define(
           title: params.description + ` (@${next.name} subagent)`,
           agent: next.name,
           platform, // kilocode_change
-          permission: childPermission, // kilocode_change - persist inherited Kilo ceilings and upstream child denies
+          permission: childPermission, // kilocode_change - persist inherited Semafour ceilings and upstream child denies
         }))
       // kilocode_change end
       // kilocode_change start - rebuild in-memory ancestry and inherit confinement after creation/resume

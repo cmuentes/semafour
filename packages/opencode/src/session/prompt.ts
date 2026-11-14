@@ -125,7 +125,7 @@ IMPORTANT:
 
 const STRUCTURED_OUTPUT_SYSTEM_PROMPT = `IMPORTANT: The user has requested structured output. You MUST use the StructuredOutput tool to provide your final response. Do NOT respond with plain text - you MUST call the StructuredOutput tool with your answer formatted according to the schema.`
 
-export const shouldAskPlanFollowup = KiloSessionPrompt.shouldAskPlanFollowup // kilocode_change - retain Kilo plan handoff policy
+export const shouldAskPlanFollowup = KiloSessionPrompt.shouldAskPlanFollowup // kilocode_change - retain Semafour plan handoff policy
 
 // kilocode_change start - persistent tool-output pruning when payload is already large
 const REQUEST_PRUNE_BYTES = 1_250_000
@@ -321,7 +321,7 @@ export const layer = Layer.effect(
       if (input.session.parentID) return
       if (!Session.isDefaultTitle(input.session.title)) return
 
-      // kilocode_change start - Kilo defers titles and owns the context policy
+      // kilocode_change start - Semafour defers titles and owns the context policy
       const built = KiloSessionTitle.build(input.history)
       if (!built) return
       // kilocode_change end
@@ -1454,7 +1454,7 @@ export const layer = Layer.effect(
         // kilocode_change end
         const session = yield* sessions.get(input.sessionID).pipe(Effect.orDie)
         yield* revert.cleanup(session)
-        // kilocode_change start - recover interrupted Kilo turns before accepting a follow-up
+        // kilocode_change start - recover interrupted Semafour turns before accepting a follow-up
         yield* KiloSessionPrompt.recoverDanglingAssistant({ sessionID: input.sessionID, status, sessions })
         yield* KiloSessionPrompt.recoverProviderFinishError({ sessionID: input.sessionID, status, sessions })
         yield* KiloSessionPrompt.recoverFailedAssistant({ sessionID: input.sessionID, status, sessions })
@@ -1559,7 +1559,7 @@ export const layer = Layer.effect(
         yield* status.set(sessionID, { type: "busy" })
         yield* Effect.logInfo("loop", { "session.id": sessionID, step })
 
-        // kilocode_change start - provide the upstream Effect database to Kilo's retained prompt loop
+        // kilocode_change start - provide the upstream Effect database to Semafour's retained prompt loop
         let msgs = yield* MessageV2.filterCompactedEffect(sessionID).pipe(
           Effect.provideService(Database.Service, database),
         )
@@ -1902,7 +1902,7 @@ export const layer = Layer.effect(
               }).toObject()
               yield* sessions.updateMessage(handle.message)
               yield* events.publish(Session.Event.Error, { sessionID, error: handle.message.error })
-              closeReasons.set(sessionID, "error") // kilocode_change - retain Kilo close-reason propagation
+              closeReasons.set(sessionID, "error") // kilocode_change - retain Semafour close-reason propagation
               return "break" as const
             }
             if (format.type === "json_schema") {
@@ -2002,7 +2002,7 @@ export const layer = Layer.effect(
       }
 
       yield* compaction.prune({ sessionID, reason: "normal" }).pipe(Effect.ignore, Effect.forkIn(scope))
-      // kilocode_change - Kilo defers session titles; see kilocode/session/title.ts
+      // kilocode_change - Semafour defers session titles; see kilocode/session/title.ts
       yield* KiloSessionTitle.deferred({ sessionID, scope, sessions, database, generate: title }).pipe(Effect.ignore)
       return yield* lastAssistant(sessionID)
     })
@@ -2088,7 +2088,7 @@ export const layer = Layer.effect(
       const msgs = yield* sessions.messages({ sessionID: input.cmdInput.sessionID }).pipe(Effect.orDie)
       if (msgs.length > 0) {
         const error = new NamedError.Unknown({
-          message: "Start a new Kilo session, then run the resume command again.",
+          message: "Start a new Semafour session, then run the resume command again.",
         })
         yield* events.publish(Session.Event.Error, { sessionID: input.cmdInput.sessionID, error: error.toObject() })
         return yield* Effect.fail(error)
@@ -2549,7 +2549,7 @@ export const PromptInput = Schema.Struct({
     ]).annotate({ discriminator: "type" }),
   ),
 }).pipe(withStatics((s) => ({ zod: zod(s) })))
-// kilocode_change start - retain precise prompt input types for Kilo callers
+// kilocode_change start - retain precise prompt input types for Semafour callers
 // `z.discriminatedUnion` erases the discriminated members' shapes back to
 // `{}` when walked from the generic `z.ZodType` input. Restore the precise
 // `parts` type from the exported Schema input types so callers see a proper

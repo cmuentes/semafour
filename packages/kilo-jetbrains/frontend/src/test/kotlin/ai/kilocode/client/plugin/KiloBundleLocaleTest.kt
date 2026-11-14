@@ -356,8 +356,8 @@ class KiloBundleLocaleTest : BasePlatformTestCase() {
         val PLAIN = listOf(
             "session.empty.branch.link",
             "session.empty.worktree.unknown",
-            "action.Kilo.NewSession.toolbar",
-            "action.Kilo.NewWorktree.toolbar",
+            "action.Semafour.NewSession.toolbar",
+            "action.Semafour.NewWorktree.toolbar",
             "settings.agentBehavior.mcp.signIn.cancel",
             "settings.agentBehavior.mcp.resetAuth",
             "settings.agentBehavior.mcp.resetAuth.title",
@@ -462,12 +462,12 @@ class KiloBundleLocaleTest : BasePlatformTestCase() {
 
         val CORE_RELOAD = listOf(
             "prompt.slash.reload",
-            "action.Kilo.ReloadCoreSettings.text",
-            "action.Kilo.ReloadCoreSettings.description",
-            "action.Kilo.ReloadCoreSettings.busy",
-            "action.Kilo.ReloadCoreSettings.failed",
-            "action.Kilo.CoreLifecycle.confirm.title",
-            "action.Kilo.CoreLifecycle.confirm.message",
+            "action.Semafour.ReloadCoreSettings.text",
+            "action.Semafour.ReloadCoreSettings.description",
+            "action.Semafour.ReloadCoreSettings.busy",
+            "action.Semafour.ReloadCoreSettings.failed",
+            "action.Semafour.CoreLifecycle.confirm.title",
+            "action.Semafour.CoreLifecycle.confirm.message",
         )
 
         val RELEASE_7_1_7 = mapOf(

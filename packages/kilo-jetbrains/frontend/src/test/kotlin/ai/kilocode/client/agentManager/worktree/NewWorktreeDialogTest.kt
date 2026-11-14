@@ -153,7 +153,7 @@ class NewWorktreeDialogTest : BasePlatformTestCase() {
         open()
         flushUntil { edt { model().selectionKeyForTest() != null } }
 
-        edt { model().onSelect(ModelPicker.Item("gpt-5", "GPT-5", "kilo", "Kilo", variants = listOf("low", "high"))) }
+        edt { model().onSelect(ModelPicker.Item("gpt-5", "GPT-5", "kilo", "Semafour", variants = listOf("low", "high"))) }
 
         assertEquals(ModelSelectionDto("kilo", "gpt-5"), app.models.value.model["build"])
     }
@@ -459,7 +459,7 @@ class NewWorktreeDialogTest : BasePlatformTestCase() {
         val providers = ProvidersDto(
             providers = listOf(
                 ProviderDto(
-                    "kilo", "Kilo",
+                    "kilo", "Semafour",
                     models = mapOf(
                         "gpt-5" to ModelDto("gpt-5", "GPT-5", variants = listOf("low", "high")),
                         "opus" to ModelDto("opus", "Opus"),

@@ -30,7 +30,7 @@ describe("websearch provider", () => {
     expect(selectWebSearchProvider(SESSION_ID, { exa: false, parallel: true })).toBe("parallel")
   })
 
-  test("is enabled for Kilo, opencode-go, or explicit websearch provider flags", () => {
+  test("is enabled for Semafour, opencode-go, or explicit websearch provider flags", () => {
     // kilocode_change
     expect(webSearchEnabled(ProviderV2.ID.kilo, { exa: false, parallel: false })).toBe(true) // kilocode_change
     expect(webSearchEnabled(ProviderV2.ID.opencode, { exa: false, parallel: false })).toBe(false) // kilocode_change

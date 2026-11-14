@@ -20,9 +20,9 @@ export class KiloEmbedder implements IEmbedder {
     modelId?: string
     dimensions?: number
   }) {
-    if (!input.apiKey) throw new Error("Kilo API key is required for embedding.")
+    if (!input.apiKey) throw new Error("Semafour API key is required for embedding.")
 
-    if (!input.modelId) throw new Error("Kilo embedding model is required.")
+    if (!input.modelId) throw new Error("Semafour embedding model is required.")
     this.model = input.modelId
     const headers: Record<string, string> = {
       [HEADER_FEATURE]: KILO_INDEXING_FEATURE,
@@ -42,7 +42,7 @@ export class KiloEmbedder implements IEmbedder {
     try {
       return await this.embedder.createEmbeddings(texts, model || this.model)
     } catch (err) {
-      log.error("Kilo embedder error", {
+      log.error("Semafour embedder error", {
         err: err instanceof Error ? err.message : String(err),
         location: "KiloEmbedder:createEmbeddings",
       })
@@ -54,7 +54,7 @@ export class KiloEmbedder implements IEmbedder {
     try {
       return await this.embedder.validateConfiguration()
     } catch (err) {
-      log.error("Kilo embedder validation error", {
+      log.error("Semafour embedder validation error", {
         err: err instanceof Error ? err.message : String(err),
         location: "KiloEmbedder:validateConfiguration",
       })

@@ -8,7 +8,7 @@ internal data class AgentBehaviorDraft(
 )
 
 /**
- * Kilo Swarm is enabled unless config explicitly opts out, matching the CLI's
+ * Semafour Swarm is enabled unless config explicitly opts out, matching the CLI's
  * `BoardEnabled.resolve` and the VS Code toggle's `config().shared_agent_board ?? true`.
  */
 internal fun agentBehaviorDraft(config: ConfigDto?): AgentBehaviorDraft = AgentBehaviorDraft(

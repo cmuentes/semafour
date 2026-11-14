@@ -305,7 +305,7 @@ export const run = Effect.fn("Tui.run")(function* (input: TuiInput) {
                                         : undefined
                                     }
                                   >
-                                    {/* kilocode_change - retain reactive Kilo TUI config hot reload after package extraction */}
+                                    {/* kilocode_change - retain reactive Semafour TUI config hot reload after package extraction */}
                                     <KiloApp.KiloTuiConfig.Provider config={input.config}>
                                       <PluginRuntimeProvider value={pluginRuntime}>
                                         <SDKProvider
@@ -971,7 +971,7 @@ function App(props: { onSnapshot?: () => Promise<string[]>; pluginHost: TuiPlugi
       },
       // kilocode_change - titled by scope. This toggles the in-memory mode that `--auto`/`--yolo`
       // seed, which lasts for the TUI process and survives switching sessions. It is also the only
-      // way to leave that mode without restarting; Kilo's `permission.allow_everything`
+      // way to leave that mode without restarting; Semafour's `permission.allow_everything`
       // (kilocode/cli/cmd/tui/app.tsx) saves a global rule instead. Consolidating the two is a
       // follow-up that has to cover VS Code and JetBrains as well.
       {

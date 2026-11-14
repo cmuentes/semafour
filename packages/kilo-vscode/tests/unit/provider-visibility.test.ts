@@ -61,19 +61,19 @@ describe("canChangeProviderKey", () => {
 })
 
 describe("visibleConnectedIds", () => {
-  it("hides Kilo from the connected list when auth is missing", () => {
+  it("hides Semafour from the connected list when auth is missing", () => {
     const ids = visibleConnectedIds(["kilo", "openrouter"], { openrouter: "api" })
 
     expect(ids).toEqual(["openrouter"])
   })
 
-  it("keeps Kilo in the connected list when auth exists", () => {
+  it("keeps Semafour in the connected list when auth exists", () => {
     const ids = visibleConnectedIds(["kilo", "openrouter"], { kilo: "oauth", openrouter: "api" })
 
     expect(ids).toEqual(["kilo", "openrouter"])
   })
 
-  it("leaves non-Kilo providers untouched", () => {
+  it("leaves non-Semafour providers untouched", () => {
     const ids = visibleConnectedIds(["anthropic"], {})
 
     expect(ids).toEqual(["anthropic"])
@@ -81,10 +81,10 @@ describe("visibleConnectedIds", () => {
 })
 
 describe("disabledProviderOptions", () => {
-  it("includes Kilo and excludes already disabled providers", () => {
+  it("includes Semafour and excludes already disabled providers", () => {
     const options = disabledProviderOptions(
       {
-        kilo: { id: "kilo", name: "Kilo Gateway", env: [], models: {} },
+        kilo: { id: "kilo", name: "Semafour Gateway", env: [], models: {} },
         openai: { id: "openai", name: "OpenAI", env: [], models: {} },
         anthropic: { id: "anthropic", name: "Anthropic", env: [], models: {} },
       },
@@ -93,7 +93,7 @@ describe("disabledProviderOptions", () => {
 
     expect(options).toEqual([
       { value: "anthropic", label: "Anthropic" },
-      { value: "kilo", label: "Kilo Gateway" },
+      { value: "kilo", label: "Semafour Gateway" },
     ])
   })
 
@@ -114,20 +114,20 @@ describe("disabledProviderOptions", () => {
 })
 
 describe("providersWithKiloFallback", () => {
-  it("adds Kilo when backend providers omit it", () => {
+  it("adds Semafour when backend providers omit it", () => {
     const providers = providersWithKiloFallback({
       anthropic: { id: "anthropic", name: "Anthropic", env: [], models: {} },
     })
 
-    expect(providers.kilo?.name).toBe("Kilo Gateway")
+    expect(providers.kilo?.name).toBe("Semafour Gateway")
     expect(providers.anthropic?.name).toBe("Anthropic")
   })
 
-  it("keeps the backend Kilo provider when present", () => {
+  it("keeps the backend Semafour provider when present", () => {
     const providers = providersWithKiloFallback({
-      kilo: { id: "kilo", name: "Custom Kilo Name", env: [], models: {} },
+      kilo: { id: "kilo", name: "Custom Semafour Name", env: [], models: {} },
     })
 
-    expect(providers.kilo?.name).toBe("Custom Kilo Name")
+    expect(providers.kilo?.name).toBe("Custom Semafour Name")
   })
 })

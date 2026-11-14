@@ -1,4 +1,4 @@
-// Kilo notification types (mirrored from kilo-gateway)
+// Semafour notification types (mirrored from kilo-gateway)
 export interface KilocodeNotificationAction {
   actionText: string
   actionURL: string

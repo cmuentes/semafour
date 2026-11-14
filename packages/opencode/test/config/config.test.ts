@@ -364,7 +364,7 @@ it.instance("loads JSON config file", () =>
 )
 
 // kilocode_change start
-it.instance("preserves Kilo provider free model metadata", () =>
+it.instance("preserves Semafour provider free model metadata", () =>
   Effect.gen(function* () {
     const test = yield* TestInstance
     yield* writeConfigEffect(test.directory, {
@@ -402,7 +402,7 @@ it.instance(
 it.instance("updates config and preserves empty shell sentinel", () =>
   Effect.gen(function* () {
     const test = yield* TestInstance
-    // kilocode_change - upstream hardcodes project config to config.json; Kilo writes to kilo.json
+    // kilocode_change - upstream hardcodes project config to config.json; Semafour writes to kilo.json
     yield* writeConfigEffect(test.directory, { $schema: "https://opencode.ai/config.json", shell: "bash" })
 
     yield* Config.Service.use((svc) => svc.update(ConfigParse.schema(ConfigV1.Info, { shell: "" }, "test:config")))
@@ -464,7 +464,7 @@ it.effect("logs global update diagnostics once without exposing values", () =>
           [
             "configuration compatibility diagnostic",
             expect.objectContaining({
-              // kilocode_change - Kilo defaults to kilo.json (globalConfigFile prefers it) instead of upstream's opencode.json
+              // kilocode_change - Semafour defaults to kilo.json (globalConfigFile prefers it) instead of upstream's opencode.json
               source: path.join(dir, "kilo.json"),
               kind: "unsupported",
               path: ["providers"],
@@ -508,7 +508,7 @@ for (const input of projectInputs) {
     Effect.gen(function* () {
       const instance = yield* TestInstance
       const fs = yield* FSUtil.Service
-      // kilocode_change - upstream writes config.json, but Kilo's project config file set is kilo.json/kilo.jsonc/opencode.json/opencode.jsonc
+      // kilocode_change - upstream writes config.json, but Semafour's project config file set is kilo.json/kilo.jsonc/opencode.json/opencode.jsonc
       const file = path.join(instance.directory, "kilo.json")
       yield* fs.writeFileString(file, yield* fs.readFileString(path.join(updateFixtures, input)))
       const patch = ConfigParse.schema(ConfigV1.Info, yield* fs.readJson(`${prefix}-patch.json`), input)
@@ -552,7 +552,7 @@ it.instance("rejects a project update with native agent permissions without writ
   Effect.gen(function* () {
     const instance = yield* TestInstance
     const fs = yield* FSUtil.Service
-    // kilocode_change - Kilo reads kilo.json, not upstream's config.json
+    // kilocode_change - Semafour reads kilo.json, not upstream's config.json
     const file = path.join(instance.directory, "kilo.json")
     const before = JSON.stringify({ agents: { reviewer: { permissions: [] } } })
     yield* fs.writeFileString(file, before)
@@ -610,7 +610,7 @@ it.effect("rejects native project permissions even with inherited V1 rules", () 
       },
     },
     Effect.gen(function* () {
-      // kilocode_change start - Kilo degrades gracefully: an invalid project config is
+      // kilocode_change start - Semafour degrades gracefully: an invalid project config is
       // skipped with a warning instead of failing the whole Config.use.get(). The native
       // V2 permission fields are still rejected, and the inherited global V1 rules survive.
       const config = yield* Config.use.get()

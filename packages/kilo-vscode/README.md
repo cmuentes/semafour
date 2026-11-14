@@ -11,12 +11,12 @@
 </p>
 
 <p align="center">
-  <strong>Kilo is the all-in-one agentic engineering platform.</strong><br>
+  <strong>Semafour is the all-in-one agentic engineering platform.</strong><br>
   Build, ship, and iterate faster with the most popular open source coding agent.
 </p>
 
 <p align="center">
-  <img width="100%" alt="Kilo Code running inside VS Code" src="https://kilo.ai/_next/image?url=%2Fscreenshots%2Fvs-code%2Fvs-code-home-page-screenshot.png&w=3840&q=75">
+  <img width="100%" alt="Semafour running inside VS Code" src="https://kilo.ai/_next/image?url=%2Fscreenshots%2Fvs-code%2Fvs-code-home-page-screenshot.png&w=3840&q=75">
 </p>
 
 <p align="center">
@@ -28,29 +28,29 @@
   <a href="https://kilo.ai/leaderboard">Models</a> ·
   <a href="https://kilo.ai/gateway">Gateway</a> ·
   <a href="https://kilo.ai/pricing">Pricing</a> ·
-  <a href="https://kilo.ai/pricing/kilo-pass">Kilo Pass</a>
+  <a href="https://kilo.ai/pricing/kilo-pass">Semafour Pass</a>
 </p>
 
 <p align="center">
   500+ models. One open source agent in <a href="https://kilo.ai/install">VS Code</a>, <a href="https://kilo.ai/features/jetbrains-native">JetBrains</a>, <a href="https://kilo.ai/cli">CLI</a>, <a href="https://kilo.ai/slack">Slack</a>, and <a href="https://kilo.ai/cloud">Cloud</a>.
 </p>
 
-> 🚀 **Coming from Roo Code?** Switch to Kilo and check out our [migration guide](https://kilo.ai/articles/roo-to-kilo-migration-guide)!
+> 🚀 **Coming from Roo Code?** Switch to Semafour and check out our [migration guide](https://kilo.ai/articles/roo-to-kilo-migration-guide)!
 
 ## Key Features
 
-- **Code Generation:** Kilo can generate code using natural language.
+- **Code Generation:** Semafour can generate code using natural language.
 - **Inline Autocomplete:** Get intelligent code completions as you type, powered by AI.
-- **Task Automation:** Kilo can automate repetitive coding tasks to save time..
-- **Automated Refactoring:** Kilo can refactor and improve existing code efficiently.
-- **MCP Server Marketplace**: Kilo can easily find, and use MCP servers to extend the agent capabilities.
+- **Task Automation:** Semafour can automate repetitive coding tasks to save time..
+- **Automated Refactoring:** Semafour can refactor and improve existing code efficiently.
+- **MCP Server Marketplace**: Semafour can easily find, and use MCP servers to extend the agent capabilities.
 - **Multi Mode**: Plan with Architect, Code with Coder, and Debug with Debugger, and make your own custom modes.
 
 ## Get Started
 
-1. Install the Kilo Code extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code).
+1. Install the Semafour extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code).
 2. Create your account to access 500+ cutting-edge AI models including GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6, and Gemini 3.1 Pro Preview, with transparent pricing that matches provider rates exactly.
-3. Start coding with AI that adapts to your workflow. Watch our quick-start guide to see Kilo in action:
+3. Start coding with AI that adapts to your workflow. Watch our quick-start guide to see Semafour in action:
 
 <a href="https://youtu.be/pqGfYXgrhig"><img src="https://img.youtube.com/vi/pqGfYXgrhig/maxresdefault.jpg" alt="Watch the video" width="640" height="360"></a>
 
@@ -92,7 +92,7 @@ You’re free to use, modify, and distribute this code, including for commercial
 
 Contributions are welcome, and they are greatly appreciated! Get started by reading our [Contributing Guide](CONTRIBUTING.md). Or join our [Discord](https://kilo.ai/discord) to chat with the team and community.
 
-Thanks to all the contributors who help make Kilo better!
+Thanks to all the contributors who help make Semafour better!
 
 <table>
   <tr>

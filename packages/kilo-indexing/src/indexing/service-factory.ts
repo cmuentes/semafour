@@ -84,8 +84,8 @@ export class CodeIndexServiceFactory {
     const provider = config.embedderProvider
 
     if (provider === "kilo") {
-      if (!config.kiloOptions?.apiKey) throw new Error("Kilo API key is required for embedding.")
-      if (!config.modelId) throw new Error("Kilo embedding model is required.")
+      if (!config.kiloOptions?.apiKey) throw new Error("Semafour API key is required for embedding.")
+      if (!config.modelId) throw new Error("Semafour embedding model is required.")
       return new KiloEmbedder({
         apiKey: config.kiloOptions.apiKey,
         baseUrl: config.kiloOptions.baseUrl,

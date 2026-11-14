@@ -15,11 +15,11 @@ import kotlinx.coroutines.withContext
 import javax.swing.JComponent
 
 /**
- * Settings panel for Kilo user profile.
+ * Settings panel for Semafour user profile.
  *
- * Located at Settings -> Tools -> Kilo -> User Profile.
+ * Located at Settings -> Tools -> Semafour -> User Profile.
  *
- * Shows login / logout, current balance, Kilo Pass, personal/org account selector,
+ * Shows login / logout, current balance, Semafour Pass, personal/org account selector,
  * and account billing actions. This is a status/action panel — it
  * has no persistent settings, so [isModified] always returns false.
  */

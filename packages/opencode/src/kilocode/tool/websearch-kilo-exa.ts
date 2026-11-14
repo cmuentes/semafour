@@ -61,11 +61,11 @@ export const callKiloExa = Effect.fn("WebSearchKiloExa.call")(function* (
   )
   const status = response.status
   if (status === 401 || status === 403) {
-    return yield* Effect.die(new Error(`Kilo exa request unauthorized (${status}); sign in with \`kilo auth login\``))
+    return yield* Effect.die(new Error(`Semafour exa request unauthorized (${status}); sign in with \`kilo auth login\``))
   }
   if (status < 200 || status >= 300) {
     const body = yield* response.text
-    return yield* Effect.die(new Error(`Kilo exa request failed (${status}): ${body.slice(0, 200)}`))
+    return yield* Effect.die(new Error(`Semafour exa request failed (${status}): ${body.slice(0, 200)}`))
   }
   const data = yield* response.json
   const decode = Schema.decodeUnknownEffect(ExaResponse)

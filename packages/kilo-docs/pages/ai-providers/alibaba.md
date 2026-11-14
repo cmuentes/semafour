@@ -2,9 +2,9 @@
 sidebar_label: Alibaba Cloud
 ---
 
-# Using Alibaba Cloud With Kilo Code
+# Using Alibaba Cloud With Semafour
 
-Kilo Code supports Alibaba Cloud Model Studio (DashScope) through the native Alibaba AI SDK provider. Use it to run Qwen and other DashScope-hosted models directly from Kilo.
+Semafour supports Alibaba Cloud Model Studio (DashScope) through the native Alibaba AI SDK provider. Use it to run Qwen and other DashScope-hosted models directly from Semafour.
 
 **Website:** [https://www.alibabacloud.com/product/modelstudio](https://www.alibabacloud.com/product/modelstudio)
 
@@ -15,7 +15,7 @@ Kilo Code supports Alibaba Cloud Model Studio (DashScope) through the native Ali
 3. Create a key and copy it immediately.
 4. Store the key securely; do not commit it to your repository.
 
-## Configuration in Kilo Code
+## Configuration in Semafour
 
 {% tabs %}
 {% tab label="VSCode" %}
@@ -62,13 +62,13 @@ Some regions and model catalogs may expose Alibaba models under `alibaba-cn` ins
 
 ## Tips and Notes
 
-- **Native provider:** Kilo uses the native Alibaba AI SDK provider, not a generic compatibility shim, when you select the built-in Alibaba provider.
-- **Cache controls:** Kilo forwards provider cache controls for compatible Alibaba/DashScope models, which can reduce repeated context cost where the model supports caching.
+- **Native provider:** Semafour uses the native Alibaba AI SDK provider, not a generic compatibility shim, when you select the built-in Alibaba provider.
+- **Cache controls:** Semafour forwards provider cache controls for compatible Alibaba/DashScope models, which can reduce repeated context cost where the model supports caching.
 - **Regional catalogs:** Model availability varies by account, region, and gateway. Check the DashScope console for the exact model IDs available to your account.
 - **Pricing and limits:** Refer to Alibaba Cloud Model Studio pricing and rate-limit documentation for current usage details.
 
 ## Troubleshooting
 
-- **Authentication errors:** Verify `DASHSCOPE_API_KEY` is set in the same shell that launches Kilo, or stored in your Kilo provider config.
-- **Model not found:** Confirm the model ID is available in your DashScope account and try the model picker to see Kilo's current catalog.
+- **Authentication errors:** Verify `DASHSCOPE_API_KEY` is set in the same shell that launches Semafour, or stored in your Semafour provider config.
+- **Model not found:** Confirm the model ID is available in your DashScope account and try the model picker to see Semafour's current catalog.
 - **Region mismatch:** If your account uses the China-region catalog, try the `alibaba-cn/<model-id>` provider prefix.

@@ -199,7 +199,7 @@ const CONTINUATION_CODES = [
 
 function continuationCode(body: unknown) {
   // A real tRPC failure carries a generic transport code beside the actionable
-  // Kilo code, so match any nested code or message, not just `errorCode`'s pick.
+  // Semafour code, so match any nested code or message, not just `errorCode`'s pick.
   const candidates = errorCandidates(body)
   return CONTINUATION_CODES.find((code) => candidates.some((raw) => raw === code || raw.includes(code)))
 }
@@ -229,7 +229,7 @@ export interface Options {
 }
 
 /**
- * Built-in adapter for Kilo Cloud. Every provider-private detail the future
+ * Built-in adapter for Semafour Cloud. Every provider-private detail the future
  * IDE-facing boundary must not see (Cloud control IDs, target origin, bearer,
  * directory selector, SSE fence) stays inside this module.
  */
@@ -278,17 +278,17 @@ export function provider(options: Options): Provider {
   }
 
   const unreachable = () => {
-    transport.current = { state: "unreachable", checkedAt: clock(), message: "Kilo Cloud is unreachable" }
+    transport.current = { state: "unreachable", checkedAt: clock(), message: "Semafour Cloud is unreachable" }
   }
 
   const origin = Effect.try({
     try: () => resolveCloudAgentOrigin(env),
-    catch: () => new HostedFailure({ code: "rejected", message: "Kilo Cloud base URL is invalid", retryable: false }),
+    catch: () => new HostedFailure({ code: "rejected", message: "Semafour Cloud base URL is invalid", retryable: false }),
   })
 
   const webOrigin = Effect.try({
     try: () => resolveWebAppOrigin(env),
-    catch: () => new HostedFailure({ code: "rejected", message: "Kilo web app URL is invalid", retryable: false }),
+    catch: () => new HostedFailure({ code: "rejected", message: "Semafour web app URL is invalid", retryable: false }),
   })
 
   const controlTokens: ControlTokenClient = createControlTokenClient({
@@ -308,7 +308,7 @@ export function provider(options: Options): Provider {
     unreachable()
     return new HostedFailure({
       code: "unavailable",
-      message: error instanceof ControlTokenError ? error.message : "Kilo control token could not be issued",
+      message: error instanceof ControlTokenError ? error.message : "Semafour control token could not be issued",
       retryable: true,
     })
   }
@@ -344,8 +344,8 @@ export function provider(options: Options): Provider {
           return new HostedFailure({
             code: "unavailable",
             message: retryable
-              ? "Kilo Cloud is unreachable"
-              : "Kilo Cloud start outcome is unknown; retry with the same operation key and message ID",
+              ? "Semafour Cloud is unreachable"
+              : "Semafour Cloud start outcome is unknown; retry with the same operation key and message ID",
             retryable,
           })
         },
@@ -363,7 +363,7 @@ export function provider(options: Options): Provider {
       catch: () =>
         new HostedFailure({
           code: "invalid_response",
-          message: "Kilo Cloud returned an invalid response",
+          message: "Semafour Cloud returned an invalid response",
           retryable: false,
         }),
     })
@@ -373,35 +373,35 @@ export function provider(options: Options): Provider {
     if (response.status === 401 || response.status === 403) {
       return new HostedFailure({
         code: "unauthorized",
-        message: "Kilo Cloud rejected these credentials",
+        message: "Semafour Cloud rejected these credentials",
         retryable: false,
       })
     }
     if (response.status === 402) {
       return new HostedFailure({
         code: "payment_required",
-        message: "Kilo Cloud requires additional balance",
+        message: "Semafour Cloud requires additional balance",
         retryable: false,
       })
     }
     if (response.status === 404) {
-      return new HostedFailure({ code: "not_found", message: "Kilo Cloud session was not found", retryable: false })
+      return new HostedFailure({ code: "not_found", message: "Semafour Cloud session was not found", retryable: false })
     }
     if (response.status === 409) {
       return new HostedFailure({
         code: "rejected",
-        message: "Kilo Cloud rejected this operation",
+        message: "Semafour Cloud rejected this operation",
         retryable: code === "KILO_INTERACTION_UNAVAILABLE",
       })
     }
     if (response.status === 503 || response.status >= 500) {
       return new HostedFailure({
         code: "unavailable",
-        message: "Kilo Cloud is temporarily unavailable",
+        message: "Semafour Cloud is temporarily unavailable",
         retryable: true,
       })
     }
-    return new HostedFailure({ code: "rejected", message: "Kilo Cloud rejected the request", retryable: false })
+    return new HostedFailure({ code: "rejected", message: "Semafour Cloud rejected the request", retryable: false })
   }
 
   const consume = (response: Response) =>
@@ -420,7 +420,7 @@ export function provider(options: Options): Provider {
     if (response.status === 402) {
       return new HostedFailure({
         code: "insufficient_balance",
-        message: "Kilo Cloud requires additional balance to continue this worktree",
+        message: "Semafour Cloud requires additional balance to continue this worktree",
         retryable: false,
       })
     }
@@ -430,7 +430,7 @@ export function provider(options: Options): Provider {
     if (response.status === 401 || response.status === 403) {
       return new HostedFailure({
         code: "unauthorized",
-        message: "Kilo Cloud rejected these credentials",
+        message: "Semafour Cloud rejected these credentials",
         retryable: false,
       })
     }
@@ -438,26 +438,26 @@ export function provider(options: Options): Provider {
       return new HostedFailure({ code, message: "This operation key was used for a different request", retryable: false })
     }
     if (code === "creation_in_progress") {
-      return new HostedFailure({ code, message: "Kilo Cloud is still completing this workspace", retryable: true })
+      return new HostedFailure({ code, message: "Semafour Cloud is still completing this workspace", retryable: true })
     }
     if (code === "continuation_incomplete") {
-      return new HostedFailure({ code, message: "Kilo Cloud created part of this workspace", retryable: true })
+      return new HostedFailure({ code, message: "Semafour Cloud created part of this workspace", retryable: true })
     }
     if (response.status === 409) {
       return new HostedFailure({
         code: "continuation_incomplete",
-        message: "Kilo Cloud created part of this workspace",
+        message: "Semafour Cloud created part of this workspace",
         retryable: true,
       })
     }
     if (response.status === 503 || response.status >= 500) {
       return new HostedFailure({
         code: "unavailable",
-        message: "Kilo Cloud is temporarily unavailable",
+        message: "Semafour Cloud is temporarily unavailable",
         retryable: true,
       })
     }
-    return new HostedFailure({ code: "rejected", message: "Kilo Cloud rejected the request", retryable: false })
+    return new HostedFailure({ code: "rejected", message: "Semafour Cloud rejected the request", retryable: false })
   }
 
   const consumeContinuation = (response: Response) =>
@@ -485,7 +485,7 @@ export function provider(options: Options): Provider {
   const invalid = (message: string) => new HostedFailure({ code: "invalid_response", message, retryable: false })
 
   const identity = (sessionID: unknown) =>
-    decode(HostedSessionID, { providerID: PROVIDER, sessionID }, "Kilo Cloud returned an unsupported session identity")
+    decode(HostedSessionID, { providerID: PROVIDER, sessionID }, "Semafour Cloud returned an unsupported session identity")
 
   const hosted = (session: SessionV1.SessionInfo) =>
     identity(session.id).pipe(Effect.map((id): HostedSession => ({ id, session })))
@@ -505,7 +505,7 @@ export function provider(options: Options): Provider {
       const sessions = yield* decode(
         Schema.Array(SessionV1.SessionInfo),
         body,
-        "Kilo Cloud returned unsupported sessions",
+        "Semafour Cloud returned unsupported sessions",
       )
       return { items: yield* Effect.forEach(sessions, hosted) }
     })
@@ -520,9 +520,9 @@ export function provider(options: Options): Provider {
         headers: headers(auth),
       })
       const body = yield* consume(response)
-      const session = yield* decode(SessionV1.SessionInfo, body, "Kilo Cloud returned an unsupported session")
+      const session = yield* decode(SessionV1.SessionInfo, body, "Semafour Cloud returned an unsupported session")
       if (session.id !== input.id.sessionID) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a different session identity"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a different session identity"))
       }
       return yield* hosted(session)
     })
@@ -543,11 +543,11 @@ export function provider(options: Options): Provider {
       const entries = yield* decode(
         Schema.Array(SessionV1.WithParts),
         body,
-        "Kilo Cloud returned an unsupported transcript",
+        "Semafour Cloud returned an unsupported transcript",
       )
       for (const entry of entries) {
         if (entry.info.sessionID !== input.id.sessionID) {
-          return yield* Effect.fail(invalid("Kilo Cloud returned a transcript for a different session"))
+          return yield* Effect.fail(invalid("Semafour Cloud returned a transcript for a different session"))
         }
       }
       const cursor = response.headers.get("X-Next-Cursor")
@@ -597,17 +597,17 @@ export function provider(options: Options): Provider {
         return yield* Effect.fail(
           new HostedFailure({
             code: "invalid_response",
-            message: "Kilo Cloud returned an unsupported start result",
+            message: "Semafour Cloud returned an unsupported start result",
             retryable: false,
           }),
         )
       }
       const result = parsedResult.data
       if (result.messageId !== messageID) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a different message identity"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a different message identity"))
       }
       if (result.delivery !== "sent" && result.delivery !== "queued") {
-        return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported delivery state"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported delivery state"))
       }
       const session = yield* identity(result.kiloSessionId)
       return {
@@ -628,7 +628,7 @@ export function provider(options: Options): Provider {
   const data = (value: unknown) =>
     Effect.gen(function* () {
       const envelope = Envelope.safeParse(value)
-      if (!envelope.success) return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported response"))
+      if (!envelope.success) return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported response"))
       return envelope.data.result.data
     })
 
@@ -683,7 +683,7 @@ export function provider(options: Options): Provider {
         if (cursor !== undefined) payload.cursor = cursor
         const body = yield* query(auth, "listHostedWorkspaces", payload)
         const parsed = WorkspacePage.safeParse(body)
-        if (!parsed.success) return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported workspace page"))
+        if (!parsed.success) return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported workspace page"))
         for (const raw of parsed.data.items) {
           const found = yield* nested(auth, raw, kiloSessionID)
           if (found !== undefined) return yield* workspaceIdentity(found)
@@ -701,7 +701,7 @@ export function provider(options: Options): Provider {
   ): Effect.Effect<string | undefined, HostedFailure> =>
     Effect.gen(function* () {
       if (!consistent(raw)) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a workspace with a session from another workspace"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a workspace with a session from another workspace"))
       }
       if (holds(raw, kiloSessionID)) return raw.workspaceId
 
@@ -715,12 +715,12 @@ export function provider(options: Options): Provider {
         // This workspace disappeared during the scan; it says nothing about the session.
         if (body === null) return undefined
         const parsed = WorkspaceSummary.safeParse(body)
-        if (!parsed.success) return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported workspace"))
+        if (!parsed.success) return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported workspace"))
         if (parsed.data.workspaceId !== raw.workspaceId) {
-          return yield* Effect.fail(invalid("Kilo Cloud returned a different workspace identity"))
+          return yield* Effect.fail(invalid("Semafour Cloud returned a different workspace identity"))
         }
         if (!consistent(parsed.data)) {
-          return yield* Effect.fail(invalid("Kilo Cloud returned a workspace with a session from another workspace"))
+          return yield* Effect.fail(invalid("Semafour Cloud returned a workspace with a session from another workspace"))
         }
         if (holds(parsed.data, kiloSessionID)) return parsed.data.workspaceId
         cursor = parsed.data.nextSessionCursor
@@ -732,13 +732,13 @@ export function provider(options: Options): Provider {
     decode(
       HostedWorkspaceID,
       { providerID: PROVIDER, workspaceID },
-      "Kilo Cloud returned an unsupported workspace identity",
+      "Semafour Cloud returned an unsupported workspace identity",
     )
 
   const workspace = (raw: z.infer<typeof WorkspaceSummary>): Effect.Effect<HostedWorkspace, HostedFailure> =>
     Effect.gen(function* () {
       if (!consistent(raw)) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a workspace with a session from another workspace"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a workspace with a session from another workspace"))
       }
       const id = yield* workspaceIdentity(raw.workspaceId)
       const sessions = yield* Effect.forEach(raw.sessions, (session) =>
@@ -781,7 +781,7 @@ export function provider(options: Options): Provider {
       if (input.repositoryUrl !== undefined) payload.repositoryUrl = input.repositoryUrl
       const body = yield* query(auth, "listHostedWorkspaces", payload)
       const parsed = WorkspacePage.safeParse(body)
-      if (!parsed.success) return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported workspace page"))
+      if (!parsed.success) return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported workspace page"))
       const items = yield* Effect.forEach(parsed.data.items, workspace)
       return { items, ...(parsed.data.nextCursor == null ? {} : { cursor: parsed.data.nextCursor }) }
     })
@@ -796,13 +796,13 @@ export function provider(options: Options): Provider {
       const body = yield* query(auth, "getHostedWorkspace", payload)
       if (body === null) {
         return yield* Effect.fail(
-          new HostedFailure({ code: "not_found", message: "Kilo Cloud workspace was not found", retryable: false }),
+          new HostedFailure({ code: "not_found", message: "Semafour Cloud workspace was not found", retryable: false }),
         )
       }
       const parsed = WorkspaceSummary.safeParse(body)
-      if (!parsed.success) return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported workspace"))
+      if (!parsed.success) return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported workspace"))
       if (parsed.data.workspaceId !== input.id.workspaceID) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a different workspace identity"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a different workspace identity"))
       }
       return yield* workspace(parsed.data)
     })
@@ -816,9 +816,9 @@ export function provider(options: Options): Provider {
         ...(input.organizationID === undefined ? {} : { kilocodeOrganizationId: input.organizationID }),
       })
       const parsed = CloudWorkspaceStatus.safeParse(body)
-      if (!parsed.success) return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported workspace status"))
+      if (!parsed.success) return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported workspace status"))
       if (parsed.data.workspaceId !== input.id.workspaceID) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a status for a different workspace"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a status for a different workspace"))
       }
       const id = yield* workspaceIdentity(parsed.data.workspaceId)
       return {
@@ -882,7 +882,7 @@ export function provider(options: Options): Provider {
       const parsed = WorkspaceDelete.safeParse(body)
       if (!parsed.success) {
         return yield* Effect.fail(
-          markDeletionDispatched(invalid("Kilo Cloud returned an unsupported workspace deletion result")),
+          markDeletionDispatched(invalid("Semafour Cloud returned an unsupported workspace deletion result")),
         )
       }
       return { workspace: input.id, success: true }
@@ -904,9 +904,9 @@ export function provider(options: Options): Provider {
         ...(auth.organizationID ? { options: { kilocodeOrganizationId: auth.organizationID } } : {}),
       })
       const parsed = WorkspaceCreate.safeParse(body)
-      if (!parsed.success) return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported workspace result"))
+      if (!parsed.success) return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported workspace result"))
       if (input.messageID !== undefined && parsed.data.messageId !== input.messageID) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a different message identity"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a different message identity"))
       }
       return {
         workspace: yield* workspaceIdentity(parsed.data.workspaceId),
@@ -928,20 +928,20 @@ export function provider(options: Options): Provider {
       const body = yield* continuationMutation(auth, input)
       const parsed = ContinuationOutput.safeParse(body)
       if (!parsed.success) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported continuation result"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported continuation result"))
       }
       if (parsed.data.sessions.length !== input.sessions.length) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a different number of sessions"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a different number of sessions"))
       }
       for (const [index, session] of parsed.data.sessions.entries()) {
         const expected = input.sessions.at(index)
         if (!expected || session.sourceKiloSessionId !== expected.sourceKiloSessionId) {
-          return yield* Effect.fail(invalid("Kilo Cloud returned sessions in a different order"))
+          return yield* Effect.fail(invalid("Semafour Cloud returned sessions in a different order"))
         }
       }
       const destinations = parsed.data.sessions.map((session) => session.kiloSessionId)
       if (new Set(destinations).size !== destinations.length) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned duplicate destination sessions"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned duplicate destination sessions"))
       }
       const activeIndex = input.sessions.findIndex(
         (session) => session.sourceKiloSessionId === input.activeSourceKiloSessionId,
@@ -949,7 +949,7 @@ export function provider(options: Options): Provider {
       const expectedActive = activeIndex < 0 ? undefined : destinations.at(activeIndex)
       if (expectedActive === undefined || parsed.data.activeKiloSessionId !== expectedActive) {
         return yield* Effect.fail(
-          invalid("Kilo Cloud returned an active session that does not match the active source"),
+          invalid("Semafour Cloud returned an active session that does not match the active source"),
         )
       }
       const sessions = yield* Effect.forEach(
@@ -991,12 +991,12 @@ export function provider(options: Options): Provider {
         ...(auth.organizationID ? { kilocodeOrganizationId: auth.organizationID } : {}),
       })
       const parsed = WorkspaceCreate.safeParse(body)
-      if (!parsed.success) return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported workspace result"))
+      if (!parsed.success) return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported workspace result"))
       if (parsed.data.workspaceId !== input.id.workspaceID) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a different workspace identity"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a different workspace identity"))
       }
       if (parsed.data.messageId !== input.messageID) {
-        return yield* Effect.fail(invalid("Kilo Cloud returned a different message identity"))
+        return yield* Effect.fail(invalid("Semafour Cloud returned a different message identity"))
       }
       return {
         workspace: { providerID: PROVIDER, workspaceID: parsed.data.workspaceId },
@@ -1018,7 +1018,7 @@ export function provider(options: Options): Provider {
         input.organizationID === undefined ? {} : { kilocodeOrganizationId: input.organizationID },
       )
       const parsed = CloudProfilePage.safeParse(body)
-      if (!parsed.success) return yield* Effect.fail(invalid("Kilo Cloud returned unsupported profile summaries"))
+      if (!parsed.success) return yield* Effect.fail(invalid("Semafour Cloud returned unsupported profile summaries"))
       const summary = (profile: z.infer<typeof CloudProfile>) => ({
         id: profile.id,
         name: profile.name,
@@ -1045,7 +1045,7 @@ export function provider(options: Options): Provider {
       const auth = yield* resolve()
       const body = yield* mutation(auth, procedure, { profileId: input.id })
       const parsed = z.object({ success: z.literal(true) }).safeParse(body)
-      if (!parsed.success) return yield* Effect.fail(invalid("Kilo Cloud returned an unsupported profile default result"))
+      if (!parsed.success) return yield* Effect.fail(invalid("Semafour Cloud returned an unsupported profile default result"))
       return { success: true }
     })
 

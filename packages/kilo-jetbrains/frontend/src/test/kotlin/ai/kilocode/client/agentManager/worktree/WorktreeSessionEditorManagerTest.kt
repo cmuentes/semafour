@@ -475,7 +475,7 @@ class WorktreeSessionEditorManagerTest : BasePlatformTestCase() {
     }
 
     fun `test shows empty session panel when create fails then creates on retry`() {
-        rpc.createThrows = IllegalStateException("Kilo backend is not ready")
+        rpc.createThrows = IllegalStateException("Semafour backend is not ready")
         rpc.session = session("ses_new", updated = 4.0).copy(title = "New session")
         val manager = manager()
 
@@ -496,7 +496,7 @@ class WorktreeSessionEditorManagerTest : BasePlatformTestCase() {
     }
 
     fun `test session appears after migration completes`() {
-        rpc.createThrows = IllegalStateException("Kilo backend is not ready")
+        rpc.createThrows = IllegalStateException("Semafour backend is not ready")
         rpc.session = session("ses_new", updated = 4.0).copy(title = "New session")
         val manager = manager()
 

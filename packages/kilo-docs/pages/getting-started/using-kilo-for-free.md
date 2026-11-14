@@ -1,13 +1,13 @@
 ---
-title: "Using Kilo for Free"
-description: "How to use Kilo Code for free — Auto Free, finding free models, autocomplete costs, and free background tasks"
+title: "Using Semafour for Free"
+description: "How to use Semafour for free — Auto Free, finding free models, autocomplete costs, and free background tasks"
 ---
 
-# Using Kilo for Free
+# Using Semafour for Free
 
-Kilo Code supports free models for coding and background tasks. Autocomplete through your own Mistral account depends on that account's included usage and limits.
+Semafour supports free models for coding and background tasks. Autocomplete through your own Mistral account depends on that account's included usage and limits.
 
-## Where Kilo Uses Models
+## Where Semafour Uses Models
 
 1. **Agentic interactions** — Conversations with coding agents in IDE extensions (VS Code, JetBrains), CLI, and cloud services like Code Reviewer
 2. **Autocomplete** — In-editor code completions as you type (IDE extensions only)
@@ -17,7 +17,7 @@ Each of these consumes credits by default. To avoid charges, choose free models 
 
 ## Free Agentic Usage
 
-Kilo provides free models for coding tasks through the Kilo Gateway and partner providers.
+Semafour provides free models for coding tasks through the Semafour Gateway and partner providers.
 
 ### Auto Free
 
@@ -51,27 +51,27 @@ Some free models may be rate limited by the upstream provider. If you hit a rate
 
 ### Cloud Tasks
 
-Kilo's cloud services, including Code Reviewer, also support free models. Select any model labeled "(free)" in the model dropdown when configuring a cloud task.
+Semafour's cloud services, including Code Reviewer, also support free models. Select any model labeled "(free)" in the model dropdown when configuring a cloud task.
 
 {% callout type="tip" %}
-Available free models change over time as Kilo partners with different inference providers. Subscribe to our blog or join our [Discord](https://kilo.ai/discord) for updates.
+Available free models change over time as Semafour partners with different inference providers. Subscribe to our blog or join our [Discord](https://kilo.ai/discord) for updates.
 {% /callout %}
 
 ## Autocomplete costs
 
-Kilo's autocomplete feature provides AI-powered code completions as you type in IDE extensions.
+Semafour's autocomplete feature provides AI-powered code completions as you type in IDE extensions.
 
-By default, autocomplete routes through the Kilo provider and uses credits. If you run out of credits without a free alternative configured, autocomplete stops working — but your main coding workflow is unaffected.
+By default, autocomplete routes through the Semafour provider and uses credits. If you run out of credits without a free alternative configured, autocomplete stops working — but your main coding workflow is unaffected.
 
 ### Use your own Mistral account
 
-Add a standard Mistral Studio API key under **Mistral AI** via **BYOK (Bring Your Own Key)** on Kilo Gateway. Codestral autocomplete then uses your Mistral account instead of Kilo credits. Mistral's plan, usage limits, and pay-as-you-go settings determine whether requests incur charges. BYOK does not guarantee free autocomplete.
+Add a standard Mistral Studio API key under **Mistral AI** via **BYOK (Bring Your Own Key)** on Semafour Gateway. Codestral autocomplete then uses your Mistral account instead of Semafour credits. Mistral's plan, usage limits, and pay-as-you-go settings determine whether requests incur charges. BYOK does not guarantee free autocomplete.
 
 See the [Mistral Setup Guide](/docs/code-with-ai/features/autocomplete/mistral-setup) for step-by-step instructions.
 
 ## Free Background Tasks
 
-Kilo uses a small model in the background for tasks like session titling. By default this is Auto Small, which consumes credits. If the small model is unavailable, Kilo falls back to your primary model — which may also consume credits if it's a paid model.
+Semafour uses a small model in the background for tasks like session titling. By default this is Auto Small, which consumes credits. If the small model is unavailable, Semafour falls back to your primary model — which may also consume credits if it's a paid model.
 
 To avoid credit usage for background tasks, set the small model to a free model:
 

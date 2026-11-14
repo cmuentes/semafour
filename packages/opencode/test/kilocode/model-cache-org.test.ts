@@ -80,14 +80,14 @@ for (const org of [false, true]) {
     { name: "API", auth: "api", key: undefined, env: undefined, token: "stored-token", org: "org-config" },
     { name: "configured", auth: "none", key: undefined, env: undefined, token: "configured-token", org: "org-config" },
     {
-      name: "Kilo token",
+      name: "Semafour token",
       auth: "none",
       key: undefined,
       env: undefined,
       token: "configured-kilo-token",
       org: "org-config",
     },
-    { name: "empty Kilo token", auth: "none", key: undefined, env: undefined, token: "", org: "org-config" },
+    { name: "empty Semafour token", auth: "none", key: undefined, env: undefined, token: "", org: "org-config" },
     { name: "empty environment", auth: "oauth", key: "", env: "", token: "stored-token", org: "org-stored" },
     { name: "empty stored token", auth: "empty", key: undefined, env: undefined, token: "", org: "org-stored" },
   ]) {
@@ -109,7 +109,7 @@ for (const org of [false, true]) {
                 })
         const options = {
           apiKey: "configured-token",
-          ...(["Kilo token", "empty Kilo token"].includes(item.name) ? { kilocodeToken: item.token } : {}),
+          ...(["Semafour token", "empty Semafour token"].includes(item.name) ? { kilocodeToken: item.token } : {}),
           ...(org ? { kilocodeOrganizationId: "org-config" } : {}),
         }
         const requests: Array<{ path: string; authorization: string | null }> = []

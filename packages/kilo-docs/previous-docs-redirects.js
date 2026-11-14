@@ -689,7 +689,7 @@ module.exports = [
   },
 
   // ============================================
-  // COLLABORATE - Kilo for Teams
+  // COLLABORATE - Semafour for Teams
   // ============================================
   {
     source: "/docs/plans/about",
@@ -835,7 +835,7 @@ module.exports = [
   },
 
   // ============================================
-  // AUTOMATE - Extending Kilo
+  // AUTOMATE - Extending Semafour
   // ============================================
   {
     source: "/docs/advanced-usage/local-models",

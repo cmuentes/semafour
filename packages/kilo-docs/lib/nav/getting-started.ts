@@ -15,7 +15,7 @@ export const GettingStartedNav: NavSection[] = [
     links: [
       {
         href: "/getting-started/using-kilo-for-free",
-        children: "Using Kilo for Free",
+        children: "Using Semafour for Free",
       },
       { href: "/getting-started/byok", children: "Bring Your Own Key (BYOK)" },
       { href: "/ai-providers", children: "AI Providers" },

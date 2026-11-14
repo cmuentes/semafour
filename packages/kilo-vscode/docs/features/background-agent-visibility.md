@@ -11,7 +11,7 @@ The CLI already solves this. It keeps a per-session subagent list with status (`
 Give the VS Code extension the same observability, without inventing a new viewer. Clicking an agent must keep landing in the surfaces users already have:
 
 - Agent Manager: the shared right-hand inspector (`SubagentPanel`), reached with the `agentManager.openSubagent` event.
-- Sidebar and Kilo tab: a dedicated editor tab, reached with the `openSubAgentViewer` message.
+- Sidebar and Semafour tab: a dedicated editor tab, reached with the `openSubAgentViewer` message.
 
 ## Placement
 
@@ -42,7 +42,7 @@ Why this slot:
 - The to-do strip already proves the pattern: conditional, collapsible, sticky, one line when collapsed, full width when open.
 - It costs zero vertical space when no agent runs.
 - It cannot scroll away, which is the actual defect.
-- `TaskHeader` is shared through `ChatView`, so the sidebar, the Kilo tab, and Agent Manager all get it.
+- `TaskHeader` is shared through `ChatView`, so the sidebar, the Semafour tab, and Agent Manager all get it.
 
 Rejected: the action row above the composer (`ChatView.renderActions`). It is already full in a narrow sidebar, its buttons appear and disappear with session status, and it is an actions row rather than a status row.
 

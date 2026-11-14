@@ -1,11 +1,11 @@
 ---
 title: "VS Code Extension Architecture"
-description: "Architecture of the Kilo VS Code extension and Agent Manager"
+description: "Architecture of the Semafour VS Code extension and Agent Manager"
 ---
 
 # VS Code Extension Architecture
 
-The VS Code extension (`packages/kilo-vscode/`) is a client of [Kilo CLI runtime](/docs/contributing/architecture/cli-runtime). It bundles platform CLI binary, starts one shared editor-owned `kilo serve` server on demand, and drives that server through generated SDK HTTP calls plus global SSE.
+The VS Code extension (`packages/kilo-vscode/`) is a client of [Semafour CLI runtime](/docs/contributing/architecture/cli-runtime). It bundles platform CLI binary, starts one shared editor-owned `kilo serve` server on demand, and drives that server through generated SDK HTTP calls plus global SSE.
 
 {% callout type="info" title="Scope" %}
 This page covers extension-host ownership, webview routing, Agent Manager, local terminal paths, recovery, bundled resources, and build outputs. It is not full extension feature inventory.
@@ -28,7 +28,7 @@ flowchart LR
   end
 
   server["bin/kilo serve --port 0"]
-  runtime["Kilo CLI runtime"]
+  runtime["Semafour CLI runtime"]
 
   consumers --> service
   service --> manager --> server
@@ -133,7 +133,7 @@ Extension-specific behavior belongs in VS Code settings. Agent runtime behavior 
 | Empty-window cwd | Uses extension global storage directory when no VS Code workspace folder exists |
 | Empty-window indexing | Sets `KILO_DISABLE_CODEBASE_INDEXING=vscode-no-workspace` so CLI reports indexing disabled |
 
-Speech-to-text captures audio locally, then sends completed recording through shared editor-owned `kilo serve` server to authenticated Kilo Gateway transcription path. It is batch transcription, not direct provider streaming.
+Speech-to-text captures audio locally, then sends completed recording through shared editor-owned `kilo serve` server to authenticated Semafour Gateway transcription path. It is batch transcription, not direct provider streaming.
 
 ## Recovery
 

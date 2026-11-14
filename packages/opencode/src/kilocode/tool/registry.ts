@@ -420,7 +420,7 @@ export namespace KiloToolRegistry {
       return enabled
     })
   }
-  /** Hide Kilo memory tools from the model when project memory is disabled. */
+  /** Hide Semafour memory tools from the model when project memory is disabled. */
   export const applyVisibility = Effect.fn("KiloToolRegistry.applyVisibility")(function* (tools: Tool.Def[]) {
     const ctx = yield* InstanceState.context
     const memoryEnabled = yield* memoryToolsEnabled({ ctx })

@@ -243,7 +243,7 @@ export const ConfigConsoleApi = HttpApi.make("config-console")
           OpenApi.annotations({
             identifier: "config.rules",
             summary: "Get project rules",
-            description: "List project instruction files used by Kilo and return their current contents.",
+            description: "List project instruction files used by Semafour and return their current contents.",
           }),
         ),
         HttpApiEndpoint.put("rulesUpdate", ConfigConsolePaths.rules, {
@@ -275,7 +275,7 @@ export const ConfigConsoleApi = HttpApi.make("config-console")
           OpenApi.annotations({
             identifier: "config.modelStateUpdate",
             summary: "Update model state",
-            description: "Patch TUI-compatible model selections shared with Kilo Console.",
+            description: "Patch TUI-compatible model selections shared with Semafour Console.",
           }),
         ),
         HttpApiEndpoint.get("tuiConfigGet", ConfigConsolePaths.tuiConfig, {
@@ -312,7 +312,7 @@ export const ConfigConsoleApi = HttpApi.make("config-console")
           }),
         ),
       )
-      .annotateMerge(OpenApi.annotations({ title: "config-console", description: "Kilo Console config routes." }))
+      .annotateMerge(OpenApi.annotations({ title: "config-console", description: "Semafour Console config routes." }))
       .middleware(InstanceContextMiddleware)
       .middleware(WorkspaceRoutingMiddleware)
       .middleware(Authorization),
@@ -321,6 +321,6 @@ export const ConfigConsoleApi = HttpApi.make("config-console")
     OpenApi.annotations({
       title: "kilo HttpApi",
       version: "0.0.1",
-      description: "Kilo HttpApi surface.",
+      description: "Semafour HttpApi surface.",
     }),
   )

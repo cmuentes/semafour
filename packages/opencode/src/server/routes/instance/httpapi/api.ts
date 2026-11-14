@@ -7,7 +7,7 @@ import { Integration } from "@opencode-ai/core/integration"
 import { SkillV2 } from "@opencode-ai/core/skill"
 import { InstanceDisposed } from "@/server/event"
 import { Question } from "@/question"
-import { BusEvent } from "@/bus/bus-event" // kilocode_change - include legacy Kilo events until they migrate to EventV2
+import { BusEvent } from "@/bus/bus-event" // kilocode_change - include legacy Semafour events until they migrate to EventV2
 import { ConfigApi } from "./groups/config"
 import { ControlApi } from "./groups/control"
 import { ControlPlaneApi } from "./groups/control-plane"
@@ -26,7 +26,7 @@ import { SessionApi } from "./groups/session"
 import { SyncApi } from "./groups/sync"
 import { TuiApi } from "./groups/tui"
 import { WorkspaceApi } from "./groups/workspace"
-// kilocode_change start - Kilo HttpApi groups
+// kilocode_change start - Semafour HttpApi groups
 import { AgentBuilderApi } from "@/kilocode/server/httpapi/groups/agent-builder"
 import { AgentUsageApi } from "@/kilocode/server/httpapi/groups/agent-usage"
 import { BranchNameApi } from "@/kilocode/server/httpapi/groups/branch-name"
@@ -66,7 +66,7 @@ const EventSchema = Schema.Union([
       }).annotate({ identifier: `Event.${definition.type}` }),
     )
     .toArray(),
-  ...BusEvent.effectPayloads(), // kilocode_change - include legacy Kilo events until they migrate to EventV2
+  ...BusEvent.effectPayloads(), // kilocode_change - include legacy Semafour events until they migrate to EventV2
   InstanceDisposed,
 ]).annotate({ identifier: "Event" })
 
@@ -99,7 +99,7 @@ export const InstanceHttpApi = HttpApi.make("opencode-instance")
   .addHttpApi(SyncApi)
   .addHttpApi(TuiApi)
   .addHttpApi(WorkspaceApi)
-  // kilocode_change start - Kilo HttpApi groups
+  // kilocode_change start - Semafour HttpApi groups
   .addHttpApi(AgentBuilderApi)
   .addHttpApi(AgentUsageApi)
   .addHttpApi(BackgroundProcessApi)

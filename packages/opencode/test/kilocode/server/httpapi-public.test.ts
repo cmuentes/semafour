@@ -39,7 +39,7 @@ type Body = {
   content?: Record<string, { schema?: Schema }>
 }
 
-describe("Kilo PublicApi OpenAPI contract", () => {
+describe("Semafour PublicApi OpenAPI contract", () => {
   test("exposes board paging and reset with a minimal snapshot", () => {
     const spec = OpenApi.fromApi(PublicApi)
     const path = KilocodePaths.sessionBoard.replace(":sessionID", "{sessionID}")
@@ -168,13 +168,13 @@ describe("Kilo PublicApi OpenAPI contract", () => {
     expect(spec).toContain("sessionHost.attach")
   })
 
-  test("uses Kilo branding", () => {
+  test("uses Semafour branding", () => {
     const spec = OpenApi.fromApi(PublicApi)
     expect(spec.info.title).toBe("kilo")
     expect(spec.info.description).toBe("kilo api")
   })
 
-  test("includes legacy Kilo events in the generated SDK contract", () => {
+  test("includes legacy Semafour events in the generated SDK contract", () => {
     const spec = JSON.stringify(OpenApi.fromApi(PublicApi))
     for (const type of ["suggestion.shown", "session.network.asked", "background_process.updated", "indexing.status"]) {
       expect(spec).toContain(type)
@@ -243,7 +243,7 @@ describe("Kilo PublicApi OpenAPI contract", () => {
     }
   })
 
-  test("keeps directory routing queries on Kilo Console routes", () => {
+  test("keeps directory routing queries on Semafour Console routes", () => {
     const spec = OpenApi.fromApi(PublicApi)
     const routes = [
       { method: "get", path: ExperimentalPaths.worktreeDiff },
@@ -327,7 +327,7 @@ describe("Kilo PublicApi OpenAPI contract", () => {
     expect(branch).toEqual({ anyOf: [{ type: "string" }, { type: "null" }] })
   })
 
-  test("keeps Kilo gateway responses nullable", () => {
+  test("keeps Semafour gateway responses nullable", () => {
     const spec = OpenApi.fromApi(PublicApi)
     const response = (path: string) => {
       const body = spec.paths[path]?.get?.responses?.["200"] as Body | undefined

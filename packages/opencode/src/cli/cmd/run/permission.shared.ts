@@ -146,11 +146,11 @@ export function temporaryPermission(request: PermissionRequest) {
 
 export function permissionAlwaysLines(request: PermissionRequest): string[] {
   if (request.always.length === 1 && request.always[0] === "*") {
-    return [`This will allow ${request.permission} until Kilo is restarted.`] // kilocode_change
+    return [`This will allow ${request.permission} until Semafour is restarted.`] // kilocode_change
   }
 
   return [
-    "This will allow the following patterns until Kilo is restarted.", // kilocode_change
+    "This will allow the following patterns until Semafour is restarted.", // kilocode_change
     ...request.always.map((item) => `- ${item}`),
   ]
 }

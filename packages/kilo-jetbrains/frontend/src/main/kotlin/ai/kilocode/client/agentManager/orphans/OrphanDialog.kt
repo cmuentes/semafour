@@ -124,7 +124,7 @@ internal class OrphanDialog(
 
     /**
      * Explains where these folders come from before offering to delete them: the list is the result of
-     * a heuristic over a directory Kilo owns, and "delete 47 folders" is not a decision a user can make
+     * a heuristic over a directory Semafour owns, and "delete 47 folders" is not a decision a user can make
      * from paths and sizes alone.
      */
     override fun createNorthPanel(): JComponent {

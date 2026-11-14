@@ -429,7 +429,7 @@ export namespace KilocodeConfig {
   // ── Organization modes ───────────────────────────────────────────────
 
   /**
-   * Load organization custom modes from the Kilo Cloud API.
+   * Load organization custom modes from the Semafour Cloud API.
    * Returns empty agents + warnings if the user is not authenticated.
    */
   export async function loadOrganizationModes(
@@ -682,14 +682,14 @@ export namespace KilocodeConfig {
 
   // ── Opencode config migration notice ─────────────────────────────────
 
-  /** Client-neutral docs page describing where Kilo reads configuration from. */
+  /** Client-neutral docs page describing where Semafour reads configuration from. */
   export const CONFIG_DOCS_URL = "https://kilo.ai/docs/getting-started/settings"
 
   /** Stable id for the synthetic "move your opencode config" notification (used for client-side dismissal). */
   export const OPENCODE_NOTIFICATION_ID = "kilo.local.opencode-config-detected"
 
   /**
-   * Detect leftover opencode config directories. Kilo used to fall back to
+   * Detect leftover opencode config directories. Semafour used to fall back to
    * opencode configuration but no longer reads `.opencode` directories.
    * Returns the existing `.opencode` locations (global + project), highest first.
    */
@@ -734,7 +734,7 @@ export namespace KilocodeConfig {
       id: OPENCODE_NOTIFICATION_ID,
       title: "Move your opencode configuration",
       message:
-        `Kilo no longer falls back to opencode configuration. ` +
+        `Semafour no longer falls back to opencode configuration. ` +
         `Found opencode config at ${found[0]}${suffix}. ` +
         `Move it into a .kilo directory (project) or ${Global.Path.config} (global).`,
       action: { actionText: "Learn more", actionURL: CONFIG_DOCS_URL },

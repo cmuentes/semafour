@@ -65,13 +65,13 @@ describe("KiloPlugin", () => {
       expect((yield* catalog.provider.get(ProviderV2.ID.make("kilo")))?.request.headers).toEqual({
         Existing: "value",
         "HTTP-Referer": "https://kilo.ai/",
-        "X-Title": "Kilo Code", // kilocode_change
+        "X-Title": "Semafour", // kilocode_change
       })
       expect((yield* catalog.provider.get(ProviderV2.ID.openrouter))?.request.headers).toEqual({})
     }),
   )
 
-  it.effect("uses the exact legacy Kilo header casing and set", () =>
+  it.effect("uses the exact legacy Semafour header casing and set", () =>
     Effect.gen(function* () {
       const catalog = yield* Catalog.Service
       yield* catalog.transform((catalog) => {
@@ -87,7 +87,7 @@ describe("KiloPlugin", () => {
 
       expect((yield* catalog.provider.get(ProviderV2.ID.kilo))?.request.headers).toEqual({
         "HTTP-Referer": "https://kilo.ai/",
-        "X-Title": "Kilo Code", // kilocode_change
+        "X-Title": "Semafour", // kilocode_change
       })
       expect((yield* catalog.provider.get(ProviderV2.ID.make("kilo")))?.request.headers).not.toHaveProperty(
         "http-referer",
@@ -116,14 +116,14 @@ describe("KiloPlugin", () => {
 
       expect((yield* catalog.provider.get(ProviderV2.ID.kilo))?.request.headers).toEqual({
         "HTTP-Referer": "https://kilo.ai/",
-        "X-Title": "Kilo Code", // kilocode_change
+        "X-Title": "Semafour", // kilocode_change
       })
       expect((yield* catalog.provider.get(ProviderV2.ID.make("custom-kilo")))?.request.headers).toEqual({})
     }),
   )
 
   // kilocode_change start
-  it.effect("routes the Kilo catalog through the Kilo Gateway SDK", () =>
+  it.effect("routes the Semafour catalog through the Semafour Gateway SDK", () =>
     withEnv({ KILO_API_KEY: undefined, KILO_ORG_ID: undefined }, () =>
       Effect.gen(function* () {
         const aisdk = yield* AISDK.Service
@@ -189,7 +189,7 @@ describe("KiloPlugin", () => {
     ),
   )
 
-  it.effect("keeps anonymous Kilo models available without credentials", () =>
+  it.effect("keeps anonymous Semafour models available without credentials", () =>
     withEnv({ KILO_API_KEY: undefined, KILO_ORG_ID: undefined }, () =>
       Effect.gen(function* () {
         const catalog = yield* Catalog.Service

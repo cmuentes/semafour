@@ -275,8 +275,8 @@ describe("InstanceStore", () => {
 
   // kilocode_change - InstanceStore.boot provides InstanceRef to bootstrap.run so
   // KilocodeBootstrap (and anything it forkDetaches, e.g. KiloIndexing.init) can read
-  // the current directory. This regression test pins the Kilo contract.
-  it.live("provides InstanceRef during bootstrap for Kilo bootstrap compatibility", () =>
+  // the current directory. This regression test pins the Semafour contract.
+  it.live("provides InstanceRef during bootstrap for Semafour bootstrap compatibility", () =>
     Effect.gen(function* () {
       const dir = yield* tmpdirScoped({ git: true })
       const store = yield* InstanceStore.Service

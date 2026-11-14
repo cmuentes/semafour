@@ -101,7 +101,7 @@ describe("KiloSessions.enableRemote", () => {
       directory: tmp.path,
       fn: async () => {
         await expect(KiloSessions.enableRemote()).rejects.toThrow(
-          "Unable to enable remote: invalid or expired Kilo credentials. Run `kilo auth login`.",
+          "Unable to enable remote: invalid or expired Semafour credentials. Run `kilo auth login`.",
         )
         expect(state.connects).toBe(0)
         expect(KiloSessions.remoteStatus()).toEqual({ enabled: false, connected: false })
@@ -145,7 +145,7 @@ describe("KiloSessions.enableRemote", () => {
       directory: tmp.path,
       fn: async () => {
         await expect(KiloSessions.enableRemote()).rejects.toThrow(
-          "Unable to enable remote: failed to verify Kilo credentials.",
+          "Unable to enable remote: failed to verify Semafour credentials.",
         )
         expect(state.connects).toBe(0)
         expect(KiloSessions.remoteStatus()).toEqual({ enabled: false, connected: false })

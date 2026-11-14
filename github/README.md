@@ -1,14 +1,14 @@
-# Kilo GitHub Action
+# Semafour GitHub Action
 
-A GitHub Action that integrates [Kilo AI](https://kilo.ai) directly into your GitHub workflow.
+A GitHub Action that integrates [Semafour AI](https://kilo.ai) directly into your GitHub workflow.
 
-Mention `/kilo` or `/kc` in your comment, and Kilo will execute tasks within your GitHub Actions runner.
+Mention `/kilo` or `/kc` in your comment, and Semafour will execute tasks within your GitHub Actions runner.
 
 ## Features
 
 #### Explain an issue
 
-Leave the following comment on a GitHub issue. Kilo will read the entire thread, including all comments, and reply with a clear explanation.
+Leave the following comment on a GitHub issue. Semafour will read the entire thread, including all comments, and reply with a clear explanation.
 
 ```
 /kilo explain this issue
@@ -16,7 +16,7 @@ Leave the following comment on a GitHub issue. Kilo will read the entire thread,
 
 #### Fix an issue
 
-Leave the following comment on a GitHub issue. Kilo will create a new branch, implement the changes, and open a PR with the changes.
+Leave the following comment on a GitHub issue. Semafour will create a new branch, implement the changes, and open a PR with the changes.
 
 ```
 /kilo fix this
@@ -24,7 +24,7 @@ Leave the following comment on a GitHub issue. Kilo will create a new branch, im
 
 #### Review PRs and make changes
 
-Leave the following comment on a GitHub PR. Kilo will implement the requested change and commit it to the same PR.
+Leave the following comment on a GitHub PR. Semafour will implement the requested change and commit it to the same PR.
 
 ```
 Delete the attachment from S3 when the note is removed /kc
@@ -32,14 +32,14 @@ Delete the attachment from S3 when the note is removed /kc
 
 #### Review specific code lines
 
-Leave a comment directly on code lines in the PR's "Files" tab. Kilo will automatically detect the file, line numbers, and diff context to provide precise responses.
+Leave a comment directly on code lines in the PR's "Files" tab. Semafour will automatically detect the file, line numbers, and diff context to provide precise responses.
 
 ```
 [Comment on specific lines in Files tab]
 /kc add error handling here
 ```
 
-When commenting on specific lines, Kilo receives:
+When commenting on specific lines, Semafour receives:
 
 - The exact file being reviewed
 - The specific lines of code
@@ -90,7 +90,7 @@ This will walk you through installing the KiloConnect GitHub app, creating the w
            with:
              persist-credentials: false
 
-         - name: Run Kilo
+         - name: Run Semafour
            uses: Kilo-Org/kilocode/github@latest
            with:
              model: kilo/claude-sonnet-4-20250514
@@ -105,13 +105,13 @@ This will walk you through installing the KiloConnect GitHub app, creating the w
 ### Inputs
 
 - `model` (required) - The AI model to use (e.g., `kilo/claude-sonnet-4-20250514`)
-- `kilo_api_key` (optional) - Kilo API key for gateway authentication
-- `kilo_org_id` (optional) - Kilo organization ID
+- `kilo_api_key` (optional) - Semafour API key for gateway authentication
+- `kilo_org_id` (optional) - Semafour organization ID
 - `agent` (optional) - Agent to use. Must be a primary agent.
-- `share` (optional) - Share the Kilo session (defaults to true for public repos)
+- `share` (optional) - Share the Semafour session (defaults to true for public repos)
 - `prompt` (optional) - Custom prompt to override the default prompt
 - `mentions` (optional) - Comma-separated list of trigger phrases (defaults to `/kilo,/kc`)
-- `use_github_token` (optional) - Use GITHUB_TOKEN directly instead of Kilo App token exchange (defaults to `false`)
+- `use_github_token` (optional) - Use GITHUB_TOKEN directly instead of Semafour App token exchange (defaults to `false`)
 - `oidc_base_url` (optional) - Base URL for OIDC token exchange API (defaults to `https://api.kilo.ai`)
 
 ### Using Other Providers
@@ -119,7 +119,7 @@ This will walk you through installing the KiloConnect GitHub app, creating the w
 You can also use other AI providers by setting their API keys:
 
 ```yml
-- name: Run Kilo
+- name: Run Semafour
   uses: Kilo-Org/kilocode/github@latest
   with:
     model: anthropic/claude-sonnet-4-20250514
@@ -133,6 +133,6 @@ If you encounter issues or have feedback, please create an issue at https://gith
 
 ## Development
 
-This directory contains the composite GitHub Action definition. The actual implementation is in the Kilo CLI (`packages/opencode/src/cli/cmd/github.ts`).
+This directory contains the composite GitHub Action definition. The actual implementation is in the Semafour CLI (`packages/opencode/src/cli/cmd/github.ts`).
 
 To test locally, see the main [AGENTS.md](../AGENTS.md) for development instructions.

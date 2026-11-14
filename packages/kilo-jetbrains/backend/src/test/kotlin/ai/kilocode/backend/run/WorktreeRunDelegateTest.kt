@@ -216,7 +216,7 @@ class WorktreeRunDelegateTest : BasePlatformTestCase() {
     private class TestType(
         id: String,
         private val create: (Project, ConfigurationFactory, String) -> RunConfiguration,
-    ) : ConfigurationTypeBase(id, "Kilo Delegate $id", null, null as javax.swing.Icon?) {
+    ) : ConfigurationTypeBase(id, "Semafour Delegate $id", null, null as javax.swing.Icon?) {
         init {
             addFactory(object : ConfigurationFactory(this) {
                 override fun getId(): String = type.id

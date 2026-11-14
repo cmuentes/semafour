@@ -15,9 +15,9 @@ export class GitError extends Error {
 }
 
 const BRANCH = "main"
-const README = `# Kilo E2E fixture
+const README = `# Semafour E2E fixture
 
-Deterministic project fixture used by the Kilo IDE-neutral end-to-end harness.
+Deterministic project fixture used by the Semafour IDE-neutral end-to-end harness.
 `
 
 const AGENTS = `# Fixture instructions
@@ -28,9 +28,9 @@ This repository is generated deterministically for end-to-end scenarios.
 const DATE = "2000-01-01T00:00:00Z"
 
 const IDENTITY = {
-  GIT_AUTHOR_NAME: "Kilo E2E",
+  GIT_AUTHOR_NAME: "Semafour E2E",
   GIT_AUTHOR_EMAIL: "e2e@kilo.invalid",
-  GIT_COMMITTER_NAME: "Kilo E2E",
+  GIT_COMMITTER_NAME: "Semafour E2E",
   GIT_COMMITTER_EMAIL: "e2e@kilo.invalid",
   GIT_AUTHOR_DATE: DATE,
   GIT_COMMITTER_DATE: DATE,
@@ -64,7 +64,7 @@ export async function createProject(dir: string): Promise<Project> {
       "-c",
       "commit.gpgsign=false",
       "-c",
-      "user.name=Kilo E2E",
+      "user.name=Semafour E2E",
       "-c",
       "user.email=e2e@kilo.invalid",
       "commit",

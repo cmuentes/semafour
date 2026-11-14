@@ -1,4 +1,4 @@
-/* Kilo Chat Input (Textarea with blue border) overrides – sized to match @vscode/webview-ui-toolkit */
+/* Semafour Chat Input (Textarea with blue border) overrides – sized to match @vscode/webview-ui-toolkit */
 
 [data-component="chat-input"],
 [data-component="textarea"][data-variant="chat"] {

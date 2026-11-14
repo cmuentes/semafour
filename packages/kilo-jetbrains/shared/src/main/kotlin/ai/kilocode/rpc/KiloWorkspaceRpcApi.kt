@@ -61,7 +61,7 @@ interface KiloWorkspaceRpcApi : RemoteApi<Unit> {
     /** Resolve [path] to matching files, scoped primarily to [directory]. */
     suspend fun files(directory: String, path: String): List<WorkspaceFileDto>
 
-    /** Fuzzy file/folder search via Kilo Core. */
+    /** Fuzzy file/folder search via Semafour Core. */
     suspend fun searchFiles(directory: String, query: String, limit: Int = 50): FileSearchResultDto
 
     /** Current uncommitted git changes as a unified diff for @git-changes mentions. */

@@ -37,7 +37,7 @@ const LOOPBACK = "http://127.0.0.1:1"
 const providerConfig = {
   provider: {
     tiny: { name: "Tiny", models: { small: { name: "Small", limit: { context: 1000, output: 100 } } } },
-    kilo: { name: "Kilo", models: { "kilo-model": { name: "Kilo Model", limit: { context: 1000, output: 100 } } } },
+    kilo: { name: "Semafour", models: { "kilo-model": { name: "Semafour Model", limit: { context: 1000, output: 100 } } } },
   },
 } as unknown as Partial<Config.Interface>
 
@@ -117,15 +117,15 @@ beforeEach(() => {
     if (url.endsWith("/api/profile")) return Response.json({ user: { id: "oauth/account-1" } })
     if (url.endsWith("/api/user")) return new Response(null, { status: 200 })
     if (url.includes("ai-gateway.kilo.ai") && url.includes("/models")) {
-      // The Kilo catalog, so a `kilo` model reference resolves offline.
+      // The Semafour catalog, so a `kilo` model reference resolves offline.
       return Response.json({
         kilo: {
           id: "kilo",
-          name: "Kilo",
+          name: "Semafour",
           models: {
             "kilo-model": {
               id: "kilo-model",
-              name: "Kilo Model",
+              name: "Semafour Model",
               limit: { context: 1000, output: 100 },
               cost: { input: 0, output: 0, cache: { read: 0, write: 0 } },
               options: {},
@@ -690,11 +690,11 @@ const addUser = (sessionID: string, model: { providerID: string; modelID: string
     ),
   )
 
-test("captures the Kilo model variant, including an explicit empty one", async () => {
+test("captures the Semafour model variant, including an explicit empty one", async () => {
   await using only = await tmpdir({ git: true })
   await withInstance(only.path, async () => {
     await boot()
-    // The Kilo catalog cannot be fetched offline; the tolerant model lookup must
+    // The Semafour catalog cannot be fetched offline; the tolerant model lookup must
     // let the transcript sync succeed and keep the variant on the prepared body.
     const empty = await newSession()
     await addUser(empty.id, { providerID: "kilo", modelID: "kilo-model", variant: "" })

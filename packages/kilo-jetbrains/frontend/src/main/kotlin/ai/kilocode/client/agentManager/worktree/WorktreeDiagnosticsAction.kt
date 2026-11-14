@@ -33,7 +33,7 @@ internal object WorktreeDiagnosticsAction {
         val app = service<KiloAppService>()
         app.scope.launch {
             val text = runCatching { collect(project) }.getOrElse { err ->
-                "Kilo Agent Manager — worktree health\nfailed to collect: ${err.message}"
+                "Semafour Agent Manager — worktree health\nfailed to collect: ${err.message}"
             }
             // CopyPasteManager.setContents is an EDT API (see ui/Clipboard.kt), and this runs on the
             // service's Dispatchers.Default scope.
@@ -43,7 +43,7 @@ internal object WorktreeDiagnosticsAction {
     }
 
     private suspend fun collect(project: Project): String {
-        val root = project.kiloRoot() ?: return "Kilo Agent Manager — worktree health\nno backend root resolved"
+        val root = project.kiloRoot() ?: return "Semafour Agent Manager — worktree health\nno backend root resolved"
         val service = service<KiloWorktreeService>()
         val listed = service.list(root)
         return WorktreeDiagnostics.render(
@@ -61,9 +61,9 @@ internal object WorktreeDiagnosticsAction {
     private fun notify(project: Project?, type: NotificationType, title: String) {
         ApplicationManager.getApplication().invokeLater {
             val notification = NotificationGroupManager.getInstance()
-                .getNotificationGroup("Kilo Code")
+                .getNotificationGroup("Semafour")
                 ?.createNotification(title, "", type)
-                ?: Notification("Kilo Code", title, "", type)
+                ?: Notification("Semafour", title, "", type)
             notification.notify(project)
         }
     }

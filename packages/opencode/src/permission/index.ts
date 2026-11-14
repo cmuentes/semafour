@@ -23,7 +23,7 @@ import { ExternalDirectoryPermission } from "@/kilocode/permission/external-dire
 
 export const Event = PermissionV1.Event
 // kilocode_change start - upstream moved these types into PermissionV1; re-export them here so existing
-// Kilo callers that import off `Permission.*` keep working without a repo-wide rewrite
+// Semafour callers that import off `Permission.*` keep working without a repo-wide rewrite
 export const Rule = PermissionV1.Rule
 export type Rule = PermissionV1.Rule
 export const Ruleset = PermissionV1.Ruleset
@@ -45,7 +45,7 @@ export type NotFoundError = PermissionV1.NotFoundError
 export type Error = PermissionV1.Error
 export const ReplyInput = PermissionV1.ReplyInput
 export type ReplyInput = PermissionV1.ReplyInput
-// Kilo extends upstream's AskInput with an optional hardRuleset (consumed by drain + session/prompt)
+// Semafour extends upstream's AskInput with an optional hardRuleset (consumed by drain + session/prompt)
 export type AskInput = PermissionV1.AskInput & { hardRuleset?: PermissionV1.Ruleset }
 // kilocode_change end
 
@@ -167,7 +167,7 @@ const layer = Layer.effect(
         void ctx
         const state = {
           pending: new Map<PermissionV1.ID, PendingEntry>(),
-          approved: [] as Rule[], // kilocode_change - upstream dropped DB-seeded approvals; Kilo persists via config.updateGlobal
+          approved: [] as Rule[], // kilocode_change - upstream dropped DB-seeded approvals; Semafour persists via config.updateGlobal
           session: {} as Record<string, Ruleset>, // kilocode_change
         }
 

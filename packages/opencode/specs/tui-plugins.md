@@ -184,7 +184,7 @@ npm plugins can declare a version compatibility range in `package.json` using th
 }
 ```
 
-- The value is a semver range checked against the running Kilo version.
+- The value is a semver range checked against the running Semafour version.
 - If the range is not satisfied, the plugin is skipped with a warning and a session error.
 - If `engines.opencode` is absent, no check is performed (backward compatible).
 - File plugins are never checked; only npm package plugins are validated.
@@ -213,7 +213,7 @@ npm plugins can declare a version compatibility range in `package.json` using th
 - There is no uninstall, list, or update CLI command for external plugins.
 - Local file plugins are configured directly in `tui.json`.
 
-When `plugin` entries exist in a writable `.kilo` or legacy `.kilocode` directory, or `KILO_CONFIG_DIR`, Kilo installs `@kilocode/plugin` into that directory and writes:
+When `plugin` entries exist in a writable `.kilo` or legacy `.kilocode` directory, or `KILO_CONFIG_DIR`, Semafour installs `@kilocode/plugin` into that directory and writes:
 
 - `package.json`
 - `bun.lock`
@@ -247,7 +247,7 @@ Top-level API groups exposed to `tui(api, options, meta)`:
 ### Keymap
 
 - `api.keymap` exposes the raw `Keymap<Renderable, KeyEvent>` instance from the host.
-- The host already installs the default OpenTUI bundle (`default keys`, metadata fields, and enabled fields) plus Kilo's comma bindings, leader token, base layout fallback, pending-sequence helpers, and managed textarea layer.
+- The host already installs the default OpenTUI bundle (`default keys`, metadata fields, and enabled fields) plus Semafour's comma bindings, leader token, base layout fallback, pending-sequence helpers, and managed textarea layer.
 - Register commands with `api.keymap.registerLayer({ commands: [...] })`.
 - Register key bindings with `bindings: [{ key, cmd, desc }]` in the same layer or a separate layer.
 - Use `api.keymap.acquireResource(...)` for shared plugin addon setup that should ref-count against the host keymap.
@@ -258,7 +258,7 @@ Top-level API groups exposed to `tui(api, options, meta)`:
 
 #### Mode-aware layers
 
-Kilo registers a `mode` layer field on the host keymap. Plugins can use it to keep bindings active only in the relevant UI state.
+Semafour registers a `mode` layer field on the host keymap. Plugins can use it to keep bindings active only in the relevant UI state.
 
 Built-in modes:
 
@@ -316,7 +316,7 @@ api.keymap.registerLayer({
 })
 ```
 
-Mode pushes are automatically tracked by the plugin runtime. If a plugin is disabled, fails during activation, or the TUI shuts down before the plugin calls the disposer, Kilo pops the plugin's pushed modes during plugin cleanup. Calling the disposer yourself is still recommended for component lifetimes; cleanup remains idempotent.
+Mode pushes are automatically tracked by the plugin runtime. If a plugin is disabled, fails during activation, or the TUI shuts down before the plugin calls the disposer, Semafour pops the plugin's pushed modes during plugin cleanup. Calling the disposer yourself is still recommended for component lifetimes; cleanup remains idempotent.
 
 ### Keys
 
@@ -328,7 +328,7 @@ Mode pushes are automatically tracked by the plugin runtime. If a plugin is disa
 ### Attention
 
 - `api.attention.notify({ title?, message, notification?, sound? })` requests user attention while keeping terminal focus, notifications, and audio owned by the host.
-- `message` is required; `title` defaults to `"Kilo"`; `notification` defaults to enabled with `when: "blurred"`; `sound` defaults to enabled with `when: "always"`.
+- `message` is required; `title` defaults to `"Semafour"`; `notification` defaults to enabled with `when: "blurred"`; `sound` defaults to enabled with `when: "always"`.
 - `when: "always"` requests delivery regardless of terminal focus state.
 - `when: "focused"` only requests delivery after the terminal is known focused; `when: "blurred"` only requests delivery after the terminal is known blurred.
 - Example: `notification: { when: "blurred" }, sound: { name: "question", when: "always" }` plays sound while focused but only triggers system notifications when blurred.
@@ -538,4 +538,4 @@ The plugin manager is exposed as a command with title `Plugins` and value `plugi
 
 ## Current in-repo examples
 
-The upstream `.opencode` smoke fixtures remain in the repository for OpenCode compatibility, but Kilo does not auto-load them. Kilo-local examples must live under `.kilo` or legacy `.kilocode`.
+The upstream `.opencode` smoke fixtures remain in the repository for OpenCode compatibility, but Semafour does not auto-load them. Kilo-local examples must live under `.kilo` or legacy `.kilocode`.

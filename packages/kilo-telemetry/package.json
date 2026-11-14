@@ -4,7 +4,7 @@
   "version": "7.8.28",
   "type": "module",
   "license": "MIT",
-  "description": "Telemetry for Kilo CLI - PostHog analytics integration",
+  "description": "Telemetry for Semafour CLI - PostHog analytics integration",
   "exports": {
     ".": "./src/index.ts"
   },

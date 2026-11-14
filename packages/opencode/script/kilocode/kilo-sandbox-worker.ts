@@ -12,14 +12,14 @@ export namespace KiloSandboxWorker {
       format: "esm",
       minify: true,
     })
-    if (!result.success || result.outputs.length !== 1) throw new Error("Could not bundle Kilo sandbox mutation worker")
+    if (!result.success || result.outputs.length !== 1) throw new Error("Could not bundle Semafour sandbox mutation worker")
     return result.outputs[0]
   }
 
   export async function copy(worker: Blob, dir: string) {
     const target = path.join(dir, filename)
     await Bun.write(target, worker)
-    console.log(`copied Kilo sandbox mutation worker to ${target}`)
+    console.log(`copied Semafour sandbox mutation worker to ${target}`)
   }
 
   export async function smoke(binary: string) {
@@ -49,7 +49,7 @@ export namespace KiloSandboxWorker {
         new Response(proc.stderr).text(),
         proc.exited,
       ])
-      if (code !== 0) throw new Error(stderr || `Kilo sandbox mutation worker exited ${code}`)
+      if (code !== 0) throw new Error(stderr || `Semafour sandbox mutation worker exited ${code}`)
       const response: unknown = JSON.parse(stdout)
       if (
         typeof response !== "object" ||
@@ -58,12 +58,12 @@ export namespace KiloSandboxWorker {
         response.ok !== true ||
         (await Bun.file(target).text()) !== "worker"
       ) {
-        throw new Error("Packaged Kilo sandbox mutation worker did not write the expected content")
+        throw new Error("Packaged Semafour sandbox mutation worker did not write the expected content")
       }
     } finally {
       await fs
         .rm(root, { recursive: true, force: true })
-        .catch((err) => console.warn(`Failed to remove Kilo sandbox worker smoke test directory ${root}`, err))
+        .catch((err) => console.warn(`Failed to remove Semafour sandbox worker smoke test directory ${root}`, err))
     }
   }
 }

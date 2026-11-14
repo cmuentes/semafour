@@ -2,7 +2,7 @@
 /**
  * Upstream Merge Orchestration Script
  *
- * Automates the process of merging upstream opencode changes into Kilo.
+ * Automates the process of merging upstream opencode changes into Semafour.
  *
  * Usage:
  *   bun run script/upstream/merge.ts [options]
@@ -185,7 +185,7 @@ function logWorktrees(refs: worktree.RefInfo, input: worktree.RefInput, baseName
   logger.info("Agent prompt:")
   logger.info("  Use these references while resolving the merge:")
   logger.info(`  - upstream opencode: ${refs.opencode}`)
-  logger.info(`  - Kilo base main: ${refs.main}`)
+  logger.info(`  - Semafour base main: ${refs.main}`)
   logger.info(`  - automated merge snapshot: ${refs.auto}`)
 }
 
@@ -252,7 +252,7 @@ async function main() {
     logger.setVerbose(true)
   }
 
-  logger.header("Kilo Upstream Merge Tool")
+  logger.header("Semafour Upstream Merge Tool")
 
   // Step 1: Validate environment
   logger.step(1, 8, "Validating environment...")
@@ -383,7 +383,7 @@ async function main() {
     conflictReport.recommendations.push(`${i18nCount} i18n files will be auto-transformed`)
   }
   if (keepOursCount > 0) {
-    conflictReport.recommendations.push(`${keepOursCount} files will keep Kilo's version`)
+    conflictReport.recommendations.push(`${keepOursCount} files will keep Semafour's version`)
   }
   if (codemodCount > 0) {
     conflictReport.recommendations.push(`${codemodCount} files will be processed by codemods`)
@@ -439,7 +439,7 @@ async function main() {
   const backupBranch = await createBackupBranch(config.baseBranch)
   logger.info(`Created backup branch: ${backupBranch}`)
 
-  // Create Kilo merge branch
+  // Create Semafour merge branch
   if (inplace) {
     logger.info(`Using the checked-out target branch in place: ${kiloBranch}`)
   }
@@ -454,7 +454,7 @@ async function main() {
   if (options.push) {
     await git.push(config.originRemote, kiloBranch, true)
   }
-  logger.info(`Created Kilo branch: ${kiloBranch}`)
+  logger.info(`Created Semafour branch: ${kiloBranch}`)
 
   // Create opencode compatibility branch from upstream commit
   const opencodeBranch = `${author}/opencode-${targetVersion.tag}`
@@ -476,22 +476,22 @@ async function main() {
   }
 
   // Step 6: Apply ALL transformations to opencode branch (pre-merge)
-  // This reduces conflicts by transforming upstream code to Kilo conventions BEFORE merging
+  // This reduces conflicts by transforming upstream code to Semafour conventions BEFORE merging
   logger.step(6, 8, "Applying transformations to opencode branch (pre-merge)...")
 
-  logger.info("Removing files skipped in Kilo...")
+  logger.info("Removing files skipped in Semafour...")
   const skips = await skipFiles({ dryRun: false, verbose: options.verbose, force: true })
   const count = skips.filter((r) => r.action === "removed").length
   if (count > 0) {
     logger.success(`Removed ${count} skipped file(s) from opencode branch`)
   }
 
-  // Kilo does not ship upstream's embedded web UI command. Remove the known
+  // Semafour does not ship upstream's embedded web UI command. Remove the known
   // registration before merging so upstream updates cannot restore it silently.
-  logger.info("Removing unsupported Kilo web command...")
+  logger.info("Removing unsupported Semafour web command...")
   const webCommand = await transformKiloWeb({ dryRun: false, verbose: options.verbose })
   if (webCommand.removals > 0) {
-    logger.success("Removed unsupported Kilo web command registration")
+    logger.success("Removed unsupported Semafour web command registration")
   }
 
   // 6a. Transform package names (opencode-ai -> @kilocode/cli)
@@ -499,8 +499,8 @@ async function main() {
   const nameResults = await transformPackageNames({ dryRun: false, verbose: options.verbose })
   logger.success(`Transformed ${nameResults.length} files`)
 
-  // 6b. Preserve Kilo versions
-  logger.info("Preserving Kilo versions...")
+  // 6b. Preserve Semafour versions
+  logger.info("Preserving Semafour versions...")
   const versionResults = await preserveAllVersions({
     dryRun: false,
     verbose: options.verbose,
@@ -508,12 +508,12 @@ async function main() {
   })
   logger.success(`Preserved versions in ${versionResults.length} files`)
 
-  // 6c. Transform i18n files (OpenCode -> Kilo branding)
+  // 6c. Transform i18n files (OpenCode -> Semafour branding)
   logger.info("Transforming i18n files...")
   const i18nPreResults = await transformAllI18n({ dryRun: false, verbose: options.verbose })
   const i18nPreCount = i18nPreResults.filter((r) => r.replacements > 0).length
   if (i18nPreCount > 0) {
-    logger.success(`Transformed ${i18nPreCount} i18n files with Kilo branding`)
+    logger.success(`Transformed ${i18nPreCount} i18n files with Semafour branding`)
   }
 
   // 6d. Transform branding-only files (take-theirs patterns)
@@ -521,10 +521,10 @@ async function main() {
   const brandingResults = await transformAllTakeTheirs({ dryRun: false, verbose: options.verbose })
   const brandingCount = brandingResults.filter((r) => r.action === "transformed" && r.replacements > 0).length
   if (brandingCount > 0) {
-    logger.success(`Transformed ${brandingCount} files with Kilo branding`)
+    logger.success(`Transformed ${brandingCount} files with Semafour branding`)
   }
 
-  // 6f. Transform package.json files (names, deps, Kilo injections)
+  // 6f. Transform package.json files (names, deps, Semafour injections)
   logger.info("Transforming package.json files...")
   const pkgPreResults = await transformAllPackageJson({ dryRun: false, verbose: options.verbose })
   const pkgPreCount = pkgPreResults.filter((r) => r.action === "transformed" && r.changes.length > 0).length
@@ -556,10 +556,10 @@ async function main() {
     logger.success(`Transformed ${webPreCount} web/docs files`)
   }
 
-  // 6j. Reset keep-ours files to Kilo's version
+  // 6j. Reset keep-ours files to Semafour's version
   logger.info("Resetting Kilo-specific files...")
   const keepOursResults = await resetToOurs(config.keepOurs, { dryRun: false, verbose: options.verbose })
-  logger.success(`Reset ${keepOursResults.length} files to Kilo's version`)
+  logger.success(`Reset ${keepOursResults.length} files to Semafour's version`)
 
   // 6k. Record the last merged upstream tag so future automation can find it
   // without walking ls-remote + isAncestor for every tag.
@@ -593,13 +593,13 @@ async function main() {
   }
   logger.success("Committed pre-merge transformations")
 
-  // Step 7: Merge into Kilo branch
-  logger.step(7, 8, "Merging into Kilo branch...")
+  // Step 7: Merge into Semafour branch
+  logger.step(7, 8, "Merging into Semafour branch...")
 
   await git.checkout(kiloBranch)
   if (prior) {
     const linked = await git.recordAncestor(targetVersion.commit, `merge: record upstream ${targetVersion.tag}`)
-    if (linked) logger.info(`Recorded upstream ${targetVersion.tag} as Kilo branch ancestry`)
+    if (linked) logger.info(`Recorded upstream ${targetVersion.tag} as Semafour branch ancestry`)
   }
   const mergeResult = await git.merge(opencodeBranch)
 
@@ -619,8 +619,8 @@ async function main() {
     // Since we applied all branding transforms pre-merge, remaining conflicts should be minimal.
     // These are likely files with kilocode_change markers or actual logic differences.
 
-    // Step 7a: Skip files that shouldn't exist in Kilo
-    logger.info("Removing files that shouldn't exist in Kilo...")
+    // Step 7a: Skip files that shouldn't exist in Semafour
+    logger.info("Removing files that shouldn't exist in Semafour...")
     const skipResults = await skipFiles({ dryRun: false, verbose: options.verbose })
     const skippedCount = skipResults.filter((r) => r.action === "removed").length
     if (skippedCount > 0) {
@@ -632,7 +632,7 @@ async function main() {
     const resolved = await keepOursFiles({ dryRun: false, verbose: options.verbose })
     const autoResolved = resolved.filter((r) => r.action === "kept")
     if (autoResolved.length > 0) {
-      logger.success(`Auto-resolved ${autoResolved.length} conflicts (kept Kilo's version)`)
+      logger.success(`Auto-resolved ${autoResolved.length} conflicts (kept Semafour's version)`)
     }
 
     // Step 7c: Try to auto-resolve remaining conflicts with post-merge transforms
@@ -941,7 +941,7 @@ async function main() {
   logger.header("Merge Summary")
 
   logger.info(`Upstream version: ${targetVersion.tag}`)
-  logger.info(`Kilo branch: ${kiloBranch}`)
+  logger.info(`Semafour branch: ${kiloBranch}`)
   logger.info(`Opencode branch: ${opencodeBranch}`)
   logger.info(`Backup branch: ${backupBranch}`)
   logger.info(`Report: ${reportPath}`)

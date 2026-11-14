@@ -33,7 +33,7 @@ import { useLinkInteractions } from "@tui/kilocode/link-interactions"
 // Re-export so upstream can render the route without importing directly
 export { KiloTerminalTitle } from "./terminal-title"
 
-// Hot reload TUI-local settings (keybinds/theme/ui) when changed from the Kilo Console.
+// Hot reload TUI-local settings (keybinds/theme/ui) when changed from the Semafour Console.
 // Called from the App body (below SDKProvider and the TuiConfig provider).
 export { useTuiConfigHotReload } from "@/kilocode/cli/cmd/tui/context/tui-config-hot-reload"
 export { KiloTuiConfig } from "@/kilocode/cli/cmd/tui/context/tui-config"
@@ -43,13 +43,13 @@ export { KiloTuiConfig } from "@/kilocode/cli/cmd/tui/context/tui-config"
 // ---------------------------------------------------------------------------
 
 /** Default terminal window title. */
-export const APP_TITLE = "Kilo CLI"
+export const APP_TITLE = "Semafour CLI"
 
 /** Public docs URL shown in the command palette. */
 export const DOCS_URL = "https://kilo.ai/docs"
 
 /** Human-readable product name used in user-facing messages. */
-export const APP_NAME = "Kilo"
+export const APP_NAME = "Semafour"
 
 // ---------------------------------------------------------------------------
 // Utilities
@@ -236,7 +236,7 @@ export function handleSessionError(error: unknown, toast: ReturnType<typeof useT
  * One-shot initialiser called from the App component body.
  *
  * - Injects TUI dependencies into kilo-gateway
- * - Registers Kilo Gateway commands (profile, teams, etc.)
+ * - Registers Semafour Gateway commands (profile, teams, etc.)
  * - Registers the auto-approve toggle command
  */
 export function init() {
@@ -262,7 +262,7 @@ export function init() {
     TextAttributes,
   })
 
-  // Register Kilo Gateway commands (profile, teams, remote, etc.)
+  // Register Semafour Gateway commands (profile, teams, remote, etc.)
   registerKiloCommands(useSDK)
   useCaffeination()
 
@@ -274,7 +274,7 @@ export function init() {
         name: "background_process.list",
         title: "Background processes",
         desc: "List and manage tracked background processes",
-        category: "Kilo",
+        category: "Semafour",
         slashName: "process",
         slashAliases: ["processes"],
         run: () => {

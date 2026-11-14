@@ -312,7 +312,7 @@ export class EventServiceClient {
       return
     }
     if (m.type === "error") {
-      console.warn("[Kilo] event-service server error", m)
+      console.warn("[Semafour] event-service server error", m)
       this.onServerError?.(m)
     }
   }

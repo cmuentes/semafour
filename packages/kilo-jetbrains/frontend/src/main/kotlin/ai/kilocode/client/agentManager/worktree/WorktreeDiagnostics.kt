@@ -26,7 +26,7 @@ internal object WorktreeDiagnostics {
 
     fun render(input: Input): String {
         val lines = mutableListOf<String>()
-        lines += "Kilo Agent Manager — worktree health"
+        lines += "Semafour Agent Manager — worktree health"
         lines += "repository: ${input.root}"
         lines += ""
 

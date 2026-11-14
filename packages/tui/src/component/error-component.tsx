@@ -125,7 +125,7 @@ export function ErrorComponent(props: { error: Error; reset: () => void; mode?: 
         <box flexDirection="column" alignItems="center" flexShrink={0}>
           <text attributes={TextAttributes.BOLD} fg={colors.text}>
             {/* kilocode_change */}
-            Kilo crashed
+            Semafour crashed
           </text>
           <Show when={showSubtext()}>
             <text fg={colors.muted}>An unexpected error stopped the session.</text>
@@ -211,7 +211,7 @@ export function ErrorComponent(props: { error: Error; reset: () => void; mode?: 
             </text>
             <text fg={colors.muted}>
               {/* kilocode_change */}
-              Kilo {InstallationVersion}
+              Semafour {InstallationVersion}
             </text>
           </box>
         </Show>
@@ -226,14 +226,14 @@ function buildIssueURL(message: string, stack: string) {
   // the contributing-guidelines compliance check, which pushes for system info.
   // kilocode_change start
   const url = new URL("https://github.com/Kilo-Org/kilocode/issues/new?template=bug-report.yml")
-  url.searchParams.set("title", `Kilo TUI crash: ${message}`)
+  url.searchParams.set("title", `Semafour TUI crash: ${message}`)
   url.searchParams.set("kilo-version", InstallationVersion)
   // kilocode_change end
   url.searchParams.set("os", describeOS())
   url.searchParams.set("terminal", describeTerminal())
   url.searchParams.set(
     "reproduce",
-    "Reported automatically from the Kilo crash screen. If you can, describe what you were doing when it crashed.",
+    "Reported automatically from the Semafour crash screen. If you can, describe what you were doing when it crashed.",
   )
 
   // Budget the stack against the fully URL-encoded length (not the raw length) so
@@ -242,7 +242,7 @@ function buildIssueURL(message: string, stack: string) {
   // so measuring url.toString() is both correct and safe on any input.
   const MAX_URL_LENGTH = 6000
   const marker = "\n... (truncated)"
-  const head = `The Kilo TUI crashed with an unexpected error.\n\n**Error:** ${message}\n\n**Stack trace:**\n`
+  const head = `The Semafour TUI crashed with an unexpected error.\n\n**Error:** ${message}\n\n**Stack trace:**\n`
   const setBody = (body: string) => url.searchParams.set("description", head + "```\n" + body + "\n```")
 
   setBody(stack)

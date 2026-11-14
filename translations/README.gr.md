@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kilo.ai"><img width="250" alt="Kilo Code logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
+  <a href="https://kilo.ai"><img width="250" alt="Semafour logo" src="https://github.com/user-attachments/assets/bdb0c174-b9fd-40ad-a47b-f3aab9b54e8d" /></a>
 </p>
 
 <p align="center">Ο open source agent προγραμματισμού για δημιουργία με AI σε VS Code, JetBrains ή CLI.</p>
@@ -21,18 +21,18 @@
 
 ---
 
-Το Kilo Code είναι ένας AI agent προγραμματισμού που σας συναντά παντού όπου εργάζεστε: [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) και [CLI](https://kilo.ai/cli). Είναι open source με ανοιχτή τιμολόγηση. Επιλέγετε από περισσότερα από 500 μοντέλα, αλλάζετε μεταξύ τους στη μέση μιας εργασίας και πληρώνετε την τιμή του παρόχου του μοντέλου χωρίς προσαύξηση. Δεν απαιτούνται API keys για να ξεκινήσετε.
+Το Semafour είναι ένας AI agent προγραμματισμού που σας συναντά παντού όπου εργάζεστε: [VS Code](https://kilo.ai/landing/vs-code), [JetBrains](https://kilo.ai/features/jetbrains-native) και [CLI](https://kilo.ai/cli). Είναι open source με ανοιχτή τιμολόγηση. Επιλέγετε από περισσότερα από 500 μοντέλα, αλλάζετε μεταξύ τους στη μέση μιας εργασίας και πληρώνετε την τιμή του παρόχου του μοντέλου χωρίς προσαύξηση. Δεν απαιτούνται API keys για να ξεκινήσετε.
 
 ### Εγκατάσταση
 
-Επιλέξτε πού θέλετε να εκτελέσετε το Kilo.
+Επιλέξτε πού θέλετε να εκτελέσετε το Semafour.
 
 <details open>
 <summary><strong>VS Code</strong></summary>
 
 <br>
 
-Εγκαταστήστε απευθείας την [επέκταση Kilo Code](vscode:extension/kilocode.kilo-code) ή κατεβάστε τη από το [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Δημιουργήστε λογαριασμό και θα έχετε πρόσβαση σε περισσότερα από 500 μοντέλα, όπως GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 και Gemini 3.1 Pro Preview, όλα στην τιμή του παρόχου.
+Εγκαταστήστε απευθείας την [επέκταση Semafour](vscode:extension/kilocode.kilo-code) ή κατεβάστε τη από το [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code). Δημιουργήστε λογαριασμό και θα έχετε πρόσβαση σε περισσότερα από 500 μοντέλα, όπως GPT-5.5, Claude Opus 4.7, Claude Sonnet 4.6 και Gemini 3.1 Pro Preview, όλα στην τιμή του παρόχου.
 
 </details>
 
@@ -70,7 +70,7 @@ paru -S kilo-bin
 
 <br>
 
-Εγκαταστήστε το [plugin Kilo Code](https://plugins.jetbrains.com/plugin/28350-kilo-code) από το JetBrains Marketplace ή αναζητήστε "Kilo Code" στο `Settings → Plugins` σε οποιοδήποτε JetBrains IDE.
+Εγκαταστήστε το [plugin Semafour](https://plugins.jetbrains.com/plugin/28350-kilo-code) από το JetBrains Marketplace ή αναζητήστε "Semafour" στο `Settings → Plugins` σε οποιοδήποτε JetBrains IDE.
 
 </details>
 
@@ -79,7 +79,7 @@ paru -S kilo-bin
 
 <br>
 
-Εκτελέστε το Kilo από τον ιστό, χωρίς τοπικό μηχάνημα, στο [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
+Εκτελέστε το Semafour από τον ιστό, χωρίς τοπικό μηχάνημα, στο [app.kilo.ai/cloud](https://app.kilo.ai/cloud).
 
 </details>
 
@@ -111,7 +111,7 @@ paru -S kilo-bin
 
 ### Agents
 
-Το Kilo περιλαμβάνει εξειδικευμένους agents ανάμεσα στους οποίους αλλάζετε ανάλογα με την εργασία. Μπορείτε επίσης να δημιουργήσετε τους δικούς σας custom agents.
+Το Semafour περιλαμβάνει εξειδικευμένους agents ανάμεσα στους οποίους αλλάζετε ανάλογα με την εργασία. Μπορείτε επίσης να δημιουργήσετε τους δικούς σας custom agents.
 
 - **Code** - Ο προεπιλεγμένος. Υλοποιεί και επεξεργάζεται κώδικα από φυσική γλώσσα.
 - **Plan** - Σχεδιάζει αρχιτεκτονική και γράφει πλάνα υλοποίησης πριν γραφτεί κώδικας.
@@ -157,9 +157,9 @@ MIT. Μπορείτε να χρησιμοποιήσετε, να τροποποι
 ### FAQ
 
 <details>
-<summary>Από πού προήλθε το Kilo CLI;</summary>
+<summary>Από πού προήλθε το Semafour CLI;</summary>
 
-Το Kilo CLI είναι fork του [OpenCode](https://github.com/anomalyco/opencode), βελτιωμένο για να λειτουργεί μέσα στην Kilo agentic engineering platform.
+Το Semafour CLI είναι fork του [OpenCode](https://github.com/anomalyco/opencode), βελτιωμένο για να λειτουργεί μέσα στην Semafour agentic engineering platform.
 
 </details>
 

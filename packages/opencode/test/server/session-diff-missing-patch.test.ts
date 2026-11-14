@@ -5,7 +5,7 @@
  * `patch: Schema.String` (required), so any session whose stored
  * `summary_diffs` had a row without `patch` returned HTTP 400 and the
  * session never loaded. // kilocode_change
- * Kilo still surfaces cumulative session diffs to its TUI and VS Code clients. // kilocode_change
+ * Semafour still surfaces cumulative session diffs to its TUI and VS Code clients. // kilocode_change
  *
  * This test inserts a session row with a missing-patch diff entry and
  * asserts that GET /session/<id>/diff returns 200 with the row intact. // kilocode_change

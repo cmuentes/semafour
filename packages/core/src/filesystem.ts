@@ -32,7 +32,7 @@ export type ListInput = typeof ListInput.Type
 
 export { FindInput }
 
-export const DEFAULT_SEARCH_LIMIT = 100 // kilocode_change - preserve bounded Kilo tool searches
+export const DEFAULT_SEARCH_LIMIT = 100 // kilocode_change - preserve bounded Semafour tool searches
 export const MAX_SEARCH_LIMIT = 100 // kilocode_change
 export const SearchLimit = PositiveInt.check(Schema.isLessThanOrEqualTo(MAX_SEARCH_LIMIT)) // kilocode_change
 

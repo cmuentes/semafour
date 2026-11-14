@@ -397,7 +397,7 @@ describe("tool.task", () => {
   )
   // kilocode_change end
 
-  // kilocode_change start - preserve upstream terminal child failure coverage with Kilo's resume hint
+  // kilocode_change start - preserve upstream terminal child failure coverage with Semafour's resume hint
   it.instance("execute surfaces child errors with a resumable task_id", () =>
     Effect.gen(function* () {
       const sessions = yield* Session.Service
@@ -797,7 +797,7 @@ describe("tool.task", () => {
         const child = yield* sessions.get(result.metadata.sessionId)
         expect(child.parentID).toBe(chat.id)
         expect(child.agent).toBe("reviewer")
-        // kilocode_change start — use arrayContaining: Kilo appends inherited caller restrictions
+        // kilocode_change start — use arrayContaining: Semafour appends inherited caller restrictions
         expect(child.permission).toEqual(
           expect.arrayContaining([
             {
@@ -826,7 +826,7 @@ describe("tool.task", () => {
         expect(seen?.tools).toEqual({
           question: false, // kilocode_change - subagents cannot prompt the user directly
           todowrite: false,
-          task: false, // kilocode_change - Kilo disallows nested subagents
+          task: false, // kilocode_change - Semafour disallows nested subagents
           bash: false,
           read: false,
         })

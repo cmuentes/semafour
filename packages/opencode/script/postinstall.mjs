@@ -209,7 +209,7 @@ function main() {
 
   // kilocode_change start
   throw new Error(
-    `It seems your package manager failed to install the right Kilo CLI package. Try manually installing ${packageNames()
+    `It seems your package manager failed to install the right Semafour CLI package. Try manually installing ${packageNames()
       .map((name) => JSON.stringify(name))
       .join(" or ")}. Or download the pre-built binary from the GitHub Releases page.`,
   )

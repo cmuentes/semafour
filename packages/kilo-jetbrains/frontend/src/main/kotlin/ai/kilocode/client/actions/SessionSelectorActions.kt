@@ -13,11 +13,11 @@ import com.intellij.openapi.project.DumbAwareAction
 /**
  * Base for the prompt bar's Ctrl+1/2/3/0 shortcuts (cycle mode / model / reasoning effort, reset the
  * model override). Each subclass reads [PromptDataKeys.SELECTORS] from the data context, so the
- * shortcut works anywhere in a Kilo session (tool window, editor tab, worktree session editor) without
+ * shortcut works anywhere in a Semafour session (tool window, editor tab, worktree session editor) without
  * needing focus on a specific picker.
  *
- * Implements [ActionPromoter] so Kilo wins over IDE actions bound to the same digit shortcuts (notably
- * `GotoBookmark0..3`) while a Kilo session is in the data context — same pattern as [SendPromptAction]
+ * Implements [ActionPromoter] so Semafour wins over IDE actions bound to the same digit shortcuts (notably
+ * `GotoBookmark0..3`) while a Semafour session is in the data context — same pattern as [SendPromptAction]
  * suppressing editor Enter.
  */
 abstract class SelectorAction(text: String, description: String) :
@@ -52,11 +52,11 @@ abstract class SelectorAction(text: String, description: String) :
 }
 
 class CycleModeAction : SelectorAction(
-    KiloBundle.message("action.Kilo.Session.CycleMode.text"),
-    KiloBundle.message("action.Kilo.Session.CycleMode.description"),
+    KiloBundle.message("action.Semafour.Session.CycleMode.text"),
+    KiloBundle.message("action.Semafour.Session.CycleMode.description"),
 ) {
     companion object {
-        const val ID = "Kilo.Session.CycleMode"
+        const val ID = "Semafour.Session.CycleMode"
     }
 
     override fun enabled(ctx: PromptSelectors): Boolean = ctx.mode.canCycle()
@@ -65,11 +65,11 @@ class CycleModeAction : SelectorAction(
 }
 
 class CycleModelAction : SelectorAction(
-    KiloBundle.message("action.Kilo.Session.CycleModel.text"),
-    KiloBundle.message("action.Kilo.Session.CycleModel.description"),
+    KiloBundle.message("action.Semafour.Session.CycleModel.text"),
+    KiloBundle.message("action.Semafour.Session.CycleModel.description"),
 ) {
     companion object {
-        const val ID = "Kilo.Session.CycleModel"
+        const val ID = "Semafour.Session.CycleModel"
     }
 
     override fun enabled(ctx: PromptSelectors): Boolean = ctx.model.canCycle()
@@ -78,11 +78,11 @@ class CycleModelAction : SelectorAction(
 }
 
 class CycleReasoningAction : SelectorAction(
-    KiloBundle.message("action.Kilo.Session.CycleReasoning.text"),
-    KiloBundle.message("action.Kilo.Session.CycleReasoning.description"),
+    KiloBundle.message("action.Semafour.Session.CycleReasoning.text"),
+    KiloBundle.message("action.Semafour.Session.CycleReasoning.description"),
 ) {
     companion object {
-        const val ID = "Kilo.Session.CycleReasoning"
+        const val ID = "Semafour.Session.CycleReasoning"
     }
 
     override fun enabled(ctx: PromptSelectors): Boolean = ctx.reasoning.canCycle()
@@ -91,11 +91,11 @@ class CycleReasoningAction : SelectorAction(
 }
 
 class ResetModelAction : SelectorAction(
-    KiloBundle.message("action.Kilo.Session.ResetModel.text"),
-    KiloBundle.message("action.Kilo.Session.ResetModel.description"),
+    KiloBundle.message("action.Semafour.Session.ResetModel.text"),
+    KiloBundle.message("action.Semafour.Session.ResetModel.description"),
 ) {
     companion object {
-        const val ID = "Kilo.Session.ResetModel"
+        const val ID = "Semafour.Session.ResetModel"
     }
 
     override fun enabled(ctx: PromptSelectors): Boolean = ctx.resettable

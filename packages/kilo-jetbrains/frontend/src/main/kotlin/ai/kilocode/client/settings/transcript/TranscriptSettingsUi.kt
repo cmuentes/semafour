@@ -103,7 +103,7 @@ internal class TranscriptSettingsUi(timers: UiTimerSource = UiTimers) : BorderLa
         // The sample goes straight into the splitter: no label and no insets, so it reads as the chat
         // transcript it mirrors. A SettingsPanel would also cap it at its preferred height.
         val splitter = OnePixelSplitter(true, 0.5f).apply {
-            splitterProportionKey = "Kilo.TranscriptSettings.splitter"
+            splitterProportionKey = "Semafour.TranscriptSettings.splitter"
             firstComponent = controls
             secondComponent = preview
         }

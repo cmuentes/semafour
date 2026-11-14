@@ -2042,7 +2042,7 @@ for (const override of [
       // goal:command instead of being dropped.
       expect(list.map((item) => item.name).includes("goal:command")).toBe(aliased)
 
-      // Dispatch still reaches Kilo's own goal, on the dispatched model, and never
+      // Dispatch still reaches Semafour's own goal, on the dispatched model, and never
       // renders the override's template.
       yield* run.llm.text("Goal complete. All work is done.")
       yield* run.command(objective)

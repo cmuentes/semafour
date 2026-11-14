@@ -57,7 +57,7 @@ abstract class StageBundledCliTask : DefaultTask() {
         val files = PLATFORMS.associateWith { platform ->
             val ext = ext(platform)
             val name = "kilo-$platform.$ext"
-            val digest = assets[name] ?: throw GradleException("Kilo CLI release $ver did not include $name")
+            val digest = assets[name] ?: throw GradleException("Semafour CLI release $ver did not include $name")
             val file = cacheDir.dir(ver).map { it.dir(platform).file(name) }.get().asFile
             fetch(ver, platform, name, digest, file)
             file
@@ -78,11 +78,11 @@ abstract class StageBundledCliTask : DefaultTask() {
 
     private fun assets(ver: String): Map<String, String> {
         val url = "$API/v$ver"
-        logger.lifecycle("Fetching pinned Kilo CLI release metadata from $url")
+        logger.lifecycle("Fetching pinned Semafour CLI release metadata from $url")
         val conn = connect(url)
         try {
             val code = conn.responseCode
-            if (code !in 200..299) fail(conn, code, "Failed to fetch pinned Kilo CLI release metadata")
+            if (code !in 200..299) fail(conn, code, "Failed to fetch pinned Semafour CLI release metadata")
             val body = conn.inputStream.bufferedReader().use { it.readText() }
             return JSON.parseToJsonElement(body).jsonObject["assets"]?.jsonArray
                 ?.associate { item ->
@@ -96,7 +96,7 @@ abstract class StageBundledCliTask : DefaultTask() {
                 ?.mapValues { item ->
                     val digest = item.value
                     if (!digest.matches(DIGEST)) {
-                        throw GradleException("Pinned Kilo CLI release $ver asset ${item.key} has invalid digest")
+                        throw GradleException("Pinned Semafour CLI release $ver asset ${item.key} has invalid digest")
                     }
                     digest
                 }
@@ -110,11 +110,11 @@ abstract class StageBundledCliTask : DefaultTask() {
         if (file.isFile && sum(file) == digest) return
         file.parentFile.mkdirs()
         val url = "https://github.com/Kilo-Org/kilocode/releases/download/v$ver/$name"
-        logger.lifecycle("Downloading pinned Kilo CLI $platform from $url")
+        logger.lifecycle("Downloading pinned Semafour CLI $platform from $url")
         val conn = connect(url)
         try {
             val code = conn.responseCode
-            if (code !in 200..299) fail(conn, code, "Failed to download pinned Kilo CLI $platform")
+            if (code !in 200..299) fail(conn, code, "Failed to download pinned Semafour CLI $platform")
             conn.inputStream.use { input ->
                 file.outputStream().use { output -> input.copyTo(output) }
             }
@@ -166,8 +166,8 @@ abstract class StageBundledCliTask : DefaultTask() {
     private fun verify(file: File, digest: String) {
         val actual = sum(file)
         if (actual == digest) return
-        if (file.exists() && !file.delete()) logger.warn("Failed to delete invalid pinned Kilo CLI archive ${file.absolutePath}")
-        throw GradleException("Pinned Kilo CLI archive digest mismatch for ${file.name}: expected $digest, got $actual")
+        if (file.exists() && !file.delete()) logger.warn("Failed to delete invalid pinned Semafour CLI archive ${file.absolutePath}")
+        throw GradleException("Pinned Semafour CLI archive digest mismatch for ${file.name}: expected $digest, got $actual")
     }
 
     private fun sum(file: File) = "sha256:${sha256(file)}"
@@ -205,7 +205,7 @@ abstract class StageBundledCliTask : DefaultTask() {
             ?.take(500)
         val detail = if (body.isNullOrBlank()) "" else ": $body"
         if (limited(conn, code)) {
-            throw GradleException("GitHub API rate limit exceeded while staging bundled Kilo CLI ($info)$detail")
+            throw GradleException("GitHub API rate limit exceeded while staging bundled Semafour CLI ($info)$detail")
         }
         throw GradleException("$msg: HTTP $code from ${conn.url} ($info)$detail")
     }

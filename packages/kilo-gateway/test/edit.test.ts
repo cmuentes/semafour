@@ -16,7 +16,7 @@ describe("Edit target resolution", () => {
     expect(resolveEditTarget("inception", "mercury-edit-2").provider).toBe("kilo")
   })
 
-  test("routes the Kilo Gateway next-edit model to the gateway proxy", () => {
+  test("routes the Semafour Gateway next-edit model to the gateway proxy", () => {
     const target = resolveEditTarget("kilo", "inception/mercury-next-edit")
     expect(target.provider).toBe("kilo")
     expect(target.model).toBe("inception/mercury-edit-2")

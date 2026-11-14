@@ -184,7 +184,7 @@ const withRestrictedCodeMode = testEffect(
 )
 // kilocode_change end
 
-// kilocode_change start - Code Mode can be enabled from the Kilo config instead of the environment flag
+// kilocode_change start - Code Mode can be enabled from the Semafour config instead of the environment flag
 const weatherMcp = Layer.mock(MCP.Service, {
   tools: () =>
     Effect.succeed({
@@ -408,8 +408,8 @@ describe("tool.registry", () => {
   )
   // kilocode_change end
 
-  // kilocode_change start - the Kilo config toggle enables Code Mode without the environment flag
-  withConfigCodeMode.instance("exposes execute when experimental.code_mode is true in the Kilo config", () =>
+  // kilocode_change start - the Semafour config toggle enables Code Mode without the environment flag
+  withConfigCodeMode.instance("exposes execute when experimental.code_mode is true in the Semafour config", () =>
     Effect.gen(function* () {
       const registry = yield* ToolRegistry.Service
       const agents = yield* Agent.Service

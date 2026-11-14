@@ -1,16 +1,16 @@
 #!/usr/bin/env bun
 /**
- * Transform i18n translation files with Kilo branding
+ * Transform i18n translation files with Semafour branding
  *
  * This script handles i18n files by:
  * 1. Taking upstream's version as the base (to get new translation keys)
- * 2. Applying intelligent string replacements for Kilo branding
+ * 2. Applying intelligent string replacements for Semafour branding
  * 3. Preserving lines marked with `// kilocode_change`
  *
  * String replacement rules:
  * - opencode.ai -> kilo.ai (domain)
  * - app.opencode.ai -> app.kilo.ai (app domain)
- * - OpenCode -> Kilo (product name in user-visible text)
+ * - OpenCode -> Semafour (product name in user-visible text)
  * - opencode upgrade -> kilo upgrade (CLI commands)
  * - npx opencode -> npx kilo (CLI invocation)
  * - anomalyco/opencode -> Kilo-Org/kilocode (GitHub repo)
@@ -114,7 +114,7 @@ const I18N_REPLACEMENTS: StringReplacement[] = [
   // Only replace "OpenCode" when it's a standalone word (not part of opencode.json, etc.)
   {
     pattern: /\bOpenCode\b(?!\.json|\/| Zen)/g,
-    replacement: "Kilo",
+    replacement: "Semafour",
     description: "Product name",
   },
 
@@ -201,7 +201,7 @@ export function transformI18nContent(
       }
     }
 
-    // Kilo branding produced by this transform remains a Kilo-owned delta in shared locale files.
+    // Semafour branding produced by this transform remains a Kilo-owned delta in shared locale files.
     transformedLines.push(markers && lineReplacements > 0 ? `${transformedLine} // kilocode_change` : transformedLine)
     totalReplacements += lineReplacements
   }
@@ -285,7 +285,7 @@ export async function transformAllI18n(options: I18nTransformOptions = {}): Prom
 
 /**
  * Transform i18n files that are in conflict during merge
- * Takes upstream version (theirs) and applies Kilo branding
+ * Takes upstream version (theirs) and applies Semafour branding
  */
 export async function transformConflictedI18n(
   files: string[],
@@ -312,14 +312,14 @@ export async function transformConflictedI18n(
       await $`git add ${file}`.quiet().nothrow()
     }
 
-    // Then apply Kilo branding transformations
+    // Then apply Semafour branding transformations
     const result = await transformI18nFile(file, options)
     results.push(result)
 
     if (options.dryRun) {
       info(`[DRY-RUN] Would take upstream and transform ${file}: ${result.replacements} replacements`)
     } else if (result.replacements > 0) {
-      success(`Transformed ${file}: took upstream + ${result.replacements} Kilo branding replacements`)
+      success(`Transformed ${file}: took upstream + ${result.replacements} Semafour branding replacements`)
     }
   }
 

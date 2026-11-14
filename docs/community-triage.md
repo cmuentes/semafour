@@ -1,6 +1,6 @@
 # Community triage
 
-How we handle pull requests and issues from people outside the Kilo team.
+How we handle pull requests and issues from people outside the Semafour team.
 
 The goal is simple. Maintainers see the community work that matters, and contributors know what happens next.
 
@@ -91,7 +91,7 @@ Set by the workflows:
 | Label | Meaning |
 |---|---|
 | `community` | Author is not a maintainer |
-| `area:vscode`, `area:cli`, `area:agent-manager`, `area:jetbrains`, `area:desktop`, `area:docs`, `area:gateway`, `area:sdk`, `area:ui`, `area:i18n` | Part of the repo. Comes from the title scope (`fix(vscode): ...`), a product name in the title ("Kilo Desktop", "Agent Manager" or "JetBrains"), the changed paths, or the issue "Component" dropdown |
+| `area:vscode`, `area:cli`, `area:agent-manager`, `area:jetbrains`, `area:desktop`, `area:docs`, `area:gateway`, `area:sdk`, `area:ui`, `area:i18n` | Part of the repo. Comes from the title scope (`fix(vscode): ...`), a product name in the title ("Semafour Desktop", "Agent Manager" or "JetBrains"), the changed paths, or the issue "Component" dropdown |
 | `first-time-contributor` | First contribution to this repo. See [First-time contributors](#first-time-contributors) |
 | `quick-win` | Small, low-risk PR. See [Quick wins](#quick-wins) |
 | `priority:p1`, `priority:p2`, `priority:p3` | Set from the title when a community PR opens. See [Priority](#priority) |

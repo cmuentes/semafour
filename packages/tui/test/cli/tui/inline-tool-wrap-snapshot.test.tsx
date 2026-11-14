@@ -225,7 +225,7 @@ async function renderFrame(component: () => JSX.Element, options: { width: numbe
 describe("TUI inline tool wrapping", () => {
   test("falls back for unknown tool names", () => {
     expect(toolDisplay("bash")).toBe("bash")
-    // kilocode_change start - Kilo tools keep their dedicated renderers
+    // kilocode_change start - Semafour tools keep their dedicated renderers
     expect(toolDisplay("background_process")).toBe("background_process")
     expect(toolDisplay("semantic_search")).toBe("semantic_search")
     expect(toolDisplay("suggest")).toBe("suggest")

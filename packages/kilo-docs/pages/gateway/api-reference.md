@@ -1,11 +1,11 @@
 ---
 title: "API Reference"
-description: "Complete API reference for the Kilo AI Gateway, including chat completions, FIM completions, and model listing endpoints."
+description: "Complete API reference for the Semafour AI Gateway, including chat completions, FIM completions, and model listing endpoints."
 ---
 
 # API Reference
 
-The Kilo AI Gateway provides an OpenAI-compatible API. All endpoints use the base URL:
+The Semafour AI Gateway provides an OpenAI-compatible API. All endpoints use the base URL:
 
 ```
 https://ai-gateway.kilo.ai/api/v1
@@ -281,13 +281,13 @@ FIM completions are limited to Mistral models (model IDs starting with `mistrala
 
 ## TypeSafe System One
 
-Route TypeSafe System One requests through the gateway with your Kilo API key. This endpoint is not OpenAI-compatible; use it with the `@typesafe-ai/sdk` client, with its base URL set to `https://ai-gateway.kilo.ai/api` (the SDK appends `/v1/systemone`).
+Route TypeSafe System One requests through the gateway with your Semafour API key. This endpoint is not OpenAI-compatible; use it with the `@typesafe-ai/sdk` client, with its base URL set to `https://ai-gateway.kilo.ai/api` (the SDK appends `/v1/systemone`).
 
 ```
 POST /systemone
 ```
 
-The gateway forwards each request to OpenRouter using the platform credential, so no OpenRouter key is required. Requests are limited to the pinned `typesafe/jev-1.13` model, and an HTTP request that omits the model defaults to it; the bare `jev-1.13` SDK model ID is also accepted. Gateway authentication, rate limits, balance checks, and organization policy apply, and upstream usage is billed to your Kilo account.
+The gateway forwards each request to OpenRouter using the platform credential, so no OpenRouter key is required. Requests are limited to the pinned `typesafe/jev-1.13` model, and an HTTP request that omits the model defaults to it; the bare `jev-1.13` SDK model ID is also accepted. Gateway authentication, rate limits, balance checks, and organization policy apply, and upstream usage is billed to your Semafour account.
 
 ```typescript
 import { TypeSafeClient } from "@typesafe-ai/sdk"

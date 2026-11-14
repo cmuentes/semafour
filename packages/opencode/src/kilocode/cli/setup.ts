@@ -114,7 +114,7 @@ export namespace KiloCli {
       return app!.AppRuntime.runPromise(Auth.Service.use((s) => s.set("kilo", auth)))
     }
 
-    // Migrate legacy Kilo CLI auth (~/.kilocode/cli/config.json) into auth.json if present.
+    // Migrate legacy Semafour CLI auth (~/.kilocode/cli/config.json) into auth.json if present.
     await migrateLegacyKiloAuth(
       async () => (await getAuth()) !== undefined,
       setAuth,

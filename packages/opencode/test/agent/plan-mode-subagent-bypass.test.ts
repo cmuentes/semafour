@@ -160,7 +160,7 @@ it.effect("subagent inherits parent session deny rules as hard runtime ceilings"
   }),
 )
 
-// kilocode_change start - preserve Plan edit/notebook ceilings across Kilo task delegation,
+// kilocode_change start - preserve Plan edit/notebook ceilings across Semafour task delegation,
 // but do NOT project the caller's read-only bash allowlist onto a writable subagent (#11523)
 it.instance("Plan delegation preserves notebook ceilings without projecting bash denies", () =>
   Effect.gen(function* () {

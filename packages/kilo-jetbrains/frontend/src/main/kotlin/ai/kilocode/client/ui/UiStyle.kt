@@ -133,12 +133,12 @@ object UiStyle {
 
         object Primary : Style {
             override fun bg(): Color = JBColor.namedColor(
-                "Kilo.History.activityBadgeBackground",
+                "Semafour.History.activityBadgeBackground",
                 JBUI.CurrentTheme.Link.Foreground.ENABLED,
             )
 
             override fun fg(): Color = JBColor.namedColor(
-                "Kilo.History.activityBadgeForeground",
+                "Semafour.History.activityBadgeForeground",
                 Color.WHITE,
             )
         }
@@ -159,67 +159,67 @@ object UiStyle {
 
         object Highlight : Style {
             override fun bg(): Color = JBColor.namedColor(
-                "Kilo.ModelPicker.freeBadgeBackground",
+                "Semafour.ModelPicker.freeBadgeBackground",
                 JBColor(0x95D6AC, 0x7FCA99),
             )
 
             override fun fg(): Color = JBColor.namedColor(
-                "Kilo.ModelPicker.freeBadgeForeground",
+                "Semafour.ModelPicker.freeBadgeForeground",
                 JBColor.WHITE,
             )
         }
 
         object Alert : Style {
             override fun bg(): Color = JBColor.namedColor(
-                "Kilo.History.runningBadgeBackground",
+                "Semafour.History.runningBadgeBackground",
                 JBColor(0xF5C542, 0x7A5A00),
             )
 
             override fun fg(): Color = JBColor.namedColor(
-                "Kilo.History.runningBadgeForeground",
+                "Semafour.History.runningBadgeForeground",
                 JBColor(Color.BLACK, Color.WHITE),
             )
         }
 
         object ActivityRunning : Style {
             override fun bg(): Color = JBColor.namedColor(
-                "Kilo.Activity.runningBackground",
+                "Semafour.Activity.runningBackground",
                 JBColor(Color(0x55, 0xA7, 0x6A), Color(0x57, 0x96, 0x5C)),
             )
 
             override fun fg(): Color = JBColor.namedColor(
-                "Kilo.Activity.runningForeground",
+                "Semafour.Activity.runningForeground",
                 Color.WHITE,
             )
         }
 
         object ActivityAttention : Style {
             override fun bg(): Color = JBColor.namedColor(
-                "Kilo.Activity.attentionBackground",
+                "Semafour.Activity.attentionBackground",
                 JBColor(Color(0xE6, 0x6D, 0x17), Color(0xC7, 0x7D, 0x55)),
             )
 
             override fun fg(): Color = JBColor.namedColor(
-                "Kilo.Activity.attentionForeground",
+                "Semafour.Activity.attentionForeground",
                 Color.WHITE,
             )
         }
 
         object ActivityError : Style {
             override fun bg(): Color = JBColor.namedColor(
-                "Kilo.Activity.errorBackground",
+                "Semafour.Activity.errorBackground",
                 JBColor(Color(0xE5, 0x57, 0x65), Color(0xDB, 0x5C, 0x5C)),
             )
 
             override fun fg(): Color = JBColor.namedColor(
-                "Kilo.Activity.errorForeground",
+                "Semafour.Activity.errorForeground",
                 Color.WHITE,
             )
         }
 
         object PullRequestOpen : Style {
             private val accent = JBColor.namedColor(
-                "Kilo.PullRequest.openBadgeForeground",
+                "Semafour.PullRequest.openBadgeForeground",
                 JBColor(Color(0x1A, 0x7F, 0x37), Color(0x3F, 0xB9, 0x50)),
             )
 
@@ -230,7 +230,7 @@ object UiStyle {
 
         object PullRequestDraft : Style {
             private val accent = JBColor.namedColor(
-                "Kilo.PullRequest.draftBadgeForeground",
+                "Semafour.PullRequest.draftBadgeForeground",
                 JBColor(Color(0x59, 0x63, 0x6E), Color(0x91, 0x98, 0xA1)),
             )
 
@@ -241,7 +241,7 @@ object UiStyle {
 
         object PullRequestMerged : Style {
             private val accent = JBColor.namedColor(
-                "Kilo.PullRequest.mergedBadgeForeground",
+                "Semafour.PullRequest.mergedBadgeForeground",
                 JBColor(Color(0x82, 0x50, 0xDF), Color(0xA3, 0x71, 0xF7)),
             )
 
@@ -252,7 +252,7 @@ object UiStyle {
 
         object PullRequestClosed : Style {
             private val accent = JBColor.namedColor(
-                "Kilo.PullRequest.closedBadgeForeground",
+                "Semafour.PullRequest.closedBadgeForeground",
                 JBColor(Color(0xCF, 0x22, 0x2E), Color(0xF8, 0x51, 0x49)),
             )
 
@@ -293,7 +293,7 @@ object UiStyle {
         private const val TYPE_FADED_ALPHA = 0.18
 
         private val AGENT_ACCENT = JBColor.namedColor(
-            "Kilo.Marketplace.agentBadgeBackground",
+            "Semafour.Marketplace.agentBadgeBackground",
             JBColor(Color(0x55, 0xA7, 0x6A), Color(0x57, 0x96, 0x5C)),
         )
 
@@ -301,12 +301,12 @@ object UiStyle {
         // tuned to be read as text on the panel, and in dark themes it is light enough that white pill
         // text on it has visibly less contrast than the agent and skill pills.
         private val MCP_ACCENT = JBColor.namedColor(
-            "Kilo.Marketplace.mcpBadgeBackground",
+            "Semafour.Marketplace.mcpBadgeBackground",
             JBColor(Color(0x35, 0x73, 0xD9), Color(0x3E, 0x6D, 0xA8)),
         )
 
         private val SKILL_ACCENT = JBColor.namedColor(
-            "Kilo.Marketplace.skillBadgeBackground",
+            "Semafour.Marketplace.skillBadgeBackground",
             JBColor(Color(0xE6, 0x6D, 0x17), Color(0xC7, 0x7D, 0x55)),
         )
     }
@@ -326,7 +326,7 @@ object UiStyle {
         val runningDark = Color(0xCE, 0xD0, 0xD6)
 
         fun running(): Color = JBColor.namedColor(
-            "Kilo.Activity.runningSpinnerForeground",
+            "Semafour.Activity.runningSpinnerForeground",
             JBColor(runningLight, runningDark),
         )
 
@@ -361,7 +361,7 @@ object UiStyle {
          * a high-contrast base distinct from the standard editor/sidebar background.
          */
         fun floatingPanel(): Color = JBColor.namedColor(
-            "Kilo.FloatingPanel.background",
+            "Semafour.FloatingPanel.background",
             JBColor(java.awt.Color.WHITE, java.awt.Color.BLACK),
         )
 
@@ -377,23 +377,23 @@ object UiStyle {
         fun avatarHue(index: Int): Color = avatarHues[index.mod(avatarHues.size)]()
 
         private val avatarHues: List<() -> Color> = listOf(
-            { JBColor.namedColor("Kilo.Agent.avatarHueBlue", JBColor(0x3574F0, 0x548AF7)) },
-            { JBColor.namedColor("Kilo.Agent.avatarHueOrange", JBColor(0xE66D17, 0xC77D55)) },
-            { JBColor.namedColor("Kilo.Agent.avatarHueGreen", JBColor(0x208A3C, 0x57965C)) },
-            { JBColor.namedColor("Kilo.Agent.avatarHuePurple", JBColor(0x834DF0, 0xB589EC)) },
-            { JBColor.namedColor("Kilo.Agent.avatarHueYellow", JBColor(0xC27D04, 0xD6AE58)) },
-            { JBColor.namedColor("Kilo.Agent.avatarHueTeal", JBColor(0x1A9E77, 0x2FBE96)) },
-            { JBColor.namedColor("Kilo.Agent.avatarHueRed", JBColor(0xDB3B4B, 0xDB5C5C)) },
-            { JBColor.namedColor("Kilo.Agent.avatarHuePink", JBColor(0xC74F4F, 0xE06666)) },
+            { JBColor.namedColor("Semafour.Agent.avatarHueBlue", JBColor(0x3574F0, 0x548AF7)) },
+            { JBColor.namedColor("Semafour.Agent.avatarHueOrange", JBColor(0xE66D17, 0xC77D55)) },
+            { JBColor.namedColor("Semafour.Agent.avatarHueGreen", JBColor(0x208A3C, 0x57965C)) },
+            { JBColor.namedColor("Semafour.Agent.avatarHuePurple", JBColor(0x834DF0, 0xB589EC)) },
+            { JBColor.namedColor("Semafour.Agent.avatarHueYellow", JBColor(0xC27D04, 0xD6AE58)) },
+            { JBColor.namedColor("Semafour.Agent.avatarHueTeal", JBColor(0x1A9E77, 0x2FBE96)) },
+            { JBColor.namedColor("Semafour.Agent.avatarHueRed", JBColor(0xDB3B4B, 0xDB5C5C)) },
+            { JBColor.namedColor("Semafour.Agent.avatarHuePink", JBColor(0xC74F4F, 0xE06666)) },
         )
 
         fun addedForeground(): Color = JBColor.namedColor(
-            "Kilo.DiffStat.addedForeground",
+            "Semafour.DiffStat.addedForeground",
             JBColor(Color(0x1f, 0x9d, 0x66), Color(0x35, 0xd4, 0x9a)),
         )
 
         fun removedForeground(): Color = JBColor.namedColor(
-            "Kilo.DiffStat.removedForeground",
+            "Semafour.DiffStat.removedForeground",
             JBColor(Color(0xdb, 0x58, 0x66), Color(0xff, 0x6b, 0x7a)),
         )
 
@@ -483,7 +483,7 @@ object UiStyle {
         private val TIP = JBValue.UIInteger("HelpTooltip.maxWidth", 250)
 
         /** Width for wrapped body copy in dialogs — wide enough to read, narrow enough to not stretch one. */
-        private val BODY = JBValue.UIInteger("Kilo.Text.bodyWidth", 420)
+        private val BODY = JBValue.UIInteger("Semafour.Text.bodyWidth", 420)
 
         fun tipWidth(): Int = TIP.get()
 

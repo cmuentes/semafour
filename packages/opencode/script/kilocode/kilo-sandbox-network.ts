@@ -15,7 +15,7 @@ export namespace KiloSandboxNetwork {
       format: "esm",
       minify: true,
     })
-    if (!result.success || result.outputs.length !== 1) throw new Error("Could not bundle Kilo sandbox network relay")
+    if (!result.success || result.outputs.length !== 1) throw new Error("Could not bundle Semafour sandbox network relay")
     return result.outputs[0]
   }
 
@@ -32,6 +32,6 @@ export namespace KiloSandboxNetwork {
     const licenses = path.join(dir, "licenses", "sandbox-runtime")
     await fs.mkdir(licenses, { recursive: true })
     await fs.copyFile(path.join(pkg, "LICENSE"), path.join(licenses, "LICENSE"))
-    console.log(`copied Kilo sandbox network relay and seccomp helper to ${dir}`)
+    console.log(`copied Semafour sandbox network relay and seccomp helper to ${dir}`)
   }
 }

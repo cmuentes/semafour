@@ -101,7 +101,7 @@ export function PageFooter() {
           </button>
         </div>
         <p className="footer-note">
-          Kilo has been acquired by Anaconda.{" "}
+          Semafour has been acquired by Anaconda.{" "}
           <a
             href="https://www.anaconda.com/blog/anaconda-acquires-kilo-code"
             target="_blank"

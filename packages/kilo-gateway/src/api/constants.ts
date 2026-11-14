@@ -1,21 +1,21 @@
 /**
- * Kilo Gateway Configuration Constants
+ * Semafour Gateway Configuration Constants
  * Centralized configuration for all API endpoints, headers, and settings
  */
 
-/** Environment variable for custom Kilo API URL */
+/** Environment variable for custom Semafour API URL */
 export const ENV_KILO_API_URL = "KILO_API_URL"
 
-/** Default Kilo API URL */
+/** Default Semafour API URL */
 export const DEFAULT_KILO_API_URL = "https://api.kilo.ai"
 
-/** Base URL for Kilo API - can be overridden by KILO_API_URL env var */
+/** Base URL for Semafour API - can be overridden by KILO_API_URL env var */
 export const KILO_API_BASE = process.env[ENV_KILO_API_URL] || DEFAULT_KILO_API_URL
 
-/** Environment variable for a custom Kilo AI Gateway URL (gateway traffic only) */
+/** Environment variable for a custom Semafour AI Gateway URL (gateway traffic only) */
 export const ENV_KILO_AI_GATEWAY_URL = "KILO_AI_GATEWAY_URL"
 
-/** Default Kilo AI Gateway URL */
+/** Default Semafour AI Gateway URL */
 export const DEFAULT_KILO_AI_GATEWAY_URL = "https://ai-gateway.kilo.ai/api/v1"
 
 /**
@@ -104,7 +104,7 @@ export const HEADER_EDITORNAME = "X-KILOCODE-EDITORNAME"
 export const HEADER_MACHINEID = "X-KILOCODE-MACHINEID"
 
 /** Default editor name value */
-export const DEFAULT_EDITOR_NAME = "Kilo CLI"
+export const DEFAULT_EDITOR_NAME = "Semafour CLI"
 
 /** Environment variable name for custom editor name */
 export const ENV_EDITOR_NAME = "KILOCODE_EDITOR_NAME"

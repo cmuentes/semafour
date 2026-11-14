@@ -52,7 +52,7 @@ describe("descriptor environment", () => {
     expect(env.KILO_AI_GATEWAY_URL).toBeUndefined()
   })
 
-  test("strips ambient Kilo credentials before applying the descriptor", () => {
+  test("strips ambient Semafour credentials before applying the descriptor", () => {
     const previous = process.env.KILO_API_KEY
     process.env.KILO_API_KEY = "ambient-secret"
     try {

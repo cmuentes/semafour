@@ -113,11 +113,11 @@ export function getRecommendation(
   skipFiles: string[] = [],
   currentContent?: string,
 ): { recommendation: ConflictFile["recommendation"]; reason: string } {
-  // Check if file should be skipped entirely (doesn't exist in Kilo, shouldn't be added)
+  // Check if file should be skipped entirely (doesn't exist in Semafour, shouldn't be added)
   if (shouldSkipFile(path, skipFiles)) {
     return {
       recommendation: "skip",
-      reason: "File should be skipped (does not exist in Kilo fork)",
+      reason: "File should be skipped (does not exist in Semafour fork)",
     }
   }
 
@@ -129,7 +129,7 @@ export function getRecommendation(
     }
   }
 
-  // Kilo directories should always keep ours
+  // Semafour directories should always keep ours
   if (
     matches(
       path,
@@ -155,7 +155,7 @@ export function getRecommendation(
     }
     return {
       recommendation: "take-theirs-transform",
-      reason: "Branding-only file: take upstream and apply Kilo branding transforms",
+      reason: "Branding-only file: take upstream and apply Semafour branding transforms",
     }
   }
 
@@ -170,7 +170,7 @@ export function getRecommendation(
       }
       return {
         recommendation: "i18n-transform",
-        reason: "i18n file: take upstream translations and apply Kilo branding",
+        reason: "i18n file: take upstream translations and apply Semafour branding",
       }
     case "script":
       if (currentContent?.includes("kilocode_change")) {
@@ -192,7 +192,7 @@ export function getRecommendation(
       }
       return {
         recommendation: "extension-transform",
-        reason: "Extension file: take upstream and apply Kilo branding",
+        reason: "Extension file: take upstream and apply Semafour branding",
       }
     case "web":
       if (currentContent?.includes("kilocode_change")) {
@@ -203,7 +203,7 @@ export function getRecommendation(
       }
       return {
         recommendation: "web-transform",
-        reason: "Web/docs file: take upstream and apply Kilo branding",
+        reason: "Web/docs file: take upstream and apply Semafour branding",
       }
     case "markdown":
       return {
@@ -219,7 +219,7 @@ export function getRecommendation(
       }
       return {
         recommendation: "package-transform",
-        reason: "Package.json: take upstream, transform names, inject Kilo deps, preserve version",
+        reason: "Package.json: take upstream, transform names, inject Semafour deps, preserve version",
       }
     case "code":
       return {
@@ -331,13 +331,13 @@ export function generateMarkdownReport(report: ConflictReport): string {
 
     const titleMap: Record<ConflictFile["recommendation"], string> = {
       skip: "Skip (Auto-Remove)",
-      "i18n-transform": "i18n Transform (Auto-Apply Kilo Branding)",
-      "take-theirs-transform": "Take Upstream + Kilo Branding (Auto)",
+      "i18n-transform": "i18n Transform (Auto-Apply Semafour Branding)",
+      "take-theirs-transform": "Take Upstream + Semafour Branding (Auto)",
       "package-transform": "Package.json Transform (Auto)",
       "script-transform": "Script Transform (Auto)",
       "extension-transform": "Extension Transform (Auto)",
       "web-transform": "Web/Docs Transform (Auto)",
-      "keep-ours": "Keep Kilo Version (Ours)",
+      "keep-ours": "Keep Semafour Version (Ours)",
       "keep-theirs": "Take Upstream Version (Theirs)",
       codemod: "Apply Codemod",
       manual: "Manual Review Required",

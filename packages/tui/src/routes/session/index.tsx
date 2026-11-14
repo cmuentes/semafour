@@ -1960,7 +1960,7 @@ function ToolPart(props: { last: boolean; part: ToolPart; message: AssistantMess
         <Match when={display() === "grep"}>
           <Grep {...toolprops} />
         </Match>
-        {/* kilocode_change start - preserve Kilo tool-specific status rendering */}
+        {/* kilocode_change start - preserve Semafour tool-specific status rendering */}
         <Match when={display() === "board_post" || display() === "board_read"}>
           <BoardTool part={props.part} block={BlockTool} conceal={ctx.conceal()} />
         </Match>
@@ -2064,7 +2064,7 @@ function GenericTool(props: ToolProps) {
   )
 }
 
-// kilocode_change start - Kilo tool-specific status rendering
+// kilocode_change start - Semafour tool-specific status rendering
 function BackgroundProcess(props: ToolProps) {
   const sync = useSync()
   const paths = usePathFormatter()
@@ -3025,7 +3025,7 @@ const toolDisplays = new Set([
   "todowrite",
   "question",
   "skill",
-  // kilocode_change start - retain dedicated Kilo tool renderers
+  // kilocode_change start - retain dedicated Semafour tool renderers
   "board_post",
   "board_read",
   "execute",

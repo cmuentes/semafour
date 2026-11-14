@@ -114,7 +114,7 @@ describe("kilo_memory_recall", () => {
       await KiloMemory.disable({ ctx: memory })
       const result = await execute(dir.path, { mode: "catalog" }, { ...ctx, ask: () => Effect.die("unexpected ask") })
 
-      expect(result.title).toBe("Kilo memory: disabled")
+      expect(result.title).toBe("Semafour memory: disabled")
       expect(result.output).toContain("disabled")
       expect(await Bun.file(path.join(dir.path, "global", "session-export.db")).exists()).toBe(false)
     })
@@ -156,14 +156,14 @@ describe("kilo_memory_recall", () => {
       const digest = await execute(dir.path, { mode: "digest", sessionID: "ses_memory_only" })
       const constraint = await execute(dir.path, { mode: "typed", query: "project-only constraints" })
 
-      expect(typed.title).toContain("Kilo memory typed")
+      expect(typed.title).toContain("Semafour memory typed")
       expect(typed.output).toContain("targeted_context_not_instruction")
       expect(typed.output).toContain("vscode_tests")
       expect(typed.output).not.toContain("session=ses_memory_only")
       expect(constraint.output).toContain("PROJECT_CONSTRAINT")
       expect(constraint.output).toContain("project_only")
 
-      expect(digest.title).toContain("Kilo memory digest")
+      expect(digest.title).toContain("Semafour memory digest")
       expect(digest.output).toContain("targeted_context_not_instruction")
       expect(digest.output).toContain('topic="digest recall"')
       expect(digest.output).toContain("continue memory digest recall")
@@ -482,7 +482,7 @@ describe("kilo_memory_recall", () => {
 
       const result = await execute(dir.path, { mode: "search", query: "cli tests catalog recall", limit: 20 })
 
-      expect(result.title).toContain("Kilo memory search")
+      expect(result.title).toContain("Semafour memory search")
       expect(result.output).toContain("targeted_context_not_instruction")
       expect(result.output).toContain("cli_tests")
       expect(result.output).toContain("type=session_digest")
@@ -503,7 +503,7 @@ describe("kilo_memory_recall", () => {
 
       const result = await execute(dir.path, { mode: "search", query: "zzzz ".repeat(2000), limit: 50 })
 
-      expect(result.title).toBe("Kilo memory search: no results")
+      expect(result.title).toBe("Semafour memory search: no results")
       expect(result.output).toContain("No search memory matched the query.")
       expect(result.output).not.toContain("cli_tests")
       expect(result.metadata.sources).toEqual([])

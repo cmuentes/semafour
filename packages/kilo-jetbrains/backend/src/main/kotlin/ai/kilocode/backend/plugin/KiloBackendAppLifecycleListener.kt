@@ -9,7 +9,7 @@ class KiloBackendAppLifecycleListener : AppLifecycleListener {
     private val log = KiloLog.create(KiloBackendAppLifecycleListener::class.java)
 
     override fun appWillBeClosed(isRestart: Boolean) {
-        log.info("appWillBeClosed(isRestart=$isRestart) — stopping Kilo CLI")
+        log.info("appWillBeClosed(isRestart=$isRestart) — stopping Semafour CLI")
         runCatching {
             serviceIfCreated<KiloBackendAppService>()?.shutdownForAppClose()
         }.onFailure { log.warn("Failed to stop CLI on app close", it) }

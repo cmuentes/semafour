@@ -1,6 +1,6 @@
 ---
 title: "Agent Permissions"
-description: "Configure Kilo Code agent permission rules for tools, shell commands, files, and subagents"
+description: "Configure Semafour agent permission rules for tools, shell commands, files, and subagents"
 platform: new
 ---
 
@@ -130,7 +130,7 @@ For this command:
 cd "/project"; git status
 ```
 
-Kilo checks the parsed command patterns. The `git status` command matches `git *`, so the request is denied. Directory changes and commands that access paths outside the worktree can also trigger `external_directory` checks.
+Semafour checks the parsed command patterns. The `git status` command matches `git *`, so the request is denied. Directory changes and commands that access paths outside the worktree can also trigger `external_directory` checks.
 
 Built-in read-only agents include additional shell restrictions for write-like patterns such as output redirection, command substitution, pipes, and command chains. If you create your own read-only agent, prefer an explicit deny fallback and allow only the commands you trust:
 
@@ -146,7 +146,7 @@ permission:
 
 ## Sensitive Files
 
-Kilo treats `.env` and `.env.*` reads as sensitive. Broad read approvals, such as `read: allow`, `read: { "*": allow }`, saved wildcard approvals, or allow-everything mode do not bypass the built-in prompt for these files. `.env.example` is treated as safe documentation and can be allowed by default.
+Semafour treats `.env` and `.env.*` reads as sensitive. Broad read approvals, such as `read: allow`, `read: { "*": allow }`, saved wildcard approvals, or allow-everything mode do not bypass the built-in prompt for these files. `.env.example` is treated as safe documentation and can be allowed by default.
 
 Use explicit sensitive-file rules only when you intentionally want that behavior for a specific agent:
 

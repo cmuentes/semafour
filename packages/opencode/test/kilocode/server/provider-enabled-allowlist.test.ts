@@ -98,7 +98,7 @@ function workspace(enabled: string[]) {
   )
 }
 
-it.live("excludes Kilo while staged Kilo auth exists", () =>
+it.live("excludes Semafour while staged Semafour auth exists", () =>
   Effect.gen(function* () {
     yield* stagedAuth()
     yield* offline()
@@ -114,7 +114,7 @@ it.live("excludes Kilo while staged Kilo auth exists", () =>
   }),
 )
 
-it.live("still loads enabled Kilo with staged Kilo auth", () =>
+it.live("still loads enabled Semafour with staged Semafour auth", () =>
   Effect.gen(function* () {
     yield* stagedAuth()
     yield* offline()

@@ -278,7 +278,7 @@ async function bundleKiloSandboxWorker() {
     format: "esm",
     minify: true,
   })
-  if (!result.success || result.outputs.length !== 1) throw new Error("Could not bundle Kilo sandbox mutation worker")
+  if (!result.success || result.outputs.length !== 1) throw new Error("Could not bundle Semafour sandbox mutation worker")
   await Bun.write(kiloSandboxWorkerForBinary(targetBinPath), result.outputs[0])
 }
 

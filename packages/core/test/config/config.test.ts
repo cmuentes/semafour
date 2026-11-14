@@ -248,7 +248,7 @@ describe("Config", () => {
     ),
   )
 
-  // kilocode_change - Kilo keeps loading config.json for released installs (see the names list in config.ts)
+  // kilocode_change - Semafour keeps loading config.json for released installs (see the names list in config.ts)
   it.live("still loads legacy config.json files", () =>
     Effect.acquireRelease(
       Effect.promise(() => tmpdir()),
@@ -764,8 +764,8 @@ describe("Config", () => {
     ),
   )
 
-  // kilocode_change start - V2 config discovery follows Kilo roots and precedence
-  it.live("loads Kilo configuration roots up to the project boundary", () =>
+  // kilocode_change start - V2 config discovery follows Semafour roots and precedence
+  it.live("loads Semafour configuration roots up to the project boundary", () =>
     Effect.acquireRelease(
       Effect.promise(() => tmpdir()),
       (tmp) => Effect.promise(() => tmp[Symbol.asyncDispose]()),

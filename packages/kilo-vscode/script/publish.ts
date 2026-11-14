@@ -43,7 +43,7 @@ console.log(`\nFound ${vsixFiles.length} VSIX files`)
 
 // CRA evidence is checked before the first irreversible Marketplace upload, not
 // after. Marketplace and Open VSX still receive only the VSIX; the sidecars are
-// published to the GitHub release, which is Kilo's SBOM record.
+// published to the GitHub release, which is Semafour's SBOM record.
 const evidence = await verifyEvidence()
 
 const flag = prerelease ? ["--pre-release"] : []

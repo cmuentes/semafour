@@ -20,7 +20,7 @@ type Stream = {
 
 const streams = new Map<string, Stream>()
 let highlighter: ReturnType<typeof createHighlighter> | undefined
-let theme = "Kilo" // kilocode_change - use the Kilo theme supplied during worker initialization
+let theme = "Semafour" // kilocode_change - use the Semafour theme supplied during worker initialization
 const queue = createLatestWorkerQueue<Extract<MarkdownWorkerRequest, { type: "highlight" }>>({
   run: highlight,
   supersede: (request) => post({ type: "superseded", id: request.id, key: request.key }),

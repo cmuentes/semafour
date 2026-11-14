@@ -15,7 +15,7 @@ import org.jdom.Element
  * the platform does for `GotoBookmark1`, which is why that action stays on Ctrl+1 on macOS.
  *
  * Plugin-declared shortcuts are not applied to keymaps in the unit test environment (not even the
- * long-standing `Kilo.SendPrompt` resolves one), so this asserts the shipped descriptor instead of
+ * long-standing `Semafour.SendPrompt` resolves one), so this asserts the shipped descriptor instead of
  * querying [KeymapManager].
  */
 class SessionSelectorShortcutsTest : BasePlatformTestCase() {

@@ -221,7 +221,7 @@ export namespace KiloSessionPrompt {
     if (!prev || prev.info.role !== "user") return
     if (tail.info.parentID !== prev.info.id) return
 
-    // Status is per process: another Kilo process on the same data directory can still be waiting on this reply.
+    // Status is per process: another Semafour process on the same data directory can still be waiting on this reply.
     if (yield* KiloSessionTurn.foreign(input.sessionID)) return
 
     yield* input.sessions.removeMessage({ sessionID: input.sessionID, messageID: tail.info.id })

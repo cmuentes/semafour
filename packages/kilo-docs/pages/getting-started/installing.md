@@ -1,11 +1,11 @@
 ---
 title: "Installation"
-description: "How to install Kilo Code on your system"
+description: "How to install Semafour on your system"
 ---
 
 # Installation
 
-Get started with Kilo Code by installing it on your preferred platform. Choose your development environment below:
+Get started with Semafour by installing it on your preferred platform. Choose your development environment below:
 
 ## Choose Your Platform
 
@@ -14,11 +14,11 @@ Get started with Kilo Code by installing it on your preferred platform. Choose y
 
 ## VS Code Extension
 
-The current Kilo Code extension is built on the [Kilo CLI](https://github.com/Kilo-Org/kilocode) and is distributed as the **pre-release version** on the VS Code Marketplace.
+The current Semafour extension is built on the [Semafour CLI](https://github.com/Kilo-Org/kilocode) and is distributed as the **pre-release version** on the VS Code Marketplace.
 
 1. Open VS Code
 2. Go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
-3. Search for "Kilo Code"
+3. Search for "Semafour"
 4. Click the dropdown arrow next to **Install** and select **Install Pre-Release Version**
 
 {% callout type="info" %}
@@ -31,13 +31,13 @@ The "pre-release" label is a VS Code Marketplace distribution channel — the ex
 
 [Open VSX Registry](https://open-vsx.org/) is an open-source alternative to the VS Code Marketplace for VS Code-compatible editors that cannot access the official marketplace due to licensing restrictions.
 
-For VS Code-compatible editors like VSCodium, Gitpod, Eclipse Theia, and Windsurf, you can browse and install directly from the [Kilo Code page on Open VSX Registry](https://open-vsx.org/extension/kilocode/Kilo-Code).
+For VS Code-compatible editors like VSCodium, Gitpod, Eclipse Theia, and Windsurf, you can browse and install directly from the [Semafour page on Open VSX Registry](https://open-vsx.org/extension/kilocode/Kilo-Code).
 
 1. Open your editor
 2. Access the Extensions view (Side Bar icon or `Ctrl+Shift+X` / `Cmd+Shift+X`)
 3. Your editor should be pre-configured to use Open VSX Registry
-4. Search for "Kilo Code"
-5. Select "Kilo Code" and click **Install**
+4. Search for "Semafour"
+5. Select "Semafour" and click **Install**
 6. Reload the editor if prompted
 
 {% callout type="note" %}
@@ -49,7 +49,7 @@ If your editor isn't automatically configured for Open VSX Registry, you may nee
 If you prefer to download and install the VSIX file directly:
 
 1. **Download the VSIX file:**
-   - Find official releases on the [Kilo Code GitHub Releases page](https://github.com/Kilo-Org/kilocode/releases)
+   - Find official releases on the [Semafour GitHub Releases page](https://github.com/Kilo-Org/kilocode/releases)
    - Download the `.vsix` file from the [latest release](https://github.com/Kilo-Org/kilocode/releases/latest)
 
 2. **Install in VS Code:**
@@ -61,23 +61,23 @@ If you prefer to download and install the VSIX file directly:
 
 If you need to temporarily go back to an earlier version, use the same flow with a `.vsix` asset from an older release:
 
-1. Open the [Kilo Code GitHub Releases page](https://github.com/Kilo-Org/kilocode/releases)
+1. Open the [Semafour GitHub Releases page](https://github.com/Kilo-Org/kilocode/releases)
 2. Pick the release you want to stay on and download its VS Code `.vsix` asset
 3. In VS Code, open Extensions, click the "..." menu, and select "Install from VSIX..."
 4. Choose the downloaded `.vsix` file to install that version
 
 If you plan to remain on that version for a while, you may also want to temporarily disable extension auto-update in VS Code so it does not immediately update again.
 
-{% image src="/docs/img/installing-vsix.png" alt="Installing Kilo Code using VS Code's Install from VSIX dialog" width="600px" caption="Installing Kilo Code using VS Code's \"Install from VSIX\" dialog" /%}
+{% image src="/docs/img/installing-vsix.png" alt="Installing Semafour using VS Code's Install from VSIX dialog" width="600px" caption="Installing Semafour using VS Code's \"Install from VSIX\" dialog" /%}
 
 ## Troubleshooting
 
 **Extension Not Visible**
 
 - Restart VS Code
-- Verify Kilo Code is listed and enabled in Extensions
+- Verify Semafour is listed and enabled in Extensions
 - Try disabling and re-enabling the extension in Extensions
-- Check Output panel for errors (View → Output, select "Kilo Code")
+- Check Output panel for errors (View → Output, select "Semafour")
 
 **Installation Problems**
 
@@ -127,7 +127,7 @@ If you plan to remain on that version for a while, you may also want to temporar
 After installation:
 
 1. **[Set up authentication](/docs/getting-started/setup-authentication)** to configure your AI provider
-2. **[Run your first task](/docs/getting-started/quickstart)** — Learn how to chat with Kilo to complete tasks
+2. **[Run your first task](/docs/getting-started/quickstart)** — Learn how to chat with Semafour to complete tasks
 
 ## Getting Support
 

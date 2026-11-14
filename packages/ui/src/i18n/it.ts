@@ -71,7 +71,7 @@ export const dict: Record<string, string> = {
   "ui.sessionTurn.error.addCredits": "Aggiungi crediti",
   "dialog.usageExceeded.freeTier.title": "Limite gratuito raggiunto",
   "dialog.usageExceeded.freeTier.description":
-    "Abbonati a Kilo Go per 10 $ al mese e accedi in modo affidabile ai migliori modelli open source.", // kilocode_change
+    "Abbonati a Semafour Go per 10 $ al mese e accedi in modo affidabile ai migliori modelli open source.", // kilocode_change
   "dialog.usageExceeded.freeTier.actionLabel": "Iscriviti",
   "dialog.usageExceeded.accountRateLimit.title": "Limite Go raggiunto",
   "dialog.usageExceeded.accountRateLimit.description":
@@ -201,7 +201,7 @@ export const dict: Record<string, string> = {
   "ui.question.singleHint": "Seleziona una risposta",
   "ui.question.custom.placeholder": "Digita la tua risposta...",
 
-  // kilocode_change start - Kilo UI compatibility
+  // kilocode_change start - Semafour UI compatibility
   "ui.mermaid.copyPng": "Copia PNG",
   "ui.mermaid.copySource": "Copia sorgente Mermaid",
   "ui.mermaid.copySvg": "Copia SVG",

@@ -1,14 +1,14 @@
 ---
 title: "Custom Modes"
-description: "Create and configure custom agents in Kilo Code"
+description: "Create and configure custom agents in Semafour"
 ---
 
 # Custom Modes
 
-Kilo Code allows you to create **custom agents** (also called **custom modes**) to tailor Kilo's behavior to specific tasks or workflows. Custom agents can be **global** (available across all projects), **project-specific** (defined within a single project), or **organization-managed** (provided by your Kilo organization).
+Semafour allows you to create **custom agents** (also called **custom modes**) to tailor Semafour's behavior to specific tasks or workflows. Custom agents can be **global** (available across all projects), **project-specific** (defined within a single project), or **organization-managed** (provided by your Semafour organization).
 
 {% callout type="info" %}
-The current VS Code extension (built on the Kilo CLI) uses **agent Markdown files** to define custom agents. The legacy extension used `custom_modes.yaml` / `.kilocodemodes`. See the tabs below for the relevant approach.
+The current VS Code extension (built on the Semafour CLI) uses **agent Markdown files** to define custom agents. The legacy extension used `custom_modes.yaml` / `.kilocodemodes`. See the tabs below for the relevant approach.
 {% /callout %}
 
 ## Why use custom agents? {% #why-use-custom-modes %}
@@ -21,7 +21,7 @@ The current VS Code extension (built on the Kilo CLI) uses **agent Markdown file
 
 ## Organization-managed agents {% #organization-managed-custom-modes %}
 
-If your Kilo organization provides custom modes, the VS Code extension and CLI load them as organization-sourced agents. They appear alongside built-in and personal agents in the agent picker.
+If your Semafour organization provides custom modes, the VS Code extension and CLI load them as organization-sourced agents. They appear alongside built-in and personal agents in the agent picker.
 
 Organization-managed agents are controlled at the organization level:
 
@@ -29,7 +29,7 @@ Organization-managed agents are controlled at the organization level:
 - Individual members cannot remove organization-managed agents from their local agent list. Changes need to be made in the organization-managed definition.
 - Organization-managed agents are useful for shared prompts, instructions, and tool access expectations that should stay consistent across a team.
 
-For organization members, contact the person or team that manages Kilo for your organization if an organization agent appears unexpectedly, needs different instructions, or needs different tool access. For admins and support teams, keep the purpose and owner of each organization-managed agent clear so members know when to use it and where to request changes.
+For organization members, contact the person or team that manages Semafour for your organization if an organization agent appears unexpectedly, needs different instructions, or needs different tool access. For admins and support teams, keep the purpose and owner of each organization-managed agent clear so members know when to use it and where to request changes.
 
 {% tabs %}
 {% tab label="VSCode" %}
@@ -55,15 +55,15 @@ In the VSCode extension and CLI, custom behavioral profiles are called **agents*
 
 ## Methods for Creating and Configuring Agents
 
-### 1. Ask Kilo! (Recommended)
+### 1. Ask Semafour! (Recommended)
 
-Ask Kilo to create an agent for you:
+Ask Semafour to create an agent for you:
 
 ```
 Create a new agent called "docs-writer" that can only read files and edit Markdown files.
 ```
 
-Kilo will generate the agent definition and write it to `.kilo/agent/` in your project.
+Semafour will generate the agent definition and write it to `.kilo/agent/` in your project.
 
 ### 2. Using the Settings UI
 
@@ -286,15 +286,15 @@ In the CLI, custom behavioral profiles are called **agents** instead of modes. A
 
 ## Methods for Creating and Configuring Agents
 
-### 1. Ask Kilo! (Recommended)
+### 1. Ask Semafour! (Recommended)
 
-Ask Kilo to create an agent for you:
+Ask Semafour to create an agent for you:
 
 ```
 Create a new agent called "docs-writer" that can only read files and edit Markdown files.
 ```
 
-Kilo will generate the agent definition and write it to `.kilo/agent/` in your project.
+Semafour will generate the agent definition and write it to `.kilo/agent/` in your project.
 
 ### 2. Using `kilo agent create`
 
@@ -520,7 +520,7 @@ Agents use ordered permission rules with glob patterns. Each rule can `allow`, `
 This example prevents the agent from editing files by default while allowing Markdown files and everything under `docs/`. Define rules for other tools such as `read` and `bash` when an agent needs different access per operation.
 
 {% callout type="tip" %}
-Ask Kilo to create or validate permission glob patterns when you need more complex file restrictions.
+Ask Semafour to create or validate permission glob patterns when you need more complex file restrictions.
 {% /callout %}
 
 ## Example Configurations

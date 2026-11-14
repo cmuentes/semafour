@@ -434,7 +434,7 @@ class SessionUi(
         sink[SessionActionsKeys.ACTIONS] = this
         // The prompt panel is a sibling of the transcript, so its own SendPromptContext only resolves
         // for clicks inside it. Republish here — SessionUi is an ancestor of the whole session — so
-        // the reused Kilo.StopSession action works from any right-click. Nearest-provider-wins keeps
+        // the reused Semafour.StopSession action works from any right-click. Nearest-provider-wins keeps
         // PromptPanel authoritative inside its own subtree, and both publish the same instance anyway.
         if (this::prompt.isInitialized) {
             sink[PromptDataKeys.SEND] = prompt
@@ -1113,7 +1113,7 @@ class SessionUi(
             val mentioned = hosted && files.isEmpty() && withContext(Dispatchers.IO) { hostedFileMentions(text) }
             if (hosted && (files.isNotEmpty() || mentioned)) {
                 com.intellij.notification.Notification(
-                    "Kilo Code",
+                    "Semafour",
                     KiloBundle.message("hosted.prompt.textOnly"),
                     com.intellij.notification.NotificationType.WARNING,
                 ).notify(project)

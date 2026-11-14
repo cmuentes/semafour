@@ -26,7 +26,7 @@ export function buildRequestHeaders(defaultHeaders: Record<string, string>, requ
  *
  * @example
  * ```typescript
- * const provider = createKilo({
+ * const provider = createSemafour({
  *   kilocodeToken: "your-token-here",
  *   kilocodeOrganizationId: "org-123"
  * })
@@ -34,7 +34,7 @@ export function buildRequestHeaders(defaultHeaders: Record<string, string>, requ
  * const model = provider.languageModel("anthropic/claude-sonnet-4")
  * ```
  */
-export function createKilo(options: KiloProviderOptions = {}): KiloProvider {
+export function createSemafour(options: KiloProviderOptions = {}): KiloProvider {
   // Get API key from options or environment
   const apiKey = getApiKey(options)
 

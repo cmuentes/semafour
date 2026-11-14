@@ -207,7 +207,7 @@ internal class AgentEditDialog(
 
     override fun getPreferredFocusedComponent(): JComponent = description
 
-    override fun getDimensionServiceKey(): String = "Kilo.AgentEditDialog"
+    override fun getDimensionServiceKey(): String = "Semafour.AgentEditDialog"
 
     override fun doValidateAll(): List<ValidationInfo> = listOfNotNull(
         validateMode(),
@@ -348,9 +348,9 @@ internal class AgentEditDialog(
     private fun notify(type: NotificationType, title: String, content: String? = null) {
         ApplicationManager.getApplication().invokeLater {
             val notification = NotificationGroupManager.getInstance()
-                .getNotificationGroup("Kilo Code")
+                .getNotificationGroup("Semafour")
                 ?.createNotification(title, content.orEmpty(), type)
-                ?: Notification("Kilo Code", title, content.orEmpty(), type)
+                ?: Notification("Semafour", title, content.orEmpty(), type)
             notification.notify(ProjectManager.getInstance().openProjects.firstOrNull { !it.isDefault })
         }
     }

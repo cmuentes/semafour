@@ -81,7 +81,7 @@ class WorktreeSessionEditorPanel @RequiresEdt constructor(
     private val add = NewAction()
     private val rename = RenameAction()
     private val delete = DeleteAction()
-    private val group = ActionManager.getInstance().getAction("Kilo.WorktreeSession.RowMenu") as? ActionGroup ?: DefaultActionGroup()
+    private val group = ActionManager.getInstance().getAction("Semafour.WorktreeSession.RowMenu") as? ActionGroup ?: DefaultActionGroup()
     private val run = if (project != null && worktree.directory.isNotBlank()) {
         WorktreeRunControl(project, this, worktree.directory, frame = ::openInNewFrame)
     } else {

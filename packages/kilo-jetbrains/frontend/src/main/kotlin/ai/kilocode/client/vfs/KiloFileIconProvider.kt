@@ -12,7 +12,7 @@ import javax.swing.Icon
  *
  * [KiloVirtualFile] only overrides [KiloVirtualFile.getFileType], not an icon — `VirtualFile` has no
  * `getIcon()` to override. Icon resolution instead goes through the public [FileIconProvider]
- * extension point (queried before the file-type fallback), so without this provider every Kilo tab
+ * extension point (queried before the file-type fallback), so without this provider every Semafour tab
  * falls back to `FileTypes.UNKNOWN`'s generic icon regardless of what a kind's `icon()` returns.
  *
  * Matches via [kiloPath] rather than `is KiloVirtualFile`, so a split-mode protocol/proxy file for

@@ -41,7 +41,7 @@ import org.w3c.dom.Element
 class RefreshHostedWorkspaceActionTest : BasePlatformTestCase() {
     companion object {
         private const val WAIT = 5_000L
-        private const val ID = "Kilo.HostedWorkspace.Refresh"
+        private const val ID = "Semafour.HostedWorkspace.Refresh"
         private const val REMOTE = "https://example.test/owner/repository"
     }
 
@@ -170,7 +170,7 @@ class RefreshHostedWorkspaceActionTest : BasePlatformTestCase() {
         assertNull(declared.attribute("text"))
         assertNull(declared.attribute("description"))
         assertTrue(descriptor.elements("reference").any {
-            it.attribute("ref") == ID && (it.parentNode as? Element)?.attribute("id") == "Kilo.Worktree.RowMenu"
+            it.attribute("ref") == ID && (it.parentNode as? Element)?.attribute("id") == "Semafour.Worktree.RowMenu"
         })
         assertEquals("Refresh", KiloBundle.optional("action.$ID.text"))
         assertFalse(KiloBundle.optional("action.$ID.description").isNullOrBlank())

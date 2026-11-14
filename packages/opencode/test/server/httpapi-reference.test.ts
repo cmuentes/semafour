@@ -97,7 +97,7 @@ describe("reference HttpApi", () => {
   })
   // kilocode_change end
 
-  // kilocode_change start - direct clients must observe effective Kilo config before Agent initialization.
+  // kilocode_change start - direct clients must observe effective Semafour config before Agent initialization.
   test("lists KILO_CONFIG_CONTENT references with metadata on the first request", async () => {
     const previous = process.env.KILO_CONFIG_CONTENT
     process.env.KILO_CONFIG_CONTENT = JSON.stringify({

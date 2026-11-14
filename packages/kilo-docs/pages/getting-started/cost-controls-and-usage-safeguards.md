@@ -7,7 +7,7 @@ description: "How to prevent runaway agent usage, reduce token consumption, choo
 
 ## Overview
 
-How much you spend with Kilo Code is shaped by several factors working together:
+How much you spend with Semafour is shaped by several factors working together:
 
 - **Model selection** — frontier models cost significantly more per token than efficient or free tiers
 - **Prompt and context size** — every token in your system prompt, conversation history, file attachments, and tool definitions is billed as input
@@ -18,7 +18,7 @@ How much you spend with Kilo Code is shaped by several factors working together:
 
 No single control eliminates cost on its own. The most effective approach combines model selection, context management, task scope, and account-level monitoring together.
 
-This page covers the controls currently available in Kilo Code. For a direct overview of Auto Model tiers and token optimization tips, see [Cost Efficiency & Model Selection](/docs/getting-started/rate-limits-and-costs).
+This page covers the controls currently available in Semafour. For a direct overview of Auto Model tiers and token optimization tips, see [Cost Efficiency & Model Selection](/docs/getting-started/rate-limits-and-costs).
 
 ---
 
@@ -26,7 +26,7 @@ This page covers the controls currently available in Kilo Code. For a direct ove
 
 ### Doom loop protection
 
-When the agent enters a repeated failure cycle — attempting the same action multiple times without making progress — Kilo pauses and asks for permission before continuing. This is controlled by the `doom_loop` permission, which defaults to `ask`.
+When the agent enters a repeated failure cycle — attempting the same action multiple times without making progress — Semafour pauses and asks for permission before continuing. This is controlled by the `doom_loop` permission, which defaults to `ask`.
 
 **Where to configure:** Settings → Auto Approve (VS Code) or the `permission.doom_loop` key in `kilo.jsonc` (CLI).
 
@@ -34,7 +34,7 @@ When the agent enters a repeated failure cycle — attempting the same action mu
 
 ### Per-tool approval controls
 
-Every action Kilo takes — reading files, editing code, running shell commands, launching sub-agents — is governed by the permission system. Each tool can be set to `allow`, `ask`, or `deny`. When set to `ask`, Kilo pauses before executing and you can approve or reject that specific action.
+Every action Semafour takes — reading files, editing code, running shell commands, launching sub-agents — is governed by the permission system. Each tool can be set to `allow`, `ask`, or `deny`. When set to `ask`, Semafour pauses before executing and you can approve or reject that specific action.
 
 **Where to configure:** Settings → Auto Approve (VS Code) or the `permission` section in `kilo.jsonc` (CLI). See [Auto-Approving Actions](/docs/getting-started/settings/auto-approving-actions) for the full list of available permissions.
 
@@ -42,7 +42,7 @@ Every action Kilo takes — reading files, editing code, running shell commands,
 
 ### Runtime auto-approve toggle (VS Code)
 
-A shield button in the prompt controls lets you toggle auto-approve on and off at runtime without opening Settings. When enabled, pending permission prompts are approved automatically. The state stays synced across the sidebar and open Kilo tabs.
+A shield button in the prompt controls lets you toggle auto-approve on and off at runtime without opening Settings. When enabled, pending permission prompts are approved automatically. The state stays synced across the sidebar and open Semafour tabs.
 
 **When to use:** Turn it on when working on a well-understood, low-risk task that does not need step-by-step review. Turn it off as soon as you want to pause and review the agent's next actions.
 
@@ -63,9 +63,9 @@ Two rule kinds are available, and you can switch each one on or off on its own:
 - **Spending limit** — fires when spend in a rolling 24-hour, 7-day, or 30-day window crosses the limit you set.
 - **Spend spike** — fires when one hour's spend runs a set multiple (1x to 50x) above the scope's usual rate, taken from the previous 14 days of hourly usage. The rule stays quiet until the scope has a day of history.
 
-Each rule can send by email to the scope's billing contacts and by push to a signed-in Kilo mobile app. Push needs the app installed and its **Spend alerts** notification category on; in the mobile app, spend alerts are their own category, so you can turn them off without silencing agent notifications.
+Each rule can send by email to the scope's billing contacts and by push to a signed-in Semafour mobile app. Push needs the app installed and its **Spend alerts** notification category on; in the mobile app, spend alerts are their own category, so you can turn them off without silencing agent notifications.
 
-**Where to configure:** the spend view at [app.kilo.ai](https://app.kilo.ai), or the same view in the Kilo mobile app. For an organization, owners, admins, and billing managers can manage the alerts.
+**Where to configure:** the spend view at [app.kilo.ai](https://app.kilo.ai), or the same view in the Semafour mobile app. For an organization, owners, admins, and billing managers can manage the alerts.
 
 ### Free model rate limits
 
@@ -97,7 +97,7 @@ Attaching an entire folder sends every file in it as input tokens, even if only 
 
 ### Exclude generated, build, and vendor directories
 
-Kilo automatically skips a set of directories including `node_modules`, `dist`, `build`, `.git`, `__pycache__`, `.cache`, and `vendor`. You can add additional paths using **permission deny rules** in `kilo.jsonc` or using a `.kilocodeignore` file at your workspace root.
+Semafour automatically skips a set of directories including `node_modules`, `dist`, `build`, `.git`, `__pycache__`, `.cache`, and `vendor`. You can add additional paths using **permission deny rules** in `kilo.jsonc` or using a `.kilocodeignore` file at your workspace root.
 
 ```jsonc
 {
@@ -115,9 +115,9 @@ Kilo automatically skips a set of directories including `node_modules`, `dist`, 
 
 ### Compact long conversations
 
-When a conversation grows long, use `/compact` in the chat (also searchable as `smol` or `condense`) to summarize the history and free up context space. Kilo replaces older conversation turns with an anchored summary that captures your goal, constraints, progress, and next steps.
+When a conversation grows long, use `/compact` in the chat (also searchable as `smol` or `condense`) to summarize the history and free up context space. Semafour replaces older conversation turns with an anchored summary that captures your goal, constraints, progress, and next steps.
 
-Auto-compaction is **enabled by default** — Kilo automatically compacts when approaching the context window limit so you do not need to intervene manually.
+Auto-compaction is **enabled by default** — Semafour automatically compacts when approaching the context window limit so you do not need to intervene manually.
 
 **Where to configure:** Toggle auto-compaction in **Settings → Context** (VS Code) or set `compaction.auto` in `kilo.jsonc`. Configure the trigger threshold with `compaction.threshold_percent` (e.g. `80` to compact at 80% of the model's context window).
 
@@ -139,7 +139,7 @@ See [Context Condensing](/docs/customize/context/context-condensing) for full co
 
 Every token you allocate to model output reduces how much conversation history can remain in the context window. For routine coding tasks, keep Code mode at **16k max output tokens or below**. Raise the limit only in Architect or Debug modes where extended reasoning is useful.
 
-**Where to configure:** Model settings in the Kilo Code UI, or the `limit.output` key in custom model configuration.
+**Where to configure:** Model settings in the Semafour UI, or the `limit.output` key in custom model configuration.
 
 ### Use project instructions efficiently
 
@@ -153,14 +153,14 @@ See [MCP Overview](/docs/automate/mcp/overview) for details.
 
 ### Prompt caching
 
-Kilo automatically applies prompt caching on supported providers. Repeated context — your system prompt, stable file contents, and tool definitions — is reused from cache at a discounted rate. No configuration is required to benefit from this.
+Semafour automatically applies prompt caching on supported providers. Repeated context — your system prompt, stable file contents, and tool definitions — is reused from cache at a discounted rate. No configuration is required to benefit from this.
 
 ---
 
 ## Choosing Models for Specific Tasks
 
 Different tasks benefit from different model characteristics. Routing work to the right model reduces cost without sacrificing quality.
-Kilo has auto-models that can help you control costs; more information is available in [Auto Model](/docs/code-with-ai/agents/auto-model).
+Semafour has auto-models that can help you control costs; more information is available in [Auto Model](/docs/code-with-ai/agents/auto-model).
 
 ### Practical examples by task type
 
@@ -176,7 +176,7 @@ Kilo has auto-models that can help you control costs; more information is availa
 
 ### Manually selecting a model
 
-Use the **model selector dropdown** in the Kilo Code chat interface to switch models for the current session. In the CLI, pass the `--model` flag to `kilo run` or use the model picker in the TUI (`Ctrl+X m` or `/models`).
+Use the **model selector dropdown** in the Semafour chat interface to switch models for the current session. In the CLI, pass the `--model` flag to `kilo run` or use the model picker in the TUI (`Ctrl+X m` or `/models`).
 
 ### Configuring a model per agent or mode
 
@@ -310,7 +310,7 @@ This configuration uses only `kilo-auto/efficient`.
   "$schema": "https://app.kilo.ai/config.json",
 
   // ── Model selection ──────────────────────────────────────────────────────
-  // Route all requests through the two lowest-cost Kilo Auto tiers.
+  // Route all requests through the two lowest-cost Semafour Auto tiers.
   // kilo-auto/efficient: lowest-cost paid tier (classifies each request by
   //   difficulty and routes to the cheapest benchmark-proven model).
   "model": "kilo-auto/efficient",
@@ -375,7 +375,7 @@ This configuration uses only `kilo-auto/efficient`.
   },
 
   // ── Permission safeguards ────────────────────────────────────────────────
-  // "ask" means Kilo pauses and requires your approval before executing.
+  // "ask" means Semafour pauses and requires your approval before executing.
   // This prevents runaway loops from autonomously consuming tokens or making
   // irreversible changes. Flip individual entries to "allow" once you trust them.
   "permission": {

@@ -104,7 +104,7 @@ describe("session routed model", () => {
     expect(KiloRoutedModel.displayName("o3")).toBe("o3")
   })
 
-  test("shows compact labels only for Kilo auto selections", () => {
+  test("shows compact labels only for Semafour auto selections", () => {
     const model = { providerID: "openai", modelID: "gpt-5.5" }
     const parts = [reason, finish(model)]
 
@@ -170,7 +170,7 @@ describe("session routed model", () => {
     expect(routed.consumed.has("last")).toBe(false)
   })
 
-  test("reads routed model only for selected Kilo auto models", () => {
+  test("reads routed model only for selected Semafour auto models", () => {
     const meta = { kilocode: { routedModelID: "openai/gpt-5.5-20260423" } }
 
     expect(

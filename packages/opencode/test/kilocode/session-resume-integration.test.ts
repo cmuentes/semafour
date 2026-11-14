@@ -540,7 +540,7 @@ it.instance(
       expect(Exit.isFailure(exit)).toBe(true)
       if (Exit.isFailure(exit)) {
         const msg = JSON.stringify(exit.cause)
-        expect(msg).toContain("new Kilo session")
+        expect(msg).toContain("new Semafour session")
       }
     }),
   { config: cfg },
@@ -1149,7 +1149,7 @@ it.instance(
       const exit = yield* Effect.exit(SessionResumeImport.fromContent({ sessionID: chat.id, content, agent: "build" }))
       expect(Exit.isFailure(exit)).toBe(true)
       if (Exit.isFailure(exit)) {
-        expect(JSON.stringify(exit.cause)).toContain("new Kilo session")
+        expect(JSON.stringify(exit.cause)).toContain("new Semafour session")
       }
 
       const msgs = yield* sessions.messages({ sessionID: chat.id })
@@ -1397,7 +1397,7 @@ it.instance(
 // ── SessionResumeImport.migrate (migration endpoint logic) ────────────────
 //
 // The HTTP endpoint (POST /kilocode/migrate/sessions) delegates to
-// SessionResumeImport.migrate, which re-discovers server-side, creates one Kilo
+// SessionResumeImport.migrate, which re-discovers server-side, creates one Semafour
 // session per transcript, and records the source on the created session so a
 // second call skips it. These tests drive it through the ResumeRoots seam.
 

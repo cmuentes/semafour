@@ -52,7 +52,7 @@ export function resolveWebAppOrigin(env: CloudEnvironment = process.env) {
 }
 
 /**
- * Kilo API base used for authenticated account surfaces such as profile
+ * Semafour API base used for authenticated account surfaces such as profile
  * summaries. Kept separate from the Cloud Agent worker origin.
  */
 export function resolveKiloApiOrigin(env: CloudEnvironment = process.env) {

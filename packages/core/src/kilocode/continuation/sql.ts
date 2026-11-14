@@ -6,7 +6,7 @@ import { integer, primaryKey, sqliteTable, text } from "drizzle-orm/sqlite-core"
  * and restart posts the same body without recomputing branch, model, or variant.
  *
  * The row never stores a token, API key, refresh token, cookie, auth seal, or
- * credential hash. `account_id` is the Kilo `user.id`, which is not a UUID.
+ * credential hash. `account_id` is the Semafour `user.id`, which is not a UUID.
  */
 export const ContinuationIntentTable = sqliteTable(
   "kilo_continuation_intent",

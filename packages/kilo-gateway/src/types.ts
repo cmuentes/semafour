@@ -59,7 +59,7 @@ export interface PollResult<T> {
 // ============================================================================
 
 /**
- * Options for creating a Kilo provider instance
+ * Options for creating a Semafour provider instance
  */
 export interface KiloProviderOptions {
   /**
@@ -83,7 +83,7 @@ export interface KiloProviderOptions {
   openRouterSpecificProvider?: string
 
   /**
-   * Base URL for Kilo Gateway traffic
+   * Base URL for Semafour Gateway traffic
    * Defaults to KILO_AI_GATEWAY_URL, or `${KILO_API_URL}/api/gateway/v1` when only KILO_API_URL is set
    * @default "https://ai-gateway.kilo.ai/api/v1"
    */

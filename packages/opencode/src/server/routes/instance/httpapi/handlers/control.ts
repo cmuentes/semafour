@@ -21,7 +21,7 @@ export const controlHandlers = HttpApiBuilder.group(RootHttpApi, "control", (han
       payload: Auth.Info
     }) {
       yield* auth.set(ctx.params.providerID, ctx.payload).pipe(Effect.orDie)
-      // kilocode_change start - drop old presence socket before instance disposal on Kilo auth changes
+      // kilocode_change start - drop old presence socket before instance disposal on Semafour auth changes
       if (ctx.params.providerID === "kilo") yield* invalidatePresence()
       yield* invalidateAfterProviderAuthChange(ctx.params.providerID)
       // kilocode_change end

@@ -219,7 +219,7 @@ describe("registerCodeActions", () => {
     expect(state.posts).toEqual([{ type: "action", action: "showOpenTabs" }])
   })
 
-  it("shows open tabs in the active Kilo editor tab without revealing the sidebar", async () => {
+  it("shows open tabs in the active Semafour editor tab without revealing the sidebar", async () => {
     const state = setup(false, true, undefined, true)
 
     await state.commands.get("kilo-code.new.showOpenTabs")?.()
@@ -230,7 +230,7 @@ describe("registerCodeActions", () => {
     expect(state.posts).toEqual([{ type: "action", action: "showOpenTabs" }])
   })
 
-  it("prefers the last focused sidebar over an active Kilo editor tab", async () => {
+  it("prefers the last focused sidebar over an active Semafour editor tab", async () => {
     const state = setup(false, true, "sidebar", true)
 
     await state.commands.get("kilo-code.new.showOpenTabs")?.()

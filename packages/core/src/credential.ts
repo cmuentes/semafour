@@ -106,7 +106,7 @@ export interface Interface {
 
 export class Service extends Context.Service<Service, Interface>()("@opencode/v2/Credential") {}
 
-// kilocode_change start - preserve Kilo's account JSON stores and reconcile auth.json on every startup
+// kilocode_change start - preserve Semafour's account JSON stores and reconcile auth.json on every startup
 export const legacyImportLayer = Layer.effectDiscard(
   Effect.gen(function* () {
     const { db } = yield* Database.Service
@@ -223,7 +223,7 @@ export const legacyImportLayer = Layer.effectDiscard(
 )
 // kilocode_change end
 
-// kilocode_change - retained for Kilo migration and compatibility test layers
+// kilocode_change - retained for Semafour migration and compatibility test layers
 export const layer = Layer.effect(
   Service,
   Effect.gen(function* () {

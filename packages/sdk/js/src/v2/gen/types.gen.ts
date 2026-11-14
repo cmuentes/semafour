@@ -2599,7 +2599,7 @@ export type Config = {
   indexing?: IndexingConfig
   console?: {
     /**
-     * Width of the Kilo Console project context sidebar in pixels
+     * Width of the Semafour Console project context sidebar in pixels
      */
     context_sidebar_width?: number
     diff_style?: "unified" | "split"
@@ -16842,7 +16842,7 @@ export type IndexingModelsError = IndexingModelsErrors[keyof IndexingModelsError
 
 export type IndexingModelsResponses = {
   /**
-   * Kilo embedding model catalog
+   * Semafour embedding model catalog
    */
   200: KiloEmbeddingModelCatalog
 }
@@ -16982,7 +16982,7 @@ export type KiloAuthStatusError = KiloAuthStatusErrors[keyof KiloAuthStatusError
 
 export type KiloAuthStatusResponses = {
   /**
-   * Kilo authentication status
+   * Semafour authentication status
    */
   200: {
     authenticated: boolean

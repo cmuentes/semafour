@@ -1,11 +1,11 @@
 ---
 title: "Quickstart"
-description: "Sign in, open a workspace, and start your first agentic session in Kilo Desktop."
+description: "Sign in, open a workspace, and start your first agentic session in Semafour Desktop."
 ---
 
 # Quickstart
 
-This guide walks you through your first session in Kilo Desktop. If you haven't installed the app yet, see [Installation](/docs/desktop/installation).
+This guide walks you through your first session in Semafour Desktop. If you haven't installed the app yet, see [Installation](/docs/desktop/installation).
 
 ## Complete onboarding
 
@@ -13,19 +13,19 @@ On first launch, a short setup wizard walks you through the setup steps.
 
 ### 1. Review the terms of service
 
-Review and accept Kilo's [terms of service](https://kilo.ai/terms). You need to accept them before you can use the app.
+Review and accept Semafour's [terms of service](https://kilo.ai/terms). You need to accept them before you can use the app.
 
-### 2. Connect to Kilo
+### 2. Connect to Semafour
 
-Sign in to your **Kilo account** to use frontier models, credits, and organization settings through the [Kilo Gateway](/docs/gateway). You can skip this step and connect later from [Settings](/docs/desktop/settings/ai#ai-providers). 
+Sign in to your **Semafour account** to use frontier models, credits, and organization settings through the [Semafour Gateway](/docs/gateway). You can skip this step and connect later from [Settings](/docs/desktop/settings/ai#ai-providers). 
 
 {% callout type="note" %}
-A Kilo account is also required to use [conda environments](/docs/desktop/features/environments), the [local model server](/docs/desktop/features/local-inference), and [notebooks](/docs/desktop/features/notebooks). You can sign in during onboarding or later from the **Account** section in [Settings](/docs/desktop/settings/general#account).
+A Semafour account is also required to use [conda environments](/docs/desktop/features/environments), the [local model server](/docs/desktop/features/local-inference), and [notebooks](/docs/desktop/features/notebooks). You can sign in during onboarding or later from the **Account** section in [Settings](/docs/desktop/settings/general#account).
 {% /callout %}
 
 ### 3. Choose an autonomy level
 
-Choose whether you want Kilo to operate with high autonomy or review its work first, pausing to show its plan and ask for your approval before it edits files or runs commands. High autonomy is the default behavior of the Kilo Code agent.
+Choose whether you want Semafour to operate with high autonomy or review its work first, pausing to show its plan and ask for your approval before it edits files or runs commands. High autonomy is the default behavior of the Semafour agent.
 
 ### 4. Create a workspace
 
@@ -33,13 +33,13 @@ A workspace scopes a session to one or more folders on your machine. Add the fol
 
 ### 5. See what you can do
 
-A short tour of Kilo Desktop's features finishes setup.
+A short tour of Semafour Desktop's features finishes setup.
 
 ## Navigate the home screen
 
-When Kilo Desktop opens, you land on a new session in the workspace you created during setup.
+When Semafour Desktop opens, you land on a new session in the workspace you created during setup.
 
-{% image src="/docs/img/desktop/quickstart-home-screen.png" alt="The Kilo Desktop home screen with the sidebar and a new session" width="800" /%}
+{% image src="/docs/img/desktop/quickstart-home-screen.png" alt="The Semafour Desktop home screen with the sidebar and a new session" width="800" /%}
 
 ### Sidebar
 
@@ -56,7 +56,7 @@ The sidebar on the left manages your sessions and workspaces.
 
   **Collapse All** / **Expand All** and **Reset view** are in the same menu.
 
-If a folder in a workspace has been moved, renamed, deleted, or is on a drive that isn't connected, Kilo Desktop shows a warning icon next to that workspace in the workspace filter and in the **Select workspace** menu. Select the icon to open **Edit workspace**, where the missing folder is marked *This folder is unavailable. Select its new location or remove it.* Use **Add folder** to choose the folder's new location and remove the old entry with **×**. If the folder you removed was **Primary**, the first remaining folder becomes primary, so select **Make primary** on the right folder if needed. Then select **Save**.
+If a folder in a workspace has been moved, renamed, deleted, or is on a drive that isn't connected, Semafour Desktop shows a warning icon next to that workspace in the workspace filter and in the **Select workspace** menu. Select the icon to open **Edit workspace**, where the missing folder is marked *This folder is unavailable. Select its new location or remove it.* Use **Add folder** to choose the folder's new location and remove the old entry with **×**. If the folder you removed was **Primary**, the first remaining folder becomes primary, so select **Make primary** on the right folder if needed. Then select **Save**.
 
 ### Manage sessions
 
@@ -64,7 +64,7 @@ Hover a session to **Archive** or **Pin** it. The **…** (More) menu also has *
 
 - **Pin** keeps a session in the **Pinned** group at the top of the list. Shift+click a session, or press ⌥⌘P (macOS) / Ctrl+Shift+P (Windows/Linux), to pin or unpin it.
 - **Archive** moves an idle session into the **Archived** group. Archiving can't be undone.
-- **Delete** asks you to confirm (**Delete this session?**). It permanently removes the session and its history. If the session is the last one using a worktree, Kilo Desktop asks **Delete session and worktree?** instead, listing the session and the worktree's branch. Choose **Keep worktree** to delete only the session, or **Delete both**. Deleting the worktree loses its uncommitted changes and unpushed commits.
+- **Delete** asks you to confirm (**Delete this session?**). It permanently removes the session and its history. If the session is the last one using a worktree, Semafour Desktop asks **Delete session and worktree?** instead, listing the session and the worktree's branch. Choose **Keep worktree** to delete only the session, or **Delete both**. Deleting the worktree loses its uncommitted changes and unpushed commits.
 
 ### Settings
 
@@ -80,8 +80,8 @@ The controls around the input let you:
 
 - **Add an attachment** with the **+** button.
 - **Choose an agent** to set how it approaches your request. Pick one of the default agents: Code, Plan, Ask, Debug, or Architect. See [Using agents](/docs/code-with-ai/agents/using-agents) for what each one does.
-- **Select autonomy level** for the agent. With **Manually approve**, Kilo asks before each file edit or command; with **Automatically approve**, it proceeds on its own without requesting permission.
-- **Pick a model** for the chat. The available models depend on how you're signed in and which providers you've connected. The list can include [Kilo Gateway](/docs/gateway) models, provider models you've added, or a [local model](/docs/desktop/features/local-inference) you've added. The picker labels free models **Free** and models that use your own API key **BYOK**. Use the filter to show only free models. Free models may use your data for training; see [Privacy](/docs/desktop/settings/general#privacy).
+- **Select autonomy level** for the agent. With **Manually approve**, Semafour asks before each file edit or command; with **Automatically approve**, it proceeds on its own without requesting permission.
+- **Pick a model** for the chat. The available models depend on how you're signed in and which providers you've connected. The list can include [Semafour Gateway](/docs/gateway) models, provider models you've added, or a [local model](/docs/desktop/features/local-inference) you've added. The picker labels free models **Free** and models that use your own API key **BYOK**. Use the filter to show only free models. Free models may use your data for training; see [Privacy](/docs/desktop/settings/general#privacy).
 - **Select a workspace** to scope the session to a workspace, add a **New workspace**, or choose **No workspace** to chat without one.
 - **Set where changes go** with the git controls beside the workspace — work in your **Local** repository (switching or creating **branches** as needed), run the session in a **New worktree** (an isolated copy created from a base branch), or reuse one of your **Existing worktrees**. See [Git integration](/docs/desktop/features/git).
 
@@ -107,12 +107,12 @@ When the **Plan** (or **Architect**) agent writes a plan, a plan card appears in
 
 When a chart, table, or mockup says more than prose, the agent can show an HTML page right in its reply. The page follows your light or dark theme, and tall pages scroll inside the frame. Hover the page to see its title and two buttons:
 
-- **Save to workspace** — saves the page as an `.html` file at the root of the chat's workspace folder (or its worktree), named after the page title. Kilo Desktop never overwrites a file; if the name is taken, it adds a number, such as `Chart 2.html`. Select **Open** in the confirmation to view the saved page in a [Browser](/docs/desktop/features/browser) tab.
+- **Save to workspace** — saves the page as an `.html` file at the root of the chat's workspace folder (or its worktree), named after the page title. Semafour Desktop never overwrites a file; if the name is taken, it adds a number, such as `Chart 2.html`. Select **Open** in the confirmation to view the saved page in a [Browser](/docs/desktop/features/browser) tab.
 - **Full screen** — opens the page in a larger view.
 
-Pages can't reach the network, except to load scripts from a few public CDNs (jsDelivr, unpkg, cdnjs, Plotly, Bokeh, and HoloViz). When you click a link in a page, Kilo Desktop asks **Open *site* in your browser?** and opens it in your default browser only if you select **Open**.
+Pages can't reach the network, except to load scripts from a few public CDNs (jsDelivr, unpkg, cdnjs, Plotly, Bokeh, and HoloViz). When you click a link in a page, Semafour Desktop asks **Open *site* in your browser?** and opens it in your default browser only if you select **Open**.
 
-When the agent draws a diagram — a flowchart, sequence diagram, Gantt chart, and so on — Kilo Desktop renders it as a Mermaid diagram card labeled with its type. Select **Show source** to see the Mermaid code (**Show diagram** switches back), or **Copy** to copy it.
+When the agent draws a diagram — a flowchart, sequence diagram, Gantt chart, and so on — Semafour Desktop renders it as a Mermaid diagram card labeled with its type. Select **Show source** to see the Mermaid code (**Show diagram** switches back), or **Copy** to copy it.
 
 ### Find text
 
@@ -126,7 +126,7 @@ Press ⌘/ (Ctrl+/) to see all keyboard shortcuts. You can change them in [Gener
 
 Tab groups let you work in the same workspace alongside the chat. Each tab group holds one or more tabs. Send a message to access the tab groups view.
 
-{% image src="/docs/img/desktop/quickstart-panels.png" alt="A chat with tab groups open beside it in Kilo Desktop" width="800" /%}
+{% image src="/docs/img/desktop/quickstart-panels.png" alt="A chat with tab groups open beside it in Semafour Desktop" width="800" /%}
 
 ### Open a tab group
 
@@ -138,7 +138,7 @@ Then, pick a tab to open in it:
 
 - **[Files](/docs/desktop/features/files)** — browse and edit files in the workspace.
 - **[Changes](/docs/desktop/features/git)** — review uncommitted git changes.
-- **[Notebook](/docs/desktop/features/notebooks)** — analyze data in an interactive Python notebook. Requires a Kilo account; the entry stays grayed out until you sign in.
+- **[Notebook](/docs/desktop/features/notebooks)** — analyze data in an interactive Python notebook. Requires a Semafour account; the entry stays grayed out until you sign in.
 - **[Browser](/docs/desktop/features/browser)** — open web pages without leaving the app.
 - **[Terminal](/docs/desktop/features/terminal)** — run commands in an interactive shell.
 

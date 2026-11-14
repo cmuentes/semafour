@@ -8,6 +8,6 @@ fun interface GhStatusListener {
 
     companion object {
         @JvmField
-        val TOPIC: Topic<GhStatusListener> = Topic.create("Kilo gh status", GhStatusListener::class.java)
+        val TOPIC: Topic<GhStatusListener> = Topic.create("Semafour gh status", GhStatusListener::class.java)
     }
 }

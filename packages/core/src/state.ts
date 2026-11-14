@@ -56,7 +56,7 @@ export interface Interface<State, DraftApi> extends Transformable<DraftApi> {
    * Registers and applies a scoped transform. Closing the owning Scope removes
    * the transform and reloads the materialized state.
    */
-  // kilocode_change start - Kilo reconciles config-derived state outside the transform fold
+  // kilocode_change start - Semafour reconciles config-derived state outside the transform fold
   /**
    * Mutates the current materialized state directly, once.
    *

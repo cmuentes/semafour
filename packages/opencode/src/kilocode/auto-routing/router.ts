@@ -88,23 +88,23 @@ export namespace KiloCustomRouter {
     const suffix = detail ? ` (${detail})` : ""
     switch (code) {
       case "unauthorized":
-        return "Sign in to Kilo to use a custom auto router. Run `kilo auth login`."
+        return "Sign in to Semafour to use a custom auto router. Run `kilo auth login`."
       case "forbidden":
         return `You do not have access to this custom auto router${suffix}.`
       case "router_not_found":
         return `Custom auto router ${detail ?? ""} was not found. Check the id with \`kilo auto router list\`.`
       case "insufficient_balance":
-        return "Your Kilo balance is too low for auto routing. Top up your account and try again."
+        return "Your Semafour balance is too low for auto routing. Top up your account and try again."
       case "quota_exceeded":
-        return `Kilo's benchmark limit for this router owner is reached. Try again ${retryAt ? `after ${retryAt}` : "later"}.`
+        return `Semafour's benchmark limit for this router owner is reached. Try again ${retryAt ? `after ${retryAt}` : "later"}.`
       case "custom_router_unavailable":
         return `No model in this custom auto router can serve this request${suffix}. Add a client model with \`kilo auto router add\`, or add a gateway model in the web editor.`
       case "stale_engine_identity":
         return `This custom auto router needs a fresh evaluation. Run \`kilo auto eval ${detail ?? "<router>"}\`.`
       case "invalid_request":
-        return `Kilo rejected the custom router request${suffix}.`
+        return `Semafour rejected the custom router request${suffix}.`
     }
-    return `Kilo auto routing failed${suffix}.`
+    return `Semafour auto routing failed${suffix}.`
   }
 
   export function failure(error: unknown, router?: string): Error {
@@ -112,7 +112,7 @@ export namespace KiloCustomRouter {
       return new Error(errorMessage(error.code, error.message || router, error.retryAt))
     }
     const reason = error instanceof Error ? error.message : String(error)
-    return new Error(`Kilo auto routing request failed: ${reason}`)
+    return new Error(`Semafour auto routing request failed: ${reason}`)
   }
 
   export async function resolve(input: ResolveInput): Promise<Resolution | undefined> {

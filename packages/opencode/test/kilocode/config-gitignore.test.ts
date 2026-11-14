@@ -1,6 +1,6 @@
 // kilocode_change - new file
 //
-// Kilo uses Npm.Service (arborist) for dependency installation and may write
+// Semafour uses Npm.Service (arborist) for dependency installation and may write
 // a .gitignore inside the .kilo config dir. Users may have pnpm or yarn as
 // their system package manager, which can produce lockfiles in the .kilo/
 // config directory. These must be ignored so they don't appear as untracked

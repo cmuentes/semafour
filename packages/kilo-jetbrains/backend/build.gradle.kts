@@ -54,7 +54,7 @@ if (repoCli.get() && bundled.get()) {
 }
 
 val writeKiloProperties = tasks.register<WriteProperties>("writeKiloProperties") {
-    description = "Write pinned Kilo CLI properties"
+    description = "Write pinned Semafour CLI properties"
     val out = generatedProps.map { it.file("kilo.properties") }
     destinationFile.set(out)
     property("cli.version", pinnedCliVersion)
@@ -107,7 +107,7 @@ val stageRepoCli = tasks.register<StageRepoCliTask>("stageRepoCli") {
 }
 
 val stageBundledCli = tasks.register<StageBundledCliTask>("stageBundledCli") {
-    description = "Stage all pinned Kilo CLI release assets into backend resources"
+    description = "Stage all pinned Semafour CLI release assets into backend resources"
     cliVersion.set(pinnedCliVersion)
     token.set(
         providers.environmentVariable("GH_TOKEN")
@@ -118,7 +118,7 @@ val stageBundledCli = tasks.register<StageBundledCliTask>("stageBundledCli") {
 }
 
 val writeCliChecksums = tasks.register<WriteCliChecksumsTask>("writeCliChecksums") {
-    description = "Write pinned Kilo CLI checksums"
+    description = "Write pinned Semafour CLI checksums"
     cliVersion.set(pinnedCliVersion)
     token.set(
         providers.environmentVariable("GH_TOKEN")

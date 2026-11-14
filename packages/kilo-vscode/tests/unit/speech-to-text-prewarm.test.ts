@@ -66,9 +66,9 @@ const SCRIPT = `
     root,
   )
 
-  if (sent.length !== 0) fail("prewarmed without Kilo access")
+  if (sent.length !== 0) fail("prewarmed without Semafour access")
   setAuth({ kilo: "api" })
-  if (sent.length !== 0) fail("prewarmed while Kilo was disabled")
+  if (sent.length !== 0) fail("prewarmed while Semafour was disabled")
   setConfig({})
   if (sent.length !== 0) fail("prewarmed without capture support")
   setCapture(true)
@@ -82,7 +82,7 @@ const SCRIPT = `
 `
 
 describe("speech-to-text prewarm", () => {
-  it("starts only after Kilo speech access becomes available", () => {
+  it("starts only after Semafour speech access becomes available", () => {
     const attempts = 3
     const failures: string[] = []
 

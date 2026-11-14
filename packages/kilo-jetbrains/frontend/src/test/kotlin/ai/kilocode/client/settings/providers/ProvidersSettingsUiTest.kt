@@ -692,7 +692,7 @@ class ProvidersSettingsUiTest : BasePlatformTestCase() {
             ProviderSettingsDto(
                 providers = listOf(
                     provider("openrouter", "OpenRouter", priority = 5),
-                    provider("kilo", "Kilo", priority = 0),
+                    provider("kilo", "Semafour", priority = 0),
                     provider("google", "Google", priority = 4),
                     provider("anthropic", "Anthropic", priority = 1),
                     provider("vercel", "Vercel", priority = 6),
@@ -812,7 +812,7 @@ class ProvidersSettingsUiTest : BasePlatformTestCase() {
     fun `test connected kilo gateway has no provider settings actions`() {
         val rows = providerListRows(
             ProviderSettingsDto(
-                providers = listOf(provider("kilo", "Kilo Gateway")),
+                providers = listOf(provider("kilo", "Semafour Gateway")),
                 connected = listOf("kilo"),
             ),
             "",
@@ -1321,14 +1321,14 @@ class ProvidersSettingsUiTest : BasePlatformTestCase() {
         scope = cs
         val rpc = FakeProviderRpcApi()
         rpc.state = providerState(provider("openai", "OpenAI"))
-        rpc.disconnectError = IllegalStateException("Kilo backend is not ready")
+        rpc.disconnectError = IllegalStateException("Semafour backend is not ready")
         val service = KiloProviderService(cs, rpc)
 
         val result = withContext(kotlinx.coroutines.Dispatchers.Default) {
             service.disconnect(ProviderDisconnectDto("/test", "openai"))
         }
 
-        assertEquals("Kilo backend is not ready", result.error)
+        assertEquals("Semafour backend is not ready", result.error)
         assertEquals(listOf("openai"), result.state.providers.map { it.id })
         assertEquals(listOf("/test"), rpc.stateCalls)
     }

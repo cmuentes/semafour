@@ -521,7 +521,7 @@ describe("session.message-v2.toModelMessage", () => {
             state: {
               status: "completed",
               input: { path: "/tmp/example.log" },
-              output: "File example.log (50 bytes, text/plain) delivered to the user's Kilo app.",
+              output: "File example.log (50 bytes, text/plain) delivered to the user's Semafour app.",
               title: "Sent file: example.log",
               metadata: {},
               time: { start: 0, end: 1 },
@@ -549,7 +549,7 @@ describe("session.message-v2.toModelMessage", () => {
     // Output should be plain text — no attachments replayed to the model
     expect(toolContent.output).toStrictEqual({
       type: "text",
-      value: "File example.log (50 bytes, text/plain) delivered to the user's Kilo app.",
+      value: "File example.log (50 bytes, text/plain) delivered to the user's Semafour app.",
     })
   })
   // kilocode_change end

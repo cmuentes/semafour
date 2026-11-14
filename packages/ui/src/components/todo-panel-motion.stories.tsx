@@ -275,7 +275,7 @@ export const Playground = {
                       ))}
                     </div>
                   </div>
-                  <textarea placeholder="Ask Kilo to keep working..." />
+                  <textarea placeholder="Ask Semafour to keep working..." />
                 </div>
                 {/* kilocode_change end */}
               </div>

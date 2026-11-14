@@ -5,8 +5,8 @@ import {
   shouldDefaultIndexingToKilo,
 } from "../../src/kilocode/indexing-auth"
 
-describe("Kilo indexing auth resolution", () => {
-  test("detects auth from explicit indexing Kilo config", () => {
+describe("Semafour indexing auth resolution", () => {
+  test("detects auth from explicit indexing Semafour config", () => {
     const auth = resolveKiloIndexingAuth({
       config: { indexing: { kilo: { apiKey: "idx-token", baseUrl: "https://idx.test", organizationId: "org_idx" } } },
     })
@@ -34,7 +34,7 @@ describe("Kilo indexing auth resolution", () => {
     })
   })
 
-  test("defaults to Kilo only when no provider or other embedder config is present", () => {
+  test("defaults to Semafour only when no provider or other embedder config is present", () => {
     const auth = { apiKey: "kilo-token" }
 
     expect(shouldDefaultIndexingToKilo({}, auth)).toBe(true)

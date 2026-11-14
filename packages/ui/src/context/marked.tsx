@@ -19,7 +19,7 @@ import { markedCodeSpanBoundary } from "./marked-code-span"
 import { getSharedHighlighter, type ThemeRegistrationResolved } from "@pierre/diffs" // kilocode_change
 import { ensureKiloDiffTheme, KILO_DIFF_THEME } from "../pierre/kilo-diff-theme" // kilocode_change
 
-// kilocode_change start: the "Kilo" diff/highlight theme registration moved to
+// kilocode_change start: the "Semafour" diff/highlight theme registration moved to
 // ../pierre/kilo-diff-theme so the diff worker pool can register it without
 // importing this module's katex/marked dependencies. This call keeps the markdown
 // highlighter (getSharedHighlighter, below) working. Upstream keeps an inline
@@ -510,7 +510,7 @@ async function highlightCodeBlocks(html: string): Promise<string> {
   if (matches.length === 0) return html
 
   const highlighter = await getSharedHighlighter({
-    themes: ["Kilo"],
+    themes: ["Semafour"],
     langs: [],
     preferredHighlighter: "shiki-wasm",
   })
@@ -535,7 +535,7 @@ async function highlightCodeBlocks(html: string): Promise<string> {
 
     const highlighted = highlighter.codeToHtml(code, {
       lang: language,
-      theme: "Kilo",
+      theme: "Semafour",
       tabindex: false,
     })
     result = result.replace(fullMatch, () => highlighted)
@@ -624,7 +624,7 @@ export async function deferredHighlight(
     return
   }
 
-  const highlighter = await getSharedHighlighter({ themes: ["Kilo"], langs: [] })
+  const highlighter = await getSharedHighlighter({ themes: ["Semafour"], langs: [] })
 
   for (const block of blocks) {
     // Short-circuit if the container is unmounted or the caller cancelled this run
@@ -661,7 +661,7 @@ export async function deferredHighlight(
               resolve()
               return
             }
-            const html = highlighter.codeToHtml(code, { lang: language, theme: "Kilo", tabindex: false })
+            const html = highlighter.codeToHtml(code, { lang: language, theme: "Semafour", tabindex: false })
             touchHighlightCache(cacheKey, html)
             // Note: data-highlighted is NOT set on `block` here because
             // replaceWithHighlighted replaces the parent <pre> entirely — the
@@ -699,7 +699,7 @@ export async function deferredHighlight(
 }
 // kilocode_change end
 
-// kilocode_change start: expose the parser setup for Kilo markdown tests.
+// kilocode_change start: expose the parser setup for Semafour markdown tests.
 export const createMarkedParser = (props: { nativeParser?: NativeMarkdownParser }) => {
   // kilocode_change start: two-pass parser — first pass skips Shiki highlighting
   // to avoid blocking the main thread with Oniguruma WASM regex (issue #6221).
@@ -719,7 +719,7 @@ export const createMarkedParser = (props: { nativeParser?: NativeMarkdownParser 
           const titleAttr = title ? ` title="${escapeAttribute(title)}"` : ""
           // file-path links get a distinct class for styling. Keep target/rel so
           // the shared (opencode) consumer's navigation and security behavior is
-          // unchanged — Kilo's click handler intercepts these via preventDefault
+          // unchanged — Semafour's click handler intercepts these via preventDefault
           // and opens the file instead.
           const isFile = href ? extractFilePathFromHref(href) : undefined
           if (isFile) {

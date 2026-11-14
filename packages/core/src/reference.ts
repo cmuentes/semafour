@@ -109,7 +109,7 @@ const layer = Layer.effect(
 
     return Service.of({
       transform: state.transform,
-      // kilocode_change start - reconcile Kilo's effective config without a request-scoped transform slot.
+      // kilocode_change start - reconcile Semafour's effective config without a request-scoped transform slot.
       replace: (sources) =>
         state.mutate((editor) =>
           Effect.sync(() => {

@@ -1,5 +1,5 @@
 /**
- * TUI-specific helper functions for Kilo Gateway integration
+ * TUI-specific helper functions for Semafour Gateway integration
  *
  * This module provides utilities that are consumed by the TUI layer
  * to implement organization selection, profile display, and team management.

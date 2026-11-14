@@ -24,7 +24,7 @@ import kotlinx.coroutines.CoroutineScope
 import javax.swing.JComponent
 
 /**
- * Agent Behavior root page: the Kilo Swarm toggle plus links to the sub-pages. Mirrors VS Code's
+ * Agent Behavior root page: the Semafour Swarm toggle plus links to the sub-pages. Mirrors VS Code's
  * Agent Behaviour tab, which hosts the same `shared_agent_board` switch.
  */
 internal class AgentBehaviorSettingsUi(

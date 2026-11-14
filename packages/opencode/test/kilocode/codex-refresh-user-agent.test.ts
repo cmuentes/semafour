@@ -2,7 +2,7 @@ import { expect, test } from "bun:test"
 import type { PluginInput } from "@kilocode/plugin"
 import { CodexAuthPlugin } from "../../src/plugin/openai/codex"
 
-test("identifies Codex refresh requests as Kilo", async () => {
+test("identifies Codex refresh requests as Semafour", async () => {
   const original = globalThis.fetch
   const seen: Request[] = []
   const signals: (AbortSignal | null | undefined)[] = []

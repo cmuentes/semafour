@@ -1,15 +1,15 @@
 ---
 title: ".kilocodeignore"
-description: "Control which files Kilo Code can access"
+description: "Control which files Semafour can access"
 ---
 
 # .kilocodeignore
 
 ## Overview
 
-`.kilocodeignore` is a root-level file that tells Kilo Code which files and folders it should not access. It uses standard `.gitignore` pattern syntax, but it only affects Kilo Code's file access, not Git.
+`.kilocodeignore` is a root-level file that tells Semafour which files and folders it should not access. It uses standard `.gitignore` pattern syntax, but it only affects Semafour's file access, not Git.
 
-If no `.kilocodeignore` file exists, Kilo Code can access all files in the workspace.
+If no `.kilocodeignore` file exists, Semafour can access all files in the workspace.
 
 ## Quick Start
 
@@ -201,6 +201,6 @@ Checkpoint tracking is separate from file access rules. Files blocked by `.kiloc
 
 ## Troubleshooting
 
-- **Kilo can't access a file you want:** Remove or narrow the matching rule in `.kilocodeignore` (legacy) or adjust the permission rules in `kilo.jsonc` (VSCode extension & CLI).
+- **Semafour can't access a file you want:** Remove or narrow the matching rule in `.kilocodeignore` (legacy) or adjust the permission rules in `kilo.jsonc` (VSCode extension & CLI).
 - **A file still appears in lists:** In the legacy extension, check the setting that shows ignored files in lists and searches. In the extension & CLI, verify your permission and watcher ignore configuration.
 - **`.kilocodeignore` patterns not working in the new platform:** Ensure the file is at the workspace root. The IgnoreMigrator reads it automatically — check that your patterns use valid `.gitignore` syntax.

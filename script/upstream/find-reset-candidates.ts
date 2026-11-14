@@ -200,9 +200,9 @@ async function candidates(commit: string, scope: string | undefined, top: string
 
 /**
  * Files the upstream merge config marks as "keep ours" (Kilo-specific preserved
- * versions) or "skip" (upstream-only, removed in Kilo) should never be touched
+ * versions) or "skip" (upstream-only, removed in Semafour) should never be touched
  * by the bulk resetter. They show up in `git diff` against raw upstream but
- * resetting them would undo deliberate Kilo decisions.
+ * resetting them would undo deliberate Semafour decisions.
  */
 function policyExempt(file: string): boolean {
   if (matches(file, defaultConfig.keepOurs)) return true

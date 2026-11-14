@@ -18,7 +18,7 @@ class KiloFileIconProviderTest : com.intellij.testFramework.fixtures.BasePlatfor
         }
     }
 
-    fun `test a non-Kilo file is left to the ordinary file-type icon`() {
+    fun `test a non-Semafour file is left to the ordinary file-type icon`() {
         val provider = KiloFileIconProvider()
 
         assertNull(provider.getIcon(LightVirtualFile("plain.txt"), 0, project))

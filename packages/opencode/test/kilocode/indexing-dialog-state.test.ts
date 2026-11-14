@@ -15,7 +15,7 @@ import {
 } from "../../src/kilocode/components/indexing-dialog-state"
 
 describe("indexing dialog state", () => {
-  test.serial("loads Kilo models directly from the public catalog", async () => {
+  test.serial("loads Semafour models directly from the public catalog", async () => {
     const original = global.fetch
     const calls: string[] = []
     global.fetch = (async (input) => {

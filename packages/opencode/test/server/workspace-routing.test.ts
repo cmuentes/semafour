@@ -52,7 +52,7 @@ describe("getWorkspaceRouteSessionID", () => {
   })
 
   // kilocode_change start
-  test("returns null for Kilo's /session/viewed route", () => {
+  test("returns null for Semafour's /session/viewed route", () => {
     const url = new URL("http://localhost/session/viewed")
     expect(getWorkspaceRouteSessionID(url)).toBeNull()
   })

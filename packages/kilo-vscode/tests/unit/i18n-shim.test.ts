@@ -77,7 +77,7 @@ describe("extension host i18n", () => {
     expect(resolveLocale("sv-SE")).toBe("en")
   })
 
-  it("prefers Kilo new language setting over VS Code language", () => {
+  it("prefers Semafour new language setting over VS Code language", () => {
     const vscode = {
       env: { language: "en" },
       workspace: {
@@ -90,7 +90,7 @@ describe("extension host i18n", () => {
     expect(selectedLocale(vscode)).toBe("de")
   })
 
-  it("uses VS Code language when Kilo language setting is automatic", () => {
+  it("uses VS Code language when Semafour language setting is automatic", () => {
     const vscode = {
       env: { language: "nl" },
       workspace: {

@@ -103,7 +103,7 @@ class ShareSessionAction : AnAction(), DumbAware {
         }
         // Both branches assign: a Presentation is reused across update cycles, so falling through
         // would leave "Stop Sharing" behind after the session is unshared.
-        val prefix = if (actions.share != null) "action.Kilo.Session.Share.stop" else "action.Kilo.Session.Share"
+        val prefix = if (actions.share != null) "action.Semafour.Session.Share.stop" else "action.Semafour.Session.Share"
         e.presentation.isEnabledAndVisible = true
         e.presentation.text = KiloBundle.message("$prefix.text")
         e.presentation.description = KiloBundle.message("$prefix.description")

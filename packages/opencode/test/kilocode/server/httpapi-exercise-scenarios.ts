@@ -429,8 +429,8 @@ export const kiloScenarios: Scenario[] = [
   http.protected.get("/kilo/profile", "kilo.profile").probe({ path: "/path" }).status(401),
   http.protected.get("/kilo/auth-status", "kilo.authStatus").json(200, (body) => {
     object(body)
-    check(body.authenticated === false, "Kilo auth status should report signed out")
-    check(body.type === undefined, "Kilo auth status should not expose a credential type while signed out")
+    check(body.authenticated === false, "Semafour auth status should report signed out")
+    check(body.type === undefined, "Semafour auth status should not expose a credential type while signed out")
   }),
   http.protected.get("/kilo/modes", "kilo.modes").json(200, (body) => {
     object(body)

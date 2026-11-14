@@ -2,7 +2,7 @@
  * Contract tests for Kilo-specific fields on QuestionOption / QuestionInfo.
  *
  * packages/opencode/src/question/index.ts is a shared upstream file.
- * Two Kilo additions to the Option schema have been silently dropped by
+ * Two Semafour additions to the Option schema have been silently dropped by
  * upstream merges more than once:
  *
  *   1. labelKey / descriptionKey  — lost during the opencode v1.3.x

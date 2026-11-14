@@ -66,7 +66,7 @@ object HostedWorkspaceEditorKind : KiloEditorKind {
 
 object HostedWorkspaceFileType : FileType {
     override fun getName(): String = "KILO_HOSTED_WORKSPACE"
-    override fun getDisplayName(): String = "Kilo Cloud workspace"
+    override fun getDisplayName(): String = "Semafour Cloud workspace"
     override fun getDescription(): String = "A Cloud workspace served through the local Session Host"
     override fun getDefaultExtension(): String = "kilo-cloud-workspace"
     override fun getIcon(): Icon = HostedWorkspaceIcons.cloud

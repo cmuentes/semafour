@@ -9,7 +9,7 @@ import ai.kilocode.rpc.dto.KiloAppStatusDto
 import ai.kilocode.rpc.dto.SessionBoardDto
 
 /**
- * [SessionActions.board] gating: a created, writable, local root session with Kilo Swarm enabled
+ * [SessionActions.board] gating: a created, writable, local root session with Semafour Swarm enabled
  * **and** a non-empty board. Never drives [SessionActions.showBoard] — that opens a real modal
  * [ai.kilocode.client.session.board.SessionBoardDialog], which dialog tests here never show.
  */

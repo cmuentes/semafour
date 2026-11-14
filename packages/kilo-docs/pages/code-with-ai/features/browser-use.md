@@ -1,11 +1,11 @@
 ---
 title: "Browser Use"
-description: "Using Kilo Code to interact with web browsers"
+description: "Using Semafour to interact with web browsers"
 ---
 
 # Browser Use
 
-Kilo Code provides browser automation capabilities that let you interact with websites directly from your coding workflow. This feature supports testing web applications, automating browser tasks, and capturing screenshots without leaving your editor.
+Semafour provides browser automation capabilities that let you interact with websites directly from your coding workflow. This feature supports testing web applications, automating browser tasks, and capturing screenshots without leaving your editor.
 
 {% callout type="info" title="Model Support Required" %}
 Browser Use requires an advanced agentic model. It is typically most reliable with recent high-capability models (for example Claude Sonnet 4 class models).
@@ -16,7 +16,7 @@ Browser Use requires an advanced agentic model. It is typically most reliable wi
 {% tabs %}
 {% tab label="VSCode" %}
 
-Browser automation is built into the extension and requires no manual setup. Enable it from **Settings → Web Tools → Browser Automation** and Kilo handles the rest automatically.
+Browser automation is built into the extension and requires no manual setup. Enable it from **Settings → Web Tools → Browser Automation** and Semafour handles the rest automatically.
 
 {% callout type="note" title="Integrated Browser Is Separate" %}
 The experimental **Integrated Browser** under **Settings → Experimental** is a different feature. It shows local application previews inside Agent Manager and does not replace Playwright browser automation. The two features have independent settings.
@@ -25,7 +25,7 @@ The experimental **Integrated Browser** under **Settings → Experimental** is a
 {% /tab %}
 {% tab label="CLI" %}
 
-Kilo Code uses [Playwright](https://playwright.dev/) for browser automation. Add it to your `kilo.jsonc` configuration:
+Semafour uses [Playwright](https://playwright.dev/) for browser automation. Add it to your `kilo.jsonc` configuration:
 
 ```json
 {
@@ -47,10 +47,10 @@ Playwright downloads Chromium automatically on first use.
 
 A typical browser interaction follows this pattern:
 
-1. Ask Kilo to visit a website
-2. Kilo launches the browser and shows you a screenshot
+1. Ask Semafour to visit a website
+2. Semafour launches the browser and shows you a screenshot
 3. Request additional actions (clicking, typing, scrolling)
-4. Kilo closes the browser when finished
+4. Semafour closes the browser when finished
 
 For example:
 
@@ -63,7 +63,7 @@ For example:
 {% tabs %}
 {% tab label="VSCode" %}
 
-Kilo launches a browser automatically when asked and returns screenshots after each action so you can see what's happening. It can navigate to URLs, click elements, fill in forms, scroll, hover, select from dropdowns, and drag and drop — all driven by natural language instructions in chat.
+Semafour launches a browser automatically when asked and returns screenshots after each action so you can see what's happening. It can navigate to URLs, click elements, fill in forms, scroll, hover, select from dropdowns, and drag and drop — all driven by natural language instructions in chat.
 
 {% /tab %}
 {% tab label="CLI" %}

@@ -64,7 +64,7 @@ export const AutoRouterListCommand = effectCmd({
       return
     }
     if (list.routers.length === 0) {
-      UI.println("No custom auto routers. Create one in the Kilo web editor.")
+      UI.println("No custom auto routers. Create one in the Semafour web editor.")
       return
     }
     for (const router of list.routers) {
@@ -302,7 +302,7 @@ function describeFailure(error: unknown, prefix: string): string {
 }
 
 function credentialsFailure(error: Auth.AuthError): CliError {
-  return new CliError({ message: `Could not read Kilo credentials: ${error.message}` })
+  return new CliError({ message: `Could not read Semafour credentials: ${error.message}` })
 }
 
 const credentials = Effect.fn("Cli.auto.credentials")(function* () {
@@ -311,7 +311,7 @@ const credentials = Effect.fn("Cli.auto.credentials")(function* () {
   const catalog = yield* provider.list()
   const kilo = catalog[ProviderV2.ID.kilo]
   if (!kilo) {
-    yield* fail("Sign in to Kilo to use custom auto routers. Run `kilo auth login`.")
+    yield* fail("Sign in to Semafour to use custom auto routers. Run `kilo auth login`.")
     return undefined
   }
   const info = yield* auth.get(ProviderV2.ID.kilo).pipe(Effect.mapError(credentialsFailure))

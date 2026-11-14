@@ -62,7 +62,7 @@ describe("Cloud tRPC client", () => {
         result([
           {
             ...subscription,
-            routeLabel: "MiniMax via Kilo Gateway",
+            routeLabel: "MiniMax via Semafour Gateway",
             billingPeriodDays: 30,
             currentPeriodStart: "2026-06-01T00:00:00.000Z",
             currentPeriodEnd: "2026-07-01T00:00:00.000Z",
@@ -136,7 +136,7 @@ describe("Cloud tRPC client", () => {
 
     const error = await fetchCodingPlanSubscriptions("secret-token").catch((value) => value)
     expect(error).toBeInstanceOf(CloudTrpcError)
-    expect(error).toMatchObject({ kind: "procedure", message: "Kilo Cloud data is temporarily unavailable." })
+    expect(error).toMatchObject({ kind: "procedure", message: "Semafour Cloud data is temporarily unavailable." })
     // Include non-enumerable Error surfaces that JSON.stringify would omit.
     const surface = `${error.name} ${error.message} ${error.stack} ${JSON.stringify(error)}`
     expect(surface).not.toContain("raw private error")

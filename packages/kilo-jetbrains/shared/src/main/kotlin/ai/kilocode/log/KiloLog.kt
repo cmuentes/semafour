@@ -24,7 +24,7 @@ import java.util.logging.Level
 import java.util.logging.LogRecord
 
 /**
- * Logging interface for the Kilo JetBrains plugin.
+ * Logging interface for the Semafour JetBrains plugin.
  *
  * In normal (non-sandbox) mode, output goes through IntelliJ's own [com.intellij.openapi.diagnostic.Logger],
  * which writes to the standard IDE log file, and to rotated `kilo.log*` files inside the IDE log directory.
@@ -132,7 +132,7 @@ internal class FileLog(cls: Class<*>) : KiloLog {
         private val handler: Handler by lazy {
             val dir = resolveLogDir()
             val path = dir.resolve("kilo.log")
-            IntellijLog(FileLog::class.java).info("Kilo diagnostic log directory: $dir")
+            IntellijLog(FileLog::class.java).info("Semafour diagnostic log directory: $dir")
             deleteLegacyLogs(dir)
             // Sandbox runs start a new file so a Run tool window `log_file` tab shows just this run;
             // the previous run stays readable as kilo.log.0. Installed builds keep appending, so a
@@ -148,7 +148,7 @@ internal class FileLog(cls: Class<*>) : KiloLog {
                     files.forEach { Files.deleteIfExists(it) }
                 }
             }.onFailure {
-                IntellijLog(FileLog::class.java).warn("Could not delete legacy Kilo diagnostic logs in $dir", it)
+                IntellijLog(FileLog::class.java).warn("Could not delete legacy Semafour diagnostic logs in $dir", it)
             }
         }
 

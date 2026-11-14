@@ -36,12 +36,12 @@ object KiloRepoCli {
         val exe = File(root, "$platform/bin/${KiloCliPlatform.exe()}")
         val done = File(root, ".complete")
         if (!force && done.isFile && exe.isFile) {
-            log.info("Bundled Kilo CLI ${KiloProps.cliVersion()} ($platform) already extracted at ${exe.absolutePath}; skipping extraction")
+            log.info("Bundled Semafour CLI ${KiloProps.cliVersion()} ($platform) already extracted at ${exe.absolutePath}; skipping extraction")
             if (!SystemInfo.isWindows) exe.setExecutable(true)
             if (cleanup) prune(root)
             return@withContext exe
         }
-        log.info("Extracting bundled Kilo CLI ${KiloProps.cliVersion()} ($platform) into ${root.absolutePath}")
+        log.info("Extracting bundled Semafour CLI ${KiloProps.cliVersion()} ($platform) into ${root.absolutePath}")
 
         if (root.exists() && !root.deleteRecursively()) {
             throw IllegalStateException("Failed to delete local repo CLI under ${root.absolutePath}")
@@ -73,9 +73,9 @@ object KiloRepoCli {
         val entries = parent.listFiles() ?: return
         for (entry in entries) {
             if (!entry.isDirectory || entry.name == root.name || entry.name.startsWith(".")) continue
-            log.info("Removing stale bundled Kilo CLI version ${entry.absolutePath}")
+            log.info("Removing stale bundled Semafour CLI version ${entry.absolutePath}")
             if (!entry.deleteRecursively()) {
-                log.warn("Failed to remove stale bundled Kilo CLI version ${entry.absolutePath}")
+                log.warn("Failed to remove stale bundled Semafour CLI version ${entry.absolutePath}")
             }
         }
     }

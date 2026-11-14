@@ -40,7 +40,7 @@ const GlobalEventData = Schema.Struct({
 })
 // kilocode_change end
 
-// kilocode_change start - instance SSE also carries Kilo's legacy Bus events and `sync` envelopes
+// kilocode_change start - instance SSE also carries Semafour's legacy Bus events and `sync` envelopes
 const takeFrame = (reader: Queue.Dequeue<unknown>) =>
   Queue.take(reader).pipe(
     Effect.timeoutOrElse({
@@ -52,7 +52,7 @@ const takeFrame = (reader: Queue.Dequeue<unknown>) =>
 const readEvent = (reader: Queue.Dequeue<unknown>) =>
   Effect.map(takeFrame(reader), (frame) => Schema.decodeUnknownSync(EventData)(frame))
 
-/** Skip Kilo's ambient instance events (indexing.status, sync envelopes, ...) until `type` shows up. */
+/** Skip Semafour's ambient instance events (indexing.status, sync envelopes, ...) until `type` shows up. */
 const readEventOfType = (reader: Queue.Dequeue<unknown>, type: string) =>
   Effect.gen(function* () {
     while (true) {
@@ -155,7 +155,7 @@ describe("event HttpApi", () => {
         const { reader } = yield* openEventStream(directory)
         expect(yield* readEvent(reader)).toMatchObject({ type: "server.connected", properties: {} })
 
-        // kilocode_change - the instance stream also carries Kilo's ambient events (indexing.status, sync
+        // kilocode_change - the instance stream also carries Semafour's ambient events (indexing.status, sync
         // envelopes), so receiving one is equally proof the stream stayed open after server.connected.
         const status = yield* Queue.take(reader).pipe(
           Effect.as("event" as const),

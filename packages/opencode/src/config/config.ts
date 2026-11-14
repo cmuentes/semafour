@@ -40,7 +40,7 @@ import { ConfigPlugin } from "./plugin"
 import { ConfigVariable } from "./variable"
 import { ConfigV2Compat } from "./v2-compat"
 import { Npm } from "@opencode-ai/core/npm"
-import z from "zod" // kilocode_change - Kilo config compatibility schemas
+import z from "zod" // kilocode_change - Semafour config compatibility schemas
 // kilocode_change start
 import { ZodOverride } from "@opencode-ai/core/effect-zod"
 import { KilocodeConfig } from "../kilocode/config/config"
@@ -292,7 +292,7 @@ const layer = Layer.effect(
     const readConfigFile = (filepath: string) => fs.readFileStringSafe(filepath).pipe(Effect.orDie)
 
     const decodeConfig = Effect.fnUntraced(function* (input: unknown, source: string) {
-      const result = ConfigV2Compat.lower(normalizeLoadedConfig(input, source), source) // kilocode_change - Kilo normalizeLoadedConfig takes source
+      const result = ConfigV2Compat.lower(normalizeLoadedConfig(input, source), source) // kilocode_change - Semafour normalizeLoadedConfig takes source
       yield* Effect.forEach(result.diagnostics, (diagnostic) =>
         Effect.logWarning("configuration compatibility diagnostic", {
           source,
@@ -352,7 +352,7 @@ const layer = Layer.effect(
       const sanitized = ProviderModels.sanitize(parsed, source) // kilocode_change
       if (configWarnings) configWarnings.push(...sanitized.warnings) // kilocode_change
       const normalized = normalizeLoadedConfig(sanitized.config, source) // kilocode_change
-      // kilocode_change start - preserve upstream excess-key compatibility while warning Kilo users about typos
+      // kilocode_change start - preserve upstream excess-key compatibility while warning Semafour users about typos
       if (configWarnings) {
         // Warn for keys the V1 decoder drops and the V2 lowering does not consume. Probe the lowering
         // with only that key so the answer does not depend on the rest of the document, and treat a key
@@ -518,7 +518,7 @@ const layer = Layer.effect(
       Duration.infinity,
     )
 
-    // kilocode_change start - detect global config edits made by other Kilo processes
+    // kilocode_change start - detect global config edits made by other Semafour processes
     const refreshGlobal = Effect.fnUntraced(function* () {
       const stamp = yield* KilocodeGlobalConfigStamp.read(fs, Global.Path.config)
       if (!globalStamp || stamp === globalStamp) return false
@@ -569,7 +569,7 @@ const layer = Layer.effect(
 
     const loadInstanceState = Effect.fn("Config.loadInstanceState")(
       function* (ctx: InstanceContext) {
-        // kilocode_change start - warning accumulator and legacy Kilo config
+        // kilocode_change start - warning accumulator and legacy Semafour config
         const warnings: Warning[] = notices(ctx.directory)
         // Untrusted project config may only read files inside this root (worktree, or directory for non-git projects).
         const projectRoot = ctx.worktree === "/" ? ctx.directory : ctx.worktree
@@ -1053,7 +1053,7 @@ const layer = Layer.effect(
         if (Flag.KILO_DISABLE_PRUNE) {
           result.compaction = { ...result.compaction, prune: false }
         }
-        // kilocode_change start — inject Kilo default plugins into both plugin list and origins
+        // kilocode_change start — inject Semafour default plugins into both plugin list and origins
         KilocodeDefaultPlugins.apply(result, { disabled: Flag.KILO_DISABLE_DEFAULT_PLUGINS, log })
         // kilocode_change end
 
@@ -1102,8 +1102,8 @@ const layer = Layer.effect(
     })
 
     const update = Effect.fn("Config.update")(function* (config: Info) {
-      // kilocode_change start - delegate Kilo project config update behavior.
-      // Kilo's updateProjectConfig already reads the raw file (read: readConfigFile)
+      // kilocode_change start - delegate Semafour project config update behavior.
+      // Semafour's updateProjectConfig already reads the raw file (read: readConfigFile)
       // and patches JSONC in place, so upstream's raw-text merge fix is covered.
       const ctx = yield* InstanceState.context
       yield* KilocodeConfig.updateProjectConfig({
@@ -1164,7 +1164,7 @@ const layer = Layer.effect(
             })
 
             if (!file.endsWith(".jsonc")) {
-              // Lower V2 native settings while keeping Kilo read-merge-write behavior.
+              // Lower V2 native settings while keeping Semafour read-merge-write behavior.
               const existing = normalizeLoadedConfig(ConfigParse.jsonc(before, file), file)
               const merged = KilocodeConfig.preserve(existing, patch, file)
               const next = yield* decodeConfig(merged, file)

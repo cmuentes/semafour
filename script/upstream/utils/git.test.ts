@@ -110,7 +110,7 @@ test("finds previous compatibility commit when upstream tags diverge", async () 
   expect(found?.commit).not.toBe(ancient)
 })
 
-test("compatibility tree preserves Kilo paths unchanged upstream", async () => {
+test("compatibility tree preserves Semafour paths unchanged upstream", async () => {
   await Bun.write("shared.txt", "opencode A\n")
   await Bun.write("unchanged.txt", "opencode unchanged\n")
   await Bun.write("removed.txt", "remove me\n")

@@ -48,7 +48,7 @@ export function createEditHandler(Auth: Auth) {
         : await getProviderKey(Auth, target.provider as DirectAutocompleteProviderID)
 
     if (target.provider === "kilo" && !proxy?.auth) {
-      return c.json({ error: "Not authenticated with Kilo Gateway" }, 401 as any)
+      return c.json({ error: "Not authenticated with Semafour Gateway" }, 401 as any)
     }
 
     if (!token) {

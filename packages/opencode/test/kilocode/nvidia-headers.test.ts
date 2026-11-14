@@ -28,7 +28,7 @@ it.live("nvidia provider includes KiloCode billing origin header", () =>
           const headers = providers[ProviderV2.ID.make("nvidia")].options.headers
 
           expect(headers["HTTP-Referer"]).toBe("https://kilo.ai/")
-          expect(headers["X-Title"]).toBe("Kilo Code")
+          expect(headers["X-Title"]).toBe("Semafour")
           expect(headers["X-BILLING-INVOKE-ORIGIN"]).toBe("KiloCode")
         }),
       ),
@@ -64,7 +64,7 @@ it.live("nvidia billing origin header can be overridden from config", () =>
             const headers = providers[ProviderV2.ID.make("nvidia")].options.headers
 
             expect(headers["HTTP-Referer"]).toBe("https://kilo.ai/")
-            expect(headers["X-Title"]).toBe("Kilo Code")
+            expect(headers["X-Title"]).toBe("Semafour")
             expect(headers["X-BILLING-INVOKE-ORIGIN"]).toBe("CustomOrigin")
           }),
         ),

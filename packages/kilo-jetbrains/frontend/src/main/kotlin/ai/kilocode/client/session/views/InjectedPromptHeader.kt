@@ -11,7 +11,7 @@ import com.intellij.util.ui.JBUI
 import java.awt.BorderLayout
 import javax.swing.JPanel
 
-/** Header above a prompt Kilo composed, e.g. "Sent by Kilo · Update from main". */
+/** Header above a prompt Semafour composed, e.g. "Sent by Semafour · Update from main". */
 internal class InjectedPromptHeader(
     private val onToggle: (Boolean) -> Unit,
 ) : JPanel(BorderLayout()) {

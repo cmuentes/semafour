@@ -1,6 +1,6 @@
 /**
- * Kilo Gateway specific routes
- * Handles profile fetching and organization management for Kilo Gateway provider
+ * Semafour Gateway specific routes
+ * Handles profile fetching and organization management for Semafour Gateway provider
  *
  * This factory function accepts OpenCode dependencies to create Kilo-specific routes
  */
@@ -52,7 +52,7 @@ interface KiloRoutesDeps extends ImportDeps {
 }
 
 /**
- * Create Kilo Gateway routes with OpenCode dependencies injected
+ * Create Semafour Gateway routes with OpenCode dependencies injected
  *
  * @example
  * ```typescript
@@ -179,8 +179,8 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
     .get(
       "/profile",
       describeRoute({
-        summary: "Get Kilo Gateway profile",
-        description: "Fetch user profile and organizations from Kilo Gateway",
+        summary: "Get Semafour Gateway profile",
+        description: "Fetch user profile and organizations from Semafour Gateway",
         operationId: "kilo.profile",
         responses: {
           200: {
@@ -199,15 +199,15 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
           return c.json(await getProfile(Auth))
         } catch (err) {
           if (!(err instanceof UnauthorizedError)) throw err
-          return c.json({ error: "Not authenticated with Kilo Gateway" }, 401)
+          return c.json({ error: "Not authenticated with Semafour Gateway" }, 401)
         }
       },
     )
     .post(
       "/organization",
       describeRoute({
-        summary: "Update Kilo Gateway organization",
-        description: "Switch to a different Kilo Gateway organization",
+        summary: "Update Semafour Gateway organization",
+        description: "Switch to a different Semafour Gateway organization",
         operationId: "kilo.organization.set",
         responses: {
           200: {
@@ -243,7 +243,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
           )
         } catch (err) {
           if (!(err instanceof UnauthorizedError)) throw err
-          return c.json({ error: "Not authenticated with Kilo Gateway" }, 401)
+          return c.json({ error: "Not authenticated with Semafour Gateway" }, 401)
         }
       },
     )
@@ -324,7 +324,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       "/fim",
       describeRoute({
         summary: "FIM completion",
-        description: "Proxy a Fill-in-the-Middle completion request to the Kilo Gateway",
+        description: "Proxy a Fill-in-the-Middle completion request to the Semafour Gateway",
         operationId: "kilo.fim",
         responses: {
           200: {
@@ -393,7 +393,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       "/audio/transcriptions",
       describeRoute({
         summary: "Speech to text transcription",
-        description: "Proxy an audio transcription request to the Kilo Gateway",
+        description: "Proxy an audio transcription request to the Semafour Gateway",
         operationId: "kilo.audio.transcriptions",
         responses: {
           200: {
@@ -422,7 +422,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       ),
       async (c: any) => {
         const proxy = await getProxyAuth()
-        if (!proxy.auth) return c.json({ error: "Not authenticated with Kilo Gateway" }, 401)
+        if (!proxy.auth) return c.json({ error: "Not authenticated with Semafour Gateway" }, 401)
 
         if (!proxy.token) return c.json({ error: "No valid token found" }, 401)
 
@@ -454,7 +454,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       "/models/images",
       describeRoute({
         summary: "Image generation models",
-        description: "List image-capable models from the Kilo Gateway OpenRouter passthrough",
+        description: "List image-capable models from the Semafour Gateway OpenRouter passthrough",
         operationId: "kilo.models.images",
         responses: {
           200: {
@@ -486,7 +486,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
           return c.json(result.models)
         } catch (err) {
           if (!(err instanceof UnauthorizedError)) throw err
-          return c.json({ error: "Not authenticated with Kilo Gateway" }, 401)
+          return c.json({ error: "Not authenticated with Semafour Gateway" }, 401)
         }
       },
     )
@@ -495,7 +495,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       describeRoute({
         summary: "Image generation",
         description:
-          "Proxy an image generation request (chat-completions with modalities) to the Kilo Gateway OpenRouter passthrough",
+          "Proxy an image generation request (chat-completions with modalities) to the Semafour Gateway OpenRouter passthrough",
         operationId: "kilo.image.generations",
         responses: {
           200: {
@@ -512,7 +512,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       validator("json", z.object({ body: z.unknown() }).passthrough()),
       async (c: any) => {
         const proxy = await getProxyAuth()
-        if (!proxy.auth) return c.json({ error: "Not authenticated with Kilo Gateway" }, 401)
+        if (!proxy.auth) return c.json({ error: "Not authenticated with Semafour Gateway" }, 401)
         if (!proxy.token) return c.json({ error: "No valid token found" }, 401)
 
         const payload = c.req.valid("json")
@@ -542,8 +542,8 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
     .get(
       "/notifications",
       describeRoute({
-        summary: "Get Kilo notifications",
-        description: "Fetch notifications from Kilo Gateway for CLI display",
+        summary: "Get Semafour notifications",
+        description: "Fetch notifications from Semafour Gateway for CLI display",
         operationId: "kilo.notifications",
         responses: {
           200: {
@@ -565,7 +565,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       "/cloud/session/:id",
       describeRoute({
         summary: "Get cloud session",
-        description: "Fetch full session data from the Kilo cloud for preview",
+        description: "Fetch full session data from the Semafour cloud for preview",
         operationId: "kilo.cloud.session.get",
         responses: {
           200: {
@@ -583,7 +583,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       async (c: any) => {
         try {
           const auth = await Auth.get("kilo")
-          if (!auth) return c.json({ error: "Not authenticated with Kilo Gateway" }, 401)
+          if (!auth) return c.json({ error: "Not authenticated with Semafour Gateway" }, 401)
           const token = auth.type === "api" ? auth.key : auth.type === "oauth" ? auth.access : undefined
           if (!token) return c.json({ error: "No valid token found" }, 401)
 
@@ -592,7 +592,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
           if (!result.ok) return c.json({ error: result.error }, result.status)
           return c.json(result.data)
         } catch (err: any) {
-          console.error("[Kilo Gateway] cloud/session/get: unhandled error", err?.message ?? err)
+          console.error("[Semafour Gateway] cloud/session/get: unhandled error", err?.message ?? err)
           return c.json({ error: "Internal error" }, 500)
         }
       },
@@ -626,7 +626,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
           const { sessionId } = c.req.valid("json")
 
           const auth = await Auth.get("kilo")
-          if (!auth) return c.json({ error: "Not authenticated with Kilo" }, 401)
+          if (!auth) return c.json({ error: "Not authenticated with Semafour" }, 401)
           const token = auth.type === "api" ? auth.key : auth.type === "oauth" ? auth.access : undefined
           if (!token) return c.json({ error: "No valid token found" }, 401)
 
@@ -651,7 +651,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
           return c.json(info)
         } catch (err: any) {
           if (err instanceof SessionImportValidationError) return c.json({ error: "Invalid export data" }, 400)
-          console.error("[Kilo Gateway] cloud/session/import: unhandled error", err?.message ?? err)
+          console.error("[Semafour Gateway] cloud/session/import: unhandled error", err?.message ?? err)
           return c.json({ error: "Internal error" }, 500)
         }
       },
@@ -660,7 +660,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       "/cloud-sessions",
       describeRoute({
         summary: "Get cloud sessions",
-        description: "Fetch cloud CLI sessions from Kilo API",
+        description: "Fetch cloud CLI sessions from Semafour API",
         operationId: "kilo.cloudSessions",
         responses: {
           200: {
@@ -698,7 +698,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
       async (c: any) => {
         try {
           const auth = await Auth.get("kilo")
-          if (!auth) return c.json({ error: "Not authenticated with Kilo Gateway" }, 401)
+          if (!auth) return c.json({ error: "Not authenticated with Semafour Gateway" }, 401)
 
           const token = auth.type === "api" ? auth.key : auth.type === "oauth" ? auth.access : undefined
           if (!token) return c.json({ error: "No valid token found" }, 401)
@@ -706,7 +706,7 @@ export function createKiloRoutes(deps: KiloRoutesDeps) {
           return c.json(await getCloudSessions(token, c.req.valid("query")))
         } catch (err: any) {
           if (err instanceof GatewayError) return c.json({ error: err.message }, err.status as any)
-          console.error("[Kilo Gateway] cloud-sessions: unhandled error", err?.message ?? err)
+          console.error("[Semafour Gateway] cloud-sessions: unhandled error", err?.message ?? err)
           return c.json({ error: "Internal error" }, 500)
         }
       },

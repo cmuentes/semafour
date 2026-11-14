@@ -212,7 +212,7 @@ function chunks<T>(items: T[], size = 200): T[][] {
 
 /**
  * Overlay transformed upstream changes onto the previous compatibility tree.
- * Paths unchanged upstream keep their prior Kilo content, including Kilo-only
+ * Paths unchanged upstream keep their prior Semafour content, including Kilo-only
  * files and marker-bearing shared files.
  */
 export async function overlayCompatTree(input: {

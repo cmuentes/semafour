@@ -8,7 +8,7 @@
 // diff tells you exactly which command(s) changed.
 //
 // Snapshots are taken at COLUMNS=120 so wrapping is stable across
-// kilocode_change start - describe Kilo's branded CLI
+// kilocode_change start - describe Semafour's branded CLI
 // terminal sizes. The default kilo TUI command is excluded —
 // `kilo --help` includes an ASCII banner that pulls in the install
 // kilocode_change end
@@ -29,7 +29,7 @@ import { normalizeForSnapshot, PATH_SEP } from "../../lib/snapshot"
 //      path widths produce different leading-whitespace counts (or even
 //      line-wraps onto a fresh line on Windows). `\s+` matches both forms.
 function normalize(text: string): string {
-  // kilocode_change start - snapshot Kilo help independently of lifecycle logs
+  // kilocode_change start - snapshot Semafour help independently of lifecycle logs
   const help = text.slice(text.indexOf("kilo "))
   const output = help
     .replace(/(?=INFO  \d{4}-\d{2}-\d{2}).*$/s, "")
@@ -49,7 +49,7 @@ function normalize(text: string): string {
   })
 }
 
-// kilocode_change start - describe Kilo's command list
+// kilocode_change start - describe Semafour's command list
 // Top-level commands. Order matches what `kilo --help` prints today;
 // keep it in that order so the snapshot file reads as a table of contents.
 // `completion` is intentionally excluded — it's a yargs built-in that emits
@@ -103,7 +103,7 @@ const SUBCOMMANDS = [
 const SNAPSHOT_ENV = { COLUMNS: "120" }
 
 // kilocode_change start - name snapshots after the shipped CLI
-describe("Kilo CLI help-text snapshots", () => {
+describe("Semafour CLI help-text snapshots", () => {
   // kilocode_change end
   // Single test, parallel spawns. Each command's help fires under
   // `concurrency: 8` — wall-clock stays under ~10s even for ~35 commands,

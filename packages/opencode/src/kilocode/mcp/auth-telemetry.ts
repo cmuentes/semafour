@@ -1,4 +1,4 @@
-// Telemetry for explicit MCP sign-ins (`MCP.authenticate`), the path every Kilo client uses.
+// Telemetry for explicit MCP sign-ins (`MCP.authenticate`), the path every Semafour client uses.
 //
 // One admitted call is one attempt: `MCP Auth Started` when it begins and exactly one
 // `MCP Auth Completed` when it settles. The shared runtime records phase changes through

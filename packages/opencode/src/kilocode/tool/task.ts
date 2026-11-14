@@ -46,7 +46,7 @@ export namespace KiloTask {
     }),
     provider: Schema.optional(Schema.NullOr(Schema.String)).annotate({
       description:
-        "Optional provider ID from agent_manager_models. Only set when the user explicitly requests a provider. Requires model; omit or send null to prefer the current turn's provider, then Kilo Gateway.",
+        "Optional provider ID from agent_manager_models. Only set when the user explicitly requests a provider. Requires model; omit or send null to prefer the current turn's provider, then Semafour Gateway.",
     }),
     variant: Schema.optional(Schema.NullOr(Schema.String)).annotate({
       description:
@@ -97,7 +97,7 @@ export namespace KiloTask {
    * overriding the selected subagent's own allowlist with parent ask/allow rules.
    *
    * OpenCode removed parent-agent inheritance entirely in anomalyco/opencode#31696.
-   * Kilo intentionally differs: native-agent edit denials and parent notebook/MCP denials
+   * Semafour intentionally differs: native-agent edit denials and parent notebook/MCP denials
    * remain hard ceilings for Plan Mode and MCP restrictions. A custom delegator's edit
    * policy governs only that agent: it is not projected onto the subagents it starts, so
    * even path-scoped denies such as `edit: { "secrets/**": "deny" }` stop there and no

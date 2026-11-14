@@ -130,31 +130,31 @@ async function issue(
       ...(timeoutMs > 0 ? { signal: AbortSignal.timeout(timeoutMs) } : {}),
     })
   } catch {
-    throw new ControlTokenError("unavailable", "Kilo control token could not be issued")
+    throw new ControlTokenError("unavailable", "Semafour control token could not be issued")
   }
 
   const payload = await readBoundedJson(response, MAX_CONTROL_TOKEN_RESPONSE_BYTES).catch(() => undefined)
   if (!response.ok) throw errorForStatus(response.status)
   const parsed = ResponseSchema.safeParse(payload)
   if (!parsed.success) {
-    throw new ControlTokenError("invalid_response", "Kilo control token response is invalid")
+    throw new ControlTokenError("invalid_response", "Semafour control token response is invalid")
   }
   if (parsed.data.expiresAt <= clock()) {
-    throw new ControlTokenError("invalid_response", "Kilo control token has already expired")
+    throw new ControlTokenError("invalid_response", "Semafour control token has already expired")
   }
   return { token: Redacted.make(parsed.data.token), expiresAt: parsed.data.expiresAt }
 }
 
 function errorForStatus(status: number) {
   if (status === 401 || status === 403) {
-    return new ControlTokenError("unauthorized", "Kilo Cloud denied the control token request")
+    return new ControlTokenError("unauthorized", "Semafour Cloud denied the control token request")
   }
   if (status === 408 || status === 429 || status >= 500) {
-    return new ControlTokenError("unavailable", "Kilo Cloud token issuance is temporarily unavailable")
+    return new ControlTokenError("unavailable", "Semafour Cloud token issuance is temporarily unavailable")
   }
   return new ControlTokenError(
     "invalid_response",
-    `Kilo control token issuer returned an unexpected HTTP status: ${status}`,
+    `Semafour control token issuer returned an unexpected HTTP status: ${status}`,
   )
 }
 

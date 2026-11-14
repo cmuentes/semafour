@@ -2,7 +2,7 @@ import { lazy } from "@/kilocode/cli/lazy-commands"
 
 export const KiloConsoleCommand = lazy({
   command: "console",
-  describe: "open or stop the local Kilo Console (deprecated)",
+  describe: "open or stop the local Semafour Console (deprecated)",
   load: async () => (await import("@/kilocode/cli/cmd/console")).KiloConsoleCommand,
 })
 
@@ -20,7 +20,7 @@ export const RollCallCommand = lazy({
 
 export const ProfileCommand = lazy({
   command: "profile",
-  describe: "show Kilo account profile",
+  describe: "show Semafour account profile",
   load: async () => (await import("@/kilocode/cli/cmd/profile")).ProfileCommand,
 })
 

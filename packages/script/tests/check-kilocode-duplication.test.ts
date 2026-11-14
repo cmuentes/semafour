@@ -148,7 +148,7 @@ test(
 )
 
 test(
-  "includes new Kilo packages without counting JetBrains, upstream, generated, locale or fixture files",
+  "includes new Semafour packages without counting JetBrains, upstream, generated, locale or fixture files",
   async () => {
     await fixture(
       {

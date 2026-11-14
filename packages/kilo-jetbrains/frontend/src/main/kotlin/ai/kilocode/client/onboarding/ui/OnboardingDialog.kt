@@ -121,13 +121,13 @@ internal class OnboardingDialog(
         return JBSplitter(false, SPLIT_PROPORTION).apply {
             firstComponent = rail
             secondComponent = right
-            splitterProportionKey = "Kilo.OnboardingDialog.splitter"
+            splitterProportionKey = "Semafour.OnboardingDialog.splitter"
             preferredSize = JBDimension(DIALOG_WIDTH, DIALOG_HEIGHT)
         }
     }
 
     /**
-     * Standard [DialogWrapper] banner slot (rendered above the center panel). Carries the Kilo
+     * Standard [DialogWrapper] banner slot (rendered above the center panel). Carries the Semafour
      * branding for the setup flow.
      */
     override fun createTitlePane(): JComponent {
@@ -159,7 +159,7 @@ internal class OnboardingDialog(
 
     override fun getPreferredFocusedComponent(): JComponent = rail.preferredFocus()
 
-    override fun getDimensionServiceKey(): String = "Kilo.OnboardingDialog"
+    override fun getDimensionServiceKey(): String = "Semafour.OnboardingDialog"
 
     override fun doCancelAction() {
         if (isSelectedRunning()) return

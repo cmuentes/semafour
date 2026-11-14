@@ -23,8 +23,8 @@ export function DialogModel(props: { providerID?: string }) {
   const connected = useConnected()
   const providers = createDialogProviderOptions()
   // kilocode_change start
-  // Memoize anything that iterates all Kilo models to avoid calculating it for
-  // each Kilo model and tanking the UI at a couple hundred models
+  // Memoize anything that iterates all Semafour models to avoid calculating it for
+  // each Semafour model and tanking the UI at a couple hundred models
   const kiloRank = createMemo(() => {
     const provider = sync.data.provider.find((provider) => provider.id === "kilo")
     const models = provider?.models ?? {}
@@ -74,7 +74,7 @@ export function DialogModel(props: { providerID?: string }) {
   // kilocode_change end
 
   // kilocode_change start - option building lives in kilocode/model-picker so the
-  // Kilo Gateway grouping/search rules can be unit tested
+  // Semafour Gateway grouping/search rules can be unit tested
   const options = createMemo(() => {
     const needle = query().trim()
     const modelOptions = buildModelPickerOptions({
@@ -189,7 +189,7 @@ export function sortModelOptions<
   newestFirst: boolean,
   rank: ReadonlyMap<string, number> = new Map(), // kilocode_change
 ) {
-  // kilocode_change start - Sort within Recommended / Kilo Gateway
+  // kilocode_change start - Sort within Recommended / Semafour Gateway
   const recommended = (option: T) =>
     option.value?.providerID === "kilo" ? (rank.get(option.value.modelID) ?? Infinity) : 0
   // kilocode_change end
@@ -204,7 +204,7 @@ export function sortModelOptions<
     options,
     recommended, // kilocode_change
     (option) => option.footer === undefined,
-    [(option) => option.releaseDate, "desc"], // kilocode_change - free model footers include Kilo disclosure labels
+    [(option) => option.releaseDate, "desc"], // kilocode_change - free model footers include Semafour disclosure labels
     (option) => option.title,
   )
 }

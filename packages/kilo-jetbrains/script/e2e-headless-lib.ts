@@ -315,7 +315,7 @@ export function renderSummary(input: SummaryInput): string {
     `- Display: ${input.display}`,
     `- Cloud stack: ${input.stack}`,
     `- Cleanup: ${input.cleanup}`,
-    `- Kilo commit: ${input.kiloCommit ?? "unknown"}`,
+    `- Semafour commit: ${input.kiloCommit ?? "unknown"}`,
     `- Cloud commit: ${input.cloudCommit ?? "unknown"}`,
     "",
     "## Cells",

@@ -1,11 +1,11 @@
 # @kilocode/kilo-gateway
 
-Unified Kilo Gateway package for OpenCode providing authentication, AI provider integration, and API access.
+Unified Semafour Gateway package for OpenCode providing authentication, AI provider integration, and API access.
 
 ## Features
 
-- **Authentication**: Device authorization flow for Kilo Gateway
-- **AI Provider**: OpenRouter-based provider with Kilo Gateway integration
+- **Authentication**: Device authorization flow for Semafour Gateway
+- **AI Provider**: OpenRouter-based provider with Semafour Gateway integration
 - **API Integration**: Profile, balance, and model management
 - **TUI Helpers**: Utilities for terminal UI components
 
@@ -29,9 +29,9 @@ const plugins = [KiloAuthPlugin]
 ### Provider Usage
 
 ```typescript
-import { createKilo } from "@kilocode/kilo-gateway"
+import { createSemafour } from "@kilocode/kilo-gateway"
 
-const provider = createKilo({
+const provider = createSemafour({
   kilocodeToken: process.env.KILOCODE_API_KEY,
   kilocodeOrganizationId: "org-123",
 })

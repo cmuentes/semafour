@@ -7,7 +7,7 @@ import { Skill } from "../../src/skill"
 import { Permission } from "../../src/permission"
 import type { Provider } from "../../src/provider/provider"
 import { SystemPrompt } from "../../src/session/system"
-import { MCP } from "../../src/mcp" // kilocode_change - restore upstream MCP coverage in Kilo's AppNodeBuilder harness
+import { MCP } from "../../src/mcp" // kilocode_change - restore upstream MCP coverage in Semafour's AppNodeBuilder harness
 import { LocationServiceMap } from "@opencode-ai/core/location-services"
 import { testEffect } from "../lib/effect"
 import { Config } from "../../src/config/config" // kilocode_change
@@ -47,7 +47,7 @@ const build: Agent.Info = {
 
 const it = testEffect(
   AppNodeBuilder.build(SystemPrompt.node, [
-    // kilocode_change start - restore upstream MCP coverage in Kilo's AppNodeBuilder harness
+    // kilocode_change start - restore upstream MCP coverage in Semafour's AppNodeBuilder harness
     [
       MCP.node,
       Layer.mock(MCP.Service, {

@@ -45,7 +45,7 @@ test("fixScripts preserves Kilo-only root scripts from base", () => {
   expect(changes.some((c) => c.includes("dev-setup"))).toBe(true)
 })
 
-test("fixRepository preserves Kilo package links", () => {
+test("fixRepository preserves Semafour package links", () => {
   const ours = {
     repository: { url: "https://github.com/Kilo-Org/kilocode.git" },
     homepage: "https://github.com/Kilo-Org/kilocode/tree/main/packages/example",
@@ -64,9 +64,9 @@ test("fixRepository preserves Kilo package links", () => {
   expect(pkg.homepage).toBe(ours.homepage)
   expect(pkg.bugs).toBe(ours.bugs)
   expect(changes).toEqual([
-    "repository: preserved Kilo metadata",
-    "homepage: preserved Kilo metadata",
-    "bugs: preserved Kilo metadata",
+    "repository: preserved Semafour metadata",
+    "homepage: preserved Semafour metadata",
+    "bugs: preserved Semafour metadata",
   ])
 })
 
@@ -138,7 +138,7 @@ test("fixScripts preserves dev:local and shared-package test:ci scripts", () => 
   }
 })
 
-test("fixTrustedDependencies removes native-build permissions against Kilo policy", () => {
+test("fixTrustedDependencies removes native-build permissions against Semafour policy", () => {
   const pkg: Record<string, unknown> = { trustedDependencies: ["tree-sitter-powershell", "bun-pty"] }
   const changes: string[] = []
   fixTrustedDependencies(pkg, "package.json", changes)
@@ -250,7 +250,7 @@ test("mergeWithNewestVersions appends theirs-only keys at the end", () => {
   expect(Object.keys(result)).toEqual(["a", "b", "c"])
 })
 
-test("selectBunPackageManager keeps the newer Bun version and prefers Kilo on ties", () => {
+test("selectBunPackageManager keeps the newer Bun version and prefers Semafour on ties", () => {
   expect(selectBunPackageManager("bun@1.3.14", "bun@1.3.13")).toBe("bun@1.3.14")
   expect(selectBunPackageManager("bun@1.3.14", "bun@1.3.15")).toBe("bun@1.3.15")
   expect(selectBunPackageManager("bun@1.3.14+kilo", "bun@1.3.14+upstream")).toBe("bun@1.3.14+kilo")
@@ -268,15 +268,15 @@ test("fixPackageManager prevents root Bun downgrades", () => {
   const changes: string[] = []
   fixPackageManager(pkg, "package.json", ours, changes)
   expect(pkg.packageManager).toBe("bun@1.3.14")
-  expect(changes).toEqual(["packageManager: bun@1.3.13 -> bun@1.3.14 (preserved Kilo pin)"])
+  expect(changes).toEqual(["packageManager: bun@1.3.13 -> bun@1.3.14 (preserved Semafour pin)"])
 })
 
-test("fixPackageManager restores a valid Kilo pin over malformed upstream", () => {
+test("fixPackageManager restores a valid Semafour pin over malformed upstream", () => {
   const pkg: Record<string, unknown> = { packageManager: "bun@latest" }
   const changes: string[] = []
   fixPackageManager(pkg, "package.json", { packageManager: "bun@1.3.14" }, changes)
   expect(pkg.packageManager).toBe("bun@1.3.14")
-  expect(changes).toEqual(["packageManager: bun@latest -> bun@1.3.14 (preserved Kilo pin)"])
+  expect(changes).toEqual(["packageManager: bun@latest -> bun@1.3.14 (preserved Semafour pin)"])
 })
 
 test("fixPackageManager accepts upstream Bun upgrades", () => {

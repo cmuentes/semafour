@@ -107,7 +107,7 @@ class WorktreeRunManagerTest : BasePlatformTestCase() {
         assertTrue("dev" in names)
         assertFalse("app" in names)
         assertFalse("mod" in names)
-        assertEquals("Kilo Params kilo.test.params.list", configs.first { it.name == "dev" }.type)
+        assertEquals("Semafour Params kilo.test.params.list", configs.first { it.name == "dev" }.type)
         assertNull(configs.first { it.name == "dev" }.via)
     }
 
@@ -187,7 +187,7 @@ class WorktreeRunManagerTest : BasePlatformTestCase() {
         val source = settings.configuration as ExternalSystemRunConfiguration
         val repo = requireNotNull(project.basePath)
         val sandbox = "packages/kilo-jetbrains/.intellijPlatform/sandbox/kilo.jetbrains"
-        source.addLogFile("$repo/$sandbox/kilo-backend/kilo.log", "Backend Kilo", true, false, false)
+        source.addLogFile("$repo/$sandbox/kilo-backend/kilo.log", "Backend Semafour", true, false, false)
         source.addLogFile("/var/log/shared/audit.log", "Audit", true, true, false)
         val wt = "$repo/.kilo/worktrees/logs-wt"
 
@@ -197,7 +197,7 @@ class WorktreeRunManagerTest : BasePlatformTestCase() {
         assertEquals(2, logs.size)
         // Without this the Run tool window tails the main checkout's stale file and never fills in.
         assertEquals(Path.of("$wt/$sandbox/kilo-backend/kilo.log").toString(), logs.first().pathPattern)
-        assertEquals("Backend Kilo", logs.first().name)
+        assertEquals("Backend Semafour", logs.first().name)
         assertFalse(logs.first().isSkipContent)
         assertTrue(logs.first().isEnabled)
         // Outside the repository, so not part of the transplanted tree.
@@ -294,7 +294,7 @@ class WorktreeRunManagerTest : BasePlatformTestCase() {
         assertEquals(1, skipped.size)
         assertEquals("app", skipped.single().name)
         assertEquals("not module-based (PlainConfig)", skipped.single().reason)
-        assertEquals("Kilo Params kilo.test.plain.skipreason", skipped.single().type)
+        assertEquals("Semafour Params kilo.test.plain.skipreason", skipped.single().type)
     }
 
     fun testRunRejectsUnknownAndUnsupported() = runBlocking {
@@ -900,7 +900,7 @@ class WorktreeRunManagerTest : BasePlatformTestCase() {
     private class TestType(
         id: String,
         private val create: (Project, ConfigurationFactory, String) -> RunConfiguration,
-    ) : ConfigurationTypeBase(id, "Kilo Params $id", null, null as javax.swing.Icon?) {
+    ) : ConfigurationTypeBase(id, "Semafour Params $id", null, null as javax.swing.Icon?) {
         init {
             addFactory(object : ConfigurationFactory(this) {
                 override fun getId(): String = type.id

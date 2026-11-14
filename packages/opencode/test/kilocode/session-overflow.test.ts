@@ -47,7 +47,7 @@ function tokens(count: number): MessageV2.Assistant["tokens"] {
   return { input: count, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
 }
 
-describe("Kilo post-step compaction safety", () => {
+describe("Semafour post-step compaction safety", () => {
   test("ignores the configured threshold after a provider step", () => {
     const conf = cfg({ threshold_percent: 75 })
     const mdl = model({ context: 200_000, output: 32_000 })
@@ -139,7 +139,7 @@ describe("Kilo post-step compaction safety", () => {
   })
 })
 
-describe("Kilo request estimation", () => {
+describe("Semafour request estimation", () => {
   test("skips output estimation when no output cap can use it", () => {
     const mdl = model({ context: 200_000, output: 32_000 })
 
@@ -256,7 +256,7 @@ describe("Kilo request estimation", () => {
   })
 })
 
-describe("Kilo preflight compaction", () => {
+describe("Semafour preflight compaction", () => {
   test("triggers from estimated outgoing context without provider usage", () => {
     const conf = cfg({ threshold_percent: 75 })
     const mdl = model({ context: 200_000, output: 32_000 })

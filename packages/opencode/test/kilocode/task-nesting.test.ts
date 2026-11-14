@@ -147,7 +147,7 @@ function stubOps(opts?: { onPrompt?: (input: SessionPrompt.PromptInput) => void;
   }
 }
 
-describe("Kilo task nesting", () => {
+describe("Semafour task nesting", () => {
   it.live("treats a missing ancestor row as the root", () =>
     provideTmpdirInstance(() =>
       Effect.gen(function* () {
@@ -528,7 +528,7 @@ describe("Kilo task nesting", () => {
   )
 })
 
-describe("Kilo task drain", () => {
+describe("Semafour task drain", () => {
   function task(message: MessageV2.Assistant, ops: TaskPromptOps, metadata: Context["metadata"] = () => Effect.void) {
     return Effect.gen(function* () {
       const tool = yield* (yield* TaskTool).init()

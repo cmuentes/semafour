@@ -1,6 +1,6 @@
 ---
 title: "Development Patterns"
-description: "Contributor patterns for Kilo architecture implementation and fork maintenance"
+description: "Contributor patterns for Semafour architecture implementation and fork maintenance"
 ---
 
 # Development Patterns
@@ -22,8 +22,8 @@ Prefer Kilo-owned seams over broad changes to shared OpenCode files. Follow neig
 
 | Change shape | Preferred location or action | Reason |
 |---|---|---|
-| Additive Kilo CLI behavior | `packages/opencode/src/kilocode/` | Keeps Kilo-only behavior out of upstream-owned files |
-| Kilo CLI test for additive behavior | `packages/opencode/test/kilocode/` | Avoids shared tests that encode only Kilo behavior |
+| Additive Semafour CLI behavior | `packages/opencode/src/kilocode/` | Keeps Kilo-only behavior out of upstream-owned files |
+| Semafour CLI test for additive behavior | `packages/opencode/test/kilocode/` | Avoids shared tests that encode only Semafour behavior |
 | Required shared OpenCode edit | Small import, route, or injection seam in shared file plus `kilocode_change` marker | Keeps upstream diff narrow and merge review obvious |
 | VS Code, JetBrains, docs, indexing, UI, gateway, or telemetry change | Existing Kilo-owned package | These packages are Kilo-owned; do not add `kilocode_change` markers |
 | CLI server endpoint change | Effect `HttpApi` route plus handler; then run root SDK generator | Keeps server contract and generated JavaScript SDK aligned |
@@ -33,12 +33,12 @@ Prefer Kilo-owned seams over broad changes to shared OpenCode files. Follow neig
 
 ## Kilo-owned boundaries
 
-Kilo CLI forks upstream OpenCode. Prefer Kilo-owned directories and packages for additive behavior:
+Semafour CLI forks upstream OpenCode. Prefer Kilo-owned directories and packages for additive behavior:
 
 | Prefer | Avoid unless necessary |
 |---|---|
 | `packages/opencode/src/kilocode/` | Broad edits to shared `packages/opencode/src/` files |
-| `packages/opencode/test/kilocode/` | Shared tests that encode only Kilo behavior |
+| `packages/opencode/test/kilocode/` | Shared tests that encode only Semafour behavior |
 | `packages/kilo-vscode/`, `packages/kilo-jetbrains/`, `packages/kilo-docs/`, `packages/kilo-indexing/` | Moving Kilo-only behavior into upstream-owned modules |
 | Narrow import or route seams in shared files | Refactors that enlarge upstream merge conflicts |
 
@@ -53,13 +53,13 @@ Use `kilocode_change` markers when Kilo-specific code must modify shared upstrea
 | New file in shared path | Top-level `// kilocode_change - new file` |
 | JSX or TSX | JSX comment equivalents |
 
-Marker exemptions apply to paths already owned by Kilo, including paths whose names contain `kilocode` and Kilo packages such as `packages/kilo-vscode/` or `packages/kilo-ui/`. Do not add markers there.
+Marker exemptions apply to paths already owned by Semafour, including paths whose names contain `kilocode` and Semafour packages such as `packages/kilo-vscode/` or `packages/kilo-ui/`. Do not add markers there.
 
 | Guard | When to run |
 |---|---|
-| `bun run script/check-opencode-annotations.ts` | PR touches `packages/opencode/`; verifies shared OpenCode Kilo edits are annotated |
+| `bun run script/check-opencode-annotations.ts` | PR touches `packages/opencode/`; verifies shared OpenCode Semafour edits are annotated |
 | `bun run script/check-opencode-promise-facades.ts` | Service adapter changes; prevents new runtime-backed Promise facades in shared Effect services |
-| `bun run check-kilocode-change` from `packages/kilo-vscode/` | VS Code or Kilo UI changes; markers must not appear in fully Kilo-owned packages |
+| `bun run check-kilocode-change` from `packages/kilo-vscode/` | VS Code or Semafour UI changes; markers must not appear in fully Kilo-owned packages |
 | `bun run script/check-workflows.ts` | Workflow add or remove changes; keeps workflow allowlist explicit |
 
 ## CLI server API
@@ -70,8 +70,8 @@ CLI server uses Effect `HttpApi` and publishes OpenAPI-compatible HTTP + SSE sur
 |---|---|
 | Define shared routes under `packages/opencode/src/server/routes/instance/httpapi/` | Keeps route contract close to runtime handlers |
 | Normalize public spec in `packages/opencode/src/server/routes/instance/httpapi/public.ts` | Preserves legacy-compatible request and response shapes during Effect migration |
-| Put additive Kilo groups and handlers under `packages/opencode/src/kilocode/server/httpapi/` | Reduces edits in shared upstream-owned files |
-| Inject Kilo APIs through narrow shared seam | Keeps upstream diff small and marker placement obvious |
+| Put additive Semafour groups and handlers under `packages/opencode/src/kilocode/server/httpapi/` | Reduces edits in shared upstream-owned files |
+| Inject Semafour APIs through narrow shared seam | Keeps upstream diff small and marker placement obvious |
 | Preserve route spans and stable attributes | Keeps diagnostics and telemetry understandable |
 
 ## SDK generation
@@ -169,7 +169,7 @@ Paths below are relative to [`Kilo-Org/kilocode`](https://github.com/Kilo-Org/ki
 | Tool example | `packages/opencode/src/tool/read.ts` |
 | Server APIs | `packages/opencode/src/server/routes/instance/httpapi/` |
 | Public OpenAPI normalization | `packages/opencode/src/server/routes/instance/httpapi/public.ts` |
-| Kilo route seam | `packages/opencode/src/kilocode/server/httpapi/` |
+| Semafour route seam | `packages/opencode/src/kilocode/server/httpapi/` |
 | JavaScript SDK generation | `packages/sdk/js/script/build.ts`{% linebreak /%}`script/generate.ts` |
 | JetBrains client generation | `packages/kilo-jetbrains/backend/build.gradle.kts` |
 | Upstream merge automation | `script/upstream/` |

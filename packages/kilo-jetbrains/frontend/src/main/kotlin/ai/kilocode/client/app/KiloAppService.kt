@@ -36,7 +36,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * App-level frontend service for Kilo Core interaction.
+ * App-level frontend service for Semafour Core interaction.
  *
  * Communicates with the backend via [KiloAppRpcApi]. All operations
  * are app-scoped — no project context is needed.
@@ -432,7 +432,7 @@ class KiloAppService internal constructor(
     }
 
     /**
-     * Start the Kilo device auth login flow.
+     * Start the Semafour device auth login flow.
      * Returns [DeviceAuthDto] with the URL/code to display.
      * Throws on failure.
      */

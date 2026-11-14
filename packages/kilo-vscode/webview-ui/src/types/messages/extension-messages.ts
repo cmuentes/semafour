@@ -437,7 +437,7 @@ export interface AppendReviewCommentsToTerminalMessage {
 export interface TriggerTaskMessage {
   type: "triggerTask"
   text: string
-  /** Label for a prompt Kilo composed, such as an editor code action. */
+  /** Label for a prompt Semafour composed, such as an editor code action. */
   injectedTitle?: string
 }
 
@@ -560,7 +560,7 @@ export interface ProvidersLoadedMessage {
   defaultSelection: ModelSelection
   authMethods: Record<string, ProviderAuthMethod[]>
   authStates: Record<string, ProviderAuthState>
-  /** The organization's Kilo catalog failed to load, so Kilo has no models to pick. */
+  /** The organization's Semafour catalog failed to load, so Semafour has no models to pick. */
   kiloUnavailable?: boolean
   /** Typed reasons providers failed to load, so the UI can explain why instead of hiding them. */
   failures?: ProviderFailure[]

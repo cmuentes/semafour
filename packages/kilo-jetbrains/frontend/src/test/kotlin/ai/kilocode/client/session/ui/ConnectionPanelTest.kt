@@ -103,11 +103,11 @@ class ConnectionPanelTest : SessionControllerTestBase() {
             .use { it.readText() }
 
         assertTrue(panel.retryVisible())
-        assertEquals("Kilo.CliGroup", ConnectionPanel.CLI_GROUP_ID)
-        assertTrue(xml.contains("<group id=\"Kilo.CliGroup\" text=\"Core\" popup=\"true\">"))
-        assertTrue(xml.contains("<reference ref=\"Kilo.Restart\"/>"))
-        assertTrue(xml.contains("<reference ref=\"Kilo.Reinstall\"/>"))
-        assertTrue(xml.contains("<reference ref=\"Kilo.CoreInfo\"/>"))
+        assertEquals("Semafour.CliGroup", ConnectionPanel.CLI_GROUP_ID)
+        assertTrue(xml.contains("<group id=\"Semafour.CliGroup\" text=\"Core\" popup=\"true\">"))
+        assertTrue(xml.contains("<reference ref=\"Semafour.Restart\"/>"))
+        assertTrue(xml.contains("<reference ref=\"Semafour.Reinstall\"/>"))
+        assertTrue(xml.contains("<reference ref=\"Semafour.CoreInfo\"/>"))
     }
 
     fun `test ready warnings show collapsed banner with retry`() {

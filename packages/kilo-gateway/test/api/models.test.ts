@@ -46,7 +46,7 @@ const VALID_AUTO_ROUTING_RESPONSE = JSON.stringify({
   data: [
     {
       id: "kilo-auto/efficient",
-      name: "Kilo Auto Efficient",
+      name: "Semafour Auto Efficient",
       context_length: 128000,
       max_completion_tokens: 16384,
       architecture: {

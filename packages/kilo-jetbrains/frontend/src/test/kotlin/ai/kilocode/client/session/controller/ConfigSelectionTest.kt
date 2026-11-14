@@ -16,7 +16,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
     fun `test hosted model selection excludes other providers and reasoning variants`() {
         projectRpc.state.value = workspaceReady(
             providers = listOf(
-                ProviderDto(id = "kilo", name = "Kilo", models = mapOf(
+                ProviderDto(id = "kilo", name = "Semafour", models = mapOf(
                     "opus" to ModelDto(id = "opus", name = "Opus", variants = listOf("high")),
                 )),
                 ProviderDto(id = "other", name = "Other", models = mapOf("model" to ModelDto(id = "model", name = "Other"))),
@@ -52,7 +52,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf(
                         "gpt-5" to ModelDto(id = "gpt-5", name = "GPT-5"),
                         "opus" to ModelDto(id = "opus", name = "Opus"),
@@ -165,7 +165,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf("kilo-auto/free" to ModelDto(id = "kilo-auto/free", name = "Auto")),
                 ),
                 ProviderDto(
@@ -259,7 +259,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf(
                         "gpt-5" to ModelDto(id = "gpt-5", name = "GPT-5"),
                         "opus" to ModelDto(id = "opus", name = "Opus"),
@@ -292,7 +292,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf("kilo-auto/free" to ModelDto(id = "kilo-auto/free", name = "Auto")),
                 ),
                 ProviderDto(
@@ -320,7 +320,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf("kilo-auto/free" to ModelDto(id = "kilo-auto/free", name = "Auto")),
                 ),
                 ProviderDto(
@@ -351,7 +351,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf("kilo-auto/free" to ModelDto(id = "kilo-auto/free", name = "Auto")),
                 ),
                 ProviderDto(
@@ -386,7 +386,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf("kilo-auto/free" to ModelDto(id = "kilo-auto/free", name = "Auto")),
                 ),
                 ProviderDto(
@@ -458,7 +458,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf("gpt-5" to ModelDto(id = "gpt-5", name = "GPT-5")),
                 ),
                 ProviderDto(
@@ -486,7 +486,7 @@ class ConfigSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf(
                         "gpt-5" to ModelDto(id = "gpt-5", name = "GPT-5", variants = listOf("low", "medium", "high")),
                     ),

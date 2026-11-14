@@ -204,7 +204,7 @@ const kiloUnauthenticated = { providerID: "kilo", kind: "unauthenticated" }
 
 describe("provider catalog authentication failures", () => {
   for (const connected of [false, true]) {
-    it.live(`retains only safe catalogs when Kilo auth fails (connected: ${connected})`, () =>
+    it.live(`retains only safe catalogs when Semafour auth fails (connected: ${connected})`, () =>
       Effect.gen(function* () {
         yield* configure(true, connected)
         state.failed = ["existing"]
@@ -262,7 +262,7 @@ describe("provider catalog authentication failures", () => {
     )
   }
 
-  it.live("does not duplicate an existing Kilo failure", () =>
+  it.live("does not duplicate an existing Semafour failure", () =>
     Effect.gen(function* () {
       yield* configure(true, true)
       state.failed = ["kilo", "existing"]
@@ -280,7 +280,7 @@ describe("provider catalog authentication failures", () => {
   )
 
   for (const restriction of ["disabled", "excluded"] as const) {
-    it.live(`does not flag ${restriction} Kilo when auth fails`, () =>
+    it.live(`does not flag ${restriction} Semafour when auth fails`, () =>
       Effect.gen(function* () {
         yield* configure(true, false)
         state[restriction] = true

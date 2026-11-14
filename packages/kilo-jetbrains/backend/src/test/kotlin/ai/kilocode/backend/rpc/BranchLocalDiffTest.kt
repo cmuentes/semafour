@@ -364,7 +364,7 @@ class BranchLocalDiffTest {
     private fun init() {
         git(repo, "init", "--initial-branch=main")
         git(repo, "config", "user.email", "test@kilo.ai")
-        git(repo, "config", "user.name", "Kilo Test")
+        git(repo, "config", "user.name", "Semafour Test")
         git(repo, "config", "core.autocrlf", "false")
         Files.writeString(repo.resolve(".gitignore"), ".kilo/\nignored.txt\n")
         Files.writeString(repo.resolve("tracked.txt"), "one\ntwo\nthree\n")

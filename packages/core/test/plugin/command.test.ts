@@ -37,7 +37,7 @@ describe("CommandPlugin.Plugin", () => {
         description: "guided AGENTS.md setup",
       })
       expect((yield* command.get("init"))?.template).toContain("`/repo`")
-      expect((yield* command.get("init"))?.template).toContain("future Kilo sessions") // kilocode_change
+      expect((yield* command.get("init"))?.template).toContain("future Semafour sessions") // kilocode_change
       expect((yield* command.get("init"))?.template).toContain("`kilo.json`") // kilocode_change
       expect((yield* command.get("init"))?.template).not.toContain("OpenCode") // kilocode_change
       expect(yield* command.get("review")).toMatchObject({

@@ -1,5 +1,5 @@
 /**
- * Kilo Notification Banner
+ * Semafour Notification Banner
  *
  * Displays a notification teaser on the home screen.
  * Clicking opens the full notifications dialog.

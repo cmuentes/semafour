@@ -96,7 +96,7 @@ export function make(input: {
     // kilocode_change start
     const authMethod: AuthMethod = {
       description: "Run `kilo auth login` in the terminal",
-      name: "Login with Kilo",
+      name: "Login with Semafour",
       id: AuthMethodID,
     }
     // kilocode_change end
@@ -106,7 +106,7 @@ export function make(input: {
         "terminal-auth": {
           command: "opencode",
           args: ["auth", "login"],
-          label: "Kilo Login",
+          label: "Semafour Login",
         },
       }
     }
@@ -132,7 +132,7 @@ export function make(input: {
       },
       authMethods: [authMethod],
       agentInfo: {
-        name: "Kilo",
+        name: "Semafour",
         version: InstallationVersion,
       },
     }
@@ -876,7 +876,7 @@ const promptResponse = Effect.fn("ACP.promptResponse")(function* (
 
 function promptErrorMessage(error: AssistantError) {
   if ("message" in error.data && typeof error.data.message === "string") return error.data.message
-  return "Kilo prompt failed" // kilocode_change - user-visible ACP error
+  return "Semafour prompt failed" // kilocode_change - user-visible ACP error
 }
 
 function sendUsageUpdate(

@@ -8,7 +8,7 @@ import com.intellij.driver.sdk.ui.remote.Component
 const val KILO_PLUGIN_ID = "ai.kilocode.jetbrains"
 const val KILO_FRONTEND_MODULE = "$KILO_PLUGIN_ID/kilo.jetbrains.frontend"
 const val KILO_BACKEND_MODULE = "$KILO_PLUGIN_ID/kilo.jetbrains.backend"
-const val KILO_TOOL_WINDOW_ID = "Kilo Code"
+const val KILO_TOOL_WINDOW_ID = "Semafour"
 const val KILO_CLOUD_PROVIDER_ID = "kilo-cloud"
 
 @Remote("com.intellij.openapi.application.ApplicationManager")

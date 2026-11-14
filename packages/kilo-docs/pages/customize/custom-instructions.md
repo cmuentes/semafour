@@ -1,15 +1,15 @@
 ---
 title: "Custom Instructions"
-description: "Provide custom instructions to guide Kilo Code"
+description: "Provide custom instructions to guide Semafour"
 ---
 
 # Custom Instructions
 
-Custom Instructions allow you to personalize how Kilo Code behaves, providing specific guidance that shapes responses, coding style, and decision-making processes. Both the **VSCode** and **CLI** versions support custom instructions, though the mechanisms differ.
+Custom Instructions allow you to personalize how Semafour behaves, providing specific guidance that shapes responses, coding style, and decision-making processes. Both the **VSCode** and **CLI** versions support custom instructions, though the mechanisms differ.
 
 ## What Are Custom Instructions?
 
-Custom Instructions define specific Extension behaviors, preferences, and constraints beyond Kilo's basic role definition. Examples include coding style, documentation standards, testing requirements, and workflow guidelines.
+Custom Instructions define specific Extension behaviors, preferences, and constraints beyond Semafour's basic role definition. Examples include coding style, documentation standards, testing requirements, and workflow guidelines.
 
 {% tabs %}
 {% tab label="VSCode" %}
@@ -29,9 +29,9 @@ These prompts are injected into the agent's system prompt and apply across all s
 
 ## Instruction Files
 
-Kilo automatically discovers instruction files at your project root and in parent directories (via `findUp`). The following filenames are recognized:
+Semafour automatically discovers instruction files at your project root and in parent directories (via `findUp`). The following filenames are recognized:
 
-- **`AGENTS.md`** — The primary instruction file for Kilo
+- **`AGENTS.md`** — The primary instruction file for Semafour
 - **`CLAUDE.md`** — Also supported for compatibility
 - **`CONTEXT.md`** — Additional project context
 
@@ -41,7 +41,7 @@ Place any of these files at your project root to provide project-wide instructio
 
 For instructions that apply across all your projects, place an `AGENTS.md` file in your global config directory:
 
-- **Kilo:** `~/.config/kilo/AGENTS.md`
+- **Semafour:** `~/.config/kilo/AGENTS.md`
 - **Claude-compatible:** `~/.claude/CLAUDE.md`, until [Claude Code Migration](/docs/getting-started/settings#claude-code-migration) has been attempted. Migration ends this global fallback; project-level `CLAUDE.md` files keep working.
 
 Project-level instructions are loaded before global instructions and apply to every session.
@@ -106,9 +106,9 @@ These prompts are injected into the agent's system prompt and apply across all s
 
 ## Instruction Files
 
-Kilo automatically discovers instruction files at your project root and in parent directories (via `findUp`). The following filenames are recognized:
+Semafour automatically discovers instruction files at your project root and in parent directories (via `findUp`). The following filenames are recognized:
 
-- **`AGENTS.md`** — The primary instruction file for Kilo
+- **`AGENTS.md`** — The primary instruction file for Semafour
 - **`CLAUDE.md`** — Also supported for compatibility
 - **`CONTEXT.md`** — Additional project context
 
@@ -118,7 +118,7 @@ Place any of these files at your project root to provide project-wide instructio
 
 For instructions that apply across all your projects, place an `AGENTS.md` file in your global config directory:
 
-- **Kilo:** `~/.config/kilo/AGENTS.md`
+- **Semafour:** `~/.config/kilo/AGENTS.md`
 - **Claude-compatible:** `~/.claude/CLAUDE.md`, until [Claude Code Migration](/docs/getting-started/settings#claude-code-migration) has been attempted. Migration ends this global fallback; project-level `CLAUDE.md` files keep working.
 
 Project-level instructions are loaded before global instructions and apply to every session.

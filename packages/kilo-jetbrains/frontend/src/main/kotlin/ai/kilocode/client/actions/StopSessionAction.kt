@@ -7,12 +7,12 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAwareAction
 
 class StopSessionAction : DumbAwareAction(
-    KiloBundle.message("action.Kilo.StopSession.text"),
-    KiloBundle.message("action.Kilo.StopSession.description"),
+    KiloBundle.message("action.Semafour.StopSession.text"),
+    KiloBundle.message("action.Semafour.StopSession.description"),
     null,
 ) {
     companion object {
-        const val ID = "Kilo.StopSession"
+        const val ID = "Semafour.StopSession"
     }
 
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.EDT

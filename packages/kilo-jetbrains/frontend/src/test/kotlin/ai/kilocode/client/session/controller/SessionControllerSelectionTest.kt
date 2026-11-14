@@ -22,7 +22,7 @@ class SessionControllerSelectionTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf(
                         "gpt-5" to ModelDto(id = "gpt-5", name = "GPT-5"),
                         "opus" to ModelDto(id = "opus", name = "Opus", variants = listOf("low", "high")),

@@ -48,7 +48,7 @@ export const SessionTable = sqliteTable(
     tokens_reasoning: integer().notNull().default(0),
     tokens_cache_read: integer().notNull().default(0),
     tokens_cache_write: integer().notNull().default(0),
-    // kilocode_change - Kilo also persists a workspace restore status on the revert record
+    // kilocode_change - Semafour also persists a workspace restore status on the revert record
     revert: text({ mode: "json" }).$type<
       Revert.State & { workspace?: "restored" | "snapshots-disabled" | "unavailable" | "not-a-git-repo" } // kilocode_change
     >(),

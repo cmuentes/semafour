@@ -15,7 +15,7 @@ const HTML_SUCCESS = `<!DOCTYPE html>
 <html>
 <head>
   <!-- kilocode_change start -->
-  <title>Kilo - Authorization Successful</title>
+  <title>Semafour - Authorization Successful</title>
   <!-- kilocode_change end -->
   <style>
     body { font-family: system-ui, -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #1a1a2e; color: #eee; }
@@ -28,7 +28,7 @@ const HTML_SUCCESS = `<!DOCTYPE html>
   <div class="container">
     <h1>Authorization Successful</h1>
     <!-- kilocode_change start -->
-    <p>You can close this window and return to Kilo.</p>
+    <p>You can close this window and return to Semafour.</p>
     <!-- kilocode_change end -->
   </div>
   <script>setTimeout(() => window.close(), 2000);</script>
@@ -39,7 +39,7 @@ const HTML_ERROR = (error: string) => `<!DOCTYPE html>
 <html>
 <head>
   <!-- kilocode_change start -->
-  <title>Kilo - Authorization Failed</title>
+  <title>Semafour - Authorization Failed</title>
   <!-- kilocode_change end -->
   <style>
     body { font-family: system-ui, -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #1a1a2e; color: #eee; }
@@ -69,7 +69,7 @@ const pendingAuths = new Map<string, PendingAuth>()
 // Reverse index: mcpName → oauthState, so cancelPending(mcpName) can
 // find the right entry in pendingAuths (which is keyed by oauthState).
 const mcpNameToState = new Map<string, string>()
-// kilocode_change start - set when a newer Kilo attempt takes this process's listener over,
+// kilocode_change start - set when a newer Semafour attempt takes this process's listener over,
 // so a flow that had not registered its callback yet fails by name instead of hanging
 let replaced = false
 // kilocode_change end
@@ -95,7 +95,7 @@ function stopIfIdle() {
 function handleRequest(req: import("http").IncomingMessage, res: import("http").ServerResponse) {
   const url = new URL(req.url || "/", `http://localhost:${currentPort}`)
 
-  // kilocode_change start - a newer Kilo attempt takes the listener over: every flow waiting
+  // kilocode_change start - a newer Semafour attempt takes the listener over: every flow waiting
   // on it is rejected by name, the port is released, and the caller may bind it. Only a request
   // at this listener's own path that carries the takeover header is honored, so a cross-origin
   // page cannot abort an authorization that is in flight.
@@ -202,7 +202,7 @@ export async function ensureRunning(redirectUri?: string): Promise<void> {
 }
 
 export function waitForCallback(oauthState: string, mcpName?: string): Promise<string> {
-  // kilocode_change start - a newer Kilo attempt took the listener over while this flow was
+  // kilocode_change start - a newer Semafour attempt took the listener over while this flow was
   // starting, so no callback can arrive: name the step instead of waiting out the timeout
   if (replaced) return Promise.reject(KiloOAuthCallback.replaced())
   // kilocode_change end

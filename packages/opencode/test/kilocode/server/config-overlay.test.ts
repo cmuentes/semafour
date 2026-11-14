@@ -201,11 +201,11 @@ describe("config overlay routes", () => {
   test.each([
     ["V1", '"anthropic/claude-sonnet"'],
     ["V2", '{ "providerID": "anthropic", "model": "claude-sonnet" }'],
-  ])("preserves %s JSONC and Kilo settings when saving an unrelated setting", async (_version, model) => {
+  ])("preserves %s JSONC and Semafour settings when saving an unrelated setting", async (_version, model) => {
     await using project = await tmpdir()
     const file = path.join(project.path, "kilo.jsonc")
     const before = `{
-  // Keep the user's model format and Kilo settings.
+  // Keep the user's model format and Semafour settings.
   "model": ${model},
   "privacy_mode": true,
   "indexing": { "enabled": false, "provider": "ollama" },

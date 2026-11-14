@@ -2,9 +2,9 @@
 // kilocode_change - new file
 
 /**
- * Guards generated Kilo config dependency artifacts.
+ * Guards generated Semafour config dependency artifacts.
  *
- * Kilo loads project config from .kilo/ and .kilocode/ and installs
+ * Semafour loads project config from .kilo/ and .kilocode/ and installs
  * @kilocode/plugin there at runtime. npm writes package.json, lockfiles,
  * .gitignore, and node_modules as generated local state. These paths must stay
  * untracked so background installs do not create recurring branch diffs.
@@ -43,7 +43,7 @@ if (bad.length === 0) {
   process.exit(0)
 }
 
-console.error("Generated Kilo config dependency artifacts are tracked:")
+console.error("Generated Semafour config dependency artifacts are tracked:")
 for (const file of bad) console.error(`  ${file}`)
 console.error("")
 console.error("These files are created by runtime dependency installs in .kilo/ and .kilocode/.")

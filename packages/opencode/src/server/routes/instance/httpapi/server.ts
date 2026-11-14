@@ -249,7 +249,7 @@ const app = LayerNode.group([
   Snapshot.node,
   Plugin.node,
   ModelsDev.node,
-  ModelCache.node, // kilocode_change - export the shared Kilo model cache to route handlers
+  ModelCache.node, // kilocode_change - export the shared Semafour model cache to route handlers
   Provider.node,
   ProviderAuth.node,
   Agent.node,

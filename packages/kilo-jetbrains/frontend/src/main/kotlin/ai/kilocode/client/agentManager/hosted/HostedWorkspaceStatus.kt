@@ -8,7 +8,7 @@ import ai.kilocode.rpc.dto.HostedWorkspaceStatusDto
 /** The row and editor header use the same compute status labels and themed pills. */
 internal enum class HostedWorkspaceStatus(private val value: String, private val style: UiStyle.Badge.Style) {
     LOADING("loading", UiStyle.Badge.Secondary),
-    // The Marketplace Agents chip is the canonical Kilo green; Cloud Active reuses it verbatim.
+    // The Marketplace Agents chip is the canonical Semafour green; Cloud Active reuses it verbatim.
     ACTIVE("active", UiStyle.Badge.typeAgent(true)),
     SETTING_UP("settingUp", UiStyle.Badge.Secondary),
     SLEEPING("sleeping", UiStyle.Badge.Secondary),

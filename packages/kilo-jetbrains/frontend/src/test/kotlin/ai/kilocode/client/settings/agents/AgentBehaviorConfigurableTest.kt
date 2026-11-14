@@ -22,7 +22,7 @@ class AgentBehaviorConfigurableTest : BasePlatformTestCase() {
     }
 
     /**
-     * The page now hosts the Kilo Swarm toggle, so it is a draft page rather than an inert
+     * The page now hosts the Semafour Swarm toggle, so it is a draft page rather than an inert
      * navigation stub. Child links and toggle behavior are covered by AgentBehaviorSettingsUiTest,
      * which can drive a ready app state; before the app is ready this page has no draft to modify.
      */

@@ -94,10 +94,10 @@ async function buildKiloConsole() {
   const app = path.resolve(dir, "../kilo-console")
   const out = path.join(app, "dist")
   if (await isKiloConsoleUpToDate(app, out)) {
-    console.log(`reusing existing Kilo Console build at ${out}`)
+    console.log(`reusing existing Semafour Console build at ${out}`)
     return out
   }
-  console.log("building Kilo Console")
+  console.log("building Semafour Console")
   const proc = Bun.spawn([process.execPath, "run", "build"], {
     cwd: app,
     env: { ...process.env, KILO_CONSOLE_BASE: "/console/" },
@@ -106,7 +106,7 @@ async function buildKiloConsole() {
     windowsHide: true,
   })
   const code = await proc.exited
-  if (code !== 0) throw new Error(`Kilo Console build failed with exit code ${code}`)
+  if (code !== 0) throw new Error(`Semafour Console build failed with exit code ${code}`)
   return out
 }
 // kilocode_change end
@@ -115,7 +115,7 @@ async function copyKiloConsole(input: string, outputDir: string) {
   const target = path.join(outputDir, "console")
   await fs.promises.rm(target, { recursive: true, force: true })
   await fs.promises.cp(input, target, { recursive: true })
-  console.log(`copied Kilo Console assets to ${target}`)
+  console.log(`copied Semafour Console assets to ${target}`)
 }
 
 function smokeEnv(root: string) {
@@ -150,7 +150,7 @@ async function smokeModels(binaryPath: string) {
   }
 }
 
-// Kilo dropped the packages/app web UI. Kept here as a commented reference so future upstream merges
+// Semafour dropped the packages/app web UI. Kept here as a commented reference so future upstream merges
 // can see the deliberate divergence rather than treating a re-add as a clean re-introduction.
 // const createEmbeddedWebUIBundle = async () => {
 //   console.log(`Building Web UI to embed in the binary`)
@@ -417,7 +417,7 @@ for (const item of targets) {
       await smokeModels(binaryPath)
       console.log("Models snapshot smoke test passed")
       await KiloSandboxWorker.smoke(binaryPath)
-      console.log("Kilo sandbox mutation worker smoke test passed")
+      console.log("Semafour sandbox mutation worker smoke test passed")
       // kilocode_change end
       // kilocode_change start
     } catch (e) {

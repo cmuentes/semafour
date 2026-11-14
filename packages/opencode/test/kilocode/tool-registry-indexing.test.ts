@@ -364,7 +364,7 @@ describe("kilocode tool registry indexing", () => {
     ),
   )
 
-  test("conditionally includes Kilo registry extras", () => {
+  test("conditionally includes Semafour registry extras", () => {
     const prev = process.env["KILO_CLIENT"]
     const def = (id: string): Tool.Def => ({
       id,

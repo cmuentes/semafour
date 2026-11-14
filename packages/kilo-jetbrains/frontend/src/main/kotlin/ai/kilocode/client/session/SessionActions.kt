@@ -5,7 +5,7 @@ import com.intellij.openapi.actionSystem.DataKey
 
 /**
  * Session-scoped capabilities backing the session's two action menus: the right-click context menu
- * (`Kilo.Session.ContextMenu`) and the prompt bar's "more" popup (`Kilo.Session.PromptMenu`).
+ * (`Semafour.Session.ContextMenu`) and the prompt bar's "more" popup (`Semafour.Session.PromptMenu`).
  *
  * Implemented by [SessionUi] and published from its `uiDataSnapshot`. `SessionUi` is an ancestor of
  * every component in the session, and `DataManager` collects data along the whole ancestor chain, so
@@ -35,7 +35,7 @@ internal interface SessionActions {
 
     /**
      * Whether the shared agent board is available: a created, non-read-only session with
-     * Kilo Swarm enabled (`shared_agent_board`, Settings > Agent Behavior; on by default).
+     * Semafour Swarm enabled (`shared_agent_board`, Settings > Agent Behavior; on by default).
      */
     val board: Boolean
 

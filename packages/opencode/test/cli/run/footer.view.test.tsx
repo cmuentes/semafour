@@ -877,7 +877,7 @@ test("direct footer slash autocomplete keeps a real skills command", async () =>
   }
 })
 
-// kilocode_change start - cover direct-mode Kilo skill picker transitions
+// kilocode_change start - cover direct-mode Semafour skill picker transitions
 test("direct footer skill picker inserts an editable bound skill command", async () => {
   const submits: RunPrompt[] = []
   const app = await renderFooter({

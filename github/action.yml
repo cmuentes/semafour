@@ -1,5 +1,5 @@
-name: "Kilo GitHub Action"
-description: "Run Kilo AI agent in GitHub Actions workflows"
+name: "Semafour GitHub Action"
+description: "Run Semafour AI agent in GitHub Actions workflows"
 branding:
   icon: "code"
   color: "gray-dark"
@@ -14,7 +14,7 @@ inputs:
     required: false
 
   share:
-    description: "Share the Kilo session (defaults to true for public repos)"
+    description: "Share the Semafour session (defaults to true for public repos)"
     required: false
 
   prompt:
@@ -22,7 +22,7 @@ inputs:
     required: false
 
   use_github_token:
-    description: "Use GITHUB_TOKEN directly instead of Kilo App token exchange. When true, skips OIDC and uses the GITHUB_TOKEN env var."
+    description: "Use GITHUB_TOKEN directly instead of Semafour App token exchange. When true, skips OIDC and uses the GITHUB_TOKEN env var."
     required: false
     default: "false"
 
@@ -39,40 +39,40 @@ inputs:
     required: false
 
   kilo_api_key:
-    description: "Kilo API key for gateway authentication"
+    description: "Semafour API key for gateway authentication"
     required: false
 
   kilo_org_id:
-    description: "Kilo organization ID"
+    description: "Semafour organization ID"
     required: false
 
 runs:
   using: "composite"
   steps:
-    - name: Get Kilo version
+    - name: Get Semafour version
       id: version
       shell: bash
       run: |
         VERSION=$(curl -sf https://api.github.com/repos/Kilo-Org/kilocode/releases/latest | grep -o '"tag_name": *"[^"]*"' | cut -d'"' -f4)
         echo "version=${VERSION:-latest}" >> $GITHUB_OUTPUT
 
-    - name: Cache Kilo
+    - name: Cache Semafour
       id: cache
       uses: actions/cache@v4
       with:
         path: ~/.kilo/bin
         key: kilo-${{ runner.os }}-${{ runner.arch }}-${{ steps.version.outputs.version }}
 
-    - name: Install Kilo
+    - name: Install Semafour
       if: steps.cache.outputs.cache-hit != 'true'
       shell: bash
       run: curl -fsSL https://kilo.ai/cli/install | bash
 
-    - name: Add Kilo to PATH
+    - name: Add Semafour to PATH
       shell: bash
       run: echo "$HOME/.kilo/bin" >> $GITHUB_PATH
 
-    - name: Run Kilo
+    - name: Run Semafour
       shell: bash
       id: run_kilo
       run: kilo github run

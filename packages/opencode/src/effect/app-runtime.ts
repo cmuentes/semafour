@@ -70,7 +70,7 @@ import { MoveSession } from "@opencode-ai/core/control-plane/move-session" // ki
 import { PtyTicket } from "@opencode-ai/core/pty/ticket" // kilocode_change
 import { Pty } from "@opencode-ai/core/pty" // kilocode_change
 
-// kilocode_change start - retain Kilo runtime services in the upstream node graph
+// kilocode_change start - retain Semafour runtime services in the upstream node graph
 const memory = LayerNode.make({ service: MemoryService.Service, layer: MemoryService.layer, deps: [] })
 const kilo = LayerNode.group([
   Credential.node,

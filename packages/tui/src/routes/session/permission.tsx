@@ -493,13 +493,13 @@ export function PermissionPrompt(props: { request: PermissionRequest; directory?
                 </text>
                 <text fg={theme.text}>{current.title}</text>
               </box>
-              {/* kilocode_change start - explain protected Kilo configuration access */}
+              {/* kilocode_change start - explain protected Semafour configuration access */}
               <Show when={props.request.metadata?.[ConfigProtection.CONFIG_PROTECTED_KEY]}>
                 <box paddingLeft={4} flexShrink={0}>
                   <text fg={theme.textMuted}>
                     {props.request.permission === "edit"
                       ? "Config file edits always require approval"
-                      : "Kilo configuration access always requires approval"}
+                      : "Semafour configuration access always requires approval"}
                   </text>
                 </box>
               </Show>
@@ -599,7 +599,7 @@ function RejectPrompt(props: { onConfirm: (message: string) => void; onCancel: (
           <text fg={theme.text}>Reject permission</text>
         </box>
         <box paddingLeft={1}>
-          <text fg={theme.textMuted}>Tell Kilo what to do differently</text>
+          <text fg={theme.textMuted}>Tell Semafour what to do differently</text>
         </box>
       </box>
       <box

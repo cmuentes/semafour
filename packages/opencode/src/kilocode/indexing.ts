@@ -36,7 +36,7 @@ const noWorkspace = () =>
   disabledIndexingStatus("Codebase indexing is disabled because no workspace folder is open in VS Code.")
 const unsafeRoot = () => disabledIndexingStatus(message)
 const noConsent = () =>
-  disabledIndexingStatus("Codebase indexing is disabled until you enable it for this project in Kilo Settings.")
+  disabledIndexingStatus("Codebase indexing is disabled until you enable it for this project in Semafour Settings.")
 
 export const IndexingModelError = NamedError.create("IndexingModelError", {
   model: Schema.String,
@@ -124,7 +124,7 @@ async function model(input: ReturnType<typeof toIndexingConfigInput>, auth: Kilo
   const found = catalog.models.find((item) => item.id === fallback)
   if (!found) {
     if (input.modelId || input.modelDimension) {
-      log.warn("ignoring unsupported Kilo embedding model configuration", { model: input.modelId })
+      log.warn("ignoring unsupported Semafour embedding model configuration", { model: input.modelId })
     }
     return { ...input, modelId: undefined, modelDimension: undefined }
   }
@@ -556,7 +556,7 @@ export namespace KiloIndexing {
       const fallback = await fetchKiloEmbeddingModelCatalog()
       return fallback.models.length > 0 ? fallback : catalog
     } catch (err) {
-      log.warn("falling back to public Kilo embedding model catalog", { err })
+      log.warn("falling back to public Semafour embedding model catalog", { err })
       return fetchKiloEmbeddingModelCatalog()
     }
   }

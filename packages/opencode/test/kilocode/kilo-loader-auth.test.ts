@@ -1,5 +1,5 @@
 // kilocode_change - new file
-// Tests that unauthenticated Kilo models are assembled with paid models and autoloaded anonymously.
+// Tests that unauthenticated Semafour models are assembled with paid models and autoloaded anonymously.
 
 import { expect } from "bun:test"
 import { FSUtil } from "@opencode-ai/core/fs-util"
@@ -18,7 +18,7 @@ import { provideInstance, testInstanceStoreLayer } from "../fixture/fixture"
 
 const input = {
   id: "kilo",
-  name: "Kilo Gateway",
+  name: "Semafour Gateway",
   env: ["KILO_API_KEY"],
   models: {
     "free-model": {
@@ -155,7 +155,7 @@ function environment(values: Record<string, string | undefined>) {
   )
 }
 
-it.live("assembles paid Kilo models without auth", () =>
+it.live("assembles paid Semafour models without auth", () =>
   Effect.gen(function* () {
     const providers = yield* ModelsDev.Service.use((models) => models.get()).pipe(
       Effect.provide(layer()),

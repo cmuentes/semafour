@@ -214,7 +214,7 @@ it.effect("applies an explicit organization scope to every read operation", () =
     yield* cloud.get({ id: hosted, organizationID: ORG })
     yield* cloud.transcript({ id: hosted, organizationID: ORG })
     yield* cloud.attach({ id: hosted, organizationID: ORG })
-    if (!cloud.membership) throw new Error("Kilo Cloud must resolve workspace membership")
+    if (!cloud.membership) throw new Error("Semafour Cloud must resolve workspace membership")
     yield* cloud.membership({ id: hosted, organizationID: ORG })
 
     expect(app.calls).toHaveLength(5)
@@ -240,7 +240,7 @@ it.effect("reports signed-out state as actionable and performs no Cloud request"
     expect(availability).toEqual({
       state: "unavailable",
       reason: "signed_out",
-      message: "Kilo credentials are required; run `kilo auth login`",
+      message: "Semafour credentials are required; run `kilo auth login`",
     })
     const error = yield* cloud.list().pipe(Effect.flip)
     expect(error).toMatchObject({ code: "signed_out", retryable: false })

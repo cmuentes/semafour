@@ -687,7 +687,7 @@ export const {
       }
     })
 
-    // kilocode_change start - retain versioned Sync events used by Kilo clients
+    // kilocode_change start - retain versioned Sync events used by Semafour clients
     event.sync((event) => {
       switch (event.name) {
         case "session.created.1": {
@@ -813,7 +813,7 @@ export const {
     async function bootstrap(input: { fatal?: boolean } = {}) {
       const fatal = input.fatal ?? true
       const workspace = project.workspace.current()
-      // kilocode_change start - isolate workspace-scoped Kilo state
+      // kilocode_change start - isolate workspace-scoped Semafour state
       if (workspace !== syncedWorkspace) {
         fullSyncedSessions.clear()
         deleted.clear()

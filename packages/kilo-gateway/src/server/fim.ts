@@ -74,7 +74,7 @@ export function createFimHandler(Auth: Auth) {
     const token = target.provider === "kilo" ? proxy?.token : await getProviderKey(Auth, target.provider)
 
     if (target.provider === "kilo" && !proxy?.auth) {
-      return c.json({ error: "Not authenticated with Kilo Gateway" }, 401)
+      return c.json({ error: "Not authenticated with Semafour Gateway" }, 401)
     }
 
     if (target.provider === "kilo" && !token) {

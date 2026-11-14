@@ -60,7 +60,7 @@ const run = Effect.fn("CloudCommandTest.git")(function* (cwd: string, ...args: s
 })
 
 it.instance(
-  "assembles the default start request from Kilo state and the current repository",
+  "assembles the default start request from Semafour state and the current repository",
   () =>
     Effect.acquireUseRelease(
       Effect.sync(() =>
@@ -664,8 +664,8 @@ it.instance("exchanges credentials before cloud commands and never sends source 
       const error = yield* CloudCommands.start(start, deps).pipe(Effect.flip)
       expect(error.message).toBe(
         code === 401
-          ? "Kilo Cloud denied the control token request"
-          : "Kilo Cloud token issuance is temporarily unavailable",
+          ? "Semafour Cloud denied the control token request"
+          : "Semafour Cloud token issuance is temporarily unavailable",
       )
       expect(error.message).not.toContain(TOKEN)
     }

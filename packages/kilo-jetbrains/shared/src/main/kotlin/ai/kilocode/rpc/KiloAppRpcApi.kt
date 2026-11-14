@@ -108,7 +108,7 @@ interface KiloAppRpcApi : RemoteApi<Unit> {
     suspend fun refreshProfile(): ProfileDto?
 
     /**
-     * Start the device auth login flow for Kilo Gateway.
+     * Start the device auth login flow for Semafour Gateway.
      * Returns device auth details (verification URL and code) to show in the UI.
      */
     suspend fun startLogin(directory: String?): DeviceAuthDto
@@ -119,7 +119,7 @@ interface KiloAppRpcApi : RemoteApi<Unit> {
      */
     suspend fun completeLogin(directory: String?): ProfileDto?
 
-    /** Log out from Kilo Gateway. */
+    /** Log out from Semafour Gateway. */
     suspend fun logout(): Boolean
 
     /**

@@ -86,8 +86,8 @@ const local = node("#local")
 const remote = node("#remote")
 const remote2 = node("#remote2")
 
-// Local-only destination exposes Kilo actions, never the GitHub split button.
-assert.equal(button("send-kilo", local).textContent, "Send to Kilo")
+// Local-only destination exposes Semafour actions, never the GitHub split button.
+assert.equal(button("send-kilo", local).textContent, "Send to Semafour")
 assert.equal(button("save", local).textContent, "Save")
 assert.equal(button("cancel", local).textContent, "Cancel")
 assert.equal(local.querySelector('[data-action="send-primary"]'), null, "no split button without a PR")
@@ -100,9 +100,9 @@ assert.equal(input(local).value, "", "saving clears the composer")
 type(local, "Send this")
 button("send-kilo", local).click()
 assert.deepEqual(sent, ["Send this"])
-assert.equal(input(local).value, "", "sending to Kilo clears the composer")
+assert.equal(input(local).value, "", "sending to Semafour clears the composer")
 
-// Plain Enter sends to Kilo and never posts to GitHub.
+// Plain Enter sends to Semafour and never posts to GitHub.
 type(local, "Keyboard send")
 input(local).dispatchEvent(new window.KeyboardEvent("keydown", { key: "Enter", bubbles: true }))
 assert.deepEqual(sent, ["Send this", "Keyboard send"])
@@ -112,7 +112,7 @@ assert.equal(messages.length, 0, "local actions never request a GitHub write")
 type(local, "Keyboard save")
 input(local).dispatchEvent(new window.KeyboardEvent("keydown", { key: "Enter", metaKey: true, bubbles: true }))
 assert.deepEqual(saved, ["Keep this", "Keyboard save"], "Cmd+Enter saves the comment")
-assert.deepEqual(sent, ["Send this", "Keyboard send"], "Cmd+Enter does not send to Kilo")
+assert.deepEqual(sent, ["Send this", "Keyboard send"], "Cmd+Enter does not send to Semafour")
 assert.equal(messages.length, 0, "Cmd+Enter never requests a GitHub write")
 
 // The remembered GitHub destination drives the split primary label.

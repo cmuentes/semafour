@@ -37,11 +37,11 @@ internal fun reloadCoreSettings(
             CoreReloadResult.SUCCESS -> Unit
             CoreReloadResult.BUSY -> KiloNotifications.warning(
                 project,
-                KiloBundle.message("action.Kilo.ReloadCoreSettings.busy"),
+                KiloBundle.message("action.Semafour.ReloadCoreSettings.busy"),
             )
             CoreReloadResult.FAILED -> KiloNotifications.error(
                 project,
-                KiloBundle.message("action.Kilo.ReloadCoreSettings.failed"),
+                KiloBundle.message("action.Semafour.ReloadCoreSettings.failed"),
             )
         }
     }

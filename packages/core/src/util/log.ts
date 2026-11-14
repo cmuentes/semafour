@@ -70,7 +70,7 @@ let stream: ReturnType<typeof createStream> | undefined // kilocode_change
 export async function init(options: Options) {
   if (options.level) level = options.level
   void cleanup(Global.Path.log)
-  // kilocode_change start - initialize one rotating stream and truncate dev.log once per Kilo run
+  // kilocode_change start - initialize one rotating stream and truncate dev.log once per Semafour run
   if (stream) {
     const active = stream
     stream = undefined

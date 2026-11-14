@@ -31,13 +31,13 @@ const mainNavItems: NavItem[] = [
   { label: "Collaborate", href: "/collaborate" },
   { label: "Automate", href: "/automate" },
   { label: "Deploy & Secure", href: "/deploy-secure" },
-  { label: "Kilo Gateway", href: "/gateway" },
-  { label: "Kilo Desktop", href: "/desktop", badge: "Beta" },
+  { label: "Semafour Gateway", href: "/gateway" },
+  { label: "Semafour Desktop", href: "/desktop", badge: "Beta" },
   { label: "Contributing", href: "/contributing" },
 ]
 
 const contributingItems: DropdownItem[] = [
-  { label: "Contributing Guide", href: "/contributing", description: "How to contribute to Kilo Code" },
+  { label: "Contributing Guide", href: "/contributing", description: "How to contribute to Semafour" },
   {
     label: "Code of Conduct",
     href: "https://github.com/Kilo-Org/kilocode?tab=coc-ov-file",
@@ -303,7 +303,7 @@ export function TopNav({ onMobileMenuToggle, isMobileMenuOpen = false, showMobil
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 100 100"
             className="logo-icon"
-            aria-label="Kilo Code Logo"
+            aria-label="Semafour Logo"
           >
             <path
               fill="currentColor"
@@ -311,7 +311,7 @@ export function TopNav({ onMobileMenuToggle, isMobileMenuOpen = false, showMobil
             />
           </svg>
           <div>
-            <span className="logo-text font-brand">Kilo Code</span>
+            <span className="logo-text font-brand">Semafour</span>
             <span className="docs-label">DOCS</span>
           </div>
         </Link>

@@ -1,14 +1,14 @@
 /**
  * Production dependency closure from `bun.lock`.
  *
- * Kilo compiles its JavaScript into Bun single-file executables and minified
+ * Semafour compiles its JavaScript into Bun single-file executables and minified
  * bundles, so scanning the shipped artifact cannot recover the npm packages that
  * went into it. The lockfile is the only complete, exact record of what was
  * compiled in. Resolving it here keeps SBOMs honest about compiled-in
  * dependencies while the physical artifact scan covers everything on disk.
  *
  * Dev dependencies are never included: they are not shipped, and listing them
- * would inflate Kilo's own vulnerability-handling surface with tooling that
+ * would inflate Semafour's own vulnerability-handling surface with tooling that
  * users never receive.
  */
 
@@ -118,7 +118,7 @@ export function closure(input: { lock: Lock; workspace: string; platform?: Platf
             name: resolved.name,
             version: meta.version ?? "0.0.0",
             ref,
-            supplier: "Kilo Code",
+            supplier: "Semafour",
             delivery: "contained",
             properties: { origin: "workspace", workspace: dir },
           })

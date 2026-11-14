@@ -1,4 +1,4 @@
-/* Kilo Checkbox overrides – sized and coloured to match @vscode/webview-ui-toolkit. The
+/* Semafour Checkbox overrides – sized and coloured to match @vscode/webview-ui-toolkit. The
    --vscode-checkbox-* variables only exist inside the VS Code webview (see vscode-bridge.css);
    everywhere else (Storybook, kilo-web-ui) the fallbacks reproduce today's look unchanged. */
 

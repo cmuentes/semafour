@@ -285,7 +285,7 @@ class PromptPanel(
     private val issuesSlot = issuesButton.align(HAlign.RIGHT, VAlign.TOP).apply { isVisible = false }
 
     /**
-     * Opens the Kilo.Session.PromptMenu popup (auto-approve, sharing, Core). Resolves its context from
+     * Opens the Semafour.Session.PromptMenu popup (auto-approve, sharing, Core). Resolves its context from
      * DataManager, so it reads live SessionActionsKeys.ACTIONS from the session ancestor chain rather
      * than needing SessionUi to wire anything through this panel directly.
      */
@@ -765,7 +765,7 @@ class PromptPanel(
 
     @RequiresEdt
     private fun showMenu() {
-        val group = ActionManager.getInstance().getAction("Kilo.Session.PromptMenu") as? ActionGroup ?: return
+        val group = ActionManager.getInstance().getAction("Semafour.Session.PromptMenu") as? ActionGroup ?: return
         val ctx = DataManager.getInstance().getDataContext(menu)
         val popup = JBPopupFactory.getInstance().createActionGroupPopup(
             null,
@@ -1138,7 +1138,7 @@ class PromptPanel(
     private fun elapsedMs(start: Long) = (System.nanoTime() - start) / 1_000_000
 
     private fun notify(text: String) {
-        com.intellij.notification.Notification("Kilo Code", text, com.intellij.notification.NotificationType.WARNING).notify(project)
+        com.intellij.notification.Notification("Semafour", text, com.intellij.notification.NotificationType.WARNING).notify(project)
     }
 
     @RequiresEdt

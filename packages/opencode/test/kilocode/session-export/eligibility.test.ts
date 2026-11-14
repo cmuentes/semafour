@@ -13,11 +13,11 @@ describe("isEligible", () => {
   beforeEach(() => resetEligibility())
   afterEach(() => resetEligibility())
 
-  test("free Kilo Gateway personal context is eligible", () => {
+  test("free Semafour Gateway personal context is eligible", () => {
     expect(isEligible(base)).toBe(true)
   })
 
-  test("paid Kilo Gateway is ineligible", () => {
+  test("paid Semafour Gateway is ineligible", () => {
     expect(isEligible({ ...base, model: { ...base.model, isFree: false } })).toBe(false)
   })
 
@@ -25,7 +25,7 @@ describe("isEligible", () => {
     expect(isEligible({ ...base, model: { ...base.model, isFree: undefined } })).toBe(false)
   })
 
-  test("non-Kilo provider with isFree=true is ineligible", () => {
+  test("non-Semafour provider with isFree=true is ineligible", () => {
     expect(isEligible({ ...base, model: { ...base.model, api: { npm: "@ai-sdk/openai" } } })).toBe(false)
   })
 

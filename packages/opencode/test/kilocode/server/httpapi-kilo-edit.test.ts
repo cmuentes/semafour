@@ -103,8 +103,8 @@ afterEach(async () => {
   await resetDatabase()
 })
 
-describe("HttpApi Kilo next edit", () => {
-  test("requires Kilo Gateway authentication for the Kilo-backed model", async () => {
+describe("HttpApi Semafour next edit", () => {
+  test("requires Semafour Gateway authentication for the Kilo-backed model", async () => {
     process.env.KILO_AUTH_CONTENT = "{}"
     expect((await send()).status).toBe(401)
   })

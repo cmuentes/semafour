@@ -9,7 +9,7 @@ import z from "zod"
 /**
  * The authenticated principal behind the same bearer the Cloud dispatch uses.
  *
- * `GET /api/profile` returns a Kilo `user.id` that is not a UUID (OAuth ids
+ * `GET /api/profile` returns a Semafour `user.id` that is not a UUID (OAuth ids
  * look like `oauth/...`). The auth type (`api`, `oauth`, `wellknown`) and the
  * OAuth `accountId` are not the identity: `accountId` is an organization.
  *
@@ -40,13 +40,13 @@ export namespace ProfileIdentity {
           Effect.fail(
             error.kind === "missing"
               ? fail("signed_out", error.message)
-              : fail("unavailable", "Kilo credentials could not be read"),
+              : fail("unavailable", "Semafour credentials could not be read"),
           ),
         ),
       ))
     const origin = yield* Effect.try({
       try: () => resolveKiloApiOrigin(env),
-      catch: () => fail("invalid", "Kilo API base URL is invalid"),
+      catch: () => fail("invalid", "Semafour API base URL is invalid"),
     })
     const response = yield* Effect.tryPromise({
       try: () =>
@@ -55,22 +55,22 @@ export namespace ProfileIdentity {
           path: "/api/profile",
           headers: { accept: "application/json" },
         }),
-      catch: () => fail("unavailable", "Kilo profile is unreachable"),
+      catch: () => fail("unavailable", "Semafour profile is unreachable"),
     })
     if (!response.ok) {
       yield* Effect.promise(() => response.body?.cancel().catch(() => undefined) ?? Promise.resolve())
       return yield* Effect.fail(
         response.status === 401 || response.status === 403
-          ? fail("signed_out", "Kilo rejected these credentials")
-          : fail("unavailable", "Kilo profile could not be read"),
+          ? fail("signed_out", "Semafour rejected these credentials")
+          : fail("unavailable", "Semafour profile could not be read"),
       )
     }
     const body = yield* Effect.tryPromise({
       try: () => readBoundedJson(response),
-      catch: () => fail("invalid", "Kilo profile response is invalid"),
+      catch: () => fail("invalid", "Semafour profile response is invalid"),
     })
     const parsed = Body.safeParse(body)
-    if (!parsed.success) return yield* Effect.fail(fail("invalid", "Kilo profile response is invalid"))
+    if (!parsed.success) return yield* Effect.fail(fail("invalid", "Semafour profile response is invalid"))
     return parsed.data.user.id
   })
 }

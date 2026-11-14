@@ -41,7 +41,7 @@ class ConnectionPanel(
 ) : BorderLayoutPanel(), SessionControllerListener, Disposable, SessionEditorStyleTarget {
 
     companion object {
-        internal const val CLI_GROUP_ID = "Kilo.CliGroup"
+        internal const val CLI_GROUP_ID = "Semafour.CliGroup"
         private const val CHROME = 2
     }
 
@@ -257,8 +257,8 @@ class ConnectionPanel(
             }
         })
         group.addSeparator()
-        ActionManager.getInstance().getAction("Kilo.Restart")?.let { group.add(it) }
-        ActionManager.getInstance().getAction("Kilo.Reinstall")?.let { group.add(it) }
+        ActionManager.getInstance().getAction("Semafour.Restart")?.let { group.add(it) }
+        ActionManager.getInstance().getAction("Semafour.Reinstall")?.let { group.add(it) }
         return group
     }
 

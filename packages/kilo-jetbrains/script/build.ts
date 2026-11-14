@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 /**
- * Build the Kilo JetBrains plugin.
+ * Build the Semafour JetBrains plugin.
  *
  * Usage:
  *   bun script/build.ts               # Local plugin build

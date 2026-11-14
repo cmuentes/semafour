@@ -14,15 +14,15 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages
 
 class ForceMigrationAction : AnAction(
-    KiloBundle.message("action.Kilo.ForceMigration.text"),
-    KiloBundle.message("action.Kilo.ForceMigration.description"),
+    KiloBundle.message("action.Semafour.ForceMigration.text"),
+    KiloBundle.message("action.Semafour.ForceMigration.description"),
     null,
 ), DumbAware {
     internal var confirm: (Project?) -> Boolean = { project ->
         Messages.showYesNoDialog(
             project,
-            KiloBundle.message("action.Kilo.ForceMigration.confirm.message"),
-            KiloBundle.message("action.Kilo.ForceMigration.confirm.title"),
+            KiloBundle.message("action.Semafour.ForceMigration.confirm.message"),
+            KiloBundle.message("action.Semafour.ForceMigration.confirm.title"),
             Messages.getWarningIcon(),
         ) == Messages.YES
     }
@@ -36,7 +36,7 @@ class ForceMigrationAction : AnAction(
         service<KiloOnboardingService>().reoffer(MigrationOnboardingProvider.ID)
         service<KiloMigrationService>().resetStatusAndRestart { ok ->
             if (ok) return@resetStatusAndRestart
-            KiloNotifications.error(KiloBundle.message("action.Kilo.ForceMigration.failed"))
+            KiloNotifications.error(KiloBundle.message("action.Semafour.ForceMigration.failed"))
         }
     }
 }

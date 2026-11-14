@@ -89,7 +89,7 @@ const layer = Layer.effect(
       delete data[norm]
       yield* fsys.writeJson(file, data, 0o600).pipe(Effect.mapError(fail("Failed to write auth data")))
 
-      // kilocode_change start - Track logout and reset telemetry identity for Kilo
+      // kilocode_change start - Track logout and reset telemetry identity for Semafour
       if (key === "kilo") {
         yield* Effect.promise(() => Telemetry.updateIdentity(null))
       }
@@ -102,6 +102,6 @@ const layer = Layer.effect(
 )
 
 export const node = LayerNode.make({ service: Service, layer: layer, deps: [FSUtil.node] })
-export const defaultLayer = layer.pipe(Layer.provide(FSUtil.defaultLayer)) // kilocode_change - legacy Kilo runtime compatibility
+export const defaultLayer = layer.pipe(Layer.provide(FSUtil.defaultLayer)) // kilocode_change - legacy Semafour runtime compatibility
 
 export * as Auth from "."

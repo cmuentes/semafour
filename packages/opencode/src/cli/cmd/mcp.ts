@@ -394,7 +394,7 @@ export const McpLogoutCommand = effectCmd({
 })
 
 async function resolveConfigPath(baseDir: string, global = false) {
-  // kilocode_change start - prefer supported Kilo config directories over root files
+  // kilocode_change start - prefer supported Semafour config directories over root files
   const roots = [
     path.join(baseDir, "kilo.jsonc"),
     path.join(baseDir, "kilo.json"),
@@ -473,7 +473,7 @@ export const McpAddCommand = effectCmd({
     const maybeCtx = yield* InstanceRef
     if (!maybeCtx) return yield* Effect.die("InstanceRef not provided")
     const ctx = maybeCtx
-    const global = Flag.KILO_CONFIG_DIR ?? Global.Path.config // kilocode_change - honor the active Kilo config profile
+    const global = Flag.KILO_CONFIG_DIR ?? Global.Path.config // kilocode_change - honor the active Semafour config profile
     yield* Effect.promise(async () => {
       const command = args["--"] ?? []
       if (!args.name && (args.url || args.env?.length || args.header?.length || command.length)) {

@@ -1,21 +1,21 @@
 ---
 title: "Mobile Apps"
-description: "Using Kilo Code on iOS and Android"
+description: "Using Semafour on iOS and Android"
 ---
 
 # Mobile Apps
 
-Use Kilo Code from your phone to keep coding sessions moving while you are away from your desk. The mobile app connects to Cloud Agents and remote sessions from your local CLI or editor extensions.
+Use Semafour from your phone to keep coding sessions moving while you are away from your desk. The mobile app connects to Cloud Agents and remote sessions from your local CLI or editor extensions.
 
 {% callout type="info" title="Available on iOS and Android" %}
-Install Kilo Code for [iOS](https://apps.apple.com/app/id6761193135) and [Android](https://play.google.com/store/apps/details?id=com.kilocode.kiloapp).
+Install Semafour for [iOS](https://apps.apple.com/app/id6761193135) and [Android](https://play.google.com/store/apps/details?id=com.kilocode.kiloapp).
 {% /callout %}
 
 ## What you can do
 
 The mobile app lets you:
 
-- View and manage Kilo Code sessions, including remote CLI and extension sessions running on your local machine.
+- View and manage Semafour sessions, including remote CLI and extension sessions running on your local machine.
 - Spawn Cloud Agents and code directly from the app.
 - Monitor and view all non-remote sessions in one place.
 - Send follow-up messages while a session is still running — they are queued and processed in order.
@@ -27,7 +27,7 @@ The mobile app lets you:
 - Review GitHub pull requests, GitLab merge requests, and Bitbucket pull requests end to end — diffs, checks, comments, and merging.
 - Start a new session on a connected `kilo remote` CLI instance with the **Run on** picker.
 - Browse the files an agent produced straight from your phone's file browser — see [Agent artifacts in your file browser](#agent-artifacts-in-your-file-browser).
-- Use the Kilo tools from a signed-in chat, with no key or URL to configure — see [Kilo tools in chat](#kilo-tools-in-chat).
+- Use the Semafour tools from a signed-in chat, with no key or URL to configure — see [Semafour tools in chat](#kilo-tools-in-chat).
 
 ## App actions
 
@@ -48,13 +48,13 @@ Four actions are available from outside the app. On iOS they appear in the **Sho
 
 ### App icon shortcuts and Quick Settings tile
 
-On Android, long-press the Kilo app icon to open the [app shortcuts](https://developer.android.com/guide/topics/ui/shortcuts) **New agent**, **Needs input**, and **Open last session**. On iOS, long-press the app icon to see the same actions as [Home Screen Quick Actions](https://developer.apple.com/design/human-interface-guidelines/home-screen-quick-actions). Each opens the same screen as the matching in-app control.
+On Android, long-press the Semafour app icon to open the [app shortcuts](https://developer.android.com/guide/topics/ui/shortcuts) **New agent**, **Needs input**, and **Open last session**. On iOS, long-press the app icon to see the same actions as [Home Screen Quick Actions](https://developer.apple.com/design/human-interface-guidelines/home-screen-quick-actions). Each opens the same screen as the matching in-app control.
 
 - **New agent** opens the new-agent composer.
 - **Needs input** opens the session that is waiting for input. It appears only while at least one session is waiting and disappears again when nothing is waiting.
 - **Open last session** opens the session you last opened. It is available after a cold start even when your account identity resolves after the chat screen first renders.
 
-On Android, the Kilo [Quick Settings tile](https://developer.android.com/develop/ui/views/quicksettings-tiles) mirrors this state. While a session is waiting, the tile reads **Needs input** and opens the chat of the session that has waited longest; with nothing waiting, it reads **New agent** and opens the new-agent composer. If the backend is unreachable, the tile still opens the last published waiting session and shows no error of its own. Signing out removes **Needs input** and **Open last session** from the app shortcuts and the tile.
+On Android, the Semafour [Quick Settings tile](https://developer.android.com/develop/ui/views/quicksettings-tiles) mirrors this state. While a session is waiting, the tile reads **Needs input** and opens the chat of the session that has waited longest; with nothing waiting, it reads **New agent** and opens the new-agent composer. If the backend is unreachable, the tile still opens the last published waiting session and shows no error of its own. Signing out removes **Needs input** and **Open last session** from the app shortcuts and the tile.
 
 App shortcuts require Android 7.1 (API 25) or later; the Quick Settings tile works on Android 7.0 (API 24) or later.
 
@@ -84,11 +84,11 @@ Web links in model replies ask you to confirm the destination host before openin
 
 The app follows your device language, with English as the fallback. Choose another language from the login screen or **Preferences**. The picker supports search and shows languages in their own scripts. Dates, times, and currency formatting follow the selected language. Switching between left-to-right and right-to-left layouts restarts the app.
 
-## Kilo Pass and billing
+## Semafour Pass and billing
 
-For Kilo Pass pricing, billing, and account management details, use the [Kilo Pass pricing page](https://kilo.ai/pricing/kilo-pass).
+For Semafour Pass pricing, billing, and account management details, use the [Semafour Pass pricing page](https://kilo.ai/pricing/kilo-pass).
 
-Kilo Pass is not sold inside the iOS or Android app. Subscribe to or change your Kilo Pass on the web instead. If you try to buy a Kilo Pass in the app, it shows **Kilo Pass purchase is not available right now.** The Android app can open the web to manage a Kilo Pass you already have; the iOS app does not offer that link.
+Semafour Pass is not sold inside the iOS or Android app. Subscribe to or change your Semafour Pass on the web instead. If you try to buy a Semafour Pass in the app, it shows **Semafour Pass purchase is not available right now.** The Android app can open the web to manage a Semafour Pass you already have; the iOS app does not offer that link.
 
 ### Buying credits in the app
 
@@ -99,15 +99,15 @@ Selecting a pack opens the store's own purchase sheet — StoreKit on iOS, Googl
 For other ways to add credits, see [Adding Credits](/docs/getting-started/adding-credits).
 
 {% imageGallery columns="3" width="220px" %}
-{% image src="/docs/img/mobile-apps/home.webp" alt="Kilo Code mobile home screen showing active agent sessions" caption="Start coding tasks and resume active sessions from the mobile home screen." /%}
+{% image src="/docs/img/mobile-apps/home.webp" alt="Semafour mobile home screen showing active agent sessions" caption="Start coding tasks and resume active sessions from the mobile home screen." /%}
 
-{% image src="/docs/img/mobile-apps/new-session.webp" alt="Kilo Code mobile new session screen with coding mode selector" caption="Create a new Cloud Agent session and choose the right mode for the task." /%}
+{% image src="/docs/img/mobile-apps/new-session.webp" alt="Semafour mobile new session screen with coding mode selector" caption="Create a new Cloud Agent session and choose the right mode for the task." /%}
 
-{% image src="/docs/img/mobile-apps/session-chat.webp" alt="Kilo Code mobile session chat with an active coding task" caption="Review progress and continue coding conversations from the mobile app." /%}
+{% image src="/docs/img/mobile-apps/session-chat.webp" alt="Semafour mobile session chat with an active coding task" caption="Review progress and continue coding conversations from the mobile app." /%}
 {% /imageGallery %}
 
 {% imageGallery columns="1" width="220px" %}
-{% image src="/docs/img/mobile-apps/session-filters.webp" alt="Kilo Code mobile session filter panel for Cloud Extension CLI Slack and other platforms" caption="Filter sessions by platform and project, including Cloud, Extension, CLI, Slack, and other sessions." /%}
+{% image src="/docs/img/mobile-apps/session-filters.webp" alt="Semafour mobile session filter panel for Cloud Extension CLI Slack and other platforms" caption="Filter sessions by platform and project, including Cloud, Extension, CLI, Slack, and other sessions." /%}
 {% /imageGallery %}
 
 ## Choosing where a session runs
@@ -156,7 +156,7 @@ The action is not shown on the first user message, on queued or failed messages,
 
 A Cloud Agent source has no per-message file changes, so the Continue screen reports **Files start from the base branch.** For a computer destination it reports **Files on this computer are not changed.**
 
-Forking to a connected CLI needs a CLI that supports the session cut. An older CLI shows **Update the Kilo CLI**, and **Start** stays disabled.
+Forking to a connected CLI needs a CLI that supports the session cut. An older CLI shows **Update the Semafour CLI**, and **Start** stays disabled.
 
 ## Live session counts
 
@@ -170,13 +170,13 @@ Auto-approve applies to one session only, so other sessions keep prompting. Clar
 
 The toggle is kept in memory for the session and never changes your global auto-approve configuration. Signing out or switching accounts turns auto-approve off for every session.
 
-## Kilo tools in chat
+## Semafour tools in chat
 
-A signed-in chat can reach the Kilo tools automatically using your signed-in session — there is no key to paste and no URL to enter. The model sees the available Kilo tools (named `mcp_kilo_*`) and can call them, reading their answers in the reply.
+A signed-in chat can reach the Semafour tools automatically using your signed-in session — there is no key to paste and no URL to enter. The model sees the available Semafour tools (named `mcp_kilo_*`) and can call them, reading their answers in the reply.
 
-Every chat has a **Kilo tools** switch in its Kilo tools sheet. It is on by default, and your choice is kept when you reopen the chat or switch models. With the switch off, the chat sends no Kilo tool to the model and contacts no server.
+Every chat has a **Semafour tools** switch in its Semafour tools sheet. It is on by default, and your choice is kept when you reopen the chat or switch models. With the switch off, the chat sends no Semafour tool to the model and contacts no server.
 
-The Kilo tools sheet names the connection state and offers **Retry** only when retrying can help. If the server is slow, refuses the session, or disappears mid-chat, the chat stays usable and reports what happened; a failed call reaches the model as a failed tool result.
+The Semafour tools sheet names the connection state and offers **Retry** only when retrying can help. If the server is slow, refuses the session, or disappears mid-chat, the chat stays usable and reports what happened; a failed call reaches the model as a failed tool result.
 
 Signing out drops the connection and its tools, and signing in as another user never shows the previous account's tools.
 
@@ -198,10 +198,10 @@ The view runs in a sandboxed page that allows only the origins the server declar
 
 ## Web search in chat
 
-A chat can search the web with the `web_search` tool, which runs through Kilo's own web search service. The **Search the web** switch at the top of the Quick Chat tools sheet turns it on for that chat, and the model names its sources in the reply.
+A chat can search the web with the `web_search` tool, which runs through Semafour's own web search service. The **Search the web** switch at the top of the Quick Chat tools sheet turns it on for that chat, and the model names its sources in the reply.
 
-- The switch is on by default for a chat on a Kilo model, and off for a chat on a custom backend or an on-device model (Apple, Gemini Nano, or GGUF). Your choice is stored for the chat and follows it to a new model.
-- The set of tools is fixed when a chat starts, so moving the switch starts a new session, as the Kilo tools switch does. A model without a tool loop still gets no tools.
+- The switch is on by default for a chat on a Semafour model, and off for a chat on a custom backend or an on-device model (Apple, Gemini Nano, or GGUF). Your choice is stored for the chat and follows it to a new model.
+- The set of tools is fixed when a chat starts, so moving the switch starts a new session, as the Semafour tools switch does. A model without a tool loop still gets no tools.
 - One question can run up to five searches, and a search stops after 15 seconds.
 - Offline, the tool fails immediately without sending a request.
 - If your web search allowance is used up and you have no credit, a toast reports it and the model is told it could not search.
@@ -238,7 +238,7 @@ A queued message shows a subtle **Queued** badge on its bubble. The badge clears
 Dictate prompts with the microphone in the composer. Voice input uses one of two engines:
 
 - **On-device (default)** — the operating system's speech recognizer.
-- **Kilo Gateway** — turn on **Gateway transcription** in **Preferences** to transcribe through your Kilo account.
+- **Semafour Gateway** — turn on **Gateway transcription** in **Preferences** to transcribe through your Semafour account.
 
 The switch is a two-way choice, not a fallback: the selected engine owns the whole dictation and the other engine is never called. The choice applies to every voice dictation in the app.
 
@@ -265,7 +265,7 @@ While the CLI is connected, the agent can deliver a file to your phone with the 
 
 ## Agent artifacts in your file browser
 
-On iOS and Android, your phone's file browser shows a **Kilo** location alongside your other file providers.
+On iOS and Android, your phone's file browser shows a **Semafour** location alongside your other file providers.
 
 - It lists each agent session as a folder, in the same recency order as the app.
 - Open a session folder to see the files that agent produced. File names match the names shown in the app.
@@ -284,7 +284,7 @@ Open a pull request or merge request from a link to review it without leaving th
 
 Comments you leave on diffs are collected into a pending review on your device and submitted as a single review. To post a regular conversation comment instead, tap **Comment on this pull request** at the bottom of **Discussion**. These comments appear directly in the discussion and are not part of a review, and they work on GitHub pull requests, GitLab merge requests, and Bitbucket pull requests. The comment sheet header shows the provider's own reference, such as `group/sub/repo!12` on GitLab or `workspace/repo#77` on Bitbucket.
 
-Every comment row shows a **Fix with Kilo** pill beside its overflow menu, on diff-line review threads and on conversation comments. Tapping it opens the new-session screen with the composer prefilled with `Please address the following PR comment: <that comment's link>`. The link targets the exact comment, and a comment with no addressable provider URL shows no pill.
+Every comment row shows a **Fix with Semafour** pill beside its overflow menu, on diff-line review threads and on conversation comments. Tapping it opens the new-session screen with the composer prefilled with `Please address the following PR comment: <that comment's link>`. The link targets the exact comment, and a comment with no addressable provider URL shows no pill.
 
 When the request is ready, you can merge it (merge, squash, or rebase), enable or disable auto-merge where the provider supports it, or update the branch, all from the app. Bitbucket's API has no auto-merge, so the app explains that instead of offering it.
 

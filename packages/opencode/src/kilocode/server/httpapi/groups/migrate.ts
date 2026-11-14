@@ -8,9 +8,9 @@ import {
 } from "@/server/routes/instance/httpapi/middleware/workspace-routing"
 import { described } from "@/server/routes/instance/httpapi/groups/metadata"
 
-// Routes for migrating work into Kilo from another coding agent. Today that is
+// Routes for migrating work into Semafour from another coding agent. Today that is
 // Claude Code / OpenAI Codex session transcripts; the `migrate` group is the
-// home for any future "bring your existing X into Kilo" route.
+// home for any future "bring your existing X into Semafour" route.
 const root = "/kilocode/migrate/sessions"
 
 export const MigrateSessionsPayload = Schema.Struct({
@@ -31,7 +31,7 @@ export const MigrateSessionsPayload = Schema.Struct({
     description: "Model reference (providerID/modelID). Defaults to the agent or provider default.",
   }),
   force: Schema.optional(Schema.Boolean).annotate({
-    description: "Migrate sources again even if they already landed, creating additional Kilo sessions.",
+    description: "Migrate sources again even if they already landed, creating additional Semafour sessions.",
   }),
 })
 
@@ -39,7 +39,7 @@ const MigrateSessionsMigrated = Schema.Struct({
   id: Schema.String.annotate({ description: "Source session UUID." }),
   format: Schema.Literals(["claude", "codex"]).annotate({ description: "Source transcript format." }),
   sessionID: Schema.optional(Schema.String).annotate({
-    description: "Kilo session holding the transcript. Absent only when the migration failed.",
+    description: "Semafour session holding the transcript. Absent only when the migration failed.",
   }),
   messageID: Schema.optional(Schema.String).annotate({
     description: "Final assistant message written, when this call performed the migration.",
@@ -96,7 +96,7 @@ const MigrateSessionsDiscovered = Schema.Struct({
   }),
   sessionID: Schema.optional(Schema.String).annotate({
     description:
-      "Kilo session this transcript was already migrated into. Present means a migration would skip this source.",
+      "Semafour session this transcript was already migrated into. Present means a migration would skip this source.",
   }),
 }).annotate({ identifier: "KilocodeMigrateSessionsDiscovered" })
 
@@ -125,9 +125,9 @@ export const MigrateApi = HttpApi.make("migrate").add(
       }).annotateMerge(
         OpenApi.annotations({
           identifier: "kilocode.migrate.sessions",
-          summary: "Migrate external sessions into Kilo",
+          summary: "Migrate external sessions into Semafour",
           description:
-            "Discover Claude Code and OpenAI Codex JSONL transcripts for a directory and migrate them into new Kilo sessions, one session per transcript. Sources that were already migrated are skipped, so calling this repeatedly is a no-op once everything has landed.",
+            "Discover Claude Code and OpenAI Codex JSONL transcripts for a directory and migrate them into new Semafour sessions, one session per transcript. Sources that were already migrated are skipped, so calling this repeatedly is a no-op once everything has landed.",
         }),
       ),
     )
@@ -149,7 +149,7 @@ export const MigrateApi = HttpApi.make("migrate").add(
     .annotateMerge(
       OpenApi.annotations({
         title: "migrate",
-        description: "Kilo routes for migrating sessions from other coding agents into Kilo.",
+        description: "Semafour routes for migrating sessions from other coding agents into Semafour.",
       }),
     )
     .middleware(InstanceContextMiddleware)

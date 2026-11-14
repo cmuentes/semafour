@@ -3,7 +3,7 @@ import { KILO_API_BASE } from "./constants.js"
 import { getDefaultHeaders, buildKiloHeaders } from "../headers.js"
 
 /**
- * Kilo notification schema
+ * Semafour notification schema
  */
 export const KilocodeNotificationSchema = z.object({
   id: z.string(),
@@ -28,10 +28,10 @@ const NotificationsResponseSchema = z.object({
 const NOTIFICATIONS_TIMEOUT_MS = 5000
 
 /**
- * Fetch notifications from Kilo API
+ * Fetch notifications from Semafour API
  *
  * @param options - Configuration with token and optional organization ID
- * @returns Array of notifications from the Kilo API (clients filter by showIn)
+ * @returns Array of notifications from the Semafour API (clients filter by showIn)
  */
 export async function fetchKilocodeNotifications(options: {
   kilocodeToken?: string

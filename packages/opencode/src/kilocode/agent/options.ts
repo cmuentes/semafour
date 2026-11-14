@@ -1,6 +1,6 @@
 // kilocode_change - new file
 
-// Kilo stores internal/UI-only metadata on an agent's `options` record:
+// Semafour stores internal/UI-only metadata on an agent's `options` record:
 //   - `id`:          mode identifier used to recognize built-in modes (see session/prompt.ts)
 //   - `displayName`: human-readable name for org/marketplace modes
 //   - `source`:      origin marker ("organization" | "global" | "project")

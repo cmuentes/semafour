@@ -15,7 +15,7 @@ import { ToolRegistry } from "@/tool/registry"
 import { Truncate } from "@/tool/truncate"
 import { Plugin } from "@/plugin"
 import { RuntimeFlags } from "@/effect/runtime-flags"
-// kilocode_change start - Kilo's SessionTools.resolve needs these services and instance context
+// kilocode_change start - Semafour's SessionTools.resolve needs these services and instance context
 import { AppNodeBuilder } from "@opencode-ai/core/effect/app-node-builder"
 import { Database } from "@opencode-ai/core/database/database"
 import { ProjectV2 } from "@opencode-ai/core/project"
@@ -57,7 +57,7 @@ const fakePlugin = Plugin.Service.of({
 } satisfies Plugin.Interface)
 
 const fakePermission = Permission.Service.of({
-  // kilocode_change - Kilo's Permission.ask returns an AskOutcome, not void
+  // kilocode_change - Semafour's Permission.ask returns an AskOutcome, not void
   ask: () => Effect.succeed({ manual: false }),
   reply: () => Effect.void,
   list: () => Effect.succeed([]),
@@ -75,7 +75,7 @@ const fakeTruncate = Truncate.Service.of({
   limits: () => Effect.succeed({ maxLines: 2000, maxBytes: 50 * 1024 }),
 } satisfies Truncate.Interface)
 
-// kilocode_change start - Kilo's resolve reads the active instance directory and
+// kilocode_change start - Semafour's resolve reads the active instance directory and
 // the agent/session/config services while wiring permissions and sandbox state.
 const instance = {
   directory: "/tmp",
@@ -106,7 +106,7 @@ const layer = Layer.mergeAll(
   Layer.succeed(MCP.Service, fakeMcp()),
   Layer.succeed(Truncate.Service, fakeTruncate),
   RuntimeFlags.layer(),
-  // kilocode_change start - services and storage Kilo's resolve depends on
+  // kilocode_change start - services and storage Semafour's resolve depends on
   fakeAgent,
   fakeSession,
   TestConfig.layer(),
@@ -170,7 +170,7 @@ it.effect("preserves running tool start time across metadata updates", () =>
         providerID: ProviderV2.ID.make("test"),
         time: { created: 1 },
       } satisfies SessionV1.Assistant,
-      // kilocode_change - Kilo routes Tool.Context.metadata through
+      // kilocode_change - Semafour routes Tool.Context.metadata through
       // processor.metadata instead of upstream's updateToolCall, so the mock
       // applies metadata to the running part and records the preserved start.
       metadata: (_toolCallID, input) =>
@@ -194,8 +194,8 @@ it.effect("preserves running tool start time across metadata updates", () =>
       bypassAgentCheck: false,
       messages: [],
       promptOps: {} as never,
-      memoryCache: {}, // kilocode_change - required by Kilo's resolve signature
-    }).pipe(Effect.provideService(InstanceRef, instance)) // kilocode_change - Kilo resolves sandbox state from the active instance
+      memoryCache: {}, // kilocode_change - required by Semafour's resolve signature
+    }).pipe(Effect.provideService(InstanceRef, instance)) // kilocode_change - Semafour resolves sandbox state from the active instance
     const execute = tools.timing.execute
     if (!execute) throw new Error("timing tool is missing execute")
 

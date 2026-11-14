@@ -34,7 +34,7 @@ class KiloWorkspaceDtoMapperTest {
             providers = listOf(
                 ProviderInfo(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     source = "api",
                     models = mapOf(model.id to model),
                 ),
@@ -72,7 +72,7 @@ class KiloWorkspaceDtoMapperTest {
             terminalBench = ModelTerminalBenchInfo(0.5, 2.0),
         )
         val data = ProviderData(
-            providers = listOf(ProviderInfo("kilo", "Kilo", "api", mapOf(model.id to model))),
+            providers = listOf(ProviderInfo("kilo", "Semafour", "api", mapOf(model.id to model))),
             connected = listOf("kilo"),
             defaults = emptyMap(),
         )

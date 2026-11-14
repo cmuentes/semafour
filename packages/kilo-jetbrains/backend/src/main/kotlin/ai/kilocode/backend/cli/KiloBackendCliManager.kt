@@ -28,7 +28,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 private val PORT_REGEX = Regex("""listening on http://[\w.]+:(\d+)""")
 
 /**
- * Manages the Kilo CLI binary lifecycle.
+ * Manages the Semafour CLI binary lifecycle.
  *
  * Downloads the pinned CLI into IntelliJ's system directory,
  * spawns `kilo serve --port 0`, and exposes the result as [State].
@@ -130,13 +130,13 @@ class KiloBackendCliManager(
         val platform = KiloCliPlatform.current()
         if (KiloRepoCli.available()) {
             if (force) log.info("Force re-extracting bundled CLI $version")
-            log.info("Kilo CLI mode: BUNDLED — using CLI $version ($platform) shipped in the plugin; no download needed")
+            log.info("Semafour CLI mode: BUNDLED — using CLI $version ($platform) shipped in the plugin; no download needed")
             val cli = KiloRepoCli.extract(force)
             onProgress(CliDownload(100, version, platform))
             return cli
         }
         if (force) log.info("Force re-downloading CLI $version")
-        log.info("Kilo CLI mode: DOWNLOAD — resolving CLI $version ($platform) from the GitHub release")
+        log.info("Semafour CLI mode: DOWNLOAD — resolving CLI $version ($platform) from the GitHub release")
         return KiloCliDownloader(log = log).resolve(version, force, onProgress)
     }
 
@@ -471,12 +471,12 @@ internal fun startupDiagnostics(cli: File, env: Map<String, String>, log: KiloLo
         lines += "$key: ${env[key] ?: "<unset>"}"
     }
     if (data.isNotBlank() && remote(data)) {
-        lines += "warning: Kilo CLI data dir appears to be on a non-local drive (${root(data)}); SQLite WAL may hang. Set XDG_DATA_HOME/XDG_STATE_HOME/XDG_CONFIG_HOME/XDG_CACHE_HOME to a local disk."
+        lines += "warning: Semafour CLI data dir appears to be on a non-local drive (${root(data)}); SQLite WAL may hang. Set XDG_DATA_HOME/XDG_STATE_HOME/XDG_CONFIG_HOME/XDG_CACHE_HOME to a local disk."
     }
     val text = lines.joinToString("\n")
     log.info("CLI startup diagnostics:\n$text")
     if (data.isNotBlank() && remote(data)) {
-        log.warn("Kilo CLI data dir appears to be on a non-local drive (${root(data)}); SQLite WAL may hang. Set XDG_DATA_HOME/XDG_STATE_HOME/XDG_CONFIG_HOME/XDG_CACHE_HOME to a local disk.")
+        log.warn("Semafour CLI data dir appears to be on a non-local drive (${root(data)}); SQLite WAL may hang. Set XDG_DATA_HOME/XDG_STATE_HOME/XDG_CONFIG_HOME/XDG_CACHE_HOME to a local disk.")
     }
     return text
 }

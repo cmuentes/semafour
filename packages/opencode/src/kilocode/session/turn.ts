@@ -9,7 +9,7 @@ import type { SessionID } from "@/session/schema"
 
 /**
  * Marks the sessions whose turn runs in this process. Session status lives in each process, so another
- * Kilo process on the same data directory reads these markers to tell a live reply from one that a
+ * Semafour process on the same data directory reads these markers to tell a live reply from one that a
  * crashed process left behind.
  *
  * A marker is a file named `<sessionID>.<pid>` that holds the host name. The holder refreshes its mtime
@@ -83,7 +83,7 @@ export namespace KiloSessionTurn {
   }
 
   /**
-   * Returns true when another live Kilo process runs a turn on the session. The scan removes stale markers
+   * Returns true when another live Semafour process runs a turn on the session. The scan removes stale markers
    * of every session.
    */
   export const foreign = Effect.fn("KiloSessionTurn.foreign")(function* (id: SessionID) {

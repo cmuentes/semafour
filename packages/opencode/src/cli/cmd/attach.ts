@@ -3,7 +3,7 @@ import { UI } from "@/cli/ui"
 import { errorMessage } from "@opencode-ai/tui/util/error"
 import { validateSession } from "../tui/validate-session"
 import { ServerAuth } from "@/server/auth"
-// kilocode_change start - Kilo implementations (sdk client, cloud-session) are
+// kilocode_change start - Semafour implementations (sdk client, cloud-session) are
 // dynamically imported inside the handler so other CLI commands don't pay their
 // module cost at startup.
 // kilocode_change end

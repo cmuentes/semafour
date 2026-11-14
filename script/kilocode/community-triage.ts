@@ -83,7 +83,7 @@ export function priority(title: string, tags: string[]) {
 }
 
 export const labels = [
-  { name: label.community, color: "0e8a16", description: "Opened by someone outside the Kilo team" },
+  { name: label.community, color: "0e8a16", description: "Opened by someone outside the Semafour team" },
   { name: label.triage, color: "fbca04", description: "Waiting for a maintainer to look" },
   { name: label.awaiting, color: "d4c5f9", description: "Waiting for the contributor to reply" },
   { name: label.keep, color: "bfdadc", description: "Never auto-closed. The team may adopt it. Set by hand." },
@@ -96,7 +96,7 @@ export const labels = [
   { name: "area:jetbrains", color: "ededed", description: "JetBrains plugin" },
   { name: "area:desktop", color: "ededed", description: "Desktop and web app" },
   { name: "area:docs", color: "ededed", description: "Documentation" },
-  { name: "area:gateway", color: "ededed", description: "Kilo Gateway and auth" },
+  { name: "area:gateway", color: "ededed", description: "Semafour Gateway and auth" },
   { name: "area:sdk", color: "ededed", description: "SDK" },
   { name: "area:ui", color: "ededed", description: "Shared UI components" },
   { name: "area:i18n", color: "ededed", description: "Translations" },
@@ -155,7 +155,7 @@ const components: Record<string, string> = {
 const own = (map: Record<string, string>, key: string) => (Object.hasOwn(map, key) ? map[key] : undefined)
 
 // Product names in a title. Used when there is no scope or dropdown answer,
-// for example issues that skip the form: "Deleting a chat has no undo (Kilo Desktop)".
+// for example issues that skip the form: "Deleting a chat has no undo (Semafour Desktop)".
 const names: [RegExp, string][] = [
   [/\bkilo desktop\b/i, "area:desktop"],
   [/\bagent manager\b/i, "area:agent-manager"],

@@ -271,7 +271,7 @@ export namespace BackgroundProcess {
         return true
       })
       .catch((err) => {
-        log.debug("persistent process scope is managed by another Kilo process", { err, scope: shared.key })
+        log.debug("persistent process scope is managed by another Semafour process", { err, scope: shared.key })
         return false
       })
       .finally(() => {
@@ -966,7 +966,7 @@ export namespace BackgroundProcess {
     if (logpath) {
       await secure(state.shared)
       if (!(await claim(state.shared)))
-        throw new Error("Persistent processes for this project are managed by another Kilo process")
+        throw new Error("Persistent processes for this project are managed by another Semafour process")
       await Filesystem.write(logpath, "", 0o600)
     }
     const cmd =

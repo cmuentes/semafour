@@ -16,13 +16,13 @@ import kotlinx.serialization.json.longOrNull
 class KiloBackendRetentionManager(private val app: KiloBackendAppService) {
     suspend fun status(): RetentionStatusDto {
         app.requireReady()
-        val api = app.api ?: throw IllegalStateException("Kilo API client is unavailable")
+        val api = app.api ?: throw IllegalStateException("Semafour API client is unavailable")
         return withContext(Dispatchers.IO) { api.kilocodeRetentionStatus(null, null) }.dto()
     }
 
     suspend fun run(force: Boolean): RetentionStatusDto {
         app.requireReady()
-        val api = app.api ?: throw IllegalStateException("Kilo API client is unavailable")
+        val api = app.api ?: throw IllegalStateException("Semafour API client is unavailable")
         return withContext(Dispatchers.IO) {
             api.kilocodeRetentionRun(null, null, KilocodeRetentionRunRequest(force))
         }.dto()

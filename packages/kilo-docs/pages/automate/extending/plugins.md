@@ -1,12 +1,12 @@
 ---
 title: "Plugins"
-description: "Extend the Kilo CLI with custom hooks, tools, auth providers, and more"
+description: "Extend the Semafour CLI with custom hooks, tools, auth providers, and more"
 platform: new
 ---
 
 # Plugins
 
-Plugins extend Kilo by hooking into events, adding custom tools, registering auth or model providers, and customizing runtime behavior. They are TypeScript or JavaScript modules loaded at startup, and work in both the Kilo CLI and the VS Code extension.
+Plugins extend Semafour by hooking into events, adding custom tools, registering auth or model providers, and customizing runtime behavior. They are TypeScript or JavaScript modules loaded at startup, and work in both the Semafour CLI and the VS Code extension.
 
 ## What plugins can do
 
@@ -101,14 +101,14 @@ The command resolves the package, reads its `package.json` for plugin entrypoint
 
 - **npm plugins** are installed automatically at startup using Bun. Packages and their dependencies are cached under `packages/` in the current CLI XDG cache directory (`~/.cache/opencode/packages/` by default, or `$XDG_CACHE_HOME/opencode/packages/` when `XDG_CACHE_HOME` is set).
 - **Pinned npm versions** like `my-plugin@1.2.3` install that exact version and do not check for newer registry versions. Bare package names resolve to `latest` and can refresh when the cached copy becomes stale.
-- **Install scripts are disabled** for npm plugins. Kilo installs packages with lifecycle scripts such as `install` and `postinstall` blocked.
-- **Local plugins** are loaded directly from the plugin directory. If your plugin imports external packages, add a `package.json` to your config directory (see [Dependencies](#dependencies)) — Kilo runs `bun install` on startup so imports resolve.
+- **Install scripts are disabled** for npm plugins. Semafour installs packages with lifecycle scripts such as `install` and `postinstall` blocked.
+- **Local plugins** are loaded directly from the plugin directory. If your plugin imports external packages, add a `package.json` to your config directory (see [Dependencies](#dependencies)) — Semafour runs `bun install` on startup so imports resolve.
 
 ### Load order
 
 Plugins from all sources run on every session. They load in this order:
 
-1. Internal built-ins (Kilo Gateway auth, Codex auth, Copilot auth, Cloudflare, etc.)
+1. Internal built-ins (Semafour Gateway auth, Codex auth, Copilot auth, Cloudflare, etc.)
 2. Global config plugin array (`~/.config/kilo/kilo.json`)
 3. Global plugin directory (`~/.config/kilo/plugin/`)
 4. Project config plugin array (`kilo.json` / `opencode.json`)
@@ -152,16 +152,16 @@ The plugin function receives a context object:
 | `project` | Current project metadata. |
 | `directory` | Current working directory for this session. |
 | `worktree` | Git worktree root for this session. |
-| `client` | A Kilo SDK client (`@kilocode/sdk`) for calling the local server. |
+| `client` | A Semafour SDK client (`@kilocode/sdk`) for calling the local server. |
 | `$` | [Bun's shell API](https://bun.com/docs/runtime/shell). |
-| `serverUrl` | URL of the local Kilo server. |
+| `serverUrl` | URL of the local Semafour server. |
 | `experimental_workspace` | Register workspace adaptors (used by Agent Manager). |
 
 The function returns a `Hooks` object. Any second argument is the options object passed via config (e.g. the `{ apiKey: "..." }` from `["my-plugin", { apiKey: "..." }]`).
 
 ### Register workspace adaptors
 
-Workspace adaptors let plugins add custom workspace targets to Kilo's workspace creation flow. This API is experimental and may change.
+Workspace adaptors let plugins add custom workspace targets to Semafour's workspace creation flow. This API is experimental and may change.
 
 ```ts
 import type { Plugin } from "@kilocode/plugin"
@@ -214,7 +214,7 @@ An npm plugin can also expose a TUI entry point (`tui`) for [TUI plugins](#tui-p
 
 ### Package manifest for npm plugins
 
-Published npm plugins should declare separate package entrypoints for each runtime they support. Kilo detects install targets from `package.json`:
+Published npm plugins should declare separate package entrypoints for each runtime they support. Semafour detects install targets from `package.json`:
 
 - `exports["./server"]` marks the package as a server plugin.
 - `exports["./tui"]` marks the package as a TUI plugin.
@@ -268,7 +268,7 @@ import type { Plugin } from "@kilocode/plugin"
 import { tool } from "@kilocode/plugin/tool"
 ```
 
-Kilo automatically creates a `package.json` in config directories that contain a `plugin/` folder and installs `@kilocode/plugin` so types resolve out of the box.
+Semafour automatically creates a `package.json` in config directories that contain a `plugin/` folder and installs `@kilocode/plugin` so types resolve out of the box.
 
 ### Engine compatibility
 
@@ -296,7 +296,7 @@ Local plugins and custom tools can use external npm packages. Add a `package.jso
 }
 ```
 
-Kilo runs `bun install` at startup so your plugins can import the packages:
+Semafour runs `bun install` at startup so your plugins can import the packages:
 
 ```ts
 // .kilo/plugin/escape-bash.ts
@@ -316,7 +316,7 @@ export default { id: "escape-bash", server: EscapeBash }
 
 ## Publish your plugin to the Marketplace
 
-The [Kilo Marketplace](https://github.com/Kilo-Org/kilo-marketplace) lists plugins from two sources:
+The [Semafour Marketplace](https://github.com/Kilo-Org/kilo-marketplace) lists plugins from two sources:
 
 - **Registry plugins** are published to npm. Set the catalog `content` to the package name, for example `my-plugin` or `my-plugin@^1.2.0`.
 - **Git-hosted plugins** live in a public git repository. Set the catalog `content` to a git spec.
@@ -333,7 +333,7 @@ git:<repo>[@ref][#subpath]
 
 The catalog `id` must equal the plugin identity. For a registry plugin, use the npm package name. For a git plugin, use the normalized git identity: `git/` plus the repo without its scheme and without a trailing `.git`, plus the subpath when present. For example, `git:github.com/owner/repo@v1` has the id `git/github.com/owner/repo`.
 
-Git plugins must be self-contained. Kilo clones the repository at the given ref and loads the plugin directly. It does not install npm dependencies for git plugins, so vendor any runtime dependencies into the repository.
+Git plugins must be self-contained. Semafour clones the repository at the given ref and loads the plugin directly. It does not install npm dependencies for git plugins, so vendor any runtime dependencies into the repository.
 
 The repository or package must contain a `package.json` that declares at least one supported target:
 
@@ -347,7 +347,7 @@ For a plugin that supports both targets, use separate `./server` and `./tui` ent
 ### Submit your plugin
 
 1. Choose the source. Publish and test a registry plugin, or host a self-contained plugin in a public git repository.
-2. Add a `PLUGIN.yaml` entry under `plugins/<id>/PLUGIN.yaml` in the [Kilo Marketplace repository](https://github.com/Kilo-Org/kilo-marketplace). The directory path must equal `id`.
+2. Add a `PLUGIN.yaml` entry under `plugins/<id>/PLUGIN.yaml` in the [Semafour Marketplace repository](https://github.com/Kilo-Org/kilo-marketplace). The directory path must equal `id`.
 3. Regenerate `plugins/marketplace.yaml` with the generator in the marketplace repository. Do not edit it manually.
 4. Submit a pull request with the manifest and the regenerated catalog. Describe what the plugin does, its source, and which targets you tested.
 
@@ -363,7 +363,7 @@ Every hook is optional. Return only the ones you care about.
 
 | Hook | Description |
 |---|---|
-| `config` | Receives the fully-resolved config at startup. Mutate it in place to add or change agents, commands, providers, and other config — this is how a plugin contributes its own slash commands. A command named `goal` is reserved for [session goals](/docs/code-with-ai/agents/goals): Kilo ignores it under that name, warns, and exposes it as `/goal:command` instead. |
+| `config` | Receives the fully-resolved config at startup. Mutate it in place to add or change agents, commands, providers, and other config — this is how a plugin contributes its own slash commands. A command named `goal` is reserved for [session goals](/docs/code-with-ai/agents/goals): Semafour ignores it under that name, warns, and exposes it as `/goal:command` instead. |
 | `event` | Called for **every** event on the internal bus (see [Events](#events)). |
 
 ### Tools
@@ -384,7 +384,7 @@ Every hook is optional. Return only the ones you care about.
 | `chat.headers` | Add or replace HTTP headers on the LLM API call. |
 | `permission.ask` | Auto-allow or auto-deny permission prompts. |
 | `command.execute.before` | Intercept slash command execution; mutate the resulting `parts`. |
-| `shell.env` | Inject environment variables into every shell command Kilo runs. |
+| `shell.env` | Inject environment variables into every shell command Semafour runs. |
 
 ### Providers & auth
 
@@ -413,7 +413,7 @@ const ProviderPlugin: Plugin = async () => ({
 export default { id: "my-provider", server: ProviderPlugin }
 ```
 
-Kilo fills provider/model IDs from the returned catalog and uses the returned models in the picker and provider router.
+Semafour fills provider/model IDs from the returned catalog and uses the returned models in the picker and provider router.
 
 ### Experimental
 
@@ -429,7 +429,7 @@ These hooks live behind the `experimental.` prefix and may change between releas
 
 ### Events
 
-The `event` hook fires for every event on Kilo's internal bus. Common event types include:
+The `event` hook fires for every event on Semafour's internal bus. Common event types include:
 
 - **Session**: `session.created`, `session.updated`, `session.idle`, `session.error`, `session.deleted`, `session.compacted`, `session.diff`, `session.status`
 - **Message**: `message.updated`, `message.removed`, `message.part.updated`, `message.part.removed`
@@ -541,7 +541,7 @@ export default { id: "inject-env", server: InjectEnv }
 
 ### Structured logging
 
-Prefer `client.app.log()` over `console.log` so entries land in Kilo's log pipeline:
+Prefer `client.app.log()` over `console.log` so entries land in Semafour's log pipeline:
 
 ```ts
 import type { Plugin } from "@kilocode/plugin"
@@ -584,7 +584,7 @@ Set `output.prompt` to replace the default compaction prompt entirely — when p
 
 ### Stop auto-continuing after compaction
 
-By default, Kilo sends a synthetic "continue" turn after compaction so the agent resumes the interrupted task. Use `experimental.compaction.autocontinue` to disable that turn for specific sessions or providers:
+By default, Semafour sends a synthetic "continue" turn after compaction so the agent resumes the interrupted task. Use `experimental.compaction.autocontinue` to disable that turn for specific sessions or providers:
 
 ```ts
 const CompactionStop: Plugin = async () => ({
@@ -600,7 +600,7 @@ The hook receives the `sessionID`, `agent`, `model`, `provider`, compacted `mess
 
 ## TUI plugins
 
-Plugins can also target the Kilo TUI itself — registering slash commands, routes, slots, dialogs, and keybinds. TUI plugins are SolidJS modules exported from `"./tui"` in your plugin package, or theme-only packages declared with `oc-themes`.
+Plugins can also target the Semafour TUI itself — registering slash commands, routes, slots, dialogs, and keybinds. TUI plugins are SolidJS modules exported from `"./tui"` in your plugin package, or theme-only packages declared with `oc-themes`.
 
 TUI plugins live in a separate module namespace (`@kilocode/plugin/tui`) and have their own API surface (`TuiPluginApi`). Because the TUI API is larger and still evolving, this guide doesn't cover it exhaustively — use the types in `@kilocode/plugin/tui` as the reference, and look at the built-in TUI plugins under `packages/opencode/src/cli/cmd/tui/feature-plugins/` for working examples.
 
@@ -630,7 +630,7 @@ Host slots include `home_prompt_right`, `session_prompt`, `session_prompt_right`
 
 - **Local plugin can't find an npm import** — add a `package.json` in the config directory so `bun install` picks up the dependency (see [Dependencies](#dependencies)).
 - **Plugin loads in dev but not in CI** — verify `KILO_PURE` is not set, and that npm-installed plugins are cached under `packages/` in the current CLI XDG cache directory (`~/.cache/opencode/packages/` by default, or `$XDG_CACHE_HOME/opencode/packages/` when `XDG_CACHE_HOME` is set). Run with `--log-level DEBUG` to see install output.
-- **Reset the plugin cache** — delete the plugin package folder under the CLI's `packages/` cache directory (or the `node_modules` cache under your config directory) and restart Kilo.
+- **Reset the plugin cache** — delete the plugin package folder under the CLI's `packages/` cache directory (or the `node_modules` cache under your config directory) and restart Semafour.
 
 ---
 

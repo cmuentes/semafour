@@ -137,10 +137,10 @@ abstract class GenerateOpenApiSpecTask : DefaultTask() {
         val name = "kilo-$platform.$ext"
         val digest = asset(version, name)
         if (dir.exists() && !dir.deleteRecursively()) {
-            throw GradleException("Failed to delete cached pinned Kilo CLI under ${dir.absolutePath}")
+            throw GradleException("Failed to delete cached pinned Semafour CLI under ${dir.absolutePath}")
         }
         if (!dir.isDirectory && !dir.mkdirs()) {
-            throw GradleException("Failed to create pinned Kilo CLI cache directory ${dir.absolutePath}")
+            throw GradleException("Failed to create pinned Semafour CLI cache directory ${dir.absolutePath}")
         }
         download("https://github.com/Kilo-Org/kilocode/releases/download/v$version/kilo-$platform.$ext", archive)
         verify(archive, digest)
@@ -153,7 +153,7 @@ abstract class GenerateOpenApiSpecTask : DefaultTask() {
 
     private fun asset(version: String, name: String): String {
         val url = "$API/v$version"
-        logger.lifecycle("Fetching pinned Kilo CLI release metadata from $url")
+        logger.lifecycle("Fetching pinned Semafour CLI release metadata from $url")
         val conn = URI(url).toURL().openConnection() as HttpURLConnection
         conn.connectTimeout = 30_000
         conn.readTimeout = 120_000
@@ -174,17 +174,17 @@ abstract class GenerateOpenApiSpecTask : DefaultTask() {
                 val detail = if (body.isNullOrBlank()) "" else ": $body"
                 if (limited(conn, code)) {
                     throw GradleException(
-                        "GitHub API rate limit exceeded while fetching pinned Kilo CLI release metadata ($info)$detail"
+                        "GitHub API rate limit exceeded while fetching pinned Semafour CLI release metadata ($info)$detail"
                     )
                 }
-                throw GradleException("Failed to fetch pinned Kilo CLI release metadata: HTTP $code from $url ($info)$detail")
+                throw GradleException("Failed to fetch pinned Semafour CLI release metadata: HTTP $code from $url ($info)$detail")
             }
             val body = conn.inputStream.bufferedReader().use { it.readText() }
             val digest = JSON.parseToJsonElement(body).jsonObject["assets"]?.jsonArray
                 ?.firstOrNull { it.jsonObject["name"]?.jsonPrimitive?.contentOrNull == name }
                 ?.jsonObject?.get("digest")?.jsonPrimitive?.contentOrNull
-                ?: throw GradleException("Pinned Kilo CLI release $version did not include $name")
-            if (!digest.matches(DIGEST)) throw GradleException("Pinned Kilo CLI release $version asset $name has invalid digest")
+                ?: throw GradleException("Pinned Semafour CLI release $version did not include $name")
+            if (!digest.matches(DIGEST)) throw GradleException("Pinned Semafour CLI release $version asset $name has invalid digest")
             return digest
         } finally {
             conn.disconnect()
@@ -203,7 +203,7 @@ abstract class GenerateOpenApiSpecTask : DefaultTask() {
         code == 429 || (code == 403 && conn.getHeaderField("X-RateLimit-Remaining") == "0")
 
     private fun download(url: String, file: File) {
-        logger.lifecycle("Downloading pinned Kilo CLI from $url")
+        logger.lifecycle("Downloading pinned Semafour CLI from $url")
         var failure: IOException? = null
         for (attempt in 1..ATTEMPTS) {
             try {
@@ -211,13 +211,13 @@ abstract class GenerateOpenApiSpecTask : DefaultTask() {
                 return
             } catch (err: IOException) {
                 failure = err
-                if (file.exists() && !file.delete()) logger.warn("Failed to delete partial pinned Kilo CLI archive ${file.absolutePath}")
+                if (file.exists() && !file.delete()) logger.warn("Failed to delete partial pinned Semafour CLI archive ${file.absolutePath}")
                 if (attempt == ATTEMPTS) break
-                logger.warn("Pinned Kilo CLI download failed (attempt $attempt/$ATTEMPTS), retrying: ${err.message}")
+                logger.warn("Pinned Semafour CLI download failed (attempt $attempt/$ATTEMPTS), retrying: ${err.message}")
                 Thread.sleep((DELAY_MS * attempt).coerceAtMost(60_000L))
             }
         }
-        throw GradleException("Failed to download pinned Kilo CLI after $ATTEMPTS attempts from $url", failure)
+        throw GradleException("Failed to download pinned Semafour CLI after $ATTEMPTS attempts from $url", failure)
     }
 
     private fun downloadOnce(url: String, file: File) {
@@ -231,7 +231,7 @@ abstract class GenerateOpenApiSpecTask : DefaultTask() {
             val code = conn.responseCode
             if (code !in 200..299) {
                 if (code == 429 || code in 500..599 || limited(conn, code)) throw IOException("HTTP $code from $url")
-                throw GradleException("Failed to download pinned Kilo CLI: HTTP $code from $url")
+                throw GradleException("Failed to download pinned Semafour CLI: HTTP $code from $url")
             }
             conn.inputStream.use { input ->
                 file.outputStream().use { output -> input.copyTo(output) }
@@ -244,8 +244,8 @@ abstract class GenerateOpenApiSpecTask : DefaultTask() {
     private fun verify(file: File, digest: String) {
         val actual = sum(file)
         if (actual == digest) return
-        if (file.exists() && !file.delete()) logger.warn("Failed to delete invalid pinned Kilo CLI archive ${file.absolutePath}")
-        throw GradleException("Pinned Kilo CLI archive digest mismatch for ${file.name}: expected $digest, got $actual")
+        if (file.exists() && !file.delete()) logger.warn("Failed to delete invalid pinned Semafour CLI archive ${file.absolutePath}")
+        throw GradleException("Pinned Semafour CLI archive digest mismatch for ${file.name}: expected $digest, got $actual")
     }
 
     private fun matches(file: File, digest: String) = file.isFile && sum(file) == digest

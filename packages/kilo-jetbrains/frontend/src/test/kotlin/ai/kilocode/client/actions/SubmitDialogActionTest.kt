@@ -69,7 +69,7 @@ class SubmitDialogActionTest : BasePlatformTestCase() {
 
     fun `test action maps command enter on macOS`() {
         val shortcut = PluginDescriptor.frontend().elements("keyboard-shortcut")
-            .single { (it.parentNode as? Element)?.attribute("id") == "Kilo.SubmitDialog" }
+            .single { (it.parentNode as? Element)?.attribute("id") == "Semafour.SubmitDialog" }
 
         assertEquals("Mac OS X 10.5+", shortcut.attribute("keymap"))
         assertEquals("meta ENTER", shortcut.attribute("first-keystroke"))

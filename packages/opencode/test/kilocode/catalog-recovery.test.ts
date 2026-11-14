@@ -82,8 +82,8 @@ it.effect("refreshes initialized provider state after a prolonged outage and rep
         const model = ModelV2.ID.make("allowed")
         const missing = yield* provider.getModel(id, model).pipe(Effect.flip)
         expect(missing.modelsEmpty).toBe(true)
-        expect(missing.message).toContain("Failed to load the Kilo model catalog (network)")
-        const message = "Failed to load the Kilo model catalog (network). Check your connection and credentials."
+        expect(missing.message).toContain("Failed to load the Semafour model catalog (network)")
+        const message = "Failed to load the Semafour model catalog (network). Check your connection and credentials."
         expect(missing.catalogError).toBe(message)
         expect(FormatError(missing)).toContain(message)
         expect(FormatError({ name: "ProviderModelNotFoundError", data: missing })).toContain(message)

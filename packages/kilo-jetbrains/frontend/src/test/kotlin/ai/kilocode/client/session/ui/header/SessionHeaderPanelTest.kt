@@ -285,15 +285,15 @@ class SessionHeaderPanelTest : SessionControllerTestBase() {
     }
 
     fun `test timeline colors honor semantic named color keys`() {
-        val old = UIManager.getColor("Kilo.Session.Timeline.Read")
+        val old = UIManager.getColor("Semafour.Session.Timeline.Read")
         val color = Color(12, 34, 56)
 
         try {
-            UIManager.put("Kilo.Session.Timeline.Read", color)
+            UIManager.put("Semafour.Session.Timeline.Read", color)
 
             assertEquals(color.rgb, SessionUiStyle.Timeline.READ.rgb)
         } finally {
-            UIManager.put("Kilo.Session.Timeline.Read", old)
+            UIManager.put("Semafour.Session.Timeline.Read", old)
         }
     }
 
@@ -909,7 +909,7 @@ class SessionHeaderPanelTest : SessionControllerTestBase() {
             providers = listOf(
                 ProviderDto(
                     id = "kilo",
-                    name = "Kilo",
+                    name = "Semafour",
                     models = mapOf(
                         "gpt-5" to ModelDto(
                             id = "gpt-5",

@@ -381,7 +381,7 @@ class KiloBackendHostedManager(
         require(prompt.variant == null) { "Hosted input does not support model variants" }
         require(prompt.noReply == null) { "Hosted input does not support noReply" }
         require((prompt.providerID == null) == (prompt.modelID == null)) { "Hosted model requires both provider and model IDs" }
-        require(prompt.providerID == null || prompt.providerID == "kilo") { "Hosted input only supports the Kilo provider" }
+        require(prompt.providerID == null || prompt.providerID == "kilo") { "Hosted input only supports the Semafour provider" }
         require(prompt.modelID?.let(MODEL::matches) != false) { "Invalid hosted model ID" }
         require(!command || prompt.modelID == null || "kilo/${prompt.modelID}".length <= 256) { "Hosted command model exceeds 256 characters" }
         require(prompt.agent?.let(AGENT::matches) != false) { "Invalid hosted agent slug" }

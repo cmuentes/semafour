@@ -458,7 +458,7 @@ describe("session processor incomplete response retry", () => {
           const usage = new Usage({})
           yield* ctx.test.reply(
             LLMEvent.stepStart({ index: 0 }),
-            LLMEvent.toolCall({ id: "call", name: "web_search", input: { query: "Kilo" }, providerExecuted: true }),
+            LLMEvent.toolCall({ id: "call", name: "web_search", input: { query: "Semafour" }, providerExecuted: true }),
             LLMEvent.toolResult({
               id: "call",
               name: "web_search",

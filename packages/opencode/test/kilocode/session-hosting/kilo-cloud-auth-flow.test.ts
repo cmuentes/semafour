@@ -215,7 +215,7 @@ it.effect("keeps a keyless start retryable when the issuer transport fails", () 
       .pipe(Effect.flip)
     expect(error).toMatchObject({
       code: "unavailable",
-      message: "Kilo control token could not be issued",
+      message: "Semafour control token could not be issued",
       retryable: true,
     })
     expect(app.issuer).toHaveLength(0)

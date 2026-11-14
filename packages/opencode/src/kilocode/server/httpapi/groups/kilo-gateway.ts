@@ -258,19 +258,19 @@ export const KiloGatewayApi = HttpApi.make("kilo")
         }).annotateMerge(
           OpenApi.annotations({
             identifier: "kilo.profile",
-            summary: "Get Kilo Gateway profile",
-            description: "Fetch user profile and organizations from Kilo Gateway",
+            summary: "Get Semafour Gateway profile",
+            description: "Fetch user profile and organizations from Semafour Gateway",
           }),
         ),
         HttpApiEndpoint.get("authStatus", KiloGatewayPaths.authStatus, {
           query: WorkspaceRoutingQuery,
-          success: described(AuthStatus, "Kilo authentication status"),
+          success: described(AuthStatus, "Semafour authentication status"),
           error: HttpApiError.BadRequest,
         }).annotateMerge(
           OpenApi.annotations({
             identifier: "kilo.authStatus",
-            summary: "Get Kilo authentication status",
-            description: "Check whether a locally stored Kilo credential can authenticate Gateway requests",
+            summary: "Get Semafour authentication status",
+            description: "Check whether a locally stored Semafour credential can authenticate Gateway requests",
           }),
         ),
         HttpApiEndpoint.get("modes", KiloGatewayPaths.modes, {
@@ -292,7 +292,7 @@ export const KiloGatewayApi = HttpApi.make("kilo")
           OpenApi.annotations({
             identifier: "kilo.fim",
             summary: "FIM completion",
-            description: "Proxy a Fill-in-the-Middle completion request to the Kilo Gateway",
+            description: "Proxy a Fill-in-the-Middle completion request to the Semafour Gateway",
           }),
         ),
         HttpApiEndpoint.post("edit", KiloGatewayPaths.edit, {
@@ -318,7 +318,7 @@ export const KiloGatewayApi = HttpApi.make("kilo")
           OpenApi.annotations({
             identifier: "kilo.audio.transcriptions",
             summary: "Speech to text transcription",
-            description: "Proxy an audio transcription request to the Kilo Gateway",
+            description: "Proxy an audio transcription request to the Semafour Gateway",
           }),
         ),
         HttpApiEndpoint.get("imageModels", KiloGatewayPaths.imageModels, {
@@ -329,7 +329,7 @@ export const KiloGatewayApi = HttpApi.make("kilo")
           OpenApi.annotations({
             identifier: "kilo.models.images",
             summary: "Image generation models",
-            description: "List image-capable models from the Kilo Gateway OpenRouter passthrough",
+            description: "List image-capable models from the Semafour Gateway OpenRouter passthrough",
           }),
         ),
         HttpApiEndpoint.get("transcriptionModels", KiloGatewayPaths.transcriptionModels, {
@@ -340,7 +340,7 @@ export const KiloGatewayApi = HttpApi.make("kilo")
           OpenApi.annotations({
             identifier: "kilo.models.transcriptions",
             summary: "Speech-to-text models",
-            description: "List transcription-capable models from the Kilo Gateway catalog",
+            description: "List transcription-capable models from the Semafour Gateway catalog",
           }),
         ),
         HttpApiEndpoint.get("notifications", KiloGatewayPaths.notifications, {
@@ -350,8 +350,8 @@ export const KiloGatewayApi = HttpApi.make("kilo")
         }).annotateMerge(
           OpenApi.annotations({
             identifier: "kilo.notifications",
-            summary: "Get Kilo notifications",
-            description: "Fetch notifications from Kilo Gateway for CLI display",
+            summary: "Get Semafour notifications",
+            description: "Fetch notifications from Semafour Gateway for CLI display",
           }),
         ),
         HttpApiEndpoint.post("organization", KiloGatewayPaths.organization, {
@@ -362,8 +362,8 @@ export const KiloGatewayApi = HttpApi.make("kilo")
         }).annotateMerge(
           OpenApi.annotations({
             identifier: "kilo.organization.set",
-            summary: "Update Kilo Gateway organization",
-            description: "Switch to a different Kilo Gateway organization",
+            summary: "Update Semafour Gateway organization",
+            description: "Switch to a different Semafour Gateway organization",
           }),
         ),
         HttpApiEndpoint.get("cloudSessions", KiloGatewayPaths.cloudSessions, {
@@ -379,7 +379,7 @@ export const KiloGatewayApi = HttpApi.make("kilo")
           OpenApi.annotations({
             identifier: "kilo.cloudSessions",
             summary: "Get cloud sessions",
-            description: "Fetch cloud CLI sessions from Kilo API",
+            description: "Fetch cloud CLI sessions from Semafour API",
           }),
         ),
         HttpApiEndpoint.get("cloudSession", KiloGatewayPaths.cloudSession, {
@@ -391,7 +391,7 @@ export const KiloGatewayApi = HttpApi.make("kilo")
           OpenApi.annotations({
             identifier: "kilo.cloud.session.get",
             summary: "Get cloud session",
-            description: "Fetch full session data from the Kilo cloud for preview",
+            description: "Fetch full session data from the Semafour cloud for preview",
           }),
         ),
         HttpApiEndpoint.post("cloudSessionImport", KiloGatewayPaths.cloudSessionImport, {
@@ -410,7 +410,7 @@ export const KiloGatewayApi = HttpApi.make("kilo")
       .annotateMerge(
         OpenApi.annotations({
           title: "kilo",
-          description: "Kilo Gateway routes.",
+          description: "Semafour Gateway routes.",
         }),
       )
       .middleware(InstanceContextMiddleware)
@@ -421,6 +421,6 @@ export const KiloGatewayApi = HttpApi.make("kilo")
     OpenApi.annotations({
       title: "kilo HttpApi",
       version: "0.0.1",
-      description: "Kilo HttpApi surface.",
+      description: "Semafour HttpApi surface.",
     }),
   )

@@ -168,7 +168,7 @@ const layer = Layer.effect(
 
     const state = yield* InstanceState.make<State>(
       Effect.fn("ToolRegistry.state")(function* (ctx) {
-        // kilocode_change start - Code Mode can also be enabled from the Kilo config toggle
+        // kilocode_change start - Code Mode can also be enabled from the Semafour config toggle
         const kiloCfg = yield* config.get()
         const mode = codeMode ?? (yield* Effect.promise(() => KiloCodeMode.load(flags, kiloCfg)))
         const codeModeTool = mode
@@ -395,7 +395,7 @@ const layer = Layer.effect(
     ) {
       // kilocode_change - reuse the config already fetched by the caller
       if (input.networkRestricted) return // kilocode_change
-      // kilocode_change start - Code Mode can also be enabled from the Kilo config toggle
+      // kilocode_change start - Code Mode can also be enabled from the Semafour config toggle
       const mode = codeMode ?? (yield* Effect.promise(() => KiloCodeMode.load(flags, cfg)))
       if (!mode) return
       // kilocode_change end
@@ -555,7 +555,7 @@ function isJsonSchemaObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value)
 }
 
-// kilocode_change start - preserve Kilo registry dependencies and sandbox-aware HTTP in the upstream node graph
+// kilocode_change start - preserve Semafour registry dependencies and sandbox-aware HTTP in the upstream node graph
 const network = LayerNode.make({ service: HttpClient.HttpClient, layer: ToolNetwork.httpLayer, deps: [] })
 
 export const node = LayerNode.suspend(() =>

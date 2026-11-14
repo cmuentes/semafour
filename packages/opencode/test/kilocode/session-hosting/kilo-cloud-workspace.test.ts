@@ -341,7 +341,7 @@ const client = (url: string, info: Auth.Info | undefined = signedIn()) =>
   })
 
 const membership = (cloud: ReturnType<typeof client>) => {
-  if (!cloud.membership) throw new Error("Kilo Cloud must resolve workspace membership")
+  if (!cloud.membership) throw new Error("Semafour Cloud must resolve workspace membership")
   return cloud.membership({ id: { providerID: PROVIDER, sessionID: SESSION } })
 }
 

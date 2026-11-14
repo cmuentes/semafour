@@ -31,7 +31,7 @@ export function createBearerHttpClient(options: BearerHttpClientOptions): Bearer
       const url = resolve(options.origin, request.path)
       const headers = new Headers(request.headers)
       if (headers.has("authorization")) {
-        throw new CloudError("Authorization headers are managed by Kilo")
+        throw new CloudError("Authorization headers are managed by Semafour")
       }
       headers.set("authorization", `Bearer ${options.apiKey}`)
       const timeout = request.timeoutMs ?? options.timeoutMs ?? DEFAULT_HTTP_TIMEOUT_MS

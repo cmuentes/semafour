@@ -54,7 +54,7 @@ await Promise.all([
   ensureRealDir(Path.repos), // kilocode_change
 ])
 
-// kilocode_change start - keep generated Kilo data out of macOS Spotlight
+// kilocode_change start - keep generated Semafour data out of macOS Spotlight
 await Promise.all([Path.data, Path.cache, Path.state].map(markNoIndex))
 // kilocode_change end
 

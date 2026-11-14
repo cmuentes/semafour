@@ -13,8 +13,8 @@ import com.intellij.openapi.project.DumbAware
 import com.intellij.ui.content.Content
 
 class HistoryAction : AnAction(
-    KiloBundle.message("action.Kilo.History.text"),
-    KiloBundle.message("action.Kilo.History.description"),
+    KiloBundle.message("action.Semafour.History.text"),
+    KiloBundle.message("action.Semafour.History.description"),
     AllIcons.Vcs.History,
 ), DumbAware {
     override fun actionPerformed(e: AnActionEvent) {

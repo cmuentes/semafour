@@ -1,4 +1,4 @@
-/* Kilo Select overrides – styled to match Figma design */
+/* Semafour Select overrides – styled to match Figma design */
 
 /* Select trigger (renders as a Button, override the button sizing) */
 [data-component="select"] [data-slot="select-select-trigger"] {

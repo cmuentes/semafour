@@ -73,7 +73,7 @@ export const dict = {
 
   "dialog.usageExceeded.freeTier.title": "ถึงขีดจำกัดฟรีแล้ว",
   "dialog.usageExceeded.freeTier.description":
-    "สมัครสมาชิก Kilo Go ในราคา $10/เดือน เพื่อการเข้าถึงโมเดลโอเพนซอร์สที่ดีที่สุดอย่างเชื่อถือได้", // kilocode_change
+    "สมัครสมาชิก Semafour Go ในราคา $10/เดือน เพื่อการเข้าถึงโมเดลโอเพนซอร์สที่ดีที่สุดอย่างเชื่อถือได้", // kilocode_change
   "dialog.usageExceeded.freeTier.actionLabel": "สมัครสมาชิก",
   "dialog.usageExceeded.accountRateLimit.title": "ถึงขีดจำกัดของ Go แล้ว",
   "dialog.usageExceeded.accountRateLimit.description":
@@ -216,7 +216,7 @@ export const dict = {
   "ui.message.duration.seconds": "{{count}} วินาที",
   "ui.message.duration.minutesSeconds": "{{minutes}} นาที {{seconds}} วินาที",
 
-  // kilocode_change start - Kilo UI compatibility
+  // kilocode_change start - Semafour UI compatibility
   "ui.mermaid.copyPng": "คัดลอก PNG",
   "ui.mermaid.copySource": "คัดลอกซอร์ส Mermaid",
   "ui.mermaid.copySvg": "คัดลอก SVG",

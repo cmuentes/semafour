@@ -4,7 +4,7 @@
  * The lockfile closure covers code compiled into bundles; this covers everything
  * that exists as a file in the shipped artifact: JARs, copied npm packages,
  * native helpers, WASM, licences, and OS packages in container images. Both
- * halves are required, because neither one alone describes a Kilo artifact.
+ * halves are required, because neither one alone describes a Semafour artifact.
  *
  * Syft is optional at runtime. When it is unavailable the scan degrades to a
  * recorded coverage gap rather than pretending the artifact has no file-level
@@ -35,9 +35,9 @@ function version(binary: string) {
 }
 
 /**
- * Convert a Syft CycloneDX document into Kilo components.
+ * Convert a Syft CycloneDX document into Semafour components.
  *
- * Syft's own root component describes the scan target, which Kilo replaces with
+ * Syft's own root component describes the scan target, which Semafour replaces with
  * its own product root, so it is dropped here.
  */
 export function convert(document: any, delivery: Component["delivery"] = "contained"): Component[] {

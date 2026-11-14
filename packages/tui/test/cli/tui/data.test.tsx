@@ -25,7 +25,7 @@ function emitEvent(events: ReturnType<typeof createEventSource>, payload: Event)
   events.emit(global(payload))
 }
 
-// kilocode_change start - initialize Kilo's project filter before mounting V2 event consumers
+// kilocode_change start - initialize Semafour's project filter before mounting V2 event consumers
 function Ready(props: ParentProps) {
   const project = useProject()
   const [ready, setReady] = createSignal(false)
@@ -193,7 +193,7 @@ test("refreshes effective catalog data after catalog updates", async () => {
     <TestTuiContexts>
       <SDKProvider url="http://test" directory={directory} events={events.source} fetch={calls.fetch}>
         <ProjectProvider>
-          {/* kilocode_change start - initialize Kilo's project filter before consuming catalog events */}
+          {/* kilocode_change start - initialize Semafour's project filter before consuming catalog events */}
           <Ready>
             <DataProvider>
               <box />
@@ -460,7 +460,7 @@ test("renders admitted prompts only after they become model-visible", async () =
   }
 })
 
-// kilocode_change start - retain promoted prompt compatibility used by Kilo sync
+// kilocode_change start - retain promoted prompt compatibility used by Semafour sync
 test("renders a promoted prompt when admission was missed", async () => {
   const events = createEventSource()
   const calls = createFetch()
@@ -565,7 +565,7 @@ test("projects live context updates with their message ID", async () => {
   }
 })
 
-// kilocode_change start - preserve Kilo's V2 hydration-race coverage after the DataProvider extraction
+// kilocode_change start - preserve Semafour's V2 hydration-race coverage after the DataProvider extraction
 test("preserves live events while message hydration is in flight", async () => {
   const events = createEventSource()
   const response = Promise.withResolvers<Response>()

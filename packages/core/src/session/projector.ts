@@ -446,7 +446,7 @@ const layer = Layer.effectDiscard(
           )
           .get()
           .pipe(Effect.orDie)
-        // kilocode_change - Kilo keeps session_message.seq nullable for released-data compatibility
+        // kilocode_change - Semafour keeps session_message.seq nullable for released-data compatibility
         if (!boundary || boundary.seq === null)
           return yield* Effect.die(`Revert boundary message not found: ${event.data.messageID}`)
         yield* db

@@ -51,13 +51,13 @@ class KiloCliDownloaderTest {
             assertTrue(seen.any { it.percent == 100 && it.version == "1.2.3" && it.platform == KiloCliPlatform.current() })
             assertTrue(
                 log.messages.any {
-                    it.startsWith("INFO: Kilo CLI 1.2.3 for ${KiloCliPlatform.current()} is not cached; downloading new release into ") &&
+                    it.startsWith("INFO: Semafour CLI 1.2.3 for ${KiloCliPlatform.current()} is not cached; downloading new release into ") &&
                         it.contains("/.tmp/")
                 }
             )
-            assertTrue(log.messages.any { it.contains("Kilo CLI path diagnostics:") && it.contains("cacheRoot=${dir.absolutePath}") })
-            assertTrue(log.messages.any { it.contains("Kilo CLI cache target:") && it.contains("exe=${cli.absolutePath}") })
-            assertTrue(log.messages.any { it.contains("Kilo CLI cache lock path:") && it.contains(File(dir, ".lock").canonicalPath) })
+            assertTrue(log.messages.any { it.contains("Semafour CLI path diagnostics:") && it.contains("cacheRoot=${dir.absolutePath}") })
+            assertTrue(log.messages.any { it.contains("Semafour CLI cache target:") && it.contains("exe=${cli.absolutePath}") })
+            assertTrue(log.messages.any { it.contains("Semafour CLI cache lock path:") && it.contains(File(dir, ".lock").canonicalPath) })
 
             val cachedProgress = mutableListOf<CliDownload>()
             val cached = KiloCliDownloader(
@@ -70,7 +70,7 @@ class KiloCliDownloaderTest {
             assertEquals(cli.absolutePath, cached.absolutePath)
             assertEquals(1, server.requestCount)
             assertTrue(cachedProgress.isEmpty())
-            assertContains(log.messages, "INFO: Kilo CLI 1.2.3 (${KiloCliPlatform.current()}) already cached at ${cli.absolutePath}; skipping download and extraction")
+            assertContains(log.messages, "INFO: Semafour CLI 1.2.3 (${KiloCliPlatform.current()}) already cached at ${cli.absolutePath}; skipping download and extraction")
 
             File(cli.parentFile.parentFile, ".complete").writeText("ok\n")
             server.enqueue(MockResponse().setResponseCode(200).setBody(Buffer().write(bytes)))
@@ -137,7 +137,7 @@ class KiloCliDownloaderTest {
             assertTrue(cli.isFile)
             assertContains(
                 log.messages,
-                "WARN: Ignoring malformed bundled Kilo CLI checksum for ${KiloCliPlatform.current()}: not-a-digest"
+                "WARN: Ignoring malformed bundled Semafour CLI checksum for ${KiloCliPlatform.current()}: not-a-digest"
             )
             assertEquals("/api/v1.2.3", server.takeRequest().path)
             assertEquals("/release/v1.2.3/kilo-${KiloCliPlatform.current()}.${KiloCliPlatform.archive()}", server.takeRequest().path)
@@ -368,10 +368,10 @@ class KiloCliDownloaderTest {
                     ).resolve("1.2.3")
                 }
 
-                assertContains(ex.message.orEmpty(), "Timed out waiting for Kilo CLI cache lock")
+                assertContains(ex.message.orEmpty(), "Timed out waiting for Semafour CLI cache lock")
                 assertContains(ex.message.orEmpty(), file.canonicalPath)
-                assertTrue(log.messages.any { it.contains("Waiting for Kilo CLI cache lock") && it.contains(file.canonicalPath) })
-                assertTrue(log.messages.any { it.contains("Timed out waiting for Kilo CLI cache lock") && it.contains(file.canonicalPath) })
+                assertTrue(log.messages.any { it.contains("Waiting for Semafour CLI cache lock") && it.contains(file.canonicalPath) })
+                assertTrue(log.messages.any { it.contains("Timed out waiting for Semafour CLI cache lock") && it.contains(file.canonicalPath) })
             }
         }
     }

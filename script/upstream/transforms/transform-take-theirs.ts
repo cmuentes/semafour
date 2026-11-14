@@ -1,12 +1,12 @@
 #!/usr/bin/env bun
 /**
- * Transform files by taking upstream version and applying Kilo branding
+ * Transform files by taking upstream version and applying Semafour branding
  *
  * This script handles files that have only branding differences (no logic changes).
- * It takes the upstream version and applies Kilo branding transforms.
+ * It takes the upstream version and applies Semafour branding transforms.
  *
  * Use this for:
- * - UI components with OpenCode -> Kilo branding
+ * - UI components with OpenCode -> Semafour branding
  * - Config files with predictable patterns
  * - Files without kilocode_change logic blocks
  */
@@ -94,7 +94,7 @@ const BRANDING_REPLACEMENTS: BrandingReplacement[] = [
   // Only replace "OpenCode" when it's a standalone word
   {
     pattern: /\bOpenCode\b(?!\.json|\/| Zen)/g,
-    replacement: "Kilo",
+    replacement: "Semafour",
     description: "Product name",
   },
 

@@ -13,14 +13,14 @@ import com.intellij.openapi.project.DumbAwareAction
 import java.util.function.Predicate
 
 /**
- * Toolbar action that opens the Kilo User Profile settings page.
+ * Toolbar action that opens the Semafour User Profile settings page.
  *
  * Uses a predicate-based lookup so settings open correctly in JetBrains
  * Remote Development where configurables may be wrapped.
  */
 class ShowProfileAction : DumbAwareAction(
-    KiloBundle.message("action.Kilo.ShowProfile.text"),
-    KiloBundle.message("action.Kilo.ShowProfile.description"),
+    KiloBundle.message("action.Semafour.ShowProfile.text"),
+    KiloBundle.message("action.Semafour.ShowProfile.description"),
     AllIcons.General.User,
 ) {
 

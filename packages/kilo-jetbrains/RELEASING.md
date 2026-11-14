@@ -6,9 +6,9 @@ The published code comes from `jetbrains/v<version>`. Marketplace and GitHub rel
 
 ## Command-Assisted Release
 
-Maintainers can use the Kilo `/release-jetbrains` command to drive this process from a version request such as `next rc` or an explicit version. The command resolves and confirms the version, dispatches and watches the prepare workflow, helps produce a filtered human-readable JetBrains/CLI changelog draft, commits the reviewed changelog to the release PR, and watches publishing after the PR is merged.
+Maintainers can use the Semafour `/release-jetbrains` command to drive this process from a version request such as `next rc` or an explicit version. The command resolves and confirms the version, dispatches and watches the prepare workflow, helps produce a filtered human-readable JetBrains/CLI changelog draft, commits the reviewed changelog to the release PR, and watches publishing after the PR is merged.
 
-JetBrains plugin builds and runtime downloads use the Kilo Core version pinned in `packages/kilo-jetbrains/package.json`, so verify that pin points at a published `v<version>` release before creating the release tag.
+JetBrains plugin builds and runtime downloads use the Semafour Core version pinned in `packages/kilo-jetbrains/package.json`, so verify that pin points at a published `v<version>` release before creating the release tag.
 
 `kilo.cli.pinned=false` in `packages/kilo-jetbrains/gradle.properties` is local development mode only. It generates the client from `packages/opencode/` and bundles a locally built CLI into the plugin; production Gradle builds and release scripts fail until the property is restored to `true`.
 
@@ -20,7 +20,7 @@ The JetBrains plugin has two independent versions:
 
 | Field | Meaning |
 |---|---|
-| `packages/kilo-jetbrains/package.json` `version` | The pinned Kilo CLI release used for OpenAPI generation and runtime downloads. |
+| `packages/kilo-jetbrains/package.json` `version` | The pinned Semafour CLI release used for OpenAPI generation and runtime downloads. |
 | `packages/kilo-jetbrains/gradle.properties` `kilo.jetbrains.version` | The JetBrains Marketplace plugin version. |
 
 The prepare workflow tags `origin/main`, so the CLI pin that matters is the one already merged to `main`. Before creating a release tag, run:
@@ -154,7 +154,7 @@ RC builds are published to the `eap` channel. To get them in IntelliJ IDEA:
 https://plugins.jetbrains.com/plugins/list?channel=eap&pluginId=28350
 ```
 
-4. Search for **Kilo Code** in the Marketplace tab.
+4. Search for **Semafour** in the Marketplace tab.
 
 ## Manual Recovery
 

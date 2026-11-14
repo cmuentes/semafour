@@ -74,7 +74,7 @@ async function main() {
   const found = ranges(diff?.lines ?? new Set())
   const next = base === null ? fresh(file, head) : annotate(file, head, found)
 
-  if (base === null && annotates(file)) warn(`${file} does not exist upstream; marked as a new Kilo file`)
+  if (base === null && annotates(file)) warn(`${file} does not exist upstream; marked as a new Semafour file`)
   if (base === null && !annotates(file)) warn(`${file} does not exist upstream`)
   if (diff && diff.deleted > 0)
     warn(`${diff.deleted} upstream-only deleted line(s) cannot be annotated in the current file`)

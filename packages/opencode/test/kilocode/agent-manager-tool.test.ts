@@ -33,7 +33,7 @@ const providers = {
   } as unknown as Provider.Info,
   kilo: {
     id: "kilo",
-    name: "Kilo Gateway",
+    name: "Semafour Gateway",
     models: {
       "kilo/shared": { id: "kilo/shared", providerID: "kilo", name: "Shared", variants: { low: {} } },
       "kilo/only": { id: "kilo/only", providerID: "kilo", name: "Gateway Only", variants: { low: {} } },

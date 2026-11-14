@@ -54,7 +54,7 @@ function View(props: { api: TuiPluginApi; sessionID: string }) {
               </text>
             </box>
             {/* kilocode_change start */}
-            <text fg={theme().textMuted}>Kilo includes free models so you can start immediately.</text>
+            <text fg={theme().textMuted}>Semafour includes free models so you can start immediately.</text>
             {/* kilocode_change end */}
             <text fg={theme().textMuted}>
               Connect from 75+ providers to use other models, including Claude, GPT, Gemini etc
@@ -72,7 +72,7 @@ function View(props: { api: TuiPluginApi; sessionID: string }) {
       </text>
       {/* kilocode_change start */}
       <text fg={theme().textMuted}>
-        <span style={{ fg: theme().success }}>•</span> <b>Kilo</b> <span>{props.api.app.version}</span>
+        <span style={{ fg: theme().success }}>•</span> <b>Semafour</b> <span>{props.api.app.version}</span>
       </text>
       {/* kilocode_change end */}
     </box>

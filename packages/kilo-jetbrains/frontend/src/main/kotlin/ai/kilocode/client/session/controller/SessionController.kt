@@ -471,7 +471,7 @@ class SessionController(
      * Turns the session's public share link on or off.
      *
      * [done] runs on the EDT with the new URL when sharing succeeded, a null URL when unsharing
-     * succeeded, and a non-null error otherwise. The CLI maps every refusal (no Kilo credentials,
+     * succeeded, and a non-null error otherwise. The CLI maps every refusal (no Semafour credentials,
      * `share` disabled by config) to a bare HTTP 500, so the error cannot be classified here.
      */
     fun setShare(on: Boolean, done: (String?, Throwable?) -> Unit) {

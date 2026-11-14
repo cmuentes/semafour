@@ -1,12 +1,12 @@
 ---
-title: "Using Mistral AI with Kilo Code"
-description: "Configure Mistral AI models, including Codestral, in Kilo Code. Guide to getting an API key and setup for VS Code and the CLI."
+title: "Using Mistral AI with Semafour"
+description: "Configure Mistral AI models, including Codestral, in Semafour. Guide to getting an API key and setup for VS Code and the CLI."
 sidebar_label: Mistral AI
 ---
 
-# Using Mistral AI With Kilo Code
+# Using Mistral AI With Semafour
 
-Kilo Code supports accessing models through the Mistral AI API, including both standard Mistral models and the code-specialized Codestral model.
+Semafour supports accessing models through the Mistral AI API, including both standard Mistral models and the code-specialized Codestral model.
 
 **Website:** [https://mistral.ai/](https://mistral.ai/)
 
@@ -18,7 +18,7 @@ Kilo Code supports accessing models through the Mistral AI API, including both s
 
 You do not need a separate Codestral key. See Mistral's [API key setup guide](https://docs.mistral.ai/getting-started/quickstarts/studio/activate-and-generate-api-key) for the current steps.
 
-## Configuration in Kilo Code
+## Configuration in Semafour
 
 {% tabs %}
 {% tab label="VSCode" %}
@@ -63,7 +63,7 @@ Then set your default model:
 
 ## Reasoning Variants
 
-Mistral's adjustable reasoning support is exposed only for reasoning-capable Mistral Small 4 models: `mistral-small-2603` and `mistral-small-latest`. When one of these models is selected, Kilo offers a `high` variant that sends `reasoningEffort: "high"` to the Mistral provider.
+Mistral's adjustable reasoning support is exposed only for reasoning-capable Mistral Small 4 models: `mistral-small-2603` and `mistral-small-latest`. When one of these models is selected, Semafour offers a `high` variant that sends `reasoningEffort: "high"` to the Mistral provider.
 
 Other Mistral models do not get automatic reasoning variants, even if they appear in the same provider. See Mistral's [reasoning documentation](https://docs.mistral.ai/studio-api/conversations/reasoning) for provider-level details.
 
@@ -71,4 +71,4 @@ Other Mistral models do not get automatic reasoning variants, even if they appea
 
 [Codestral](https://docs.mistral.ai/models/codestral-25-08) supports code completion through Mistral's [FIM API](https://docs.mistral.ai/api/endpoint/fim). Use a standard Studio API key for requests to `https://api.mistral.ai`.
 
-For autocomplete through Kilo Gateway, add the key under **Mistral AI** on the Kilo BYOK page and select Codestral as your autocomplete model. Follow the [Mistral autocomplete setup guide](/docs/code-with-ai/features/autocomplete/mistral-setup) for the steps and legacy-key troubleshooting.
+For autocomplete through Semafour Gateway, add the key under **Mistral AI** on the Semafour BYOK page and select Codestral as your autocomplete model. Follow the [Mistral autocomplete setup guide](/docs/code-with-ai/features/autocomplete/mistral-setup) for the steps and legacy-key troubleshooting.

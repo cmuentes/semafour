@@ -48,7 +48,7 @@ describe("util.error", () => {
   })
 
   // kilocode_change start - preserve Kilo-branded CLI guidance
-  test("uses Kilo commands and capability messaging", () => {
+  test("uses Semafour commands and capability messaging", () => {
     const model = cliErrorMessage({
       _tag: "ProviderModelNotFoundError",
       providerID: "anthropic",

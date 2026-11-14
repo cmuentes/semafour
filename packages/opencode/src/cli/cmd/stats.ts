@@ -85,7 +85,7 @@ const getAllSessions = Effect.fnUntraced(function* () {
   return (yield* db.select().from(SessionTable).all().pipe(Effect.orDie)).map((row) => Session.fromRow(row))
 })
 
-// kilocode_change start - expose Effect stats aggregation for Kilo regression coverage
+// kilocode_change start - expose Effect stats aggregation for Semafour regression coverage
 export const aggregateSessionStats = Effect.fn("Cli.stats.aggregate")(function* (
   // kilocode_change end
   days?: number,

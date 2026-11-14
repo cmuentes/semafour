@@ -37,7 +37,7 @@ describe("standalone Marketplace architecture", () => {
     expect(remove).not.toContain("McpMarketplaceItem")
   })
 
-  it("broadcasts MCP removals from Marketplace to every Kilo provider", () => {
+  it("broadcasts MCP removals from Marketplace to every Semafour provider", () => {
     expect(panel).toContain("mcpRemoval(this.connection)")
     expect(panel).toContain('phase: "installed"')
     expect(panel).toContain('event.phase === "removed" || event.phase === "installed"')

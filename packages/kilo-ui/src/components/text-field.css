@@ -1,4 +1,4 @@
-/* Kilo Input / TextField overrides – styled to match Figma design */
+/* Semafour Input / TextField overrides – styled to match Figma design */
 
 [data-component="input"] {
   &[data-variant="normal"] [data-slot="input-label"] {

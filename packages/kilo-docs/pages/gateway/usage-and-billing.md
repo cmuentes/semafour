@@ -1,11 +1,11 @@
 ---
 title: "Usage & Billing"
-description: "Understand how the Kilo AI Gateway tracks costs, manages balances, and enforces organization-level spending controls."
+description: "Understand how the Semafour AI Gateway tracks costs, manages balances, and enforces organization-level spending controls."
 ---
 
 # Usage & Billing
 
-The Kilo AI Gateway tracks usage and costs for every request with microdollar precision (1 USD = 1,000,000 microdollars). This enables accurate billing even for very low-cost requests.
+The Semafour AI Gateway tracks usage and costs for every request with microdollar precision (1 USD = 1,000,000 microdollars). This enables accurate billing even for very low-cost requests.
 
 ## How billing works
 
@@ -28,15 +28,15 @@ Costs are determined by the upstream provider's pricing based on token usage:
 ### Free and BYOK requests
 
 - **Free models**: Models tagged with `:free` have zero cost -- usage is tracked but not billed
-- **BYOK requests**: When using your own API key, the cost is set to $0 on Kilo's side. You pay the provider directly based on your agreement with them
+- **BYOK requests**: When using your own API key, the cost is set to $0 on Semafour's side. You pay the provider directly based on your agreement with them
 
 ## Balance management
 
-Model inference is deducted from your balance at the upstream provider's rate with no markup. A 5% payment-processing fee applies when you purchase Kilo credits; the fee is charged separately and does not increase your balance. For example, $1 of purchased credits funds $1 of usage.
+Model inference is deducted from your balance at the upstream provider's rate with no markup. A 5% payment-processing fee applies when you purchase Semafour credits; the fee is charged separately and does not increase your balance. For example, $1 of purchased credits funds $1 of usage.
 
 ### Individual accounts
 
-Your available balance includes unused credits that have not expired, after usage and other balance adjustments. Check your balance and any credit expiration dates in the [Kilo application](https://app.kilo.ai).
+Your available balance includes unused credits that have not expired, after usage and other balance adjustments. Check your balance and any credit expiration dates in the [Semafour application](https://app.kilo.ai).
 
 When your balance reaches zero, requests to paid models will return HTTP 402 with a link to add credits:
 
@@ -63,7 +63,7 @@ Organizations have their own balance pool that members draw from. Organization b
 
 ### Credit expiration
 
-Paid purchases expire one calendar year after purchase. Each personal or organization Kilo Pass paid allotment expires one calendar year after issuance, including monthly allotments under annual plans. Paid Apple in-app-purchase credits do not expire, including remaining Apple subscription credits.
+Paid purchases expire one calendar year after purchase. Each personal or organization Semafour Pass paid allotment expires one calendar year after issuance, including monthly allotments under annual plans. Paid Apple in-app-purchase credits do not expire, including remaining Apple subscription credits.
 
 Existing balances and previously disclosed paid terms are preserved, including pending purchases and prepaid annual terms through renewal. Promotional and bonus deadlines are unchanged. Usage draws from the earliest-expiring credits first, with nonexpiring credits last. For details, see [credit expiration and spending order](/docs/getting-started/adding-credits#credit-expiration-and-spending-order).
 

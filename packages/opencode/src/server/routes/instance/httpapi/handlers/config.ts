@@ -1,5 +1,5 @@
 import { Config } from "@/config/config"
-// kilocode_change start - preserve Kilo API default model overlay
+// kilocode_change start - preserve Semafour API default model overlay
 import { recommend } from "@/kilocode/provider/catalog"
 import { Auth } from "@/auth"
 import { Option } from "effect"
@@ -46,7 +46,7 @@ export const configHandlers = HttpApiBuilder.group(InstanceHttpApi, "config", (h
       const defaults = Provider.defaultModelIDs(nonEmptyProviders(providers))
       // kilocode_change end
 
-      // kilocode_change start - Fetch default model from Kilo API when the kilo provider is available.
+      // kilocode_change start - Fetch default model from Semafour API when the kilo provider is available.
       if (defaults[ProviderV2.ID.kilo]) {
         const info = yield* auth.get("kilo").pipe(Effect.option)
         const model = yield* Effect.promise(() =>

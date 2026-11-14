@@ -126,7 +126,7 @@ internal fun unregisterDiagramEditorKind() {
 /**
  * Opens the mermaid source of a rendered diagram as an editor tab.
  *
- * Routed through the Kilo virtual file system, the same way session attachments open, so the tab is
+ * Routed through the Semafour virtual file system, the same way session attachments open, so the tab is
  * identified by content and reuses the shared editor-kind plumbing.
  */
 @RequiresEdt

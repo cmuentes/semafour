@@ -56,7 +56,7 @@ describe("Image", () => {
     }),
   )
 
-  // kilocode_change start - cover Kilo's Photon-unavailable fallback
+  // kilocode_change start - cover Semafour's Photon-unavailable fallback
   test("preserves a valid in-limit image without Photon", () => {
     const data = "UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA"
     const input = part("image/webp", data)

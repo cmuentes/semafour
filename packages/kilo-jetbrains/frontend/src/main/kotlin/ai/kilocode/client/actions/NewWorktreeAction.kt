@@ -16,8 +16,8 @@ import javax.swing.JComponent
  * `+` toolbar action shown in Agent Manager mode. Opens the New Worktree dialog (New + Import tabs).
  */
 class NewWorktreeAction : AnAction(
-    KiloBundle.message("action.Kilo.NewWorktree.text"),
-    KiloBundle.message("action.Kilo.NewWorktree.description"),
+    KiloBundle.message("action.Semafour.NewWorktree.text"),
+    KiloBundle.message("action.Semafour.NewWorktree.description"),
     KiloActionIcons.add,
 ), DumbAware, CustomComponentAction {
     override fun getActionUpdateThread() = ActionUpdateThread.BGT
@@ -27,7 +27,7 @@ class NewWorktreeAction : AnAction(
         e.presentation.isEnabled = e.getData(SidePanelKeys.WORKTREE_PANEL) != null
         e.presentation.icon = KiloActionIcons.add
         if (!e.isFromActionToolbar) return
-        e.presentation.text = KiloBundle.message("action.Kilo.NewWorktree.toolbar")
+        e.presentation.text = KiloBundle.message("action.Semafour.NewWorktree.toolbar")
     }
 
     override fun actionPerformed(e: AnActionEvent) {

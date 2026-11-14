@@ -335,7 +335,7 @@ describe("session.retry.retryable", () => {
     expect(retryable).toEqual({ message: "Response decompression failed" })
   })
 
-  // kilocode_change start - Kilo does not support OpenCode Go upsells
+  // kilocode_change start - Semafour does not support OpenCode Go upsells
   test("does not retry free usage limits", () => {
     const error = Schema.decodeUnknownSync(SessionV1.APIError.Schema)(
       new SessionV1.APIError({

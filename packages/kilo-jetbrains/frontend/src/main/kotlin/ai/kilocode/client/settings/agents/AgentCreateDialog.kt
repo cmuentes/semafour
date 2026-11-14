@@ -121,7 +121,7 @@ internal class AgentCreateDialog(private val names: Collection<String>) : Dialog
 
     override fun getPreferredFocusedComponent(): JComponent = id
 
-    override fun getDimensionServiceKey(): String = "Kilo.AgentCreateDialog"
+    override fun getDimensionServiceKey(): String = "Semafour.AgentCreateDialog"
 
     override fun doValidateAll(): List<ValidationInfo> = validateAgentCreate(result(), names).map { err ->
         ValidationInfo(KiloBundle.message(err.key), component(err.field))

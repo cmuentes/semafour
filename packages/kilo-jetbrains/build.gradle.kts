@@ -119,11 +119,11 @@ if (release && !pinned) error(
 )
 
 if (e2e && pinned) error(
-    "The Kilo UI e2e task requires the local repo CLI. Pass -Pkilo.cli.pinned=false (and -Pkilo.e2e=true) or run through packages/kilo-jetbrains/script/e2e-driver.ts."
+    "The Semafour UI e2e task requires the local repo CLI. Pass -Pkilo.cli.pinned=false (and -Pkilo.e2e=true) or run through packages/kilo-jetbrains/script/e2e-driver.ts."
 )
 
 if (e2e && release) error(
-    "The Kilo UI e2e task cannot run in a production/release build. Drop -Pproduction=true."
+    "The Semafour UI e2e task cannot run in a production/release build. Drop -Pproduction=true."
 )
 
 // Kotlin and the IntelliJ RPC compiler plugin must move together. The RPC plugin is a Kotlin compiler
@@ -292,7 +292,7 @@ intellijPlatform {
 
     pluginConfiguration {
         id = "ai.kilocode.jetbrains"
-        name = "Kilo Code"
+        name = "Semafour"
         version = provider { ver }
         changeNotes = notes
 
@@ -301,7 +301,7 @@ intellijPlatform {
         }
 
         vendor {
-            name = "Kilo Code"
+            name = "Semafour"
             url = "https://kilo.ai"
         }
     }
@@ -342,8 +342,8 @@ val uiTest by intellijPlatformTesting.testIdeUi.registering {
 
     task {
         group = "verification"
-        description = "Run the headful Starter/Driver split-mode Kilo UI adapter"
-        notCompatibleWithConfigurationCache("Kilo UI e2e consumes request/result paths and the descriptor environment at execution time")
+        description = "Run the headful Starter/Driver split-mode Semafour UI adapter"
+        notCompatibleWithConfigurationCache("Semafour UI e2e consumes request/result paths and the descriptor environment at execution time")
         testClassesDirs = files(uiE2e.output.classesDirs, layout.buildDirectory.dir("classes/kotlin/uiTest"))
         classpath = uiE2e.runtimeClasspath
         useJUnitPlatform()

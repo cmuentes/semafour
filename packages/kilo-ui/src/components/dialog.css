@@ -1,4 +1,4 @@
-/* Kilo Dialog overrides – harmonized with @vscode/webview-ui-toolkit */
+/* Semafour Dialog overrides – harmonized with @vscode/webview-ui-toolkit */
 
 [data-component="dialog-overlay"] {
   background-color: rgba(0, 0, 0, 0.5);

@@ -10,7 +10,7 @@ class ModelItemsTest : BasePlatformTestCase() {
     private fun providers(): ProvidersDto = ProvidersDto(
         providers = listOf(
             ProviderDto(
-                "kilo", "Kilo",
+                "kilo", "Semafour",
                 models = mapOf(
                     "gpt-5" to ModelDto("gpt-5", "GPT-5", variants = listOf("low", "high"), attachment = true),
                     "auto-small" to ModelDto("auto-small", "Auto Small"),

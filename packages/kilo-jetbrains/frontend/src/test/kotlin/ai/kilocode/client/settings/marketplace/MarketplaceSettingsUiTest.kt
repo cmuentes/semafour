@@ -732,7 +732,7 @@ class MarketplaceSettingsUiTest : BasePlatformTestCase() {
             name = "Context7",
             description = "Docs lookup",
             category = "tools",
-            author = "Kilo",
+            author = "Semafour",
             authorUrl = "https://kilo.ai",
             url = "https://github.com/example/context7",
             content = "{}",

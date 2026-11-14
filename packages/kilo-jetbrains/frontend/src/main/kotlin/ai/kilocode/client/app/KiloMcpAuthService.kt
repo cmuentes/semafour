@@ -271,7 +271,7 @@ class KiloMcpAuthService internal constructor(
         }
     }
 
-    /** Reports a sign-in [result] for [name] via a Kilo notification. Must run on EDT. */
+    /** Reports a sign-in [result] for [name] via a Semafour notification. Must run on EDT. */
     @RequiresEdt
     fun report(name: String, result: McpAuthResultDto) {
         when (result.status) {
