@@ -74,8 +74,8 @@ export class DocumentViewerProvider implements vscode.Disposable {
       },
     )
     panel.iconPath = {
-      light: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "kilo-light.svg"),
-      dark: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "kilo-dark.svg"),
+      light: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "semafour-light.svg"),
+      dark: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "semafour-dark.svg"),
     }
     panel.webview.html = this.html(panel.webview)
     this.panel = panel

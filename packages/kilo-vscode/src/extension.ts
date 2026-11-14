@@ -974,8 +974,8 @@ function openKiloInNewTab(
   )
 
   panel.iconPath = {
-    light: vscode.Uri.joinPath(context.extensionUri, "assets", "icons", "kilo-light.svg"),
-    dark: vscode.Uri.joinPath(context.extensionUri, "assets", "icons", "kilo-dark.svg"),
+    light: vscode.Uri.joinPath(context.extensionUri, "assets", "icons", "semafour-light.svg"),
+    dark: vscode.Uri.joinPath(context.extensionUri, "assets", "icons", "semafour-dark.svg"),
   }
 
   const tabProvider = attach(panel)

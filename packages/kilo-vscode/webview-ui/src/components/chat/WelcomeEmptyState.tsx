@@ -27,7 +27,7 @@ export const KiloLogo = () => {
   const icons = (window as { ICONS_BASE_URI?: string }).ICONS_BASE_URI || ""
   const light =
     document.body.classList.contains("vscode-light") || document.body.classList.contains("vscode-high-contrast-light")
-  const file = light ? "kilo-light.svg" : "kilo-dark.svg"
+  const file = light ? "semafour-light.svg" : "semafour-dark.svg"
   const [hover, setHover] = createSignal(false)
   const [ready, setReady] = createSignal(false)
   const [mounted, setMounted] = createSignal(false)

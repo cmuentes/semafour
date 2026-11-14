@@ -38,8 +38,8 @@ export class SubAgentViewerProvider implements vscode.Disposable {
     })
 
     panel.iconPath = {
-      light: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "kilo-light.svg"),
-      dark: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "kilo-dark.svg"),
+      light: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "semafour-light.svg"),
+      dark: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "semafour-dark.svg"),
     }
 
     const provider = new KiloProvider(this.extensionUri, this.connectionService, this.context, {

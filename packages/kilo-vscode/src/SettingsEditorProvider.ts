@@ -120,8 +120,8 @@ export class SettingsEditorProvider implements vscode.Disposable {
 
   private wirePanel(panel: vscode.WebviewPanel, view: PanelView, projectDirectory: string | null): void {
     panel.iconPath = {
-      light: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "kilo-light.svg"),
-      dark: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "kilo-dark.svg"),
+      light: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "semafour-light.svg"),
+      dark: vscode.Uri.joinPath(this.extensionUri, "assets", "icons", "semafour-dark.svg"),
     }
 
     // Create a dedicated KiloProvider for this panel so it has full
