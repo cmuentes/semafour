@@ -527,38 +527,20 @@ function wasm() {
 async function main() {
   notices()
   wasm()
-  // Chunk hashes change between builds. Do not package stale Settings chunks.
+  // Settings is now a single IIFE file (dist/settings.js). Clean up any legacy
+  // code-split dist/settings/ directory and preload manifest from an earlier ESM build.
   fs.rmSync(path.join(__dirname, "dist", "settings"), { recursive: true, force: true })
+  fs.rmSync(path.join(__dirname, "dist", "settings-preload.json"), { force: true })
   const extensionConfig = getExtensionConfig()
   const webviewsConfig = getWebviewsConfig()
+  // Bundle Settings as a single top-level IIFE file (like every other webview)
+  // instead of code-split ESM chunks. Code-split chunk hashes rotate on every
+  // build and the old chunks are deleted, which breaks already-open panels in
+  // environments that don't re-serve the rotating dist/settings/ subdirectory.
+  // A single dist/settings.js has no rotating chunks to go missing.
   const settingsConfig = {
     ...webviewsConfig,
     entryPoints: { settings: "webview-ui/settings/index.tsx" },
-    format: "esm",
-    splitting: true,
-    chunkNames: "settings/[name]-[hash]",
-    metafile: true,
-    plugins: [
-      ...webviewsConfig.plugins,
-      {
-        name: "settings-preload",
-        setup(build) {
-          build.onEnd((result) => {
-            if (result.errors.length || !result.metafile) return
-            const files = new Set(["dist/settings.js"])
-            for (const file of files) {
-              for (const item of result.metafile.outputs[file]?.imports ?? []) {
-                if (item.kind === "import-statement") files.add(item.path)
-              }
-            }
-            fs.writeFileSync(
-              path.join(__dirname, "dist", "settings-preload.json"),
-              JSON.stringify([...files].filter((file) => file !== "dist/settings.js").map((file) => file.slice(5))),
-            )
-          })
-        },
-      },
-    ],
   }
   const shikiWorkerConfig = getShikiWorkerConfig()
   const markdownShikiWorkerConfig = getMarkdownShikiWorkerConfig()
