@@ -57,8 +57,8 @@ export const ModelsCommand = effectCmd({
     const ids = Object.keys(providers).sort((a, b) => {
       const aIsSemafour = a === "kilo" || a.startsWith("opencode")
       const bIsSemafour = b === "kilo" || b.startsWith("opencode")
-      if (aIsSemafour && !bIsKilo) return -1
-      if (!aIsSemafour && bIsKilo) return 1
+      if (aIsSemafour && !bIsSemafour) return -1
+      if (!aIsSemafour && bIsSemafour) return 1
       return a.localeCompare(b)
     })
     // kilocode_change end

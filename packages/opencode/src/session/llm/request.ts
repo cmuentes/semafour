@@ -181,10 +181,10 @@ export const prepare = Effect.fn("LLMRequestPrep.prepare")(function* (input: Pre
 
   // kilocode_change start - resolve project ID and machine ID for kilo provider
   const isSemafour = input.model.api.npm === "@kilocode/kilo-gateway"
-  const kiloProjectId = yield* isKilo
+  const kiloProjectId = yield* isSemafour
     ? Effect.promise(() => getKiloProjectId().catch(() => undefined))
     : Effect.succeed(undefined)
-  const machineId = yield* isKilo
+  const machineId = yield* isSemafour
     ? Effect.promise(() => Identity.getMachineId().catch(() => undefined))
     : Effect.succeed(undefined)
   const parent = input.parentSessionID ?? KiloSession.resolveParent(input.sessionID)

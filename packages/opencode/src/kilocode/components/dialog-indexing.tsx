@@ -105,7 +105,7 @@ function defaultIndexing(
   const provider = sync.data.provider_next.all.find((item) => item.id === "kilo")
   const config = indexingScopeConfig(scope, sync.data.config, sync.data.globalConfig, indexing)
   const auth = resolveKiloIndexingAuth({ config, provider })
-  if (!shouldDefaultIndexingToKilo({ ...global, ...indexing }, auth)) return indexing
+  if (!shouldDefaultIndexingToSemafour({ ...global, ...indexing }, auth)) return indexing
   return { ...indexing, provider: "kilo", model: null, dimension: null }
 }
 

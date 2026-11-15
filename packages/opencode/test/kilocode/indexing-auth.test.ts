@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test"
 import {
   hasKiloIndexingAuth,
   resolveKiloIndexingAuth,
-  shouldDefaultIndexingToKilo,
+  shouldDefaultIndexingToSemafour,
 } from "../../src/kilocode/indexing-auth"
 
 describe("Semafour indexing auth resolution", () => {
@@ -37,9 +37,9 @@ describe("Semafour indexing auth resolution", () => {
   test("defaults to Semafour only when no provider or other embedder config is present", () => {
     const auth = { apiKey: "kilo-token" }
 
-    expect(shouldDefaultIndexingToKilo({}, auth)).toBe(true)
-    expect(shouldDefaultIndexingToKilo({ provider: "openai" }, auth)).toBe(false)
-    expect(shouldDefaultIndexingToKilo({ openai: { apiKey: "openai-key" } }, auth)).toBe(false)
-    expect(shouldDefaultIndexingToKilo({ ollama: { baseUrl: "http://localhost:11434" } }, auth)).toBe(false)
+    expect(shouldDefaultIndexingToSemafour({}, auth)).toBe(true)
+    expect(shouldDefaultIndexingToSemafour({ provider: "openai" }, auth)).toBe(false)
+    expect(shouldDefaultIndexingToSemafour({ openai: { apiKey: "openai-key" } }, auth)).toBe(false)
+    expect(shouldDefaultIndexingToSemafour({ ollama: { baseUrl: "http://localhost:11434" } }, auth)).toBe(false)
   })
 })

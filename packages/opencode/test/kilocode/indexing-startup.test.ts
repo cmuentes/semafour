@@ -866,7 +866,7 @@ describe("indexing startup degradation", () => {
     const warn = spyOn(logger, "warn")
     const key = process.env.KILO_API_KEY
 
-    await using tmp = await tmpdir({ git: true, config: staleSemafour })
+    await using tmp = await tmpdir({ git: true, config: staleKilo })
     process.env["KILO_CONFIG_DIR"] = tmp.path
     process.env.KILO_API_KEY = "kilo-token"
 
@@ -1005,7 +1005,7 @@ describe("indexing startup degradation", () => {
     const init = spyOn(CodeIndexManager.prototype, "initialize").mockResolvedValue({ requiresRestart: false })
     const key = process.env.KILO_API_KEY
 
-    await using tmp = await tmpdir({ git: true, config: staleSemafour })
+    await using tmp = await tmpdir({ git: true, config: staleKilo })
     process.env["KILO_CONFIG_DIR"] = tmp.path
     process.env.KILO_API_KEY = "kilo-token"
 

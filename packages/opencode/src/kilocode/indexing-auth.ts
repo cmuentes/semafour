@@ -102,7 +102,7 @@ export function hasKiloIndexingAuth(input: Parameters<typeof resolveKiloIndexing
   return !!resolveKiloIndexingAuth(input).apiKey
 }
 
-export function shouldDefaultIndexingToKilo(indexing: unknown, auth: KiloIndexingAuth): boolean {
+export function shouldDefaultIndexingToSemafour(indexing: unknown, auth: KiloIndexingAuth): boolean {
   const cfg = record(indexing)
   if (cfg.provider !== undefined || !auth.apiKey) return false
   return !hasOtherProvider(cfg)
@@ -112,6 +112,6 @@ export function indexingWithKiloDefault(
   indexing: IndexingConfig | undefined,
   auth: KiloIndexingAuth,
 ): IndexingConfig | undefined {
-  if (!shouldDefaultIndexingToKilo(indexing, auth)) return indexing
+  if (!shouldDefaultIndexingToSemafour(indexing, auth)) return indexing
   return { ...indexing, provider: "kilo" }
 }
