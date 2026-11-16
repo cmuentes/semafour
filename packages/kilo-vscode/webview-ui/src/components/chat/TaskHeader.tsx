@@ -22,7 +22,6 @@ import { TranscriptSearch } from "./TranscriptSearch"
 import { useTranscriptSearch } from "../../context/transcript-search"
 import { hasModelUsage, sessionModel, tokenSummary } from "../../context/model-usage"
 import { useProvider } from "../../context/provider"
-import { useMobileServer } from "../../context/mobile-server"
 import { buildTriggerLabel, sanitizeName } from "../shared/model-selector-utils"
 import { SessionRenameEditor } from "../shared/SessionRenameEditor"
 import type { ExtensionMessage } from "../../types/messages"
@@ -107,18 +106,6 @@ export const TaskHeader: Component<TaskHeaderProps> = (props) => {
 
   const vscode = useVSCode()
   const [expanded, setExpanded] = createSignal(true)
-
-  const mobile = useMobileServer()
-  const mobileTooltip = createMemo(() => {
-    if (mobile.error()) return language.t("mobileServer.error")
-    if (!mobile.running()) return language.t("mobileServer.start")
-    return (
-      <div style={{ "text-align": "left", "white-space": "nowrap" }}>
-        <div>{language.t("mobileServer.url")}</div>
-        <For each={mobile.urls()}>{(u) => <div>{u}</div>}</For>
-      </div>
-    )
-  })
 
   // Read initial value from VS Code settings
   onMount(() => vscode.postMessage({ type: "requestTimelineSetting" }))
@@ -246,17 +233,6 @@ export const TaskHeader: Component<TaskHeaderProps> = (props) => {
           )}
         </Show>
         <div data-slot="task-header-stats">
-          <Tooltip value={mobileTooltip()} placement="bottom">
-            <IconButton
-              icon="server"
-              size="small"
-              variant="ghost"
-              data-active={mobile.running() ? "" : undefined}
-              onClick={() => mobile.toggle()}
-              aria-pressed={mobile.running()}
-              aria-label={mobile.running() ? language.t("mobileServer.stop") : language.t("mobileServer.start")}
-            />
-          </Tooltip>
           <Show when={cost()}>
             {(c) => (
               <Tooltip value={costTooltip()} placement="bottom">

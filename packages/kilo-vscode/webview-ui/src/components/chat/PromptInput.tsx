@@ -134,6 +134,7 @@ import { formatCodeContexts, mergeCodeContexts, type CodeContext } from "../../.
 import { isEnterKeyCommitNotIme } from "../../utils/ime-enter"
 import { parseMemoryCommand, type ParsedMemoryCommand } from "../../utils/memory-command"
 import { useMemory } from "../../context/memory"
+import { useMobileServer } from "../../context/mobile-server"
 
 function mergeReviewComments(current: ReviewCommentEntry[], incoming: ReviewCommentEntry[]): ReviewCommentEntry[] {
   if (incoming.length === 0) return current
@@ -276,6 +277,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
   const language = useLanguage()
   const vscode = useVSCode()
   const projectMemory = useMemory()
+  const mobile = useMobileServer()
   const sid = () => session.currentSessionID() ?? props.pendingSessionID ?? session.draftSessionID() ?? undefined
   const ctx = () => {
     const id = props.boxId
@@ -2386,6 +2388,27 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
         <div class="prompt-input-hint-actions">
           <div class="prompt-action" data-folded={hidden().length === 0 ? "" : undefined}>
             <PromptOverflow items={hidden()} />
+          </div>
+          <div class="prompt-action">
+            <Tooltip
+              value={
+                <div style={{ "text-align": "left", "white-space": "nowrap" }}>
+                  <div>{language.t("mobileServer.url")}</div>
+                  <For each={mobile.urls()}>{(u) => <div>{u}</div>}</For>
+                </div>
+              }
+              placement="top"
+              openDelay={0}
+            >
+              <IconButton
+                icon="server"
+                variant="ghost"
+                size="small"
+                onClick={() => mobile.toggle()}
+                aria-label={mobile.running() ? language.t("mobileServer.stop") : language.t("mobileServer.start")}
+                data-active={mobile.running() ? "" : undefined}
+              />
+            </Tooltip>
           </div>
           <Show when={showIndexing()}>
             <div class="prompt-action" data-folded={folded("indexing") ? "" : undefined}>
