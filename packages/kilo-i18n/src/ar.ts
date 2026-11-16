@@ -136,4 +136,6 @@ export const dict = {
   "mobileServer.stop": "إغلاق الخادم المحمول",
   "mobileServer.url": "افتح هذا الرابط على هاتفك (نفس الشبكة)",
   "mobileServer.error": "فشل بدء تشغيل الخادم المحمول",
+  "mobileServer.copyUrl": "نسخ الرابط",
+  "mobileServer.openUrl": "فتح الرابط في المتصفح",
 }

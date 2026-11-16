@@ -143,4 +143,6 @@ export const dict = {
   "mobileServer.stop": "Mobiele server sluiten",
   "mobileServer.url": "Open deze URL op je telefoon (zelfde netwerk)",
   "mobileServer.error": "Mobiele server kon niet worden gestart",
+  "mobileServer.copyUrl": "URL kopiëren",
+  "mobileServer.openUrl": "URL openen in browser",
 }

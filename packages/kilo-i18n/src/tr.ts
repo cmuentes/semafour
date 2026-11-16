@@ -141,4 +141,6 @@ export const dict = {
   "mobileServer.stop": "Mobil sunucuyu kapat",
   "mobileServer.url": "Bu URL'yi telefonunda aç (aynı ağ)",
   "mobileServer.error": "Mobil sunucu başlatılamadı",
+  "mobileServer.copyUrl": "URL'yi kopyala",
+  "mobileServer.openUrl": "URL'yi tarayıcıda aç",
 }

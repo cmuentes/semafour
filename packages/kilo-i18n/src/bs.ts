@@ -145,4 +145,6 @@ export const dict = {
   "mobileServer.stop": "Zatvori mobilni server",
   "mobileServer.url": "Otvori ovaj URL na svom telefonu (ista mreža)",
   "mobileServer.error": "Pokretanje mobilnog servera nije uspjelo",
+  "mobileServer.copyUrl": "Kopiraj URL",
+  "mobileServer.openUrl": "Otvori URL u pregledniku",
 }

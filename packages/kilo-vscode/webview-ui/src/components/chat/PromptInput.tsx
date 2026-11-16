@@ -17,6 +17,7 @@ import {
   type Component,
 } from "solid-js"
 import { IconButton } from "@kilocode/kilo-ui/icon-button"
+import { DropdownMenu } from "@kilocode/kilo-ui/dropdown-menu"
 import { Tooltip } from "@kilocode/kilo-ui/tooltip"
 import { FileIcon } from "@kilocode/kilo-ui/file-icon"
 import { Icon } from "@kilocode/kilo-ui/icon"
@@ -2390,25 +2391,46 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
             <PromptOverflow items={hidden()} />
           </div>
           <div class="prompt-action">
-            <Tooltip
-              value={
-                <div style={{ "text-align": "left", "white-space": "nowrap" }}>
-                  <div>{language.t("mobileServer.url")}</div>
-                  <For each={mobile.urls()}>{(u) => <div>{u}</div>}</For>
-                </div>
-              }
-              placement="top"
-              openDelay={0}
-            >
-              <IconButton
+            <DropdownMenu gutter={4} placement="top-end">
+              <DropdownMenu.Trigger
+                as={IconButton}
                 icon="server"
                 variant="ghost"
                 size="small"
-                onClick={() => mobile.toggle()}
                 aria-label={mobile.running() ? language.t("mobileServer.stop") : language.t("mobileServer.start")}
                 data-active={mobile.running() ? "" : undefined}
               />
-            </Tooltip>
+              <DropdownMenu.Portal>
+                <DropdownMenu.Content class="prompt-more-menu">
+                  <DropdownMenu.Item onSelect={() => mobile.toggle()}>
+                    <Icon name={mobile.running() ? "stop" : "play"} size="small" />
+                    <DropdownMenu.ItemLabel>
+                      {mobile.running() ? language.t("mobileServer.stop") : language.t("mobileServer.start")}
+                    </DropdownMenu.ItemLabel>
+                  </DropdownMenu.Item>
+                  <Show when={mobile.urls().length > 0}>
+                    <DropdownMenu.Separator />
+                    <DropdownMenu.Item
+                      onSelect={() => {
+                        navigator.clipboard.writeText(mobile.urls()[0])
+                        showToast({ variant: "success", title: language.t("mobileServer.copyUrl") })
+                      }}
+                    >
+                      <Icon name="copy" size="small" />
+                      <DropdownMenu.ItemLabel>{language.t("mobileServer.copyUrl")}</DropdownMenu.ItemLabel>
+                    </DropdownMenu.Item>
+                    <DropdownMenu.Item
+                      onSelect={() => {
+                        window.open(mobile.urls()[0], "_blank")
+                      }}
+                    >
+                      <Icon name="square-arrow-top-right" size="small" />
+                      <DropdownMenu.ItemLabel>{language.t("mobileServer.openUrl")}</DropdownMenu.ItemLabel>
+                    </DropdownMenu.Item>
+                  </Show>
+                </DropdownMenu.Content>
+              </DropdownMenu.Portal>
+            </DropdownMenu>
           </div>
           <Show when={showIndexing()}>
             <div class="prompt-action" data-folded={folded("indexing") ? "" : undefined}>

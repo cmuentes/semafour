@@ -131,4 +131,6 @@ export const dict = {
   "mobileServer.stop": "关闭移动服务器",
   "mobileServer.url": "在手机上打开此网址（同一网络）",
   "mobileServer.error": "移动服务器启动失败",
+  "mobileServer.copyUrl": "复制网址",
+  "mobileServer.openUrl": "在浏览器中打开网址",
 }

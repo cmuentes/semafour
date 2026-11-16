@@ -130,4 +130,6 @@ export const dict = {
   "mobileServer.stop": "關閉行動伺服器",
   "mobileServer.url": "在手機上開啟此網址（同一網路）",
   "mobileServer.error": "行動伺服器啟動失敗",
+  "mobileServer.copyUrl": "複製網址",
+  "mobileServer.openUrl": "在瀏覽器中開啟網址",
 }
