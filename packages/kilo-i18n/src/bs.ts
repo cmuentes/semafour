@@ -139,4 +139,10 @@ export const dict = {
   "ui.message.feedback.helpful": "Ovo je bilo korisno",
   "ui.message.feedback.notHelpful": "Ovo nije bilo korisno",
   "ui.message.feedback.clearRating": "Obriši ocjenu",
+
+  // Mobile web server (LAN bridge) toggle in the task header.
+  "mobileServer.start": "Otvori mobilni server",
+  "mobileServer.stop": "Zatvori mobilni server",
+  "mobileServer.url": "Otvori ovaj URL na svom telefonu (ista mreža)",
+  "mobileServer.error": "Pokretanje mobilnog servera nije uspjelo",
 }

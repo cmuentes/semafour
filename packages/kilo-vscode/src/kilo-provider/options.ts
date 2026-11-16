@@ -64,4 +64,9 @@ export type KiloProviderOptions = {
   agentManagerSettings?: AgentManagerSettingsHandler
   /** Dedicated Settings entry and its current route, including webview reloads. */
   settingsPanel?: () => { tab?: string; projectId?: string }
+  /**
+   * This provider is the sidebar; it supplies the mobile bridge's target
+   * directory (the shared server can only follow one directory at a time).
+   */
+  mobileDirectorySource?: boolean
 }

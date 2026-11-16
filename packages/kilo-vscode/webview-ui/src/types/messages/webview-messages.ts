@@ -1574,6 +1574,14 @@ export interface RequestRemoteStatusMessage {
   type: "requestRemoteStatus"
 }
 
+export interface ToggleMobileServerMessage {
+  type: "toggleMobileServer"
+}
+
+export interface RequestMobileServerStateMessage {
+  type: "requestMobileServerState"
+}
+
 export interface ConnectProviderMessage {
   type: "connectProvider"
   requestId: string
@@ -2012,6 +2020,8 @@ export type WebviewMessage =
   | ToggleCaffeinationMessage
   | SetRemoteEnabledMessage
   | RequestRemoteStatusMessage
+  | ToggleMobileServerMessage
+  | RequestMobileServerStateMessage
   | ContinueInWorktreeRequest
   | RequestMemoryMessage
   | MemoryShowMessage

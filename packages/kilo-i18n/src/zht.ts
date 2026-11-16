@@ -124,4 +124,10 @@ export const dict = {
   "ui.message.feedback.helpful": "這有幫助",
   "ui.message.feedback.notHelpful": "這沒有幫助",
   "ui.message.feedback.clearRating": "清除評分",
+
+  // Mobile web server (LAN bridge) toggle in the task header.
+  "mobileServer.start": "開啟行動伺服器",
+  "mobileServer.stop": "關閉行動伺服器",
+  "mobileServer.url": "在手機上開啟此網址（同一網路）",
+  "mobileServer.error": "行動伺服器啟動失敗",
 }

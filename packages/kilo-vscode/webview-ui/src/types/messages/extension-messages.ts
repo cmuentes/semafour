@@ -1680,6 +1680,14 @@ export interface RemoteStatusMessage {
   connected: boolean
 }
 
+export interface MobileServerStateMessage {
+  type: "mobileServerState"
+  running: boolean
+  token?: string
+  urls: string[]
+  error?: string
+}
+
 export interface ValidateFilesResultMessage {
   type: "validateFilesResult"
   id: string
@@ -2021,6 +2029,7 @@ export type ExtensionMessage =
   | ExtensionDataReadyMessage
   | TelemetryStateMessage
   | RemoteStatusMessage
+  | MobileServerStateMessage
   | ValidateFilesResultMessage
   | ClipboardWriteResultMessage
   | MemoryLoadedMessage

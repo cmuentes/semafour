@@ -135,4 +135,10 @@ export const dict = {
   "ui.message.feedback.helpful": "Bu yardımcı oldu",
   "ui.message.feedback.notHelpful": "Bu yardımcı olmadı",
   "ui.message.feedback.clearRating": "Değerlendirmeyi temizle",
+
+  // Mobile web server (LAN bridge) toggle in the task header.
+  "mobileServer.start": "Mobil sunucuyu aç",
+  "mobileServer.stop": "Mobil sunucuyu kapat",
+  "mobileServer.url": "Bu URL'yi telefonunda aç (aynı ağ)",
+  "mobileServer.error": "Mobil sunucu başlatılamadı",
 }

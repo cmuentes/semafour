@@ -134,4 +134,10 @@ export const dict = {
   "ui.message.feedback.helpful": "Dette var nyttigt",
   "ui.message.feedback.notHelpful": "Dette var ikke nyttigt",
   "ui.message.feedback.clearRating": "Ryd bedømmelse",
+
+  // Mobile web server (LAN bridge) toggle in the task header.
+  "mobileServer.start": "Åbn mobilserver",
+  "mobileServer.stop": "Luk mobilserver",
+  "mobileServer.url": "Åbn denne URL på din telefon (samme netværk)",
+  "mobileServer.error": "Mobilserveren kunne ikke startes",
 }

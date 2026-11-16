@@ -2,6 +2,7 @@ import * as vscode from "vscode"
 import { basename } from "node:path"
 import { realpathSync } from "node:fs"
 import { KiloProvider } from "./KiloProvider"
+import { mobileBridge } from "./mobile-server"
 import { AgentManagerProvider } from "./agent-manager/AgentManagerProvider"
 import { VscodeHost } from "./agent-manager/vscode-host"
 import { DiffViewerProvider } from "./diff/DiffViewerProvider"
@@ -191,6 +192,7 @@ export async function activate(context: vscode.ExtensionContext) {
       chat = provider
     },
     onHidden: () => focus.lost("sidebar"),
+    mobileDirectorySource: true,
   })
   provider.setRemoteService(remoteService)
 
@@ -944,6 +946,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 export async function deactivate() {
   shuttingDown = true
+  mobileBridge.stop()
   const results = await Promise.allSettled([caffeination?.dispose(), agentManager?.shutdown()])
   for (const result of results) {
     if (result.status === "rejected") console.warn("[Semafour New] Extension shutdown failed:", result.reason)

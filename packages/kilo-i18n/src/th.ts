@@ -133,4 +133,10 @@ export const dict = {
   "ui.message.feedback.helpful": "สิ่งนี้มีประโยชน์",
   "ui.message.feedback.notHelpful": "สิ่งนี้ไม่มีประโยชน์",
   "ui.message.feedback.clearRating": "ล้างการให้คะแนน",
+
+  // Mobile web server (LAN bridge) toggle in the task header.
+  "mobileServer.start": "เปิดเซิร์ฟเวอร์มือถือ",
+  "mobileServer.stop": "ปิดเซิร์ฟเวอร์มือถือ",
+  "mobileServer.url": "เปิด URL นี้บนโทรศัพท์ของคุณ (เครือข่ายเดียวกัน)",
+  "mobileServer.error": "ไม่สามารถเริ่มเซิร์ฟเวอร์มือถือได้",
 }

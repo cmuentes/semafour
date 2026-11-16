@@ -131,4 +131,10 @@ export const dict = {
   "ui.message.feedback.helpful": "도움이 됐어요",
   "ui.message.feedback.notHelpful": "도움이 안 됐어요",
   "ui.message.feedback.clearRating": "평가 지우기",
+
+  // Mobile web server (LAN bridge) toggle in the task header.
+  "mobileServer.start": "모바일 서버 열기",
+  "mobileServer.stop": "모바일 서버 닫기",
+  "mobileServer.url": "휴대전화에서 이 URL을 여세요 (동일 네트워크)",
+  "mobileServer.error": "모바일 서버를 시작하지 못했습니다",
 }

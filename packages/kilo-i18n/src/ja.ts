@@ -132,4 +132,10 @@ export const dict = {
   "ui.message.feedback.helpful": "役に立ちました",
   "ui.message.feedback.notHelpful": "役に立ちませんでした",
   "ui.message.feedback.clearRating": "評価をクリア",
+
+  // Mobile web server (LAN bridge) toggle in the task header.
+  "mobileServer.start": "モバイルサーバーを開く",
+  "mobileServer.stop": "モバイルサーバーを閉じる",
+  "mobileServer.url": "スマートフォンでこの URL を開く（同じネットワーク）",
+  "mobileServer.error": "モバイルサーバーの起動に失敗しました",
 }

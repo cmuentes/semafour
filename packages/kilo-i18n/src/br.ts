@@ -135,4 +135,10 @@ export const dict = {
   "ui.message.feedback.helpful": "Isso foi útil",
   "ui.message.feedback.notHelpful": "Isso não foi útil",
   "ui.message.feedback.clearRating": "Limpar avaliação",
+
+  // Mobile web server (LAN bridge) toggle in the task header.
+  "mobileServer.start": "Abrir servidor móvel",
+  "mobileServer.stop": "Fechar servidor móvel",
+  "mobileServer.url": "Abra esta URL no seu telefone (mesma rede)",
+  "mobileServer.error": "Falha ao iniciar o servidor móvel",
 }

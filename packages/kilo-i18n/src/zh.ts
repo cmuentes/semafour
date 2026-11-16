@@ -125,4 +125,10 @@ export const dict = {
   "ui.message.feedback.helpful": "这有帮助",
   "ui.message.feedback.notHelpful": "这没有帮助",
   "ui.message.feedback.clearRating": "清除评分",
+
+  // Mobile web server (LAN bridge) toggle in the task header.
+  "mobileServer.start": "打开移动服务器",
+  "mobileServer.stop": "关闭移动服务器",
+  "mobileServer.url": "在手机上打开此网址（同一网络）",
+  "mobileServer.error": "移动服务器启动失败",
 }

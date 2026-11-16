@@ -14,6 +14,7 @@ import type {
 } from "@kilocode/sdk/v2/client"
 import { MaxCostNudge, type MaxCostChoice } from "@opencode-ai/core/kilocode/cost/max-cost-nudge"
 import { type KiloConnectionService, ServerStartupError } from "./services/cli-backend"
+import { mobileBridge } from "./mobile-server"
 import { previewSound, testOSNotification } from "./services/attention"
 import type { EditorContext, IndexingStatus } from "./services/cli-backend/types"
 import { FileIgnoreController } from "./services/autocomplete/shims/FileIgnoreController"
@@ -606,6 +607,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
   private documentViewerProvider: import("./DocumentViewerProvider").DocumentViewerProvider | undefined
   private remoteService: RemoteStatusService | null = null
   private unsubscribeRemote: (() => void) | null = null
+  private unsubscribeMobile: (() => void) | null = null
 
   constructor(
     private readonly extensionUri: vscode.Uri,
@@ -644,6 +646,13 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
         this.postMessage({ type: "action", action: "restoreInput" })
       },
     })
+    // Mobile bridge is a shared singleton: every provider re-registers the same
+    // config source (idempotent), only the sidebar supplies the target directory.
+    mobileBridge.setConfigSource(() => this.connectionService.getServerConfig())
+    if (this.opts.mobileDirectorySource) {
+      mobileBridge.setDirectorySource(() => this.getProjectDirectory(this.currentSession?.id))
+    }
+    this.unsubscribeMobile = mobileBridge.subscribe((s) => this.postMessage({ type: "mobileServerState", ...s }))
   }
 
   setRemoteService(service: RemoteStatusService): void {
@@ -1648,6 +1657,12 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
               if (s) this.sendRemoteStatus()
             })
             .catch((err) => console.error("[Semafour New] remote message failed:", err))
+          break
+        case "toggleMobileServer":
+          void mobileBridge.toggle()
+          break
+        case "requestMobileServerState":
+          this.postMessage({ type: "mobileServerState", ...mobileBridge.state })
           break
         case "deleteSession":
           await this.handleDeleteSession(message.sessionID)
@@ -6322,6 +6337,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     this.latch = undefined
     this.catalogRetry.dispose()
     this.unsubscribeRemote?.()
+    this.unsubscribeMobile?.()
     this.streams.focus(undefined)
     this.connectionService.unregisterVisible(this.instanceId)
     this.connectionService.unregisterAttached(this.instanceId)
