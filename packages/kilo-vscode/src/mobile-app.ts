@@ -118,6 +118,7 @@ export function getMobileHtml(): string {
   (function () {
     "use strict";
     var token = new URLSearchParams(location.search).get("t") || "";
+    var wanted = new URLSearchParams(location.search).get("s") || "";
     var sessions = [];
     var current = null;
     var messages = [];
@@ -150,8 +151,15 @@ export function getMobileHtml(): string {
       return api("/session").then(function (data) {
         sessions = Array.isArray(data) ? data : (data.data || []);
         renderSessions();
-        if (!current && sessions.length) selectSession(sessions[0].id);
-        else if (current) renderSessions();
+        if (current) return;
+        if (!sessions.length) return;
+        var pick = null;
+        if (wanted) {
+          for (var i = 0; i < sessions.length; i++) {
+            if (sessions[i].id === wanted) { pick = sessions[i].id; break; }
+          }
+        }
+        selectSession(pick || sessions[0].id);
       }).catch(function () {
         $("messages").innerHTML = '<div class="banner">Could not load sessions.</div>';
       });

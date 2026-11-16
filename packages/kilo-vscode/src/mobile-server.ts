@@ -39,6 +39,7 @@ export class MobileBridgeServer {
   private starting: Promise<void> | null = null
   private configSource: (() => { baseUrl: string; password: string } | null) | null = null
   private directorySource: (() => string | undefined) | null = null
+  private sessionSource: (() => string | undefined) | null = null
   private listeners = new Set<(state: MobileServerState) => void>()
   private current: MobileServerState = { running: false, urls: [] }
 
@@ -48,6 +49,10 @@ export class MobileBridgeServer {
 
   setDirectorySource(fn: () => string | undefined): void {
     this.directorySource = fn
+  }
+
+  setSessionSource(fn: () => string | undefined): void {
+    this.sessionSource = fn
   }
 
   subscribe(fn: (state: MobileServerState) => void): () => void {
@@ -82,6 +87,15 @@ export class MobileBridgeServer {
     server.close()
   }
 
+  /**
+   * Re-broadcast the current URL while running so it tracks the sidebar's
+   * active session. Called when that session changes; the token is unchanged.
+   */
+  refresh(): void {
+    if (!this.server || !this.current.token) return
+    this.emit({ ...this.current, urls: this.urls(this.current.token) })
+  }
+
   private start(): Promise<void> {
     const { promise, resolve } = Promise.withResolvers<void>()
     const token = crypto.randomBytes(16).toString("hex")
@@ -100,12 +114,14 @@ export class MobileBridgeServer {
   }
 
   private urls(token: string): string[] {
-    const out = [`http://127.0.0.1:${PORT}/?t=${token}`]
+    const sid = this.sessionSource?.()
+    const query = sid ? `?t=${token}&s=${sid}` : `?t=${token}`
+    const out: string[] = []
     const ifaces = os.networkInterfaces()
     for (const name of Object.keys(ifaces)) {
       for (const iface of ifaces[name] ?? []) {
         if (iface.family !== "IPv4" || iface.internal) continue
-        out.push(`http://${iface.address}:${PORT}/?t=${token}`)
+        out.push(`http://${iface.address}:${PORT}/${query}`)
       }
     }
     return out

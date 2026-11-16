@@ -651,6 +651,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     mobileBridge.setConfigSource(() => this.connectionService.getServerConfig())
     if (this.opts.mobileDirectorySource) {
       mobileBridge.setDirectorySource(() => this.getProjectDirectory(this.currentSession?.id))
+      mobileBridge.setSessionSource(() => this.currentSession?.id)
     }
     this.unsubscribeMobile = mobileBridge.subscribe((s) => this.postMessage({ type: "mobileServerState", ...s }))
   }
@@ -673,6 +674,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     }
     this.currentSession = session
     this.updateTitle()
+    if (this.opts.mobileDirectorySource) mobileBridge.refresh()
   }
 
   private updateTitle(): void {
