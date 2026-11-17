@@ -104,7 +104,7 @@ import { createAbortState } from "./abort-state"
 import { goalControl } from "../../../src/kilo-provider/command-completion"
 import { continuation } from "./session-continuation"
 import { clearIfOn, createCloudPrune } from "./session-cloud-prune"
-import { isSameSessionTree } from "./model-usage"
+import { isSameSessionTree, modelUsageData } from "./model-usage"
 import { createDraftAgentSeed, resolvePromptAgent, resolveScopeAgent } from "./session-agent"
 import { createModelSelector } from "./session-model-selector"
 import { createModelPreferences } from "./session-model-preferences"
@@ -2925,6 +2925,8 @@ export const SessionProvider: ParentComponent = (props) => {
     return id ? store.modelUsage[id]?.data : undefined
   })
 
+  const modelUsageMap = createMemo(() => modelUsageData(store.modelUsage))
+
   const contextUsage = createMemo<ContextUsage | undefined>(() => {
     const msgs = visibleMessages()
     for (let i = msgs.length - 1; i >= 0; i--) {
@@ -2987,6 +2989,7 @@ export const SessionProvider: ParentComponent = (props) => {
     costBreakdown,
     contextUsage,
     modelUsage,
+    modelUsageMap,
     agents,
     allAgents,
     skills,

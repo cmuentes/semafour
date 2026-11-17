@@ -15,7 +15,8 @@ import { useDialog } from "@kilocode/kilo-ui/context/dialog"
 import { useSession } from "../../context/session"
 import { useLanguage } from "../../context/language"
 import { formatRelativeDate } from "../../utils/date"
-import type { SessionInfo } from "../../types/messages"
+import { formatCompactCount } from "../../utils/format"
+import type { SessionInfo, SessionModelUsage } from "../../types/messages"
 import { SessionRenameEditor } from "../shared/SessionRenameEditor"
 
 const DATE_GROUP_KEYS = ["time.today", "time.yesterday", "time.thisWeek", "time.thisMonth", "time.older"] as const
@@ -87,6 +88,19 @@ const SessionList: Component<SessionListProps> = (props) => {
 
   function name(s: SessionInfo) {
     return s.title || language.t("session.untitled")
+  }
+
+  function totalTokens(usage: SessionModelUsage | undefined) {
+    if (!usage) return 0
+    const tokens = usage.totals.tokens
+    return tokens.input + tokens.output + (tokens.reasoning ?? 0)
+  }
+
+  function description(s: SessionInfo) {
+    const tokens = totalTokens(session.modelUsageMap()[s.id])
+    return tokens > 0
+      ? `${formatRelativeDate(s.updatedAt)} · ${formatCompactCount(tokens)} tokens`
+      : formatRelativeDate(s.updatedAt)
   }
 
   function label(action: string, s: SessionInfo) {
@@ -223,7 +237,7 @@ const SessionList: Component<SessionListProps> = (props) => {
             <span data-slot="list-item-title" dir="auto">
               {name(s)}
             </span>
-            <span data-slot="list-item-description">{formatRelativeDate(s.updatedAt)}</span>
+            <span data-slot="list-item-description">{description(s)}</span>
             <Show when={session.currentSessionID() === s.id}>
               <span class="sr-only">{language.t("session.current")}</span>
             </Show>

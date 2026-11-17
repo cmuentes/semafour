@@ -23,6 +23,17 @@ export function isSameSessionTree(
   return top(current) === top(sessionID, parentID)
 }
 
+/** Loaded usage data per sessionID, dropping entries that have not arrived yet. */
+export function modelUsageData(
+  usage: Record<string, { data?: SessionModelUsage }>,
+): Record<string, SessionModelUsage> {
+  const map: Record<string, SessionModelUsage> = {}
+  for (const [id, state] of Object.entries(usage)) {
+    if (state.data) map[id] = state.data
+  }
+  return map
+}
+
 export function hasModelUsage(usage: SessionModelUsage | undefined): usage is SessionModelUsage {
   if (!usage) return false
   const tokens = usage.totals.tokens
