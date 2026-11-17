@@ -15,6 +15,8 @@ import type {
   AgentUsageRunsResponses,
   AgentUsageSummaryErrors,
   AgentUsageSummaryResponses,
+  AgentUsageTotalTokensErrors,
+  AgentUsageTotalTokensResponses,
   AnacondaDesktopOpenErrors,
   AnacondaDesktopOpenResponses,
   AnacondaDesktopStatusErrors,
@@ -6419,6 +6421,44 @@ export class AgentUsage extends HeyApiClient {
     )
     return (options?.client ?? this.client).get<AgentUsageRunsResponses, AgentUsageRunsErrors, ThrowOnError>({
       url: "/kilocode/agent-usage/runs",
+      ...options,
+      ...params,
+    })
+  }
+
+  /**
+   * Get total tokens
+   *
+   * Get the total number of tokens (input, output, reasoning, and cache read/write) used across all runs in the routed project, with optional time window filters.
+   */
+  public totalTokens<ThrowOnError extends boolean = false>(
+    parameters?: {
+      directory?: string
+      workspace?: string
+      from?: string
+      to?: string
+    },
+    options?: Options<never, ThrowOnError>,
+  ) {
+    const params = buildClientParams(
+      [parameters],
+      [
+        {
+          args: [
+            { in: "query", key: "directory" },
+            { in: "query", key: "workspace" },
+            { in: "query", key: "from" },
+            { in: "query", key: "to" },
+          ],
+        },
+      ],
+    )
+    return (options?.client ?? this.client).get<
+      AgentUsageTotalTokensResponses,
+      AgentUsageTotalTokensErrors,
+      ThrowOnError
+    >({
+      url: "/kilocode/agent-usage/tokens",
       ...options,
       ...params,
     })

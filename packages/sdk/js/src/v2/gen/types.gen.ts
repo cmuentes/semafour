@@ -16060,6 +16060,38 @@ export type AgentUsageRunsResponses = {
 
 export type AgentUsageRunsResponse = AgentUsageRunsResponses[keyof AgentUsageRunsResponses]
 
+export type AgentUsageTotalTokensData = {
+  body?: never
+  path?: never
+  query?: {
+    directory?: string
+    workspace?: string
+    from?: string
+    to?: string
+  }
+  url: "/kilocode/agent-usage/tokens"
+}
+
+export type AgentUsageTotalTokensErrors = {
+  /**
+   * Bad request
+   */
+  400: BadRequestError
+}
+
+export type AgentUsageTotalTokensError = AgentUsageTotalTokensErrors[keyof AgentUsageTotalTokensErrors]
+
+export type AgentUsageTotalTokensResponses = {
+  /**
+   * Total tokens used by all runs in the project
+   */
+  200: {
+    tokens: number
+  }
+}
+
+export type AgentUsageTotalTokensResponse = AgentUsageTotalTokensResponses[keyof AgentUsageTotalTokensResponses]
+
 export type BackgroundProcessListData = {
   body?: never
   path?: never

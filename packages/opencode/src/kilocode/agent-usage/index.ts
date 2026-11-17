@@ -70,6 +70,13 @@ export namespace AgentUsage {
 
   export type Summary = typeof Summary.Type
 
+  export const Total = Schema.Struct({
+    /** Sum of input, output, reasoning, and cache read/write tokens across all runs. */
+    tokens: NonNegativeInt,
+  })
+
+  export type Total = typeof Total.Type
+
   export type Filter = {
     agent?: string
     from?: number
@@ -338,6 +345,12 @@ export namespace AgentUsage {
     GROUP BY runs.agent
     ORDER BY runs.agent`
 
+  // `totalSql` folds every matching run into one token count, so it ignores `limit`/`cursor`.
+  const totalSql = (projectID: ProjectV2.ID, filter: Filter) => sql`
+    ${cte(projectID)}
+    SELECT coalesce(sum(runs.input + runs.output + runs.reasoning + runs.read + runs.write), 0) AS tokens
+    FROM runs${where(filter, false)}`
+
   const toRun = (row: Row): Run => ({
     id: row.id,
     agent: row.agent,
@@ -391,5 +404,12 @@ export namespace AgentUsage {
     const ctx = yield* InstanceState.context
     const rows = yield* db.all<SummaryRow>(summarySql(ctx.project.id, filter)).pipe(Effect.orDie)
     return rows.map(toSummary)
+  })
+
+  export const total = Effect.fn("AgentUsage.total")(function* (filter: Filter = {}) {
+    const { db } = yield* Database.Service
+    const ctx = yield* InstanceState.context
+    const row = yield* db.get<{ tokens: number }>(totalSql(ctx.project.id, filter)).pipe(Effect.orDie)
+    return { tokens: row?.tokens ?? 0 }
   })
 }

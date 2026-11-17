@@ -501,6 +501,11 @@ const AppContent: Component = () => {
                 providerUsageError={server.providerUsageError()}
                 onRequestProviderUsage={server.requestProviderUsage}
                 onRefreshProviderUsage={server.refreshProviderUsage}
+                localUsage={server.localUsage()}
+                localUsageLoading={server.localUsageLoading()}
+                localUsageError={server.localUsageError()}
+                onRequestLocalUsage={server.requestLocalUsage}
+                onSelectSession={handleSelectSession}
               />
             </Match>
             <Match when={currentView() === "settings"}>

@@ -311,7 +311,7 @@
             }
           }
         },
-        "description": "Get health information about the Kilo server.",
+        "description": "Get health information about the Semafour server.",
         "summary": "Get health",
         "x-codeSamples": [
           {
@@ -348,7 +348,7 @@
             }
           }
         },
-        "description": "Subscribe to global events from the Kilo system using server-sent events.",
+        "description": "Subscribe to global events from the Semafour system using server-sent events.",
         "summary": "Get global events",
         "x-codeSamples": [
           {
@@ -385,7 +385,7 @@
             }
           }
         },
-        "description": "Retrieve the current global Kilo configuration settings and preferences.",
+        "description": "Retrieve the current global Semafour configuration settings and preferences.",
         "summary": "Get global configuration",
         "x-codeSamples": [
           {
@@ -427,7 +427,7 @@
             }
           }
         },
-        "description": "Update global Kilo configuration settings and preferences.",
+        "description": "Update global Semafour configuration settings and preferences.",
         "summary": "Update global configuration",
         "requestBody": {
           "content": {
@@ -474,7 +474,7 @@
             }
           }
         },
-        "description": "Clean up and dispose all Kilo instances, releasing all resources.",
+        "description": "Clean up and dispose all Semafour instances, releasing all resources.",
         "summary": "Dispose instance",
         "x-codeSamples": [
           {
@@ -661,7 +661,7 @@
             }
           }
         },
-        "description": "Retrieve the current Kilo configuration settings and preferences.",
+        "description": "Retrieve the current Semafour configuration settings and preferences.",
         "summary": "Get configuration",
         "x-codeSamples": [
           {
@@ -720,7 +720,7 @@
             }
           }
         },
-        "description": "Update Kilo configuration settings and preferences.",
+        "description": "Update Semafour configuration settings and preferences.",
         "summary": "Update configuration",
         "requestBody": {
           "content": {
@@ -925,7 +925,7 @@
             }
           }
         },
-        "description": "Get experimental features enabled on the Kilo server.",
+        "description": "Get experimental features enabled on the Semafour server.",
         "summary": "Get experimental capabilities",
         "x-codeSamples": [
           {
@@ -1131,7 +1131,7 @@
             }
           }
         },
-        "description": "Persist a new active Console account/org selection for the current local Kilo state.",
+        "description": "Persist a new active Console account/org selection for the current local Semafour state.",
         "summary": "Switch active Console org",
         "requestBody": {
           "content": {
@@ -1353,7 +1353,7 @@
             }
           }
         },
-        "description": "List all git worktrees for the current project and whether Kilo manages them.",
+        "description": "List all git worktrees for the current project and whether Semafour manages them.",
         "summary": "List worktrees",
         "x-codeSamples": [
           {
@@ -1931,7 +1931,7 @@
             }
           }
         },
-        "description": "Get a list of all Kilo sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.",
+        "description": "Get a list of all Semafour sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.",
         "summary": "List sessions",
         "x-codeSamples": [
           {
@@ -2587,7 +2587,7 @@
             }
           }
         },
-        "description": "Clean up and dispose the current Kilo instance, releasing all resources.",
+        "description": "Clean up and dispose the current Semafour instance, releasing all resources.",
         "summary": "Dispose instance",
         "x-codeSamples": [
           {
@@ -2641,7 +2641,7 @@
             }
           }
         },
-        "description": "Retrieve the current working directory and related path information for the Kilo instance.",
+        "description": "Retrieve the current working directory and related path information for the Semafour instance.",
         "summary": "Get paths",
         "x-codeSamples": [
           {
@@ -3026,7 +3026,7 @@
             }
           }
         },
-        "description": "Get a list of all available commands in the Kilo system.",
+        "description": "Get a list of all available commands in the Semafour system.",
         "summary": "List commands",
         "x-codeSamples": [
           {
@@ -3084,7 +3084,7 @@
             }
           }
         },
-        "description": "Get a list of all available AI agents in the Kilo system.",
+        "description": "Get a list of all available AI agents in the Semafour system.",
         "summary": "List agents",
         "x-codeSamples": [
           {
@@ -3161,7 +3161,7 @@
             }
           }
         },
-        "description": "Get a list of all available skills in the Kilo system.",
+        "description": "Get a list of all available skills in the Semafour system.",
         "summary": "List skills",
         "x-codeSamples": [
           {
@@ -4279,7 +4279,7 @@
             }
           }
         },
-        "description": "Get a list of projects that have been opened with Kilo.",
+        "description": "Get a list of projects that have been opened with Semafour.",
         "summary": "List all projects",
         "x-codeSamples": [
           {
@@ -4333,7 +4333,7 @@
             }
           }
         },
-        "description": "Retrieve the currently active project that Kilo is working with.",
+        "description": "Retrieve the currently active project that Semafour is working with.",
         "summary": "Get current project",
         "x-codeSamples": [
           {
@@ -4762,7 +4762,7 @@
             }
           }
         },
-        "description": "Get a list of all active pseudo-terminal (PTY) sessions managed by Kilo.",
+        "description": "Get a list of all active pseudo-terminal (PTY) sessions managed by Semafour.",
         "summary": "List PTY sessions",
         "x-codeSamples": [
           {
@@ -6257,7 +6257,7 @@
             }
           }
         },
-        "description": "Get a list of all Kilo sessions, sorted by most recently updated.",
+        "description": "Get a list of all Semafour sessions, sorted by most recently updated.",
         "summary": "List sessions",
         "x-codeSamples": [
           {
@@ -6316,7 +6316,7 @@
             }
           }
         },
-        "description": "Create a new Kilo session for interacting with AI assistants and managing conversations.",
+        "description": "Create a new Semafour session for interacting with AI assistants and managing conversations.",
         "summary": "Create session",
         "requestBody": {
           "content": {
@@ -6515,7 +6515,7 @@
             }
           }
         },
-        "description": "Retrieve detailed information about a specific Kilo session.",
+        "description": "Retrieve detailed information about a specific Semafour session.",
         "summary": "Get session",
         "x-codeSamples": [
           {
@@ -11561,6 +11561,85 @@
         ]
       }
     },
+    "/kilocode/agent-usage/tokens": {
+      "get": {
+        "tags": ["agent-usage"],
+        "operationId": "agentUsage.totalTokens",
+        "parameters": [
+          {
+            "name": "directory",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "name": "workspace",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Total tokens used by all runs in the project",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tokens": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": ["tokens"],
+                  "additionalProperties": false,
+                  "description": "Total tokens used by all runs in the project"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the total number of tokens (input, output, reasoning, and cache read/write) used across all runs in the routed project, with optional time window filters.",
+        "summary": "Get total tokens",
+        "x-codeSamples": [
+          {
+            "lang": "js",
+            "source": "import { createKiloClient } from \"@kilocode/sdk\"\n\nconst client = createKiloClient()\nawait client.agentUsage.totalTokens({\n  ...\n})"
+          }
+        ]
+      }
+    },
     "/background-process": {
       "get": {
         "tags": ["background-process"],
@@ -12595,7 +12674,7 @@
             }
           }
         },
-        "description": "List project instruction files used by Kilo and return their current contents.",
+        "description": "List project instruction files used by Semafour and return their current contents.",
         "summary": "Get project rules",
         "x-codeSamples": [
           {
@@ -12774,7 +12853,7 @@
             }
           }
         },
-        "description": "Patch TUI-compatible model selections shared with Kilo Console.",
+        "description": "Patch TUI-compatible model selections shared with Semafour Console.",
         "summary": "Update model state",
         "requestBody": {
           "content": {
@@ -13348,7 +13427,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Kilo embedding model catalog",
+            "description": "Semafour embedding model catalog",
             "content": {
               "application/json": {
                 "schema": {
@@ -13368,8 +13447,8 @@
             }
           }
         },
-        "description": "Retrieve the embedding models available through the active Kilo account.",
-        "summary": "List Kilo embedding models",
+        "description": "Retrieve the embedding models available through the active Semafour account.",
+        "summary": "List Semafour embedding models",
         "x-codeSamples": [
           {
             "lang": "js",
@@ -13671,8 +13750,8 @@
             }
           }
         },
-        "description": "Fetch user profile and organizations from Kilo Gateway",
-        "summary": "Get Kilo Gateway profile",
+        "description": "Fetch user profile and organizations from Semafour Gateway",
+        "summary": "Get Semafour Gateway profile",
         "x-codeSamples": [
           {
             "lang": "js",
@@ -13705,7 +13784,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Kilo authentication status",
+            "description": "Semafour authentication status",
             "content": {
               "application/json": {
                 "schema": {
@@ -13724,7 +13803,7 @@
                   },
                   "required": ["authenticated"],
                   "additionalProperties": false,
-                  "description": "Kilo authentication status"
+                  "description": "Semafour authentication status"
                 }
               }
             }
@@ -13747,8 +13826,8 @@
             }
           }
         },
-        "description": "Check whether a locally stored Kilo credential can authenticate Gateway requests",
-        "summary": "Get Kilo authentication status",
+        "description": "Check whether a locally stored Semafour credential can authenticate Gateway requests",
+        "summary": "Get Semafour authentication status",
         "x-codeSamples": [
           {
             "lang": "js",
@@ -14006,7 +14085,7 @@
             }
           }
         },
-        "description": "Proxy a Fill-in-the-Middle completion request to the Kilo Gateway",
+        "description": "Proxy a Fill-in-the-Middle completion request to the Semafour Gateway",
         "summary": "FIM completion",
         "requestBody": {
           "content": {
@@ -14259,7 +14338,7 @@
             }
           }
         },
-        "description": "Proxy an audio transcription request to the Kilo Gateway",
+        "description": "Proxy an audio transcription request to the Semafour Gateway",
         "summary": "Speech to text transcription",
         "requestBody": {
           "content": {
@@ -14375,7 +14454,7 @@
             }
           }
         },
-        "description": "List image-capable models from the Kilo Gateway OpenRouter passthrough",
+        "description": "List image-capable models from the Semafour Gateway OpenRouter passthrough",
         "summary": "Image generation models",
         "x-codeSamples": [
           {
@@ -14450,7 +14529,7 @@
             }
           }
         },
-        "description": "List transcription-capable models from the Kilo Gateway catalog",
+        "description": "List transcription-capable models from the Semafour Gateway catalog",
         "summary": "Speech-to-text models",
         "x-codeSamples": [
           {
@@ -14550,8 +14629,8 @@
             }
           }
         },
-        "description": "Fetch notifications from Kilo Gateway for CLI display",
-        "summary": "Get Kilo notifications",
+        "description": "Fetch notifications from Semafour Gateway for CLI display",
+        "summary": "Get Semafour notifications",
         "x-codeSamples": [
           {
             "lang": "js",
@@ -14612,8 +14691,8 @@
             }
           }
         },
-        "description": "Switch to a different Kilo Gateway organization",
-        "summary": "Update Kilo Gateway organization",
+        "description": "Switch to a different Semafour Gateway organization",
+        "summary": "Update Semafour Gateway organization",
         "requestBody": {
           "content": {
             "application/json": {
@@ -14767,7 +14846,7 @@
             }
           }
         },
-        "description": "Fetch cloud CLI sessions from Kilo API",
+        "description": "Fetch cloud CLI sessions from Semafour API",
         "summary": "Get cloud sessions",
         "x-codeSamples": [
           {
@@ -14928,7 +15007,7 @@
             }
           }
         },
-        "description": "Fetch full session data from the Kilo cloud for preview",
+        "description": "Fetch full session data from the Semafour cloud for preview",
         "summary": "Get cloud session",
         "x-codeSamples": [
           {
@@ -15943,7 +16022,7 @@
             }
           }
         },
-        "description": "Install a marketplace MCP server, agent, skill, or plugin into project or global Kilo config.",
+        "description": "Install a marketplace MCP server, agent, skill, or plugin into project or global Semafour config.",
         "summary": "Install a marketplace item",
         "requestBody": {
           "content": {
@@ -16020,7 +16099,7 @@
             }
           }
         },
-        "description": "Remove a marketplace MCP server, agent, skill, or plugin from project or global Kilo config.",
+        "description": "Remove a marketplace MCP server, agent, skill, or plugin from project or global Semafour config.",
         "summary": "Remove a marketplace item",
         "requestBody": {
           "content": {
@@ -18361,7 +18440,7 @@
             }
           }
         },
-        "description": "Discover the active local inference server and replace Kilo provider authentication metadata.",
+        "description": "Discover the active local inference server and replace Semafour provider authentication metadata.",
         "summary": "Synchronize Anaconda Desktop provider",
         "requestBody": {
           "content": {
@@ -18447,8 +18526,8 @@
             }
           }
         },
-        "description": "Discover Claude Code and OpenAI Codex JSONL transcripts for a directory and migrate them into new Kilo sessions, one session per transcript. Sources that were already migrated are skipped, so calling this repeatedly is a no-op once everything has landed.",
-        "summary": "Migrate external sessions into Kilo",
+        "description": "Discover Claude Code and OpenAI Codex JSONL transcripts for a directory and migrate them into new Semafour sessions, one session per transcript. Sources that were already migrated are skipped, so calling this repeatedly is a no-op once everything has landed.",
+        "summary": "Migrate external sessions into Semafour",
         "requestBody": {
           "content": {
             "application/json": {
@@ -24565,7 +24644,7 @@
     },
     "/api/health": {
       "get": {
-        "tags": ["Kilo HttpApi"],
+        "tags": ["Semafour HttpApi"],
         "operationId": "v2.health.get",
         "parameters": [],
         "security": [],
@@ -24621,7 +24700,7 @@
     },
     "/api/location": {
       "get": {
-        "tags": ["Kilo HttpApi"],
+        "tags": ["Semafour HttpApi"],
         "operationId": "v2.location.get",
         "parameters": [
           {
@@ -24689,7 +24768,7 @@
     },
     "/api/agent": {
       "get": {
-        "tags": ["Kilo HttpApi"],
+        "tags": ["Semafour HttpApi"],
         "operationId": "v2.agent.list",
         "parameters": [
           {
@@ -25023,7 +25102,7 @@
             }
           }
         },
-        "description": "Retrieve foreground Session drains currently owned by this Kilo process. Sessions absent from the result are inactive.",
+        "description": "Retrieve foreground Session drains currently owned by this Semafour process. Sessions absent from the result are inactive.",
         "summary": "List active sessions",
         "x-codeSamples": [
           {
@@ -26222,7 +26301,7 @@
             }
           }
         },
-        "description": "Interrupt active execution owned by this Kilo process. Idle interruption is a no-op.",
+        "description": "Interrupt active execution owned by this Semafour process. Idle interruption is a no-op.",
         "summary": "Interrupt session execution",
         "x-codeSamples": [
           {
@@ -27361,7 +27440,7 @@
     },
     "/api/credential/{credentialID}": {
       "patch": {
-        "tags": ["Kilo HttpApi"],
+        "tags": ["Semafour HttpApi"],
         "operationId": "v2.credential.update",
         "parameters": [
           {
@@ -27445,7 +27524,7 @@
         ]
       },
       "delete": {
-        "tags": ["Kilo HttpApi"],
+        "tags": ["Semafour HttpApi"],
         "operationId": "v2.credential.remove",
         "parameters": [
           {
@@ -38261,7 +38340,7 @@
                 "type": "integer",
                 "minimum": 250,
                 "maximum": 800,
-                "description": "Width of the Kilo Console project context sidebar in pixels"
+                "description": "Width of the Semafour Console project context sidebar in pixels"
               },
               "diff_style": {
                 "type": "string",
@@ -66091,23 +66170,23 @@
     },
     {
       "name": "agent-builder",
-      "description": "Kilo agent builder routes."
+      "description": "Semafour agent builder routes."
     },
     {
       "name": "agent-usage",
-      "description": "Kilo agent usage routes."
+      "description": "Semafour agent usage routes."
     },
     {
       "name": "background-process",
-      "description": "Kilo background process routes."
+      "description": "Semafour background process routes."
     },
     {
       "name": "branch-name",
-      "description": "Kilo branch name routes."
+      "description": "Semafour branch name routes."
     },
     {
       "name": "commit-message",
-      "description": "Kilo commit message routes."
+      "description": "Semafour commit message routes."
     },
     {
       "name": "cloudAgent",
@@ -66115,23 +66194,23 @@
     },
     {
       "name": "config-console",
-      "description": "Kilo Console config routes."
+      "description": "Semafour Console config routes."
     },
     {
       "name": "enhance-prompt",
-      "description": "Kilo enhance prompt routes."
+      "description": "Semafour enhance prompt routes."
     },
     {
       "name": "indexing",
-      "description": "Kilo indexing routes."
+      "description": "Semafour indexing routes."
     },
     {
       "name": "instance-reload",
-      "description": "Kilo instance reload route."
+      "description": "Semafour instance reload route."
     },
     {
       "name": "kilo",
-      "description": "Kilo Gateway routes."
+      "description": "Semafour Gateway routes."
     },
     {
       "name": "kilocode",
@@ -66143,50 +66222,50 @@
     },
     {
       "name": "migrate",
-      "description": "Kilo routes for migrating sessions from other coding agents into Kilo."
+      "description": "Semafour routes for migrating sessions from other coding agents into Semafour."
     },
     {
       "name": "network",
-      "description": "Kilo network routes."
+      "description": "Semafour network routes."
     },
     {
       "name": "remote",
-      "description": "Kilo remote connection routes."
+      "description": "Semafour remote connection routes."
     },
     {
       "name": "sandbox",
-      "description": "Kilo session sandbox routes."
+      "description": "Semafour session sandbox routes."
     },
     {
       "name": "session-host",
-      "description": "Kilo hosted session control routes."
+      "description": "Semafour hosted session control routes."
     },
     {
       "name": "session-import",
-      "description": "Kilo legacy session import routes."
+      "description": "Semafour legacy session import routes."
     },
     {
       "name": "suggestion",
-      "description": "Kilo suggestion routes."
+      "description": "Semafour suggestion routes."
     },
     {
       "name": "telemetry",
-      "description": "Kilo telemetry routes."
+      "description": "Semafour telemetry routes."
     },
     {
       "name": "memory",
-      "description": "Kilo memory routes."
+      "description": "Semafour memory routes."
     },
     {
-      "name": "Kilo HttpApi",
+      "name": "Semafour HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {
-      "name": "Kilo HttpApi",
+      "name": "Semafour HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {
-      "name": "Kilo HttpApi",
+      "name": "Semafour HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {
@@ -66210,7 +66289,7 @@
       "description": "Integration discovery and authentication routes."
     },
     {
-      "name": "Kilo HttpApi",
+      "name": "Semafour HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {

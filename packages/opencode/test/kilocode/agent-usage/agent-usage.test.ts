@@ -218,6 +218,34 @@ describe("agent usage", () => {
     }),
   )
 
+  it.instance("sums all run tokens into a project total with optional window filters", () =>
+    Effect.gen(function* () {
+      const sessions = yield* Session.Service
+      const root = yield* sessions.create({ title: "root" })
+      yield* turn({
+        sessionID: root.id,
+        agent: "build",
+        created: 1_000,
+        completed: 1_100,
+        cost: 0.25,
+        tokens: tokens(10, 2, 1, 4, 3),
+      })
+      yield* turn({
+        sessionID: root.id,
+        agent: "plan",
+        created: 2_000,
+        completed: 2_100,
+        cost: 0.5,
+        tokens: tokens(20, 4, 2, 8, 6),
+      })
+
+      expect(yield* AgentUsage.total()).toEqual({ tokens: 60 })
+      expect(yield* AgentUsage.total({ from: 1_500 })).toEqual({ tokens: 40 })
+      expect(yield* AgentUsage.total({ to: 1_500 })).toEqual({ tokens: 20 })
+      expect(yield* AgentUsage.total({ from: 3_000 })).toEqual({ tokens: 0 })
+    }),
+  )
+
   it.instance("sums multiple steps of one turn into a single run", () =>
     Effect.gen(function* () {
       const sessions = yield* Session.Service

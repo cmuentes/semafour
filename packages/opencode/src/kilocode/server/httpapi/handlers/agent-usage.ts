@@ -3,7 +3,7 @@ import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { AgentUsage } from "@/kilocode/agent-usage"
 import { InvalidRequestError } from "@/server/routes/instance/httpapi/errors"
 import { InstanceHttpApi } from "@/server/routes/instance/httpapi/api"
-import type { AgentUsageRunsQuery, AgentUsageSummaryQuery } from "../groups/agent-usage"
+import type { AgentUsageRunsQuery, AgentUsageSummaryQuery, AgentUsageTotalQuery } from "../groups/agent-usage"
 
 const DEFAULT_LIMIT = 50
 
@@ -38,6 +38,12 @@ export const agentUsageHandlers = HttpApiBuilder.group(InstanceHttpApi, "agent-u
       return { items, ...(rows.length > limit && last ? { next: AgentUsage.cursor.encode(last) } : {}) }
     })
 
-    return handlers.handle("summary", summary).handle("runs", runs)
+    const totalTokens = Effect.fn("AgentUsageHttpApi.totalTokens")(function* (ctx: {
+      query: typeof AgentUsageTotalQuery.Type
+    }) {
+      return yield* AgentUsage.total({ from: ctx.query.from, to: ctx.query.to })
+    })
+
+    return handlers.handle("summary", summary).handle("runs", runs).handle("totalTokens", totalTokens)
   }),
 )

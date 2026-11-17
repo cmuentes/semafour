@@ -481,6 +481,9 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
   /** Cached provider usage payload for profile view remounts and temporary disconnects. */
   private cachedProviderUsageMessage: { type: "providerUsageLoaded"; data: ProviderUsage } | null = null
   private providerUsageGeneration = 0
+  /** Cached local usage payload for profile view remounts and temporary disconnects. */
+  private cachedLocalUsageMessage: { type: "localUsageLoaded"; tokens: number } | null = null
+  private localUsageGeneration = 0
   private pendingKiloModel: { modelID?: string; agent?: string } | null = null
   private pendingReviewComments: { comments: unknown[]; autoSend: boolean; sessionID?: string }[] = []
   private reviewCommentsHandler: ReviewCommentsHandler | undefined
@@ -752,6 +755,8 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     this.projectDirectory = directory
     this.providerUsageGeneration++
     this.cachedProviderUsageMessage = null
+    this.localUsageGeneration++
+    this.cachedLocalUsageMessage = null
     this.configBindings.clear()
     this.cachedConfigMessage = null
     this.postMessage({ type: "workspaceDirectoryChanged", directory: directory ?? "" })
@@ -1825,6 +1830,10 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
       await this.fetchAndSendProviderUsage(true)
       return true
     }
+    if (message.type === "requestLocalUsage") {
+      await this.fetchAndSendLocalUsage()
+      return true
+    }
     return false
   }
 
@@ -2875,6 +2884,31 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
 
     const message = { type: "providerUsageLoaded" as const, data: result.data }
     this.cachedProviderUsageMessage = message
+    this.postMessage(message)
+  }
+
+  private async fetchAndSendLocalUsage(): Promise<void> {
+    const generation = ++this.localUsageGeneration
+    const directory = this.getProjectDirectory(this.currentSession?.id)
+    const result = await this.connectionService
+      .getClientAsync(directory)
+      .then((client) => client.agentUsage.totalTokens({ directory }))
+      .catch((error) => {
+        console.error("[Semafour New] KiloProvider: Failed to fetch local usage:", error)
+        return undefined
+      })
+    if (generation !== this.localUsageGeneration) return
+    if (!result?.data) {
+      if (this.cachedLocalUsageMessage) {
+        this.postMessage(this.cachedLocalUsageMessage)
+        return
+      }
+      this.postMessage({ type: "localUsageLoaded", error: "Local usage could not be loaded." })
+      return
+    }
+
+    const message = { type: "localUsageLoaded" as const, tokens: result.data.tokens }
+    this.cachedLocalUsageMessage = message
     this.postMessage(message)
   }
 
@@ -5155,7 +5189,10 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
   private invalidateProviderUsage(): void {
     this.providerUsageGeneration++
     this.cachedProviderUsageMessage = null
+    this.localUsageGeneration++
+    this.cachedLocalUsageMessage = null
     this.postMessage({ type: "providerUsageLoaded", reset: true })
+    this.postMessage({ type: "localUsageLoaded", reset: true })
   }
 
   private async disposeGlobal(): Promise<void> {

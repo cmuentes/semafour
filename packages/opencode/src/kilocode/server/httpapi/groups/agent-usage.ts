@@ -15,6 +15,7 @@ const root = "/kilocode/agent-usage"
 export const AgentUsagePaths = {
   summary: `${root}/summary`,
   runs: `${root}/runs`,
+  tokens: `${root}/tokens`,
 } as const
 
 const Window = {
@@ -33,6 +34,12 @@ export const AgentUsageRunsQuery = Schema.Struct({
   ...Window,
   limit: Schema.optional(Schema.NumberFromString.check(Schema.isInt(), Schema.isBetween({ minimum: 1, maximum: 100 }))),
   cursor: Schema.optional(Schema.String),
+})
+
+export const AgentUsageTotalQuery = Schema.Struct({
+  ...WorkspaceRoutingQueryFields,
+  from: Window.from,
+  to: Window.to,
 })
 
 export const AgentUsageRunPage = Schema.Struct({
@@ -66,6 +73,17 @@ export const AgentUsageApi = HttpApi.make("agent-usage")
             summary: "List agent runs",
             description:
               "List agent runs newest first by start time, with optional agent and time window filters. Pages by the opaque `next` cursor returned by the previous page.",
+          }),
+        ),
+        HttpApiEndpoint.get("totalTokens", AgentUsagePaths.tokens, {
+          query: AgentUsageTotalQuery,
+          success: described(AgentUsage.Total, "Total tokens used by all runs in the project"),
+        }).annotateMerge(
+          OpenApi.annotations({
+            identifier: "agentUsage.totalTokens",
+            summary: "Get total tokens",
+            description:
+              "Get the total number of tokens (input, output, reasoning, and cache read/write) used across all runs in the routed project, with optional time window filters.",
           }),
         ),
       )
