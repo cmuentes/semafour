@@ -9,7 +9,7 @@ import {
   sanitizeCustomProviderConfig,
   withCustomProviderDeletions,
 } from "./shared/custom-provider"
-import { isCustomProviderPackage, KILO_AUTO, KILO_PROVIDER_ID, parseModelString } from "./shared/provider-model"
+import { isCustomProviderPackage, KILO_PROVIDER_ID, parseModelString } from "./shared/provider-model"
 import { configFeatures, serverFeatures } from "./features"
 
 /**
@@ -208,11 +208,11 @@ export function computeDefaultSelection(
   cachedConfig: { config?: { model?: string } } | null,
   vscodePID: string,
   vscodeMID: string,
-): { providerID: string; modelID: string } {
+): { providerID: string; modelID: string } | null {
   const configured = parseModelString(cachedConfig?.config?.model)
   if (configured) return configured
   if (vscodePID && vscodeMID) return { providerID: vscodePID, modelID: vscodeMID }
-  return { ...KILO_AUTO }
+  return null
 }
 
 type PostMessage = (message: unknown) => void

@@ -21,13 +21,6 @@ export function resolveModelSelection(input: {
   const preference = validate(input.session) ?? validate(input.mode) ?? validate(input.global)
   if (preference) return preference
   if (pending) return null
-  if (input.organizationId) {
-    const recommendation = input.defaults?.kilo
-    const selection = recommendation ? validate({ providerID: "kilo", modelID: recommendation }) : null
-    if (selection) return selection
-    const first = Object.keys(input.providers.kilo?.models ?? {}).at(0)
-    return first ? validate({ providerID: "kilo", modelID: first }) : null
-  }
   for (const selection of input.recent ?? []) {
     const model = validate(selection)
     if (model) return model

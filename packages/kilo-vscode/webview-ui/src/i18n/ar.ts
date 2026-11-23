@@ -1385,10 +1385,6 @@ export const dict = {
   "settings.saveBar.cancel": "إلغاء",
   "settings.saveBar.saving": "جارٍ الحفظ…",
   "settings.saveBar.saveFailed": "تعذر حفظ الإعدادات",
-  "notifications.action.next": "التالي",
-  "notifications.action.close": "إغلاق",
-  "notifications.action.tryModel": "جرّب {{model}}",
-  "notifications.action.tryModelGeneric": "جرّب النموذج",
   "diffViewer.source.workspace.label": "الفرع",
   "diffViewer.source.workspace.tooltip":
     "جميع التغييرات على هذا الفرع مقارنة بالفرع الأساسي. يشمل الملفات غير الملتزمة (staged و unstaged وغير المتتبعة) والالتزامات المحلية التي لم تُضف بعد إلى الأساس.",

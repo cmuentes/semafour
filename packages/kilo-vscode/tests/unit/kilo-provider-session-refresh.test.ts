@@ -115,7 +115,6 @@ function createConnection(client: ReturnType<typeof createClient>) {
     },
     onEventFiltered: () => () => undefined,
     onStateChange: (_listener: (state: State) => void) => () => undefined,
-    onNotificationDismissed: () => () => undefined,
     onLanguageChanged: () => () => undefined,
     onProfileChanged: () => () => undefined,
     onFavoritesChanged: () => () => undefined,
@@ -129,7 +128,6 @@ function createConnection(client: ReturnType<typeof createClient>) {
     getConnectionError: () => null,
     resolveEventSessionId: () => undefined,
     recordMessageSessionId: () => undefined,
-    notifyNotificationDismissed: () => undefined,
   }
 }
 

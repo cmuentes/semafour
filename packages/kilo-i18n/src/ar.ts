@@ -138,4 +138,5 @@ export const dict = {
   "mobileServer.error": "فشل بدء تشغيل الخادم المحمول",
   "mobileServer.copyUrl": "نسخ الرابط",
   "mobileServer.openUrl": "فتح الرابط في المتصفح",
+  "mobileServer.tooltip": "إعدادات الاتصال بالجوال",
 }

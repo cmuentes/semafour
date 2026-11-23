@@ -1688,17 +1688,6 @@ export const TaskUsageExpanded200: Story = {
   render: usageStory(true),
 }
 
-// ---------------------------------------------------------------------------
-// Welcome screen with AccountSwitcher + KiloNotifications
-// ---------------------------------------------------------------------------
-
-const MOCK_NOTIFICATION = {
-  id: "notif-1",
-  title: "Try BYOK for Semafour Gateway",
-  message: "Bring your own API key for even more flexibility with Semafour Gateway models.",
-  action: { actionText: "Learn more", actionURL: "https://kilo.ai/docs" },
-}
-
 /** Mock server context with profile data so AccountSwitcher is visible */
 const mockServer = {
   connectionState: () => "connected" as const,
@@ -1736,19 +1725,6 @@ export const SidebarTopBarDefault: Story = {
       <div style={{ width: "340px" }}>
         <SidebarTopBar onNewTask={() => undefined} onHistory={() => undefined} surface="sidebar_title" />
       </div>
-    </StoryProviders>
-  ),
-}
-
-export const WelcomeWithSwitcherAndNotification: Story = {
-  name: "Welcome — account switcher + notification",
-  render: () => (
-    <StoryProviders sessionID={SESSION_ID} status="idle" noPadding notifications={[MOCK_NOTIFICATION]}>
-      <ServerContext.Provider value={mockServer as any}>
-        <div style={{ width: "100%", height: "600px", display: "flex", "flex-direction": "column" }}>
-          <ChatView />
-        </div>
-      </ServerContext.Provider>
     </StoryProviders>
   ),
 }

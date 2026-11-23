@@ -48,7 +48,6 @@ function connection(online = true, custom?: unknown) {
       listener = next
       return () => undefined
     },
-    onNotificationDismissed: () => () => undefined,
     onClearPendingPrompts: () => () => undefined,
     onLanguageChanged: () => () => undefined,
     onProfileChanged: () => () => undefined,

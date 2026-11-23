@@ -12,7 +12,6 @@ export type ConnectionState = "connecting" | "connected" | "disconnected" | "err
 type SSEEventListener = (event: SSEPayload, directory?: string) => void
 type StateListener = (state: ConnectionState, error?: Error) => void
 type SSEEventFilter = (event: SSEPayload, directory?: string) => boolean
-type NotificationDismissListener = (notificationId: string) => void
 type SessionAcknowledgedListener = (sessionID: string, eventID: string) => void
 type LanguageChangeListener = (locale: string) => void
 type ProfileChangeListener = (data: unknown) => void
@@ -102,7 +101,6 @@ export class KiloConnectionService {
   private readonly filteredListeners = new Set<{ filter: SSEEventFilter; listener: SSEEventListener }>()
   private readonly explicitAborts = new ExplicitAbortState()
   private readonly stateListeners: Set<StateListener> = new Set()
-  private readonly notificationDismissListeners: Set<NotificationDismissListener> = new Set()
   private readonly sessionAcknowledgedListeners: Set<SessionAcknowledgedListener> = new Set()
   private readonly completions = new Map<string, { id: string; event?: EventSessionTurnClose }>()
   private readonly languageChangeListeners: Set<LanguageChangeListener> = new Set()
@@ -528,25 +526,6 @@ export class KiloConnectionService {
     if (this.questionDirectories.size !== size) this.questionRevision += 1
   }
 
-  /**
-   * Subscribe to notification dismiss events broadcast from any KiloProvider. Returns unsubscribe function.
-   */
-  onNotificationDismissed(listener: NotificationDismissListener): () => void {
-    this.notificationDismissListeners.add(listener)
-    return () => {
-      this.notificationDismissListeners.delete(listener)
-    }
-  }
-
-  /**
-   * Broadcast a notification dismiss event to all subscribed KiloProvider instances.
-   */
-  notifyNotificationDismissed(notificationId: string): void {
-    for (const listener of this.notificationDismissListeners) {
-      listener(notificationId)
-    }
-  }
-
   onSessionAcknowledged(listener: SessionAcknowledgedListener): () => void {
     this.sessionAcknowledgedListeners.add(listener)
     return () => {
@@ -833,7 +812,6 @@ export class KiloConnectionService {
     this.filteredListeners.clear()
     this.explicitAborts.clear()
     this.stateListeners.clear()
-    this.notificationDismissListeners.clear()
     this.sessionAcknowledgedListeners.clear()
     this.completions.clear()
     this.profileChangeListeners.clear()

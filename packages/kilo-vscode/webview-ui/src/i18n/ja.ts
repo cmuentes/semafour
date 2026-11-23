@@ -1411,10 +1411,6 @@ export const dict = {
   "settings.saveBar.cancel": "キャンセル",
   "settings.saveBar.saving": "保存中…",
   "settings.saveBar.saveFailed": "設定を保存できませんでした",
-  "notifications.action.next": "次へ",
-  "notifications.action.close": "閉じる",
-  "notifications.action.tryModel": "{{model}}を試す",
-  "notifications.action.tryModelGeneric": "モデルを試す",
   "diffViewer.source.workspace.label": "ブランチ",
   "diffViewer.source.workspace.tooltip":
     "ベースブランチと比較したこのブランチのすべての変更。未コミットのファイル（staged、unstaged、未追跡）とベースにまだ反映されていないローカルコミットを含みます。",

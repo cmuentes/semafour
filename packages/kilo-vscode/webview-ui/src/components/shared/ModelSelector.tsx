@@ -233,10 +233,10 @@ export const ModelSelectorBase: Component<ModelSelectorBaseProps> = (props) => {
     window.addEventListener("mouseup", onUp)
   }
 
-  // Only show models from Semafour Gateway or connected providers.
+  // Only show models from connected providers.
   // kilo-auto/small is excluded unless includeAutoSmall is explicitly true.
   const available = (m: EnrichedModel, c: string[]) =>
-    (props.includeAutoSmall || !isSmall(m)) && (m.providerID === KILO_GATEWAY_ID || c.includes(m.providerID))
+    (props.includeAutoSmall || !isSmall(m)) && c.includes(m.providerID)
 
   const visibleModels = createMemo(() => {
     if (!open()) return []

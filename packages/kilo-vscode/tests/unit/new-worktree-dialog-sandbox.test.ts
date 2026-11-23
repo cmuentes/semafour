@@ -94,7 +94,7 @@ function check(code: string) {
         ])),
       }]),
     )
-    function scene(saved, initial = { providers: catalog(x, y), fallback: y, ready: true, connected: [] }) {
+    function scene(saved, initial = { providers: catalog(x, y), fallback: y, ready: true, connected: ["kilo"] }) {
       const [snapshot, refresh] = createSignal(initial)
       const [agent, switchAgent] = createSignal("code")
       const state = createDialogModels({
@@ -110,7 +110,7 @@ function check(code: string) {
     }
 
     // Import the same reactive preference controller used by the dialog, without rendering unrelated UI.
-    function dialog(saved = {}, initial = { providers: catalog(x, y), fallback: y, alternate: y, ready: true, connected: [] }) {
+    function dialog(saved = {}, initial = { providers: catalog(x, y), fallback: y, alternate: y, ready: true, connected: ["kilo"] }) {
       const result = createRoot((dispose) => {
         const [snapshot, refresh] = createSignal(initial)
         const state = createDialogPreferences({
@@ -188,7 +188,7 @@ describe("NewWorktreeDialog models", () => {
   it("keeps an explicit model and effort per agent through mode switches", () => {
     check(`
       const state = dialog({ model: x, variant: "high" }, {
-        providers: catalog(x, y), fallback: x, alternate: y, ready: true, connected: [],
+        providers: catalog(x, y), fallback: x, alternate: y, ready: true, connected: ["kilo"],
       })
       await Promise.resolve()
       assert.deepEqual(state.model(), x)
@@ -207,7 +207,7 @@ describe("NewWorktreeDialog models", () => {
   it("keeps picks per agent so switching modes and back restores the choice", () => {
     check(`
       const state = dialog({}, {
-        providers: catalog(x, y, z), fallback: x, alternate: z, ready: true, connected: [],
+        providers: catalog(x, y, z), fallback: x, alternate: z, ready: true, connected: ["kilo"],
       })
       assert.deepEqual(state.model(), x)
       state.pick("kilo", "y")
@@ -225,7 +225,7 @@ describe("NewWorktreeDialog models", () => {
   ])("uses the target model preference only when outgoing effort is %s", (value, expected) => {
     check(`
       const state = dialog({ model: x, variant: ${JSON.stringify(value)} }, {
-        providers: catalog(x, y), fallback: x, ready: true, connected: [], efforts: { "code/y": "high" },
+        providers: catalog(x, y), fallback: x, ready: true, connected: ["kilo"], efforts: { "code/y": "high" },
       })
       state.pick("kilo", "y")
       assert.equal(state.variant(), ${JSON.stringify(expected)})
@@ -235,7 +235,7 @@ describe("NewWorktreeDialog models", () => {
   it("switches to the target agent's default when it has no dialog pick", () => {
     check(`
       const state = dialog({}, {
-        providers: catalog(x, y), fallback: x, alternate: y, ready: true, connected: [],
+        providers: catalog(x, y), fallback: x, alternate: y, ready: true, connected: ["kilo"],
         efforts: { code: "high" },
       })
       await Promise.resolve()
@@ -257,7 +257,7 @@ describe("NewWorktreeDialog models", () => {
       const providers = catalog(x)
       providers.kilo.models.x.variants = { low: {}, high: {} }
       const state = dialog({}, {
-        providers, fallback: x, alternate: x, ready: true, connected: [],
+        providers, fallback: x, alternate: x, ready: true, connected: ["kilo"],
         efforts: { code: "high", plan: "low" },
       })
       await Promise.resolve()
@@ -275,7 +275,7 @@ describe("NewWorktreeDialog models", () => {
       const providers = catalog(x)
       providers.kilo.models.x.variants = { low: {} }
       const state = dialog({}, {
-        providers, fallback: x, alternate: x, ready: true, connected: [],
+        providers, fallback: x, alternate: x, ready: true, connected: ["kilo"],
         efforts: { code: ${JSON.stringify(value)} },
       })
       await Promise.resolve()
@@ -294,7 +294,7 @@ describe("NewWorktreeDialog models", () => {
       assert.equal(state.model(), null)
       assert.equal(state.effectiveVariant(), undefined)
       assert.equal(state.cached().variant, "high")
-      const reopened = dialog(state.cached(), { providers: {}, fallback: y, ready: false, connected: [] })
+      const reopened = dialog(state.cached(), { providers: {}, fallback: y, ready: false, connected: ["kilo"] })
       await Promise.resolve()
       assert.equal(reopened.cached().variant, "high")
       reopened.refresh({ providers: catalog(x, y), ready: true })
@@ -340,7 +340,7 @@ describe("NewWorktreeDialog models", () => {
   it("keeps an explicit Default per agent across mode switches", () => {
     check(`
       const state = dialog({}, {
-        providers: catalog(x, y), fallback: x, alternate: y, ready: true, connected: [],
+        providers: catalog(x, y), fallback: x, alternate: y, ready: true, connected: ["kilo"],
         efforts: { code: "high", plan: "high" },
       })
       await Promise.resolve()
@@ -363,12 +363,12 @@ describe("NewWorktreeDialog models", () => {
   it("uses the agent default and variant preference when no pick is saved", () => {
     check(`
       const state = dialog({}, {
-        providers: catalog(x, y), fallback: x, ready: true, connected: [], efforts: { "code/y": "high" },
+        providers: catalog(x, y), fallback: x, ready: true, connected: ["kilo"], efforts: { "code/y": "high" },
       })
       assert.deepEqual(state.model(), x)
       assert.equal(state.effectiveVariant(), undefined)
       const other = dialog({ agent: "plan" }, {
-        providers: catalog(x, y), fallback: x, alternate: y, ready: true, connected: [], efforts: { "plan/y": "high" },
+        providers: catalog(x, y), fallback: x, alternate: y, ready: true, connected: ["kilo"], efforts: { "plan/y": "high" },
       })
       assert.deepEqual(other.model(), y)
       assert.equal(other.effectiveVariant(), "high")
@@ -408,10 +408,10 @@ describe("NewWorktreeDialog models", () => {
 
   it("restores an initially unavailable cached X without replacing it with Y", () => {
     check(`
-      const { state, refresh } = scene(x, { providers: catalog(y), fallback: y, ready: true, connected: [] })
+      const { state, refresh } = scene(x, { providers: catalog(y), fallback: y, ready: true, connected: ["kilo"] })
       assert.deepEqual(state.model(), y)
       assert.deepEqual(state.choice(), x)
-      const reopened = scene(state.choice(), { providers: catalog(y), fallback: y, ready: true, connected: [] })
+      const reopened = scene(state.choice(), { providers: catalog(y), fallback: y, ready: true, connected: ["kilo"] })
       assert.deepEqual(reopened.state.model(), y)
       reopened.refresh({ providers: catalog(x, y) })
       assert.deepEqual(reopened.state.model(), x)
@@ -437,16 +437,16 @@ describe("NewWorktreeDialog models", () => {
     `)
   })
 
-  it("retains explicit legacy free and connected external models", () => {
+  it("drops a disconnected kilo model and keeps a connected external model", () => {
     check(`
       const initial = { providers: catalog(free, external, y), fallback: y, ready: true, connected: ["external"] }
-      assert.deepEqual(scene(free, initial).state.model(), free)
+      assert.equal(scene(free, initial).state.model(), null)
       const { state, refresh } = scene(external, initial)
       assert.deepEqual(state.model(), external)
       refresh({ ready: false, providers: catalog(external) })
       assert.deepEqual(state.model(), external)
       assert.equal(state.canSubmit(), true)
-      refresh({ ready: true, providers: catalog(external, y), connected: [] })
+      refresh({ ready: true, providers: catalog(external, y), connected: ["kilo"] })
       assert.deepEqual(state.model(), y)
       assert.deepEqual(state.choice(), external)
       refresh({ connected: ["external"] })
@@ -457,7 +457,7 @@ describe("NewWorktreeDialog models", () => {
   it("keeps external-only comparisons usable while a Semafour catalog refresh blocks mixed comparisons", () => {
     check(`
       const { state, refresh } = scene(x, {
-        providers: catalog(x, external, y), fallback: y, ready: true, connected: ["external"],
+        providers: catalog(x, external, y), fallback: y, ready: true, connected: ["kilo", "external"],
       })
       const solo = toggleModel(new Map(), "external", "custom", "Custom")
       const mixed = toggleModel(solo, "kilo", "x", "X")

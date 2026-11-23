@@ -1423,10 +1423,6 @@ export const dict = {
   "settings.saveBar.cancel": "Otkaži",
   "settings.saveBar.saving": "Spremanje…",
   "settings.saveBar.saveFailed": "Postavke nije moguće spremiti",
-  "notifications.action.next": "Sljedeći",
-  "notifications.action.close": "Zatvori",
-  "notifications.action.tryModel": "Probaj {{model}}",
-  "notifications.action.tryModelGeneric": "Probaj model",
   "diffViewer.source.workspace.label": "Grana",
   "diffViewer.source.workspace.tooltip":
     "Sve promjene na ovoj grani u poređenju s osnovnom granom. Uključuje nekomitovane datoteke (staged, unstaged, nepraćene) i lokalne commitove koji još nisu u osnovi.",

@@ -1339,10 +1339,6 @@ export const dict = {
   "settings.saveBar.saving": "保存中…",
   "settings.saveBar.saveFailed": "无法保存设置",
   "settings.saveBar.cancel": "取消",
-  "notifications.action.next": "下一个",
-  "notifications.action.close": "关闭",
-  "notifications.action.tryModel": "尝试 {{model}}",
-  "notifications.action.tryModelGeneric": "尝试模型",
   "diffViewer.source.workspace.label": "分支",
   "diffViewer.source.workspace.tooltip":
     "此分支相对于基础分支的所有更改。包括未提交的文件（已暂存、未暂存、未跟踪）以及尚未合入基础分支的本地提交。",

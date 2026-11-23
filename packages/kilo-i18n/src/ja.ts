@@ -140,4 +140,5 @@ export const dict = {
   "mobileServer.error": "モバイルサーバーの起動に失敗しました",
   "mobileServer.copyUrl": "URL をコピー",
   "mobileServer.openUrl": "ブラウザで URL を開く",
+  "mobileServer.tooltip": "モバイル接続の設定",
 }

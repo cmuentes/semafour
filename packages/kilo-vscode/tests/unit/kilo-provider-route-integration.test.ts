@@ -73,7 +73,6 @@ function mockConnection(getImpl?: (p: SessionGetParams) => Promise<unknown>, vcs
       getClientAsync: async () => client,
       onEventFiltered: () => () => undefined,
       onStateChange: () => () => undefined,
-      onNotificationDismissed: () => () => undefined,
       onLanguageChanged: () => () => undefined,
       onProfileChanged: () => () => undefined,
       onFavoritesChanged: () => () => undefined,
@@ -89,7 +88,6 @@ function mockConnection(getImpl?: (p: SessionGetParams) => Promise<unknown>, vcs
       resolveEventSessionId: () => undefined,
       recordMessageSessionId: () => undefined,
       prepareTools: async () => {},
-      notifyNotificationDismissed: () => undefined,
     } as unknown as ConstructorParameters<typeof KiloProvider>[1],
   }
 }

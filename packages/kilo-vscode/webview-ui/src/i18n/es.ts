@@ -1439,10 +1439,6 @@ export const dict = {
   "settings.saveBar.cancel": "Cancelar",
   "settings.saveBar.saving": "Guardando…",
   "settings.saveBar.saveFailed": "No se pudieron guardar los ajustes",
-  "notifications.action.next": "Siguiente",
-  "notifications.action.close": "Cerrar",
-  "notifications.action.tryModel": "Probar {{model}}",
-  "notifications.action.tryModelGeneric": "Probar modelo",
   "diffViewer.source.workspace.label": "Rama",
   "diffViewer.source.workspace.tooltip":
     "Todos los cambios de esta rama respecto a la rama base. Incluye archivos sin commitear (staged, unstaged y no rastreados) y commits locales que todavía no están en la base.",

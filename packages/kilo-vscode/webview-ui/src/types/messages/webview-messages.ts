@@ -683,15 +683,6 @@ export interface SettingsTabChangedMessage {
   tab: string
 }
 
-export interface RequestNotificationsMessage {
-  type: "requestNotifications"
-}
-
-export interface DismissNotificationMessage {
-  type: "dismissNotification"
-  notificationId: string
-}
-
 export interface SyncSessionRequest {
   type: "syncSession"
   sessionID: string
@@ -1882,8 +1873,6 @@ export type WebviewMessage =
   | SettingsTabChangedMessage
   | SyncSessionRequest
   | UnsyncSessionRequest
-  | RequestNotificationsMessage
-  | DismissNotificationMessage
   | CreateWorktreeRequest
   | DeleteWorktreeRequest
   | RemoveStaleWorktreeRequest

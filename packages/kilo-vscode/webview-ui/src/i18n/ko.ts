@@ -1394,10 +1394,6 @@ export const dict = {
   "settings.saveBar.cancel": "취소",
   "settings.saveBar.saving": "저장 중…",
   "settings.saveBar.saveFailed": "설정을 저장할 수 없습니다",
-  "notifications.action.next": "다음",
-  "notifications.action.close": "닫기",
-  "notifications.action.tryModel": "{{model}} 시도",
-  "notifications.action.tryModelGeneric": "모델 시도",
   "diffViewer.source.workspace.label": "브랜치",
   "diffViewer.source.workspace.tooltip":
     "베이스 브랜치와 비교한 이 브랜치의 모든 변경 사항. 커밋되지 않은 파일(staged, unstaged, 추적되지 않음)과 아직 베이스에 반영되지 않은 로컬 커밋을 포함합니다.",

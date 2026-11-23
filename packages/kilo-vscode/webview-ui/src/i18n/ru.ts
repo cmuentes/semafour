@@ -1417,10 +1417,6 @@ export const dict = {
   "settings.saveBar.cancel": "Отмена",
   "settings.saveBar.saving": "Сохранение…",
   "settings.saveBar.saveFailed": "Не удалось сохранить настройки",
-  "notifications.action.next": "Далее",
-  "notifications.action.close": "Закрыть",
-  "notifications.action.tryModel": "Попробовать {{model}}",
-  "notifications.action.tryModelGeneric": "Попробовать модель",
   "diffViewer.source.workspace.label": "Ветка",
   "diffViewer.source.workspace.tooltip":
     "Все изменения в этой ветке по сравнению с базовой. Включает незакоммиченные файлы (staged, unstaged, неотслеживаемые) и локальные коммиты, которых ещё нет в базе.",

@@ -527,7 +527,6 @@ describe("KiloProvider indexing refresh", () => {
         callback.resolve(listener)
         return () => {}
       },
-      onNotificationDismissed: subscribe,
       onLanguageChanged: subscribe,
       onProfileChanged: subscribe,
       onFavoritesChanged: subscribe,

@@ -94,7 +94,7 @@ import { handleWakeupMessage, wakeups } from "./session-wakeup"
 import { state as todoState } from "./todo-revert"
 import { preserveVariant, sessionVariantKeys, transferVariants, variantKey } from "./session-variant-store"
 import { createSessionVariants } from "./session-variants"
-import { KILO_AUTO, KILO_PROVIDER_ID, parseModelString } from "../../../src/shared/provider-model"
+import { KILO_PROVIDER_ID, parseModelString } from "../../../src/shared/provider-model"
 import { type ReviewMessageData } from "../../../src/shared/review-comments"
 import { REVERT_ERROR_CODE } from "../../../src/shared/revert-error"
 import type { BrowserFeedbackData } from "../../../src/shared/browser-feedback"
@@ -446,7 +446,7 @@ export const SessionProvider: ParentComponent = (props) => {
       defaults: provider.defaults(),
       getModeModel,
       getGlobalModel,
-      fallback: KILO_AUTO,
+      fallback: null,
     }
   }
 

@@ -50,11 +50,6 @@ body.vscode-high-contrast-light {
     border: 1px solid var(--vscode-contrastBorder, transparent);
   }
 
-  /* Notification card */
-  .kilo-notifications-card {
-    border: 1px solid var(--vscode-contrastBorder, transparent);
-  }
-
   /* Revert banner */
   .revert-banner {
     border-color: var(--vscode-contrastBorder, var(--vscode-editorWidget-border));

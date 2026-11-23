@@ -1425,10 +1425,6 @@ export const dict = {
   "settings.saveBar.cancel": "Anuluj",
   "settings.saveBar.saving": "Zapisywanie…",
   "settings.saveBar.saveFailed": "Nie można zapisać ustawień",
-  "notifications.action.next": "Następny",
-  "notifications.action.close": "Zamknij",
-  "notifications.action.tryModel": "Wypróbuj {{model}}",
-  "notifications.action.tryModelGeneric": "Wypróbuj model",
   "diffViewer.source.workspace.label": "Gałąź",
   "diffViewer.source.workspace.tooltip":
     "Wszystkie zmiany na tej gałęzi w porównaniu z gałęzią bazową. Obejmuje niezacommitowane pliki (staged, unstaged, nieśledzone) oraz lokalne commity, których jeszcze nie ma w bazie.",

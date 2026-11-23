@@ -2392,14 +2392,16 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
           </div>
           <div class="prompt-action">
             <DropdownMenu gutter={4} placement="top-end">
-              <DropdownMenu.Trigger
-                as={IconButton}
-                icon="server"
-                variant="ghost"
-                size="small"
-                aria-label={mobile.running() ? language.t("mobileServer.stop") : language.t("mobileServer.start")}
-                data-active={mobile.running() ? "" : undefined}
-              />
+              <Tooltip value={language.t("mobileServer.tooltip")} placement="top" openDelay={0}>
+                <DropdownMenu.Trigger
+                  as={IconButton}
+                  icon="server"
+                  variant="ghost"
+                  size="small"
+                  aria-label={mobile.running() ? language.t("mobileServer.stop") : language.t("mobileServer.start")}
+                  data-active={mobile.running() ? "" : undefined}
+                />
+              </Tooltip>
               <DropdownMenu.Portal>
                 <DropdownMenu.Content class="prompt-more-menu">
                   <DropdownMenu.Item onSelect={() => mobile.toggle()}>

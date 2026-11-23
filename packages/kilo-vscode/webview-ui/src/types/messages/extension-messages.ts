@@ -60,7 +60,7 @@ import type {
   KiloEmbeddingModelCatalog,
 } from "./config"
 import type { WorkStyle, WorkStyleState } from "../../../../src/shared/work-style-presets"
-import type { KilocodeNotification, ProfileData } from "./profile"
+import type { ProfileData } from "./profile"
 import type { LocalUsageLoadedMessage, ProviderUsageLoadedMessage } from "./provider-usage"
 import type {
   AgentManagerApplyWorktreeDiffConflict,
@@ -557,7 +557,7 @@ export interface ProvidersLoadedMessage {
   defaults: Record<string, string>
   organizationId?: string | null
   ready?: boolean
-  defaultSelection: ModelSelection
+  defaultSelection: ModelSelection | null
   authMethods: Record<string, ProviderAuthMethod[]>
   authStates: Record<string, ProviderAuthState>
   /** The organization's Semafour catalog failed to load, so Semafour has no models to pick. */
@@ -905,12 +905,6 @@ export interface WorkStyleApplyFailedMessage {
   type: "workStyleApplyFailed"
   message: string
   rollbackFailed: boolean
-}
-
-export interface NotificationsLoadedMessage {
-  type: "notificationsLoaded"
-  notifications: KilocodeNotification[]
-  dismissedIds: string[]
 }
 
 // Agent Manager repo info (current branch of the main workspace)
@@ -1916,7 +1910,6 @@ export type ExtensionMessage =
   | WorkStyleLoadedMessage
   | WorkStyleAppliedMessage
   | WorkStyleApplyFailedMessage
-  | NotificationsLoadedMessage
   | AgentManagerRepoInfoMessage
   | AgentManagerWorktreeSetupMessage
   | AgentManagerSessionAddedMessage

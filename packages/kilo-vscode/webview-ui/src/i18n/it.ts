@@ -1269,10 +1269,6 @@ export const dict = {
   "settings.saveBar.saveAnyway": "Salva comunque",
   "settings.saveBar.cancel": "Annulla",
   "settings.saveBar.saveFailed": "Impossibile salvare le impostazioni",
-  "notifications.action.next": "Avanti",
-  "notifications.action.close": "Chiudi",
-  "notifications.action.tryModel": "Prova {{model}}",
-  "notifications.action.tryModelGeneric": "Prova modello",
 
   // Marketplace agents (replaces modes)
   "settings.agentBehaviour.noAgentsFound": "Nessun agente trovato.",

@@ -90,7 +90,6 @@ function connection() {
       return () => undefined
     },
     onStateChange: () => () => undefined,
-    onNotificationDismissed: () => () => undefined,
     onClearPendingPrompts: () => () => undefined,
     onLanguageChanged: () => () => undefined,
     onProfileChanged: () => () => undefined,
@@ -105,7 +104,6 @@ function connection() {
     getConnectionError: () => null,
     resolveEventSessionId: (event: Event) => (event.type === "session.created" ? event.properties.info.id : undefined),
     recordMessageSessionId: () => undefined,
-    notifyNotificationDismissed: () => undefined,
     clearPermissionSession: () => undefined,
     pruneSession: () => undefined,
   }

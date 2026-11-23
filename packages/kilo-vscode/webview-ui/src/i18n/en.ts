@@ -1421,10 +1421,6 @@ export const dict = {
   "settings.saveBar.cancel": "Cancel",
   "settings.saveBar.saveFailed": "Couldn't save settings",
 
-  "notifications.action.next": "Next",
-  "notifications.action.close": "Close",
-  "notifications.action.tryModel": "Try {{model}}",
-  "notifications.action.tryModelGeneric": "Try Model",
 
   "diffViewer.source.workspace.label": "Branch",
   "diffViewer.source.workspace.tooltip":

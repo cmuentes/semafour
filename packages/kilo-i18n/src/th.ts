@@ -141,4 +141,5 @@ export const dict = {
   "mobileServer.error": "ไม่สามารถเริ่มเซิร์ฟเวอร์มือถือได้",
   "mobileServer.copyUrl": "คัดลอก URL",
   "mobileServer.openUrl": "เปิด URL ในเบราว์เซอร์",
+  "mobileServer.tooltip": "การตั้งค่าการเชื่อมต่อมือถือ",
 }

@@ -1414,10 +1414,6 @@ export const dict = {
   "settings.saveBar.cancel": "لغو",
   "settings.saveBar.saveFailed": "ذخیره تنظیمات ممکن نشد",
 
-  "notifications.action.next": "بعدی",
-  "notifications.action.close": "بستن",
-  "notifications.action.tryModel": "امتحان {{model}}",
-  "notifications.action.tryModelGeneric": "امتحان مدل",
 
   "diffViewer.source.workspace.label": "شاخه",
   "diffViewer.source.workspace.tooltip":

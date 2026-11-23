@@ -1458,10 +1458,6 @@ export const dict = {
   "settings.saveBar.saving": "Enregistrement…",
   "settings.saveBar.saveFailed": "Impossible d'enregistrer les paramètres",
   "settings.saveBar.cancel": "Annuler",
-  "notifications.action.next": "Suivant",
-  "notifications.action.close": "Fermer",
-  "notifications.action.tryModel": "Essayer {{model}}",
-  "notifications.action.tryModelGeneric": "Essayer le modèle",
   "diffViewer.source.workspace.label": "Branche",
   "diffViewer.source.workspace.tooltip":
     "Toutes les modifications de cette branche par rapport à la branche de base. Inclut les fichiers non commités (staged, unstaged, non suivis) et les commits locaux qui ne sont pas encore dans la branche de base.",

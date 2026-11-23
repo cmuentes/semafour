@@ -139,4 +139,5 @@ export const dict = {
   "mobileServer.error": "모바일 서버를 시작하지 못했습니다",
   "mobileServer.copyUrl": "URL 복사",
   "mobileServer.openUrl": "브라우저에서 URL 열기",
+  "mobileServer.tooltip": "모바일 연결 설정",
 }

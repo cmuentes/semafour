@@ -10,7 +10,6 @@ import { useVSCode } from "./vscode"
 import type { Provider, ProviderModel, ModelSelection, ExtensionMessage, ProviderAuthState } from "../types/messages"
 import type { ProviderAuthMethod, ProviderFailure } from "@kilocode/sdk/v2/client"
 import { flattenModels, findModel as _findModel, isModelValid as isValid } from "./provider-utils"
-import { KILO_AUTO } from "../../../src/shared/provider-model"
 
 export type EnrichedModel = ProviderModel & { providerID: string; providerName: string }
 
@@ -20,7 +19,7 @@ interface ProviderContextValue {
   defaults: Accessor<Record<string, string>>
   organizationId: Accessor<string | null | undefined>
   ready: Accessor<boolean>
-  defaultSelection: Accessor<ModelSelection>
+  defaultSelection: Accessor<ModelSelection | null>
   models: Accessor<EnrichedModel[]>
   findModel: (selection: ModelSelection | null) => EnrichedModel | undefined
   authMethods: Accessor<Record<string, ProviderAuthMethod[]>>
@@ -42,7 +41,7 @@ export const ProviderProvider: ParentComponent = (props) => {
   const [defaults, setDefaults] = createSignal<Record<string, string>>({})
   const [organizationId, setOrganizationId] = createSignal<string | null>()
   const [ready, setReady] = createSignal(false)
-  const [defaultSelection, setDefaultSelection] = createSignal<ModelSelection>(KILO_AUTO)
+  const [defaultSelection, setDefaultSelection] = createSignal<ModelSelection | null>(null)
   const [authMethods, setAuthMethods] = createSignal<Record<string, ProviderAuthMethod[]>>({})
   const [authStates, setAuthStates] = createSignal<Record<string, ProviderAuthState>>({})
   const [kiloUnavailable, setKiloUnavailable] = createSignal(false)

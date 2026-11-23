@@ -1435,10 +1435,6 @@ export const dict = {
   "settings.saveBar.cancel": "Cancelar",
   "settings.saveBar.saving": "Salvando…",
   "settings.saveBar.saveFailed": "Não foi possível salvar as configurações",
-  "notifications.action.next": "Próximo",
-  "notifications.action.close": "Fechar",
-  "notifications.action.tryModel": "Experimentar {{model}}",
-  "notifications.action.tryModelGeneric": "Experimentar modelo",
   "diffViewer.source.workspace.label": "Branch",
   "diffViewer.source.workspace.tooltip":
     "Todas as alterações desta branch em relação à branch base. Inclui arquivos não commitados (staged, unstaged e não rastreados) e commits locais que ainda não estão na base.",

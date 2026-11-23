@@ -31,7 +31,6 @@ const claude: ModelSelection = { providerID: "anthropic", modelID: "claude-sonne
 const gpt: ModelSelection = { providerID: "openai", modelID: "gpt-4.1" }
 const first: ModelSelection = { providerID: "kilo", modelID: "z-first" }
 const personal: ModelSelection = { providerID: "kilo", modelID: "z-personal" }
-const recommended: ModelSelection = { providerID: "kilo", modelID: "z-recommended" }
 
 function env(overrides?: Partial<ResolveEnv>): ResolveEnv {
   return {
@@ -141,18 +140,18 @@ describe("per-scope per-agent model selection", () => {
     expect(getAgentModel(store, e, "code")).toEqual(null)
   })
 
-  it("org users skip recents and use the recommendation", () => {
+  it("org users use a recent connected model", () => {
     const store: ModelStore = { ...emptyStore(), recentModels: [claude] }
     const e = env({ organizationId: "org-a", defaults: { kilo: "z-recommended" } })
 
-    expect(getSelected(store, e, "new-session", "code")).toEqual(recommended)
+    expect(getSelected(store, e, "new-session", "code")).toEqual(claude)
   })
 
-  it("org users fall back to the first kilo model without a recommendation", () => {
-    const store: ModelStore = { ...emptyStore(), recentModels: [claude] }
-    const e = env({ organizationId: "org-a" })
+  it("org users stay empty when nothing is configured", () => {
+    const store = emptyStore()
+    const e = env({ organizationId: "org-a", fallback: null })
 
-    expect(getSelected(store, e, "new-session", "code")).toEqual(KILO_AUTO)
+    expect(getSelected(store, e, "new-session", "code")).toBeNull()
   })
 
   it("org users keep in-scope picks", () => {

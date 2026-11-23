@@ -226,10 +226,10 @@ describe("provider catalog authentication failures", () => {
         state.failure = false
         const recovered = yield* request("/provider")
         const configured = yield* request("/config/providers")
-        expect(result(recovered, "all")).toEqual([external, connected ? kilo : { id: "kilo", models: ["public/leak"] }])
+        expect(result(recovered, "all")).toEqual(connected ? [external, kilo] : [external])
         expect(result(configured, "providers")).toEqual(connected ? [external, kilo] : [external])
         expect(recovered).toMatchObject({
-          default: { external: "model", kilo: connected ? "connected/a-remote" : "public/leak" },
+          default: { external: "model", ...(connected ? { kilo: "connected/a-remote" } : {}) },
           connected: connected ? ["external", "kilo"] : ["external"],
           failed: ["existing"],
           failures: [{ providerID: "existing", kind: "http" }],
@@ -246,10 +246,10 @@ describe("provider catalog authentication failures", () => {
         yield* configure(false, connected)
         const all = yield* request("/provider")
         const config = yield* request("/config/providers")
-        expect(result(all, "all")).toEqual([external, connected ? kilo : { id: "kilo", models: ["public/leak"] }])
+        expect(result(all, "all")).toEqual(connected ? [external, kilo] : [external])
         expect(result(config, "providers")).toEqual(connected ? [external, kilo] : [external])
         expect(all).toMatchObject({
-          default: { external: "model", kilo: connected ? "connected/a-remote" : "public/leak" },
+          default: { external: "model", ...(connected ? { kilo: "connected/a-remote" } : {}) },
           connected: connected ? ["external", "kilo"] : ["external"],
           failed: [],
           failures: [],

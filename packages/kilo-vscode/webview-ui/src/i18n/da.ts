@@ -1417,10 +1417,6 @@ export const dict = {
   "settings.saveBar.cancel": "Annuller",
   "settings.saveBar.saving": "Gemmer…",
   "settings.saveBar.saveFailed": "Kunne ikke gemme indstillinger",
-  "notifications.action.next": "Næste",
-  "notifications.action.close": "Luk",
-  "notifications.action.tryModel": "Prøv {{model}}",
-  "notifications.action.tryModelGeneric": "Prøv model",
   "diffViewer.source.workspace.label": "Gren",
   "diffViewer.source.workspace.tooltip":
     "Alle ændringer på denne gren sammenlignet med basegrenen. Omfatter ikke-commitede filer (stagede, ikke-stagede, usporede) og lokale commits, som endnu ikke er i basen.",

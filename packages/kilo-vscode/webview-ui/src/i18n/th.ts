@@ -1391,10 +1391,6 @@ export const dict = {
   "settings.saveBar.cancel": "ยกเลิก",
   "settings.saveBar.saving": "กำลังบันทึก…",
   "settings.saveBar.saveFailed": "ไม่สามารถบันทึกการตั้งค่าได้",
-  "notifications.action.next": "ถัดไป",
-  "notifications.action.close": "ปิด",
-  "notifications.action.tryModel": "ลองใช้ {{model}}",
-  "notifications.action.tryModelGeneric": "ลองใช้โมเดล",
   "diffViewer.source.workspace.label": "สาขา",
   "diffViewer.source.workspace.tooltip":
     "การเปลี่ยนแปลงทั้งหมดบนสาขานี้เมื่อเทียบกับสาขาเบส รวมถึงไฟล์ที่ยังไม่ได้คอมมิต (staged, unstaged, untracked) และคอมมิตในเครื่องที่ยังไม่มีในเบส",

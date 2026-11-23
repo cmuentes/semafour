@@ -64,6 +64,18 @@ const inCategory = (options: ReturnType<typeof build>, category: string) =>
   options.filter((option) => option.category === category).map((option) => option.modelID)
 
 describe("model picker options", () => {
+  test("lists a user-added provider under its own name", () => {
+    const options = buildModelPickerOptions({
+      providers: [BEDROCK],
+      connected: true,
+      showExtra: true,
+    })
+
+    expect(inCategory(options, "Amazon Bedrock")).toEqual([bedrockSonnet.modelID])
+    expect(inCategory(options, "Semafour Gateway")).toEqual([])
+    expect(inCategory(options, RECOMMENDED_CATEGORY)).toEqual([])
+  })
+
   test("matches colon-separated prefixes in model display names", () => {
     const options = buildModelPickerOptions({
       providers: [

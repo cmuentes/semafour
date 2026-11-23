@@ -148,4 +148,5 @@ export const dict = {
   "mobileServer.error": "Mobile server failed to start",
   "mobileServer.copyUrl": "Copy URL",
   "mobileServer.openUrl": "Open URL in browser",
+  "mobileServer.tooltip": "Mobile Connection Settings",
 }

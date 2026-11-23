@@ -6,7 +6,7 @@ import { Provider } from "@/provider/provider"
 import { mapValues, pickBy } from "remeda" // kilocode_change
 import { ModelCache } from "@/provider/model-cache" // kilocode_change
 import { Auth } from "@/auth" // kilocode_change
-import { organization, recommend } from "@/kilocode/provider/catalog" // kilocode_change
+import { recommend } from "@/kilocode/provider/catalog" // kilocode_change
 import { ModelV2 } from "@opencode-ai/core/model" // kilocode_change
 import { Option } from "effect" // kilocode_change
 import {
@@ -64,7 +64,7 @@ export const providerHandlers = HttpApiBuilder.group(InstanceHttpApi, "provider"
       // kilocode_change start
       const info = yield* access.get("kilo").pipe(Effect.option)
       const unavailable = Option.isNone(info) && ("kilo" in filtered || "kilo" in connected)
-      if (Option.isNone(info) || organization(config.provider?.kilo?.options, info.value)) delete filtered.kilo
+      delete filtered.kilo
       const providers = filterPromptTrainingModels(
         Object.assign(
           mapValues(filtered, (item) => Provider.fromModelsDevProvider(item)),

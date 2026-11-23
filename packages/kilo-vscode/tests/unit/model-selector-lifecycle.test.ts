@@ -70,7 +70,7 @@ function check(code: string) {
         return items
       }
       const [models, setModels] = createSignal(catalog([model("alpha"), model("bravo"), model("charlie", "anthropic"), model("hidden", "offline"), model("kilo-auto/small")]))
-      const [connected, setConnected] = createSignal(["anthropic"])
+      const [connected, setConnected] = createSignal(["kilo", "anthropic"])
       const [value, setValue] = createSignal({ providerID: "kilo", modelID: "alpha" })
       const [override, setOverride] = createSignal()
       const [favorites, setFavorites] = createSignal([{ providerID: "kilo", modelID: "alpha" }])
@@ -151,6 +151,12 @@ describe("ModelSelector closed popup work", () => {
         small.refresh([model("kilo-auto/small")])
         assert.equal(small.canOpen(), true)
         small.dispose()
+        const dropped = scene()
+        dropped.setConnected(["anthropic"])
+        dropped.setOpen(true)
+        await flush()
+        assert.deepEqual(dropped.groups().map((group) => group.key), ["anthropic"])
+        dropped.dispose()
         const clear = scene()
         clear.refresh([])
         assert.equal(clear.hasProviders(), false)

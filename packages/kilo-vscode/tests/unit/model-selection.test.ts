@@ -59,24 +59,24 @@ describe("resolveModelSelection", () => {
     expect(result).toEqual(gpt)
   })
 
-  it("returns the org recommendation for org users", () => {
-    const result = resolveModelSelection({ ...base(), organizationId: "org-a", defaults: { kilo: "z-recommended" } })
-    expect(result).toEqual(recommended)
-  })
-
-  it("skips recents for org users", () => {
+  it("uses a recent connected model instead of an org kilo default", () => {
     const result = resolveModelSelection({
       ...base(),
       organizationId: "org-a",
       defaults: { kilo: "z-recommended" },
       recent: [claude],
     })
-    expect(result).toEqual(recommended)
+    expect(result).toEqual(claude)
   })
 
-  it("returns the first kilo model for org users when no recommendation exists", () => {
-    const result = resolveModelSelection({ ...base(), organizationId: "org-a", recent: [claude] })
-    expect(result).toEqual(KILO_AUTO)
+  it("stays empty for org users when nothing is configured", () => {
+    const result = resolveModelSelection({
+      ...base(),
+      organizationId: "org-a",
+      defaults: { kilo: "z-recommended" },
+      fallback: null,
+    })
+    expect(result).toBeNull()
   })
 
   it("returns the first valid recent model for non-org users", () => {

@@ -1415,10 +1415,6 @@ export const dict = {
   "settings.saveBar.cancel": "Avbryt",
   "settings.saveBar.saving": "Lagrer…",
   "settings.saveBar.saveFailed": "Kunne ikke lagre innstillinger",
-  "notifications.action.next": "Neste",
-  "notifications.action.close": "Lukk",
-  "notifications.action.tryModel": "Prøv {{model}}",
-  "notifications.action.tryModelGeneric": "Prøv modell",
   "diffViewer.source.workspace.label": "Gren",
   "diffViewer.source.workspace.tooltip":
     "Alle endringer på denne grenen sammenlignet med basegrenen. Inkluderer ikke-committede filer (staged, unstaged, usporede) og lokale commits som ennå ikke er i basen.",
