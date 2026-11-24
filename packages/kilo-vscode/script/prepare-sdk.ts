@@ -4,6 +4,7 @@ import { createHash } from "node:crypto"
 import { existsSync, mkdirSync } from "node:fs"
 import { dirname, join } from "node:path"
 
+const force = process.argv.includes("--force")
 const root = join(import.meta.dir, "..")
 const repo = join(root, "..", "..")
 const sdk = join(repo, "packages", "sdk", "js")
@@ -72,7 +73,7 @@ const input = await fingerprint(inputs)
 const prior = await load()
 const ready = existsSync(join(sdk, "dist", "index.js")) && existsSync(join(sdk, "dist", "v2", "index.js"))
 
-if (prior?.input === input && prior.output === (await fingerprint(outputs)) && ready) {
+if (!force && prior?.input === input && prior.output === (await fingerprint(outputs)) && ready) {
   log("SDK inputs and generated output are unchanged")
   process.exit(0)
 }
