@@ -572,9 +572,10 @@ export const SessionProvider: ParentComponent = (props) => {
       if (isDraftScope(id)) {
         const model = { providerID, modelID }
         const agent = agentForScope(id)
-        const value = store.variantSelections[variantKey(model, agent, id)] ?? variantForAgent(agent, model)
+        const stored = store.variantSelections[variantKey(model, agent, id)] ?? variantForAgent(agent, model)
         const list = Object.keys(provider.findModel(model)?.variants ?? {})
-        rememberEffort(agent, model, value === "" ? "" : (preserveVariant(value, list) ?? ""))
+        const next = stored === "" ? "" : preserveVariant(stored, list)
+        if (next !== undefined) rememberEffort(agent, model, next)
       }
     })
   }

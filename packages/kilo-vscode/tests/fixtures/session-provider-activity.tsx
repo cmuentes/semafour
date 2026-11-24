@@ -55,7 +55,6 @@ const { VSCodeProvider } = await import("../../webview-ui/src/context/vscode")
 const { ServerProvider } = await import("../../webview-ui/src/context/server")
 const { ConfigContext } = await import("../../webview-ui/src/context/config")
 const { LanguageContext } = await import("../../webview-ui/src/context/language")
-const { NotificationsProvider } = await import("../../webview-ui/src/context/notifications")
 const { ProviderProvider } = await import("../../webview-ui/src/context/provider")
 const { SessionProvider, useSession, useSessionVisibility } = await import("../../webview-ui/src/context/session")
 const { LocalTabsProvider, useLocalTabs } = await import("../../webview-ui/src/context/local-tabs")
@@ -240,11 +239,9 @@ const dispose = render(
         <ProviderProvider>
           <ConfigContext.Provider value={config as never}>
             <LanguageContext.Provider value={language as never}>
-              <NotificationsProvider>
-                <SessionProvider>
-                  <Probe />
-                </SessionProvider>
-              </NotificationsProvider>
+              <SessionProvider>
+                <Probe />
+              </SessionProvider>
             </LanguageContext.Provider>
           </ConfigContext.Provider>
         </ProviderProvider>
@@ -548,16 +545,16 @@ try {
   await emit({ type: "agentsLoaded", agents: [{ name: "code" }, { name: "ask" }], defaultAgent: "code" })
   await emit({ type: "recentsLoaded", recents: [auto, first, external] })
   await catalog("org-a", [first.modelID, recommended.modelID, auto.modelID], recommended.modelID)
-  choice(value.selected(), recommended)
-  choice(value.selected("selection"), recommended)
-  choice(value.modelForAgent("ask"), recommended)
+  choice(value.selected(), auto)
+  choice(value.selected("selection"), auto)
+  choice(value.modelForAgent("ask"), auto)
   assert.deepEqual(writes(), [])
 
   observed.length = 0
   await catalog("org-b", [first.modelID, recommended.modelID, auto.modelID], first.modelID)
-  choice(value.selected(), first)
+  choice(value.selected(), auto)
   assert(observed.length > 0)
-  assert(observed.every((selection) => selection?.modelID === first.modelID))
+  assert(observed.every((selection) => selection?.modelID === auto.modelID))
   for (const model of [undefined, "disallowed"]) {
     await catalog("org-a", [first.modelID, recommended.modelID], model)
     choice(value.selected(), first)
@@ -576,7 +573,7 @@ try {
   await catalog("org-a", [personal.modelID, first.modelID, recommended.modelID], recommended.modelID)
   choice(value.selected(), personal)
   choice(value.selected("selection"), personal)
-  choice(value.modelForAgent("code"), recommended)
+  choice(value.modelForAgent("code"), personal)
   await catalog(null, [auto.modelID, personal.modelID])
   choice(value.selected(), personal)
   choice(value.modelForAgent("code"), personal)
@@ -633,6 +630,7 @@ try {
   value.setSessionModel("external", external.providerID, external.modelID)
   await emit({ type: "providersLoading" })
   choice(value.selected("external"), external)
+  await emit({ type: "recentsLoaded", recents: [first, auto] })
   await catalog("org-a", [first.modelID, recommended.modelID], recommended.modelID)
   const before = requests().length
   value.sendMessage("invalid explicit", personal.providerID, personal.modelID)
@@ -643,7 +641,7 @@ try {
   assert.deepEqual(writes(), remembered)
   value.selectVariant(undefined, "selection")
   const captured = value.submission("selection")
-  assert.deepEqual(captured.model, recommended)
+  assert.deepEqual(captured.model, first)
   assert.equal(captured.variant, "")
   assert(update.value)
   update.value("worktree", "project", "selection")
@@ -658,8 +656,8 @@ try {
   assert.equal(value.sendMessage("effective model"), true)
   const message = requests().at(-1)
   assert(message?.type === "sendMessage")
-  assert.equal(message.providerID, recommended.providerID)
-  assert.equal(message.modelID, recommended.modelID)
+  assert.equal(message.providerID, first.providerID)
+  assert.equal(message.modelID, first.modelID)
   assert.equal(message.agent, captured.agent)
   assert.equal(message.variant, captured.variant)
   value.selectVariant("high", "selection")
@@ -695,7 +693,7 @@ try {
       id: message.messageID,
       sessionID: "selection",
       role: "user",
-      model: recommended,
+      model: first,
       createdAt: info("selection").createdAt,
     },
   })
@@ -710,21 +708,21 @@ try {
   assert.equal(value.sendCommand("effective", ""), true)
   const command = requests().at(-1)
   assert(command?.type === "sendCommand")
-  assert.equal(command.providerID, recommended.providerID)
-  assert.equal(command.modelID, recommended.modelID)
+  assert.equal(command.providerID, first.providerID)
+  assert.equal(command.modelID, first.modelID)
   assert.equal(command.agent, value.submission("selection").agent)
   assert.equal(command.variant, value.submission("selection").variant)
   value.setCurrentSessionID("cloud:preview")
   assert.equal(value.sendMessage("cloud effective model"), true)
   const cloud = requests().at(-1)
   assert(cloud?.type === "importAndSend")
-  assert.equal(cloud.providerID, recommended.providerID)
-  assert.equal(cloud.modelID, recommended.modelID)
+  assert.equal(cloud.providerID, first.providerID)
+  assert.equal(cloud.modelID, first.modelID)
   assert.equal(value.sendCommand("cloud", ""), true)
   const imported = requests().at(-1)
   assert(imported?.type === "importAndSend")
-  assert.equal(imported.providerID, recommended.providerID)
-  assert.equal(imported.modelID, recommended.modelID)
+  assert.equal(imported.providerID, first.providerID)
+  assert.equal(imported.modelID, first.modelID)
   await catalog("org-a", [])
   const blocked = requests().length
   assert.equal(value.sendMessage("cloud unavailable"), false)
@@ -734,6 +732,7 @@ try {
   assert.deepEqual(writes(), remembered)
 
   value.setCurrentSessionID(undefined)
+  await emit({ type: "recentsLoaded", recents: [auto] })
   // The composer keeps its own pick; config edits apply to scopes without picks.
   await catalog(null, [auto.modelID, personal.modelID, first.modelID])
   choice(value.selected(), personal)
@@ -876,10 +875,11 @@ try {
     assert(request?.type === "sendCommand")
     assert.equal(request.sessionID, scope)
     assert.equal(request.agent, "ask")
-    assert.equal(request.modelID, configured ? first.modelID : recommended.modelID)
-    assert.equal(request.variant, configured ? "low" : "high")
+    assert.equal(request.modelID, configured ? first.modelID : personal.modelID)
+    assert.equal(request.variant, configured ? "low" : undefined)
     assert.equal(value.selectedAgent(scope), "ask")
-    choice(value.selected(scope), configured ? first : recommended)
+    if (configured) choice(value.selected(scope), first)
+    else assert.equal(value.selected(scope), null)
   }
   setSettings({})
   await catalog(null, [auto.modelID, personal.modelID, first.modelID, recommended.modelID])
@@ -939,6 +939,7 @@ try {
   setSettings({})
   await catalog("org-a", [personal.modelID, first.modelID, recommended.modelID], recommended.modelID)
   await emit({ type: "variantsLoaded", variants: { "agent/ask/kilo/z-first": "high" } })
+  await emit({ type: "recentsLoaded", recents: [recommended, auto] })
   value.setCurrentSessionID(undefined)
   value.selectAgent("ask")
   choice(value.selected(), recommended)
@@ -996,7 +997,7 @@ try {
   choice(value.selected(accepted.draftID), personal)
   assert.equal(value.selectedAgent(accepted.draftID), "ask")
   assert.equal(value.currentVariant(accepted.draftID), "high")
-  choice(value.modelForAgent("ask"), recommended)
+  choice(value.modelForAgent("ask"), personal)
   // Explicit picks push recents but never persist a shared per-agent model.
   assert.equal(
     sent.slice(persisted).some((message) => message.type === "persistRecents"),
@@ -1044,7 +1045,7 @@ try {
     value.clearCurrentSession()
     value.selectAgent("ask")
     assert.equal(value.selectedAgent(), "ask")
-    choice(value.selected(), recommended)
+    choice(value.selected(), personal)
     const usage = JSON.stringify(value.modelUsageHistory())
     const recent = JSON.stringify(value.recentModels())
     const start = sent.length
@@ -1070,7 +1071,7 @@ try {
     )
     assert.equal(value.currentSessionID(), "ses_goal-draft")
     assert.equal(value.selectedAgent(), "ask")
-    choice(value.selected(), recommended)
+    choice(value.selected(), personal)
     await emit({ type: "sessionCommandCompleted", messageID: command.messageID })
     assert.equal(value.submitting(), false)
     assert.equal(JSON.stringify(value.modelUsageHistory()), usage)
@@ -2300,7 +2301,7 @@ try {
     await settle()
     const instance = peer.value
     assert(instance)
-    setSettings({})
+    setSettings({ agent: { code: { model: "kilo/z-first" } } })
     await emit({ type: "variantsLoaded", variants: {} })
     const untrack = instance.trackScopes(() => ["pending:default-one", "pending:default-two"])
     assert.equal(instance.currentVariant("pending:default-one"), undefined)
@@ -2351,6 +2352,7 @@ try {
   await catalog("org-a", [personal.modelID, first.modelID, outgoing.modelID], first.modelID)
   value.clearCurrentSession()
   setSettings({})
+  await emit({ type: "recentsLoaded", recents: [first] })
   await settle()
   setTabbed(true)
   await settle()
@@ -2367,11 +2369,11 @@ try {
   sidebar.close(untouched)
   sidebar.close(edited)
   await settle()
-  choice(value.selected(edited), first)
+  choice(value.selected(edited), personal)
   const reopened = sidebar.add()
   value.selectModel(personal.providerID, personal.modelID, reopened)
   choice(value.selected(reopened), personal)
-  assert.equal(value.currentVariant(reopened), "high")
+  assert.equal(value.currentVariant(reopened), "low")
 
   // Closing a sending draft retains its combo through promotion.
   {
