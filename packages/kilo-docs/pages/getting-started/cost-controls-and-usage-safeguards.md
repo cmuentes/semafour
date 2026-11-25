@@ -403,8 +403,6 @@ If your spend is higher than expected:
 - **Check MCP server configuration** — unused MCP servers add tool definitions to every system prompt
 - **Review permission settings** — auto-approving all actions with no `doom_loop` guard removes the friction that normally slows down runaway loops
 
-For further reading: [4 Levers to Take Control of Your AI Spend](https://blog.kilo.ai/p/4-spend-levers)
-
 ## Related
 
 - [Cost Efficiency & Model Selection](/docs/getting-started/rate-limits-and-costs) — Auto Model tier comparison, rate limits, and per-request cost calculation

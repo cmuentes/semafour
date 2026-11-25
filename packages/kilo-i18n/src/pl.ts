@@ -1,9 +1,4 @@
 export const dict = {
-  // Semafour Gateway provider translations
-  "provider.connect.kiloGateway.byok.prefix": "Aby uzyskać więcej statystyk użycia, użyj ",
-  "provider.connect.kiloGateway.byok.link": "BYOK przez Semafour's Gateway",
-  "provider.connect.kiloGateway.byok.suffix": ".",
-
   // Provider settings translations
   "settings.providers.group.recommended": "Polecane",
   "settings.providers.note.kilo": "Dostęp do ponad 500 modeli AI",

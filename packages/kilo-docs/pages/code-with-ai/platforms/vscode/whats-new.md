@@ -7,7 +7,7 @@ description: "The Semafour extension has been rebuilt from the ground up on the 
 
 The Semafour extension has been completely rebuilt on a portable, open-source core shared across VS Code, the CLI, and Cloud Agents. This is the biggest update since launch: faster execution with parallel tool calls and subagents, the new Agent Manager for running multiple agents side by side, inline code review with line-level comments, multi-model comparisons, and access to 500+ models.
 
-Whether you're writing features in VS Code, debugging over SSH, or reviewing code on Slack, Semafour now goes with you. Read the [full announcement on the Semafour Blog](https://blog.kilo.ai/p/new-kilo-for-vs-code-is-live) for everything that's new.
+Whether you're writing features in VS Code, debugging over SSH, or reviewing code on Slack, Semafour now goes with you.
 
 ---
 

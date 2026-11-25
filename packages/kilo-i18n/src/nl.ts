@@ -1,11 +1,6 @@
 // Kilo-specific translations and overrides
 // Keys here will override any matching keys from upstream translations
 export const dict = {
-  // Semafour Gateway provider translations
-  "provider.connect.kiloGateway.byok.prefix": "Voor meer gebruiksstatistieken, gebruik ",
-  "provider.connect.kiloGateway.byok.link": "BYOK via Semafour's Gateway",
-  "provider.connect.kiloGateway.byok.suffix": ".",
-
   // Provider settings translations
   "settings.providers.group.recommended": "Aanbevolen",
   "settings.providers.note.kilo": "Toegang tot 500+ AI modellen",
