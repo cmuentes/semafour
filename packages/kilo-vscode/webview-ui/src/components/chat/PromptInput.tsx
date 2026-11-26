@@ -123,6 +123,7 @@ import { ReviewComments } from "./ReviewComments"
 import { useRunningAgents } from "./AgentStack"
 import { BrowserReferences } from "./BrowserReferences"
 import { CodeContextChips } from "./CodeContextChips"
+import { useActiveEditor } from "../../context/active-editor"
 import {
   browserFeedbackData,
   formatBrowserFeedback,
@@ -132,6 +133,7 @@ import {
 } from "../../../../src/shared/browser-feedback"
 import { partInjected } from "../../../../src/shared/injected-prompt"
 import { formatCodeContexts, mergeCodeContexts, type CodeContext } from "../../../../src/shared/code-context"
+import { promptWithActiveEditor, withoutActiveEditorBlock } from "../../../../src/shared/active-editor-context"
 import { isEnterKeyCommitNotIme } from "../../utils/ime-enter"
 import { parseMemoryCommand, type ParsedMemoryCommand } from "../../utils/memory-command"
 import { useMemory } from "../../context/memory"
@@ -279,6 +281,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
   const vscode = useVSCode()
   const projectMemory = useMemory()
   const mobile = useMobileServer()
+  const editor = useActiveEditor()
   const sid = () => session.currentSessionID() ?? props.pendingSessionID ?? session.draftSessionID() ?? undefined
   const ctx = () => {
     const id = props.boxId
@@ -993,7 +996,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
   const restoreFailed = (failed: SendMessageFailedMessage) => {
     const restored = failedPrompt(failed)
     if (!restored) return
-    const draft = restored.text
+    const draft = withoutActiveEditorBlock(restored.text, editor.current())
     if (
       (failed.draftID && isPendingDraftDiscarded(failed.draftID)) ||
       (failed.sessionID && isSessionDraftDiscarded(failed.sessionID))
@@ -1731,6 +1734,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
   }
 
   const handleSend = async () => {
+    const tracked = editor.current()
     // Collapsed pastes are expanded to their full content before anything reads
     // the draft: sending, attachments, slash detection, and history all see the
     // real text, never the placeholder.
@@ -1890,8 +1894,9 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
       )
       if (!accepted) return
     } else {
+      const body = promptWithActiveEditor(message, tracked, contexts())
       const accepted = session.sendMessage(
-        message,
+        body,
         sel?.providerID,
         sel?.modelID,
         attachments,
@@ -1900,6 +1905,8 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
         data,
         origin ?? null,
         browserData,
+        undefined,
+        tracked,
       )
       if (!accepted) return
     }

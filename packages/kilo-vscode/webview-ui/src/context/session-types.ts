@@ -1,6 +1,7 @@
 import type { Accessor } from "solid-js"
 import type { ReviewMessageData } from "../../../src/shared/review-comments"
 import type { BrowserFeedbackData } from "../../../src/shared/browser-feedback"
+import type { ActiveEditorContext } from "../../../src/shared/active-editor-context"
 import type {
   AgentInfo,
   ContextUsage,
@@ -198,6 +199,7 @@ export interface SessionContextValue {
     origin?: string | null,
     browserFeedback?: BrowserFeedbackData,
     injectedTitle?: string,
+    activeEditor?: ActiveEditorContext,
   ) => boolean
   sendCommand: (
     command: string,

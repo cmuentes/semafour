@@ -16,6 +16,9 @@ import { type ParentComponent } from "solid-js"
 import { StoryProviders, mockSessionValue } from "./StoryProviders"
 import { SessionContext } from "../context/session"
 import { PromptInput } from "../components/chat/PromptInput"
+import { ActiveEditorPill } from "../components/chat/ActiveEditorPill"
+import { ActiveEditorProvider } from "../context/active-editor"
+import type { ActiveEditorContext } from "../../../src/shared/active-editor-context"
 import { SandboxTooltipContent } from "../components/shared/SandboxButton"
 import { contextDrafts } from "../utils/draft-store"
 import { Button } from "@kilocode/kilo-ui/button"
@@ -230,4 +233,39 @@ export const WithManyCodeContexts420: Story = {
 export const WithLargeCodeContext420: Story = {
   name: "With large code context — 420px",
   render: () => <CodeContextPrompt box="story-code-context-large" contexts={[largeContext]} />,
+}
+
+const activeFile: ActiveEditorContext = {
+  filePath: "/workspace/src/App.tsx",
+  relativePath: "src/App.tsx",
+  fileName: "App.tsx",
+  languageId: "typescript",
+}
+
+const activeSelection: ActiveEditorContext = {
+  ...activeFile,
+  selection: { startLine: 14, endLine: 32, text: "export const PromptInput = () => null" },
+}
+
+function ActiveEditorPrompt(props: { editor: ActiveEditorContext }) {
+  return (
+    <PromptProviders>
+      <ActiveEditorProvider value={props.editor}>
+        <div class="session-actions-row">
+          <ActiveEditorPill editor={props.editor} />
+        </div>
+        <PromptInput />
+      </ActiveEditorProvider>
+    </PromptProviders>
+  )
+}
+
+export const WithActiveFile420: Story = {
+  name: "With active file — 420px",
+  render: () => <ActiveEditorPrompt editor={activeFile} />,
+}
+
+export const WithActiveSelection420: Story = {
+  name: "With active selection — 420px",
+  render: () => <ActiveEditorPrompt editor={activeSelection} />,
 }

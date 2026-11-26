@@ -75,6 +75,11 @@ import { handleFileSearch, type SearchRoot } from "./kilo-provider/file-search"
 import { handleSessionSearch } from "./kilo-provider/session-search"
 import { handleFilePicker } from "./kilo-provider/file-picker"
 import { watchFontSizeConfig } from "./kilo-provider/font-size"
+import { watchActiveEditorContext } from "./kilo-provider/active-editor-bridge"
+import { withoutActiveFile } from "./kilo-provider/active-editor-dedupe"
+import { parseActiveEditor } from "./kilo-provider/active-editor-message"
+import type { ActiveEditorContext } from "./shared/active-editor-context"
+import type { ActiveEditorContextTracker } from "./services/active-editor/tracker"
 import { getTerminalContents } from "./services/terminal/context"
 import { disposeGitChangesTarget } from "./kilo-provider/git-changes-target"
 import { interceptMessage } from "./kilo-provider/git-changes-request"
@@ -262,6 +267,7 @@ type SendWebviewMessage = {
   agentManagerContext?: unknown
   contextDirectory?: unknown
   injectedTitle?: unknown
+  activeEditor?: unknown
 }
 type SandboxSupportClient = {
   support: (
@@ -553,6 +559,8 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
   private shortcutHintsConfigDisposable: vscode.Disposable | null = null
   private workspaceFoldersDisposable: vscode.Disposable | null = null
   private shortcutContextDisposable: vscode.Disposable | null = null
+  private activeEditorDisposable: vscode.Disposable | null = null
+  private activeEditorTracker: ActiveEditorContextTracker | null = null
   private telemetryStateDisposable: vscode.Disposable | null = null
   private viewStateDisposable: vscode.Disposable | null = null
   private visibilityDisposable: vscode.Disposable | null = null
@@ -1217,6 +1225,18 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     this.flushPendingKiloModel()
   }
 
+  public setActiveEditorTracker(tracker: ActiveEditorContextTracker): void {
+    this.activeEditorDisposable?.dispose()
+    this.activeEditorTracker = tracker
+    this.activeEditorDisposable = watchActiveEditorContext(tracker, (msg) => this.postMessage(msg))
+  }
+
+  private postActiveEditor(): void {
+    const tracker = this.activeEditorTracker
+    if (!tracker) return
+    this.postMessage({ type: "activeEditorContextUpdate", context: tracker.current() })
+  }
+
   public setContinueInWorktreeHandler(
     handler: (sessionId: string, progress: (status: string, detail?: string, error?: string) => void) => Promise<void>,
   ): void {
@@ -1275,6 +1295,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     this.workspaceFoldersDisposable = vscode.workspace.onDidChangeWorkspaceFolders(() => this.sendWorkspaceScope())
     this.shortcutContextDisposable?.dispose()
     this.shortcutContextDisposable = watchShortcutContext(this.extensionContext, (msg) => this.postMessage(msg))
+    if (this.activeEditorTracker) this.setActiveEditorTracker(this.activeEditorTracker)
     this.telemetryStateDisposable?.dispose()
     this.telemetryStateDisposable = watchTelemetryState((msg) => this.postMessage(msg))
     this.webviewMessageDisposable = webview.onDidReceiveMessage(async (message) => {
@@ -1366,6 +1387,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
             this.postMessage(mapSSEEventToWebviewMessage(event, event.properties.sessionID))
           }
           this.postMessage({ type: "webviewActiveChanged", active: this.active })
+          this.postActiveEditor()
           this.visibleTaskStreams.clear()
           this.flushPendingKiloModel()
           await this.syncWebviewState("webviewReady")
@@ -1547,7 +1569,9 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
           )
           break
         case "removeAgent":
-          this.handleRemoveAgent(message.name).catch((e) => console.error("[Semafour New] handleRemoveAgent failed:", e))
+          this.handleRemoveAgent(message.name).catch((e) =>
+            console.error("[Semafour New] handleRemoveAgent failed:", e),
+          )
           break
         case "questionReply":
           this.noteFollowup(message.answers, message.sessionID)
@@ -1578,7 +1602,9 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
           this.fetchAndSendConfig().catch((e) => console.error("[Semafour New] fetchAndSendConfig failed:", e))
           break
         case "requestGlobalConfig":
-          this.fetchAndSendGlobalConfig().catch((e) => console.error("[Semafour New] fetchAndSendGlobalConfig failed:", e))
+          this.fetchAndSendGlobalConfig().catch((e) =>
+            console.error("[Semafour New] fetchAndSendGlobalConfig failed:", e),
+          )
           break
         case "requestIndexingStatus":
           this.fetchAndSendIndexingStatus().catch((e) =>
@@ -1599,7 +1625,9 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
           )
           break
         case "requestImageModels":
-          this.fetchAndSendImageModels().catch((e) => console.error("[Semafour New] fetchAndSendImageModels failed:", e))
+          this.fetchAndSendImageModels().catch((e) =>
+            console.error("[Semafour New] fetchAndSendImageModels failed:", e),
+          )
           break
         case "updateConfig":
           await this.handleUpdateConfig(
@@ -1706,6 +1734,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
             typeof message.commandArgs === "string" ? message.commandArgs : undefined,
             feedback?.browserFeedback,
             typeof message.injectedTitle === "string" ? message.injectedTitle : undefined,
+            parseActiveEditor(message.activeEditor),
           )
           break
         }
@@ -1794,6 +1823,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
       typeof message.contextDirectory === "string" ? message.contextDirectory : undefined,
       feedback?.browserFeedback,
       typeof message.injectedTitle === "string" ? message.injectedTitle : undefined,
+      parseActiveEditor(message.activeEditor),
     )
   }
 
@@ -2223,6 +2253,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
       this.postMessage(buildThroughputSettingMessage())
       this.postMessage(buildAutoApprovalReasonSettingMessage())
       this.postMessage(buildShortcutContextMessage(this.extensionContext))
+      this.postActiveEditor()
       this.postMessage({ type: "extensionDataReady" })
 
       console.log("[Semafour New] KiloProvider: ✅ initializeConnection completed successfully")
@@ -3691,7 +3722,11 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
 
       const first = list[0]!
       const summary = list.length === 1 ? first.message : `${first.message} (and ${list.length - 1} more)`
-      console.warn("[Semafour New] KiloProvider: showing config warnings", { from, count: list.length, path: first.path })
+      console.warn("[Semafour New] KiloProvider: showing config warnings", {
+        from,
+        count: list.length,
+        path: first.path,
+      })
 
       const action = await vscode.window.showWarningMessage(`Config: ${summary}`, "Show Details")
       if (action === "Show Details") {
@@ -4353,7 +4388,9 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
         }
 
         const delay = backoff(attempt, result.response?.headers)
-        console.log(`[Semafour New] KiloProvider: Retry on ${status}, attempt ${attempt}/${MAX_RETRIES}, delay ${delay}ms`)
+        console.log(
+          `[Semafour New] KiloProvider: Retry on ${status}, attempt ${attempt}/${MAX_RETRIES}, delay ${delay}ms`,
+        )
 
         this.postMessage({
           type: "sessionStatus",
@@ -4719,6 +4756,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     contextDirectory?: string,
     browserFeedback?: BrowserFeedbackData,
     injectedTitle?: string,
+    activeEditor?: ActiveEditorContext,
   ): Promise<void> {
     if (!this.client) {
       this.postMessage({
@@ -4758,7 +4796,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
         metadata: mergeInjected(feedbackMetadata(review, browserFeedback), injectedTitle),
       })
 
-      const editorContext = await this.gatherEditorContext(dir)
+      const editorContext = withoutActiveFile(await this.gatherEditorContext(dir), activeEditor)
       if (draftID && this.closedDrafts.delete(draftID)) {
         for (const [k, v] of this.draftSessions) if (v.sid === sid) this.draftSessions.delete(k)
         return
@@ -5991,7 +6029,9 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     // Ambiguous ids degrade to the legacy resolution instead of throwing: this
     // runs eagerly per webview message, where a throw would drop the message.
     if (routed === null)
-      console.warn(`[Semafour New] KiloProvider: session ${sessionId} is ambiguous across projects, using workspace root`)
+      console.warn(
+        `[Semafour New] KiloProvider: session ${sessionId} is ambiguous across projects, using workspace root`,
+      )
     if (routed) return routed
     return resolveWorkspaceDirectory({
       sessionID: sessionId,
@@ -6357,6 +6397,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     this.shortcutHintsConfigDisposable?.dispose()
     this.workspaceFoldersDisposable?.dispose()
     this.shortcutContextDisposable?.dispose()
+    this.activeEditorDisposable?.dispose()
     this.telemetryStateDisposable?.dispose()
     this.autoApproveBridge?.dispose()
     this.visibleTaskStreams.clear()

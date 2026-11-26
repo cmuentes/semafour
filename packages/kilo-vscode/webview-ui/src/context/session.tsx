@@ -55,6 +55,8 @@ import type {
   MessageLoadMode,
   ToolPart,
 } from "../types/messages"
+import type { ActiveEditorContext } from "../../../src/shared/active-editor-context"
+import { warnUnavailableModels } from "./session-model-warning"
 import { agentProject, isStaleAgentSession } from "./session-project"
 import { createSessionPaging, mergeSessionsLoaded } from "./session-paging"
 import { removeSessionPermissions, upsertPermission } from "./permission-queue"
@@ -83,7 +85,6 @@ import {
 import { Identifier } from "../utils/id"
 import { resolveModelSelection } from "./model-selection"
 import { COMPOSER, getAgentModel, getSelected } from "./session-model-store"
-import { isModelValid } from "./provider-utils"
 import { createSessionRecovery } from "./session-recovery"
 import { errorIDs, preserveSessionErrors, withoutResolvedSessionErrors } from "./session-errors"
 import { PartStash } from "./part-stash"
@@ -461,19 +462,7 @@ export const SessionProvider: ParentComponent = (props) => {
   // Warn once per (agent, model) when a configured model is unavailable, so a
   // config edit that silently falls through to defaults stays visible.
   const warnedModels = new Set<string>()
-  createEffect(() => {
-    const env = environment()
-    if (env.ready !== true) return
-    for (const agent of agents()) {
-      const model = env.getModeModel(agent.name)
-      if (!model) continue
-      const key = `${agent.name}/${model.providerID}/${model.modelID}`
-      if (warnedModels.has(key)) continue
-      if (isModelValid(env.providers, env.connected, model)) continue
-      warnedModels.add(key)
-      console.warn(`[Semafour New] Configured model for ${agent.name} is unavailable: ${model.providerID}/${model.modelID}`)
-    }
-  })
+  createEffect(() => warnUnavailableModels(warnedModels, agents(), environment()))
 
   // Precedence: Pick(scope, agent) > agent config > global config > org/recents > fallback.
   // The no-session composer keeps its own picks under the reserved COMPOSER scope.
@@ -2214,6 +2203,7 @@ export const SessionProvider: ParentComponent = (props) => {
     origin?: string | null,
     browserFeedback?: BrowserFeedbackData,
     injectedTitle?: string,
+    activeEditor?: ActiveEditorContext,
   ): boolean {
     if (!server.isConnected()) {
       console.warn("[Semafour New] Cannot send message: not connected")
@@ -2247,6 +2237,7 @@ export const SessionProvider: ParentComponent = (props) => {
         review,
         browserFeedback,
         injectedTitle,
+        activeEditor,
       })
       return true
     }
@@ -2278,6 +2269,7 @@ export const SessionProvider: ParentComponent = (props) => {
       browserFeedback,
       agentManagerContext: context,
       injectedTitle,
+      activeEditor,
     })
     return true
   }

@@ -719,7 +719,7 @@ describe("browser element reference contract", () => {
 
   it("uses the tested failed-send parser before restoring text and references", () => {
     expect(source).toContain("const restored = failedPrompt(failed)")
-    expect(source).toContain("const draft = restored.text")
+    expect(source).toContain("const draft = withoutActiveEditorBlock(restored.text, editor.current())")
     expect(source).toContain("const browser = restored.browsers")
     expect(source).not.toContain("partFeedback({ review: failed.review")
   })
@@ -800,5 +800,43 @@ describe("code context pill contract", () => {
     expect(source).toContain("setContexts(codeContexts)")
     // The memory command and client-side slash resets also drop the contexts.
     expect((source.match(/contextDrafts\.delete\(draftKey\(\)\)/g) ?? []).length).toBeGreaterThanOrEqual(2)
+  })
+})
+
+describe("active editor pill contract", () => {
+  const source = readFile(PROMPT_FILE)
+  const provider = readFile(KILOPROVIDER_FILE)
+  const extension = readFile(path.join(ROOT, "src/extension.ts"))
+  const manager = readFile(AGENT_MANAGER_FILE)
+
+  it("renders the tracked file separately from explicit context chips", () => {
+    const pill = readFile(path.join(ROOT, "webview-ui/src/components/chat/ActiveEditorPill.tsx"))
+    const chat = readFile(CHATVIEW_FILE)
+    expect(source).toContain("useActiveEditor()")
+    expect(source).not.toContain("<ActiveEditorPill")
+    expect(chat).toContain("<ActiveEditorPill")
+    expect(pill).toContain('data-component="active-editor"')
+    expect(chat.indexOf("session-worktree-split")).toBeLessThan(chat.indexOf("<ActiveEditorPill"))
+  })
+
+  it("captures the editor before awaits and skips slash commands and goals", () => {
+    const send = source.slice(source.indexOf("const handleSend = async"))
+    expect(send.indexOf("const tracked = editor.current()")).toBeLessThan(send.indexOf("await terminal"))
+    expect(send).toContain("promptWithActiveEditor(message, tracked, contexts())")
+    expect(send).toContain("`-- ${message}`")
+    const at = send.indexOf("session.sendCommand(")
+    const command = send.slice(at, send.indexOf("} else {", at))
+    expect(command).not.toContain("tracked")
+    expect(command).not.toContain("promptWithActiveEditor")
+  })
+
+  it("drops the backend active file only when the pill payload is sent", () => {
+    expect(provider).toContain("withoutActiveFile(await this.gatherEditorContext(dir), activeEditor)")
+    expect(provider).toContain("parseActiveEditor(message.activeEditor)")
+    expect(provider).toContain("this.postActiveEditor()")
+    expect(extension).toContain("createActiveEditorTracker()")
+    expect(extension.match(/setActiveEditorTracker\(activeEditor\)/g)?.length).toBe(2)
+    expect(manager).not.toContain("setActiveEditorTracker")
+    expect(manager).not.toContain("activeEditorContextUpdate")
   })
 })

@@ -13,6 +13,8 @@ import { type ReviewMessageData } from "../../shared/review-comments"
 import { feedbackMetadata, type BrowserFeedbackData } from "../../shared/browser-feedback"
 import { mergeInjected } from "../../shared/injected-prompt"
 import { completesWithoutStatus } from "../command-completion"
+import { withoutActiveFile } from "../active-editor-dedupe"
+import type { ActiveEditorContext } from "../../shared/active-editor-context"
 
 const TIMEOUT = 30_000
 
@@ -133,6 +135,7 @@ export async function handleImportAndSend(
   commandArgs?: string,
   browserFeedback?: BrowserFeedbackData,
   injectedTitle?: string,
+  activeEditor?: ActiveEditorContext,
 ): Promise<void> {
   if (!ctx.client) {
     ctx.postMessage({
@@ -238,7 +241,7 @@ export async function handleImportAndSend(
         metadata: mergeInjected(feedbackMetadata(review, browserFeedback), injectedTitle),
       })
 
-      const editorContext = await ctx.gatherEditorContext()
+      const editorContext = withoutActiveFile(await ctx.gatherEditorContext(), activeEditor)
       await client.session.promptAsync(
         {
           sessionID: session.id,

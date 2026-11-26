@@ -21,6 +21,7 @@ import type { AnacondaDesktopExtensionMessage } from "../../../../src/shared/ana
 import type { BrowserFeedbackData, BrowserReference } from "../../../../src/shared/browser-feedback"
 import type { BrowserCursor, BrowserFrame } from "../../../../src/shared/browser-stream"
 import type { CodeContext } from "../../../../src/shared/code-context"
+import type { ActiveEditorContextUpdateMessage } from "../../../../src/shared/active-editor-context"
 import type { PRMergeResult, PRReviewResult } from "../../../../src/shared/pr-comment-actions"
 
 export type { BrowserReference } from "../../../../src/shared/browser-feedback"
@@ -1907,6 +1908,7 @@ export type ExtensionMessage =
   | PushFixesSettingLoadedMessage
   | ShortcutHintsSettingLoadedMessage
   | ShortcutContextMessage
+  | ActiveEditorContextUpdateMessage
   | WorkStyleLoadedMessage
   | WorkStyleAppliedMessage
   | WorkStyleApplyFailedMessage
