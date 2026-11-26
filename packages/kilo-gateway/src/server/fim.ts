@@ -1,6 +1,8 @@
 import { HEADER_FEATURE } from "../api/constants.js"
 import type { DirectAutocompleteProviderID } from "../autocomplete.js"
 import { DIRECT_FIM_ENV, requestMistralFim, resolveFimTarget, type FimTarget } from "../fim.js"
+
+type PresetTarget = Exclude<FimTarget, { provider: "generic" }>
 import { buildKiloHeaders } from "../headers.js"
 import type { AuthStore } from "./handlers.js"
 
@@ -25,7 +27,7 @@ async function getProviderKey(Auth: Auth, provider: DirectAutocompleteProviderID
 }
 
 async function fetchFim(
-  target: FimTarget,
+  target: PresetTarget,
   key: string,
   input: {
     prefix: string
@@ -68,6 +70,9 @@ export function createFimHandler(Auth: Auth) {
   return async (c: any) => {
     const { prefix, suffix, provider, model, maxTokens, temperature } = c.req.valid("json")
     const target = resolveFimTarget(provider, model)
+    if (target.provider === "generic") {
+      return c.json({ error: `Autocomplete provider ${target.id} is served by the CLI` }, 400)
+    }
     const fimMaxTokens = maxTokens ?? 256
     const fimTemperature = temperature ?? 0.2
     const proxy = target.provider === "kilo" ? await getProxyAuth(Auth) : undefined

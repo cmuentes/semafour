@@ -9,12 +9,14 @@ Semafour's autocomplete feature provides intelligent code suggestions and comple
 
 ## How Autocomplete Works
 
-The extension uses **Fill-in-the-Middle (FIM)** completion routed through the **Semafour Gateway**. It analyzes the code before and after your cursor to generate contextually accurate inline suggestions.
+The extension uses **Fill-in-the-Middle (FIM)** completion. It analyzes the code before and after your cursor to generate contextually accurate inline suggestions.
 
-You can choose between two FIM models:
+You can use any model from a provider you have already configured, including local OpenAI-compatible servers such as llama.cpp. When you are signed in, the default is **Mercury Edit 2 (Next Edit)** through the Semafour Gateway. When you are not signed in, autocomplete uses the first configured provider instead of stopping at the Semafour login.
 
-- **Codestral** (`mistralai/codestral-2508`) by Mistral AI — the default, billed through your Semafour account.
-- **Mercury Edit 2** (`inception/mercury-edit-2`) by Inception — temporarily available via **BYOK** (Bring Your Own Key) only; Semafour Gateway support is coming soon.
+Built-in presets:
+
+- **Codestral** (`mistralai/codestral-2508`) by Mistral AI, through Semafour or a Mistral API key.
+- **Mercury Edit 2** (`inception/mercury-edit-2`) by Inception, through Semafour or an Inception API key. Next Edit predictions stay limited to these two providers. Other models use classic inline completion.
 
 ## Triggering Options
 
@@ -32,13 +34,14 @@ This keybinding requires `kilo-code.new.autocomplete.enableSmartInlineTaskKeybin
 
 ## Provider and Model
 
-Autocomplete requests are routed through the **Semafour Gateway**. You can pick the FIM model under **Settings → Models → Autocomplete model**:
+Pick the model under **Settings → Models → Autocomplete model**. The list includes the built-in presets for providers you have connected, plus every model from your other configured providers.
 
-- **Codestral** (`mistralai/codestral-2508`) is the default. It uses Semafour credits unless you add a Mistral API key via BYOK. With BYOK, your Mistral plan and usage limits apply; autocomplete is not guaranteed to be free. See [Setting up Mistral for autocomplete](/docs/code-with-ai/features/autocomplete/mistral-setup).
-- **Mercury Edit 2** (`inception/mercury-edit-2`) — a fast diffusion-based FIM model by Inception. Temporarily requires an **Inception BYOK key** until Semafour Gateway support lands. Add one from the [BYOK page](https://app.kilo.ai/byok) in the Semafour platform. See [Bring Your Own Key (BYOK)](/docs/getting-started/byok) for setup details.
+- **Mercury Edit 2 (Next Edit)** is the default while you are signed in to Semafour. The same model is available with an Inception API key.
+- **Codestral** is available through Semafour or a Mistral API key. With a Mistral key, your Mistral plan and usage limits apply. See [Setting up Mistral for autocomplete](/docs/code-with-ai/features/autocomplete/mistral-setup).
+- **Any other configured model**, including a local model from llama.cpp, uses classic inline completion.
 
 {% callout type="note" %}
-Mercury Edit 2 is only available through BYOK for now — Semafour Gateway support is coming soon. If you select Mercury Edit 2 without a valid Inception BYOK key configured, autocomplete requests will fail — switch back to Codestral or add an Inception key to continue.
+Next Edit predictions are limited to Mercury on Semafour and Inception. Every other model completes at the cursor.
 {% /callout %}
 
 ## Status Bar

@@ -7,7 +7,7 @@ export const dict = {
   "kilocode:autocomplete.statusBar.warning": "$(warning) Autocomplete",
   "kilocode:autocomplete.statusBar.tooltip.basic": "Semafour Autocomplete",
   "kilocode:autocomplete.statusBar.tooltip.noUsableProvider":
-    "**No autocomplete model configured**\n\nTo enable autocomplete, add a profile with one of these supported providers: {{providers}}.\n\n[Open Settings]({{command}})",
+    "**No autocomplete model configured**\n\nSign in to Semafour, or choose a model from a provider you have already configured.\n\n[Open Settings]({{command}})",
   "kilocode:autocomplete.statusBar.tooltip.completionSummary":
     "Performed {{count}} completions between {{startTime}} and {{endTime}}, for a total cost of {{cost}}.",
   "kilocode:autocomplete.statusBar.tooltip.providerInfo": "Autocompletions provided by {{model}} via {{provider}}.",
@@ -22,5 +22,6 @@ export const dict = {
     "Semafour Autocomplete has been paused. Possible causes: your Semafour account has no remaining credits, or your configured API key (BYOK) has reached its quota limit. Add Semafour credits or check your API key configuration to resume autocomplete.",
   "kilocode:autocomplete.creditsExhausted.addCredits": "Add Credits",
   "kilocode:autocomplete.authError.message":
-    "Semafour Autocomplete has been paused due to an authentication issue. Possible causes: you are not signed in to Semafour, or your API key (BYOK) is invalid or missing. Please sign in again or check your provider API key settings.",
+    "Autocomplete paused because {{provider}} could not authenticate. Sign in, check that provider's API key, or choose another configured model.",
+  "kilocode:autocomplete.authError.openSettings": "Open Settings",
 }

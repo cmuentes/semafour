@@ -14,5 +14,7 @@ describe("autocomplete document selector", () => {
     expect(notebookModel("kilo", "inception/mercury-next-edit").id).toBe("kilo/inception/mercury-edit-2")
     expect(notebookModel("inception", "mercury-next-edit").id).toBe("inception/mercury-edit-2")
     expect(notebookModel("kilo", "mistralai/codestral-2508").id).toBe("kilo/mistralai/codestral-2508")
+    expect(notebookModel("llama", "qwen").id).toBe("llama/qwen")
+    expect(notebookModel("llama", "qwen").kind).not.toBe("edit")
   })
 })

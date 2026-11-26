@@ -13,6 +13,7 @@ import { toAllowedMercuryRecentSnippets } from "./next-edit/recentSnippetsAdapte
 import type { KiloConnectionService } from "../cli-backend"
 import { hasValidCredentials, fimModel as notebookModel } from "./fim"
 import { DEFAULT_AUTOCOMPLETE_MODEL, getAutocompleteModel } from "../../shared/autocomplete-models"
+import { rememberSelection, resolveAutocomplete } from "./pick-model"
 
 const CONFIG_SECTION = "kilo-code.new.autocomplete"
 
@@ -33,13 +34,12 @@ export interface AutocompleteServiceSettings {
 
 function readSettings(): AutocompleteServiceSettings {
   const config = vscode.workspace.getConfiguration(CONFIG_SECTION)
-  const info = getAutocompleteModel(config.get<string>("provider"), config.get<string>("model"))
   return {
     enableAutoTrigger: config.get<boolean>("enableAutoTrigger") ?? true,
     enableSmartInlineTaskKeybinding: config.get<boolean>("enableSmartInlineTaskKeybinding") ?? true,
     enableChatAutocomplete: config.get<boolean>("enableChatAutocomplete") ?? true,
-    provider: info.providerID,
-    model: info.modelID,
+    provider: config.get<string>("provider"),
+    model: config.get<string>("model"),
     snoozeUntil: config.get<number>("snoozeUntil"),
   }
 }
@@ -65,6 +65,7 @@ export class AutocompleteServiceManager {
   private sessionCost: number = 0
   private completionCount: number = 0
   private sessionStartTime: number = Date.now()
+  private usable = false
 
   private snoozeTimer: NodeJS.Timeout | null = null
 
@@ -189,7 +190,11 @@ export class AutocompleteServiceManager {
   }
 
   public async load() {
-    this.settings = readSettings()
+    const raw = readSettings()
+    const picked = await resolveAutocomplete(this.connectionService, raw.provider, raw.model)
+    this.usable = picked.usable
+    this.settings = { ...raw, provider: picked.provider, model: picked.model }
+    rememberSelection(picked.provider, picked.model)
 
     this.inlineCompletionProvider.setModel(notebookModel(this.settings.provider, this.settings.model).id)
 
@@ -400,7 +405,8 @@ export class AutocompleteServiceManager {
   }
 
   private hasNoUsableProvider(): boolean {
-    return !hasValidCredentials(this.connectionService)
+    if (!hasValidCredentials(this.connectionService)) return true
+    return !this.usable
   }
 
   /**
@@ -408,20 +414,21 @@ export class AutocompleteServiceManager {
    * Shows a one-time notification to the user so they know autocomplete is paused.
    */
   private handleFatalAutocompleteError(status: number | null): void {
-    const msg =
-      status === 402
-        ? t("kilocode:autocomplete.creditsExhausted.message")
-        : t("kilocode:autocomplete.authError.message")
-
     if (status === 402) {
-      vscode.window.showWarningMessage(msg, t("kilocode:autocomplete.creditsExhausted.addCredits")).then((choice) => {
-        if (choice === t("kilocode:autocomplete.creditsExhausted.addCredits")) {
-          vscode.env.openExternal(vscode.Uri.parse("https://app.kilo.ai/credits"))
-        }
+      const msg = t("kilocode:autocomplete.creditsExhausted.message")
+      const add = t("kilocode:autocomplete.creditsExhausted.addCredits")
+      void vscode.window.showWarningMessage(msg, add).then((choice) => {
+        if (choice === add) void vscode.env.openExternal(vscode.Uri.parse("https://app.kilo.ai/credits"))
       })
-    } else {
-      vscode.window.showWarningMessage(msg)
+      return
     }
+    const provider = this.getCurrentProviderName()
+    const text = t("kilocode:autocomplete.authError.message", { provider })
+    const msg = text.includes(provider) ? text : `${text} (${provider})`
+    const open = t("kilocode:autocomplete.authError.openSettings")
+    void vscode.window.showWarningMessage(msg, open).then((choice) => {
+      if (choice === open) void vscode.commands.executeCommand("kilo-code.new.settingsButtonClicked", "models")
+    })
   }
 
   private updateCostTracking(cost: number, _inputTokens: number, _outputTokens: number): void {

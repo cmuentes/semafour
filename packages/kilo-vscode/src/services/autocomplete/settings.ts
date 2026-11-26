@@ -42,16 +42,43 @@ export function watchAutocompleteConfig(post: Post): vscode.Disposable {
   })
 }
 
-export function validAutocompleteSetting(key: string, value: unknown) {
+export type AutocompleteCatalog = {
+  providers: readonly string[]
+  models: readonly string[]
+}
+
+export function catalogFromProviders(message: unknown): AutocompleteCatalog | undefined {
+  if (!message || typeof message !== "object") return
+  const msg = message as {
+    providers?: Record<string, { models?: Record<string, unknown> }>
+    connected?: string[]
+  }
+  if (!msg.providers) return
+  const providers = msg.connected ?? Object.keys(msg.providers)
+  const models = providers.flatMap((id) => Object.keys(msg.providers?.[id]?.models ?? {}))
+  return { providers, models }
+}
+
+function knownId(value: unknown): value is string {
+  return typeof value === "string" && value.trim().length > 0
+}
+
+export function validAutocompleteSetting(key: string, value: unknown, catalog?: AutocompleteCatalog) {
   if (key === "model") {
     // Allow clearing back to the server-side default.
     if (value === null || value === undefined) return true
-    return validAutocompleteModel(value)
+    if (!knownId(value)) return false
+    if (validAutocompleteModel(value)) return true
+    if (!catalog) return true
+    return catalog.models.includes(value)
   }
 
   if (key === "provider") {
     if (value === null || value === undefined) return true
-    return validAutocompleteProvider(value)
+    if (!knownId(value)) return false
+    if (validAutocompleteProvider(value)) return true
+    if (!catalog) return true
+    return catalog.providers.includes(value)
   }
 
   if (key === "enableAutoTrigger") return typeof value === "boolean"

@@ -1,6 +1,7 @@
 export {
   AUTOCOMPLETE_MODELS,
   DEFAULT_AUTOCOMPLETE_MODEL,
+  genericAutocompleteModel,
   getAutocompleteModel,
   getAutocompleteModelById,
   validAutocompleteModel,

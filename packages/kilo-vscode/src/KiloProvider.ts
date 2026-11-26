@@ -89,6 +89,7 @@ import { handleNetworkEvent, clearNetworkWaits } from "./kilo-provider/network"
 import { SessionAbort } from "./kilo-provider/abort"
 import {
   buildAutocompleteSettingsMessage,
+  catalogFromProviders,
   validAutocompleteSetting,
   watchAutocompleteConfig,
 } from "./services/autocomplete/settings"
@@ -5189,7 +5190,11 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
       return
     }
     const { section, leaf } = buildSettingPath(key)
-    if (section === "autocomplete" && !validAutocompleteSetting(leaf, value)) return
+    if (
+      section === "autocomplete" &&
+      !validAutocompleteSetting(leaf, value, catalogFromProviders(this.cachedProvidersMessage))
+    )
+      return
     if (section === "indexing" && !validIndexingSetting(leaf, value)) return
     if (section === "chat" && !validChatSetting(leaf, value)) return
     const config = vscode.workspace.getConfiguration(`kilo-code.new${section ? `.${section}` : ""}`)

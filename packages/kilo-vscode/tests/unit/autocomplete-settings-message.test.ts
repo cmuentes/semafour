@@ -74,9 +74,21 @@ describe("validAutocompleteSetting", () => {
     expect(validAutocompleteSetting("model", "mercury-edit-2")).toBe(true)
   })
 
-  it("rejects unknown providers and models", () => {
-    expect(validAutocompleteSetting("provider", "openrouter")).toBe(false)
-    expect(validAutocompleteSetting("model", "gpt-5")).toBe(false)
+  it("accepts a configured provider that is not one of the built-in presets", () => {
+    const catalog = { providers: ["llama"], models: ["qwen"] }
+    expect(validAutocompleteSetting("provider", "llama", catalog)).toBe(true)
+    expect(validAutocompleteSetting("model", "qwen", catalog)).toBe(true)
+  })
+
+  it("rejects a provider that is neither a preset nor configured", () => {
+    const catalog = { providers: ["llama"], models: ["qwen"] }
+    expect(validAutocompleteSetting("provider", "openrouter", catalog)).toBe(false)
+    expect(validAutocompleteSetting("model", "gpt-5", catalog)).toBe(false)
+  })
+
+  it("accepts any provider before the connected catalog has loaded", () => {
+    expect(validAutocompleteSetting("provider", "llama")).toBe(true)
+    expect(validAutocompleteSetting("model", "qwen")).toBe(true)
   })
 
   it("rejects non-boolean toggle updates", () => {

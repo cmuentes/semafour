@@ -17,7 +17,13 @@ import {
   fetchOrganizationModes,
   fetchProfile,
 } from "@kilocode/kilo-gateway"
-import { DIRECT_FIM_ENV, requestMistralFim, resolveFimTarget } from "@kilocode/kilo-gateway/fim"
+import {
+  DIRECT_FIM_ENV,
+  requestGenericFim,
+  requestMistralFim,
+  resolveFimTarget,
+  resolveGenericEndpoint,
+} from "@kilocode/kilo-gateway/fim"
 import { DIRECT_EDIT_ENV, extractFencedBody, resolveEditTarget } from "@kilocode/kilo-gateway/edit"
 import { buildMercuryEditPrompt } from "@kilocode/kilo-gateway/edit-prompt"
 import { buildKiloHeaders } from "@kilocode/kilo-gateway"
@@ -32,6 +38,8 @@ import { KilocodeConfig } from "@/kilocode/config/config"
 import { ClaudeMigration } from "@/kilocode/config/claude-migration"
 import { Auth } from "@/auth"
 import { Config } from "@/config/config"
+import { Provider } from "@/provider/provider"
+import { ProviderV2 } from "@opencode-ai/core/provider"
 import { organization as catalogOrganization } from "@/kilocode/provider/catalog"
 import { EventV2Bridge } from "@/event-v2-bridge"
 import { Storage } from "@/storage/storage"
@@ -55,6 +63,7 @@ function logError(route: string, err: unknown) {
 export const kiloGatewayHandlers = HttpApiBuilder.group(InstanceHttpApi, "kilo", (handlers) =>
   Effect.gen(function* () {
     const auth = yield* Auth.Service
+    const providers = yield* Provider.Service
     const config = yield* Config.Service
     const store = yield* InstanceStore.Service
     const cache = yield* ModelCache.Service
@@ -111,8 +120,76 @@ export const kiloGatewayHandlers = HttpApiBuilder.group(InstanceHttpApi, "kilo",
       )
     })
 
+    const finishFim = (response: Response) =>
+      Effect.gen(function* () {
+        if (!response.ok) {
+          const text = yield* Effect.promise(() => response.text())
+          return HttpServerResponse.jsonUnsafe(
+            { error: `FIM request failed: ${response.status} ${text}` },
+            { status: response.status },
+          )
+        }
+        if (!response.body) return HttpServerResponse.raw(null, { status: response.status })
+
+        return HttpServerResponse.stream(
+          Stream.fromReadableStream({
+            evaluate: () => response.body!,
+            onError: (err) => err,
+          }),
+          {
+            contentType: "text/event-stream",
+            headers: {
+              "Cache-Control": "no-cache",
+              Connection: "keep-alive",
+            },
+          },
+        )
+      })
+
     const fim = Effect.fn("KiloGatewayHttpApi.fim")(function* (ctx: { payload: typeof FimBody.Type }) {
       const target = resolveFimTarget(ctx.payload.provider, ctx.payload.model)
+      const request = yield* HttpServerRequest.HttpServerRequest
+      const signal =
+        request.source instanceof Request
+          ? AbortSignal.any([request.source.signal, AbortSignal.timeout(FIM_TIMEOUT_MS)])
+          : AbortSignal.timeout(FIM_TIMEOUT_MS)
+
+      if (target.provider === "generic") {
+        const listed = yield* providers.list()
+        const info = listed[ProviderV2.ID.make(target.id)]
+        const entry = info?.models[target.model]
+        const endpoint = resolveGenericEndpoint({
+          model: target.model,
+          key: info?.key,
+          apiKey: info?.options?.apiKey,
+          baseURL: info?.options?.baseURL,
+          apiURL: entry?.api.url,
+          apiModel: entry?.api.id,
+        })
+        if ("error" in endpoint) return yield* finishFim(new Response(endpoint.error, { status: 401 }))
+        const response = yield* Effect.promise(async () => {
+          try {
+            return await requestGenericFim({
+              baseURL: endpoint.baseURL,
+              model: endpoint.model,
+              key: endpoint.key,
+              prefix: ctx.payload.prefix,
+              suffix: ctx.payload.suffix,
+              maxTokens: ctx.payload.maxTokens ?? 256,
+              temperature: ctx.payload.temperature ?? 0.2,
+              signal,
+              headers: entry?.headers,
+            })
+          } catch (err) {
+            if (err instanceof DOMException && err.name === "TimeoutError")
+              return Response.json({ error: "FIM request timed out" }, { status: 504 })
+            if (signal.aborted) return Response.json({ error: "FIM request canceled" }, { status: 499 })
+            throw err
+          }
+        })
+        return yield* finishFim(response)
+      }
+
       const info = target.provider === "kilo" ? yield* proxyAuth() : undefined
       const token = yield* Effect.gen(function* () {
         if (target.provider === "kilo") return info?.token
@@ -124,11 +201,6 @@ export const kiloGatewayHandlers = HttpApiBuilder.group(InstanceHttpApi, "kilo",
       if (target.provider === "kilo" && !info?.auth) return yield* Effect.fail(new HttpApiError.Unauthorized({}))
       if (!token) return yield* Effect.fail(new HttpApiError.Unauthorized({}))
 
-      const request = yield* HttpServerRequest.HttpServerRequest
-      const signal =
-        request.source instanceof Request
-          ? AbortSignal.any([request.source.signal, AbortSignal.timeout(FIM_TIMEOUT_MS)])
-          : AbortSignal.timeout(FIM_TIMEOUT_MS)
       const response = yield* Effect.promise(async () => {
         try {
           const run = async (url: string): Promise<Response> => {
@@ -163,28 +235,7 @@ export const kiloGatewayHandlers = HttpApiBuilder.group(InstanceHttpApi, "kilo",
           throw err
         }
       })
-      if (!response.ok) {
-        const text = yield* Effect.promise(() => response.text())
-        return HttpServerResponse.jsonUnsafe(
-          { error: `FIM request failed: ${response.status} ${text}` },
-          { status: response.status },
-        )
-      }
-      if (!response.body) return HttpServerResponse.raw(null, { status: response.status })
-
-      return HttpServerResponse.stream(
-        Stream.fromReadableStream({
-          evaluate: () => response.body!,
-          onError: (err) => err,
-        }),
-        {
-          contentType: "text/event-stream",
-          headers: {
-            "Cache-Control": "no-cache",
-            Connection: "keep-alive",
-          },
-        },
-      )
+      return yield* finishFim(response)
     })
 
     const edit = Effect.fn("KiloGatewayHttpApi.edit")(function* (ctx: { payload: typeof EditBody.Type }) {

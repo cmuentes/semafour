@@ -49,4 +49,12 @@ describe("FIM target resolution", () => {
       url: "https://ai-gateway.kilo.ai/api/v1/fim/completions",
     })
   })
+
+  test("routes any other configured provider to the generic endpoint", () => {
+    expect(resolveFimTarget("llama", "qwen2.5-coder")).toEqual({
+      provider: "generic",
+      id: "llama",
+      model: "qwen2.5-coder",
+    })
+  })
 })

@@ -12,6 +12,7 @@ export type FimTarget =
   | { provider: "kilo"; model: string; url: string }
   | { provider: "inception"; model: string; url: string }
   | { provider: "mistral"; model: string }
+  | { provider: "generic"; id: string; model: string }
 
 const KILO_FIM_URL = resolveKiloGatewayUrl("fim/completions")
 const INCEPTION_FIM_URL = "https://api.inceptionlabs.ai/v1/fim/completions"
@@ -30,5 +31,8 @@ export function resolveFimTarget(provider?: string, model?: string): FimTarget {
   if (info.directProvider === "inception") {
     return { provider: "inception", model: info.requestModel, url: INCEPTION_FIM_URL }
   }
+  if (info.providerID !== "kilo") return { provider: "generic", id: info.providerID, model: info.requestModel }
   return kiloTarget(model)
 }
+
+export { clearGenericFimCache, requestGenericFim, resolveGenericEndpoint } from "./generic-fim.js"

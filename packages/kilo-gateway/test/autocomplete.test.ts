@@ -4,6 +4,9 @@ import {
   DEFAULT_AUTOCOMPLETE_MODEL,
   DEFAULT_AUTOCOMPLETE_MODEL_ID,
   DEFAULT_AUTOCOMPLETE_PROVIDER_ID,
+  genericAutocompleteModel,
+  getAutocompleteModel,
+  getAutocompleteModelById,
 } from "../src/autocomplete"
 
 describe("DEFAULT_AUTOCOMPLETE_MODEL", () => {
@@ -16,6 +19,22 @@ describe("DEFAULT_AUTOCOMPLETE_MODEL", () => {
     expect(match).toBeDefined()
     expect(DEFAULT_AUTOCOMPLETE_MODEL).toBe(match!)
     expect(DEFAULT_AUTOCOMPLETE_MODEL.kind).toBe("edit")
+  })
+})
+
+describe("configured providers", () => {
+  test("keeps Mercury Next Edit on Semafour and Inception only", () => {
+    const edits = AUTOCOMPLETE_MODELS.filter((model) => model.kind === "edit")
+    expect(edits.map((model) => model.providerID).sort()).toEqual(["inception", "kilo"])
+    expect(getAutocompleteModel("inception", "mercury-next-edit").kind).toBe("edit")
+    expect(getAutocompleteModel("kilo", "inception/mercury-next-edit").kind).toBe("edit")
+  })
+
+  test("routes an unknown provider to classic FIM instead of Next Edit", () => {
+    const model = getAutocompleteModel("llama", "qwen2.5-coder")
+    expect(model).toEqual(genericAutocompleteModel("llama", "qwen2.5-coder"))
+    expect(model.kind).not.toBe("edit")
+    expect(getAutocompleteModelById("llama/qwen2.5-coder").modelID).toBe("qwen2.5-coder")
   })
 })
 

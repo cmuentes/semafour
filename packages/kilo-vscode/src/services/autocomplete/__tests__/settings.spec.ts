@@ -76,11 +76,14 @@ describe("autocomplete settings", () => {
     expect(validAutocompleteSetting("model", undefined)).toBe(true)
   })
 
-  it("rejects unsupported autocomplete updates", async () => {
+  it("accepts a configured provider and rejects one that is not connected", async () => {
     const { validAutocompleteSetting } = await import("../settings")
+    const catalog = { providers: ["llama"], models: ["qwen"] }
 
-    expect(validAutocompleteSetting("model", "other/model")).toBe(false)
-    expect(validAutocompleteSetting("provider", "openrouter")).toBe(false)
+    expect(validAutocompleteSetting("provider", "llama", catalog)).toBe(true)
+    expect(validAutocompleteSetting("model", "qwen", catalog)).toBe(true)
+    expect(validAutocompleteSetting("provider", "openrouter", catalog)).toBe(false)
+    expect(validAutocompleteSetting("model", "other/model", catalog)).toBe(false)
   })
 
   it("rejects non-boolean toggle updates", async () => {

@@ -9,7 +9,7 @@ interface AutocompleteModelBase {
   /** Human-readable label shown in settings. */
   readonly label: string
   /** Provider value stored in settings and used by the selector group. */
-  readonly providerID: AutocompleteProviderID
+  readonly providerID: string
   /** Provider display name for status bar / telemetry. */
   readonly provider: string
   /** Full model ID sent upstream by the autocomplete route. */
@@ -126,6 +126,23 @@ const aliases: Record<string, string> = {
   "inception/mercury-edit": "inception/mercury-edit-2",
 }
 
+export function genericAutocompleteModel(
+  providerID: string,
+  modelID: string,
+  providerName?: string,
+  label?: string,
+): AutocompleteModelDef {
+  return {
+    id: `${providerID}/${modelID}`,
+    modelID,
+    label: label ?? modelID,
+    providerID,
+    provider: providerName ?? providerID,
+    requestModel: modelID,
+    temperature: 0.2,
+  }
+}
+
 export function getAutocompleteModel(provider?: string, model?: string): AutocompleteModelDef {
   // When provider is unset, always default to Semafour Gateway. Direct-provider
   // use must be opted into explicitly via the provider setting — never inferred
@@ -136,12 +153,25 @@ export function getAutocompleteModel(provider?: string, model?: string): Autocom
   for (const m of models) {
     if (m.providerID === pid && m.modelID === mid) return m
   }
+  if (provider && provider !== "kilo") {
+    if (!mid) {
+      const preset = models.find((m) => m.providerID === provider)
+      if (preset) return preset
+    }
+    return genericAutocompleteModel(provider, mid ?? "")
+  }
   return DEFAULT_AUTOCOMPLETE_MODEL
 }
 
 export function getAutocompleteModelById(id: string): AutocompleteModelDef {
   for (const m of models) {
     if (m.id === id) return m
+  }
+  const slash = id.indexOf("/")
+  if (slash > 0) {
+    const provider = id.slice(0, slash)
+    const model = id.slice(slash + 1)
+    if (provider !== "kilo") return genericAutocompleteModel(provider, model)
   }
   return DEFAULT_AUTOCOMPLETE_MODEL
 }
