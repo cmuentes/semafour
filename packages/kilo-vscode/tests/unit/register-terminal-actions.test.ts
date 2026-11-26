@@ -33,12 +33,21 @@ function setup(active = false) {
       events.push("wait")
       waits.push("provider")
     },
+    appendTerminalSelection: (payload: { text: string; terminalName?: string }) => {
+      events.push("post")
+      posts.push({ type: "addTerminalContext", text: payload.text, terminalName: payload.terminalName })
+    },
   }
   const agent = {
     isActive: () => active,
     postMessage: (msg: unknown) => {
       events.push("post")
       posts.push(msg)
+    },
+    waitForReady: async () => {
+      events.push("wait")
+      waits.push("agent")
+      return true
     },
   }
 
@@ -70,13 +79,9 @@ describe("registerTerminalActions", () => {
     expect(state.events).toEqual(["focus", "wait", "post", "post"])
     expect(state.executed).toEqual([["kilo-code.SidebarProvider.focus"]])
     expect(state.waits).toEqual(["provider"])
-    expect(state.posts).toEqual([
-      {
-        type: "appendChatBoxMessage",
-        text: "\nTerminal output:\n```\nbun test\n```",
-      },
-      { type: "action", action: "focusInput" },
-    ])
+    expect(state.posts[0]).toMatchObject({ type: "addTerminalContext", text: "bun test" })
+    expect(state.posts[1]).toEqual({ type: "action", action: "focusInput" })
+    expect(JSON.stringify(state.posts)).not.toContain("appendChatBoxMessage")
   })
 
   it("adds terminal output to the active Agent Manager without revealing the sidebar", async () => {
@@ -84,15 +89,12 @@ describe("registerTerminalActions", () => {
 
     await state.commands.get("kilo-code.new.terminalAddToContext")?.({ selection: "bun test" })
 
-    expect(state.events).toEqual(["post", "post"])
+    expect(state.events).toEqual(["wait", "post", "post"])
     expect(state.executed).toEqual([])
-    expect(state.waits).toEqual([])
-    expect(state.posts).toEqual([
-      {
-        type: "appendChatBoxMessage",
-        text: "\nTerminal output:\n```\nbun test\n```",
-      },
-      { type: "action", action: "focusInput" },
-    ])
+    expect(state.waits).toEqual(["agent"])
+    expect(state.posts[0]).toMatchObject({ type: "addTerminalContext", text: "bun test" })
+    expect(typeof (state.posts[0] as { id?: string }).id).toBe("string")
+    expect(state.posts[1]).toEqual({ type: "action", action: "focusInput" })
+    expect(JSON.stringify(state.posts)).not.toContain("appendChatBoxMessage")
   })
 })

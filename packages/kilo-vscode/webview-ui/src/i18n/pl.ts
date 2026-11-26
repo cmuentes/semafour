@@ -391,6 +391,8 @@ export const dict = {
   "common.requestFailed": "Żądanie nie powiodło się",
   "common.rename": "Zmień nazwę",
   "common.delete": "Usuń",
+  "ui.promptInput.terminal": "Terminal",
+  "ui.promptInput.terminalLines": "{{count}} wierszy",
   "common.close": "Zamknij",
   "common.edit": "Edytuj",
   "common.loadMore": "Załaduj więcej",

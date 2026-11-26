@@ -372,6 +372,8 @@ export const dict = {
   "common.requestFailed": "要求失敗",
   "common.rename": "重新命名",
   "common.delete": "刪除",
+  "ui.promptInput.terminal": "終端機",
+  "ui.promptInput.terminalLines": "{{count}} 行",
   "common.close": "關閉",
   "common.edit": "編輯",
   "common.loadMore": "載入更多",

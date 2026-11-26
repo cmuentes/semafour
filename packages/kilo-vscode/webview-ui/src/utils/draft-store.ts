@@ -1,5 +1,6 @@
 import type { BrowserReference, ReviewCommentEntry } from "../types/messages"
 import type { CodeContext } from "../../../src/shared/code-context"
+import type { TerminalSelection } from "../../../src/shared/terminal-selection"
 import type { ImageAttachment } from "../hooks/useImageAttachments"
 import type { RevertPromptState } from "../context/session-utils"
 import { clearPromptDraftRoutes, pendingDraftKey, sessionDraftKey } from "./prompt-drafts"
@@ -9,6 +10,7 @@ export const drafts = new Map<string, string>()
 export const browserDrafts = new Map<string, BrowserReference[]>()
 export const reviewDrafts = new Map<string, ReviewCommentEntry[]>()
 export const contextDrafts = new Map<string, CodeContext[]>()
+export const terminalDrafts = new Map<string, TerminalSelection[]>()
 export const imageDrafts = new Map<string, ImageAttachment[]>()
 export const scrollDrafts = new Map<string, number>()
 /** Full text of collapsed pastes per draft key, in text order, so a restored
@@ -17,6 +19,16 @@ export const pasteDrafts = new Map<string, string[]>()
 const discarded = new Set<string>()
 const discardedSessions = new Set<string>()
 const sending = new Set<string>()
+
+function storeTerminals(key: string, terminals: TerminalSelection[] | undefined): boolean {
+  if (terminals === undefined) return terminalDrafts.has(key)
+  if (terminals.length === 0) {
+    terminalDrafts.delete(key)
+    return false
+  }
+  terminalDrafts.set(key, terminals)
+  return true
+}
 
 export function savePromptDraft(
   key: string,
@@ -27,6 +39,7 @@ export function savePromptDraft(
   browsers: BrowserReference[] = [],
   contexts: CodeContext[] = [],
   pastes?: string[],
+  terminals?: TerminalSelection[],
 ) {
   if (!text) mentionDrafts.delete(key)
   if (text) drafts.set(key, text)
@@ -43,7 +56,8 @@ export function savePromptDraft(
   }
   if (contexts.length > 0) contextDrafts.set(key, contexts)
   else contextDrafts.delete(key)
-  if (text || comments.length > 0 || images.length > 0 || browsers.length > 0 || contexts.length > 0)
+  const kept = storeTerminals(key, terminals)
+  if (text || comments.length > 0 || images.length > 0 || browsers.length > 0 || contexts.length > 0 || kept)
     scrollDrafts.set(key, scroll)
   else scrollDrafts.delete(key)
 }
@@ -56,6 +70,7 @@ function remove(raw: string | undefined) {
     browserDrafts,
     reviewDrafts,
     contextDrafts,
+    terminalDrafts,
     imageDrafts,
     scrollDrafts,
     mentionDrafts,

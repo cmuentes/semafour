@@ -712,7 +712,7 @@ describe("browser element reference contract", () => {
     expect(source).toContain("browserFeedbackData(browsers())")
     expect(source).toContain("formatBrowserFeedback(browserData.references)")
     expect(source).toContain(
-      'const message = [review, browserText, push, contextText, draft].filter(Boolean).join("\\n\\n")',
+      'const message = [review, browserText, push, contextText, terminalText, draft].filter(Boolean).join("\\n\\n")',
     )
     expect(source).toContain("references.delete(key)")
   })
@@ -838,5 +838,31 @@ describe("active editor pill contract", () => {
     expect(extension.match(/setActiveEditorTracker\(activeEditor\)/g)?.length).toBe(2)
     expect(manager).not.toContain("setActiveEditorTracker")
     expect(manager).not.toContain("activeEditorContextUpdate")
+  })
+})
+
+describe("terminal selection pill contract", () => {
+  const source = readFile(PROMPT_FILE)
+
+  it("keeps terminal pills independent of the active editor", () => {
+    const pill = readFile(path.join(ROOT, "webview-ui/src/components/chat/ActiveEditorPill.tsx"))
+    const editor = readFile(path.join(ROOT, "webview-ui/src/context/active-editor.tsx"))
+    expect(source).toContain("terminalDrafts")
+    expect(source).toContain("replaceTerminals")
+    expect(pill).not.toContain("terminalDrafts")
+    expect(pill).not.toContain("replaceTerminals")
+    expect(editor).not.toContain("terminalDrafts")
+    expect(editor).not.toContain("replaceTerminals")
+  })
+
+  it("treats terminal snippets as structured input and serializes them on send", () => {
+    expect(source).toContain("data != null || browser != null || contexts().length > 0 || terminals().length > 0")
+    const send = source.slice(source.indexOf("const handleSend = async"))
+    expect(send).toContain("const terminalText = formatTerminalSelections(terminals())")
+    expect(send).toContain("[review, browserText, push, contextText, terminalText, draft]")
+  })
+
+  it("clears terminal pills when a new task starts", () => {
+    expect(source).toContain("saveDraft(key, draft, comments, imgs, scroll, browser, undefined, pastes, [])")
   })
 })

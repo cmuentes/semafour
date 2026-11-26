@@ -391,6 +391,8 @@ export const dict = {
   "common.requestFailed": "Zahtjev nije uspio",
   "common.rename": "Preimenuj",
   "common.delete": "Izbriši",
+  "ui.promptInput.terminal": "Terminal",
+  "ui.promptInput.terminalLines": "{{count}} linija",
   "common.close": "Zatvori",
   "common.edit": "Uredi",
   "common.loadMore": "Učitaj još",

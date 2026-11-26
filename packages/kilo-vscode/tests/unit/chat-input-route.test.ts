@@ -18,7 +18,7 @@ function run(message: { type?: string }, view: string) {
 
 describe("routeChatInput", () => {
   it("switches to the chat and re-posts editor actions from History", () => {
-    for (const type of ["triggerTask", "appendChatContext"]) {
+    for (const type of ["triggerTask", "appendChatContext", "addTerminalContext"]) {
       const message = { type }
       const { calls, posted } = run(message, "history")
       expect(calls).toEqual(["show", "post"])

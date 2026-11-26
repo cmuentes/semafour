@@ -14,13 +14,14 @@ import {
   reviewDrafts,
   browserDrafts,
   contextDrafts,
+  terminalDrafts,
   savePromptDraft,
   scrollDrafts,
   finishPendingSend,
 } from "../../webview-ui/src/utils/draft-store"
 import { clearPromptDraftRoutes, promotePromptDraft, promptDraftKey } from "../../webview-ui/src/utils/prompt-drafts"
 
-const stores = [drafts, browserDrafts, reviewDrafts, contextDrafts, imageDrafts, scrollDrafts]
+const stores = [drafts, browserDrafts, reviewDrafts, contextDrafts, terminalDrafts, imageDrafts, scrollDrafts]
 
 beforeEach(() => {
   stores.forEach((store) => store.clear())
@@ -31,6 +32,7 @@ describe("prompt draft storage", () => {
   it("stores and clears all prompt artifacts together", () => {
     const browser = [{ id: "browser", sessionId: "s1", selector: "#save", content: "legacy" }]
     const contexts = [{ id: "context", filePath: "src/file.ts", startLine: 3, endLine: 5, text: "const value = 1" }]
+    const terminals = [{ id: "term", text: "bun test", terminalName: "zsh" }]
     savePromptDraft(
       "prompt:default:pending:sidebar-pending:1",
       "draft",
@@ -39,6 +41,8 @@ describe("prompt draft storage", () => {
       42,
       browser,
       contexts,
+      undefined,
+      terminals,
     )
 
     expect(drafts.size).toBe(1)
@@ -46,6 +50,7 @@ describe("prompt draft storage", () => {
     expect(imageDrafts.size).toBe(1)
     expect(browserDrafts.get("prompt:default:pending:sidebar-pending:1")).toEqual(browser)
     expect(contextDrafts.get("prompt:default:pending:sidebar-pending:1")).toEqual(contexts)
+    expect(terminalDrafts.get("prompt:default:pending:sidebar-pending:1")).toEqual(terminals)
     expect(scrollDrafts.size).toBe(1)
 
     discardPendingDraft("sidebar-pending:1")

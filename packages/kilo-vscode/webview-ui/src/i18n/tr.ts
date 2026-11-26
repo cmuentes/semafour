@@ -389,6 +389,8 @@ export const dict = {
   "common.requestFailed": "İstek başarısız",
   "common.rename": "Yeniden adlandır",
   "common.delete": "Sil",
+  "ui.promptInput.terminal": "Terminal",
+  "ui.promptInput.terminalLines": "{{count}} satır",
   "common.close": "Kapat",
   "common.edit": "Düzenle",
   "common.loadMore": "Daha fazla yükle",

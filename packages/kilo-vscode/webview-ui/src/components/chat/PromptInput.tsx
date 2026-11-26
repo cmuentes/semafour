@@ -108,6 +108,7 @@ import {
   clearPendingDraftDiscarded,
   clearSessionDraftDiscarded,
   contextDrafts,
+  terminalDrafts,
   drafts,
   finishPendingSend,
   imageDrafts,
@@ -123,6 +124,7 @@ import { ReviewComments } from "./ReviewComments"
 import { useRunningAgents } from "./AgentStack"
 import { BrowserReferences } from "./BrowserReferences"
 import { CodeContextChips } from "./CodeContextChips"
+import { TerminalSelectionChips } from "./TerminalSelectionChips"
 import { useActiveEditor } from "../../context/active-editor"
 import {
   browserFeedbackData,
@@ -133,6 +135,9 @@ import {
 } from "../../../../src/shared/browser-feedback"
 import { partInjected } from "../../../../src/shared/injected-prompt"
 import { formatCodeContexts, mergeCodeContexts, type CodeContext } from "../../../../src/shared/code-context"
+import { formatTerminalSelections } from "../../../../src/shared/terminal-selection-prompt"
+import type { TerminalSelection } from "../../../../src/shared/terminal-selection"
+import { addTerminalSelection, removeTerminalSelection } from "../../utils/terminal-selection-list"
 import { promptWithActiveEditor, withoutActiveEditorBlock } from "../../../../src/shared/active-editor-context"
 import { isEnterKeyCommitNotIme } from "../../utils/ime-enter"
 import { parseMemoryCommand, type ParsedMemoryCommand } from "../../utils/memory-command"
@@ -391,7 +396,8 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     browser: BrowserReference[] = browsers(),
     codeContexts: CodeContext[] = contexts(),
     pastes = key === draftKey() ? paste.pastes().map((item) => item.text) : undefined,
-  ) => savePromptDraft(key, next, comments, imgs, scroll, browser, codeContexts, pastes)
+    selections?: TerminalSelection[],
+  ) => savePromptDraft(key, next, comments, imgs, scroll, browser, codeContexts, pastes, selections)
   const readDraft = () => ({
     text: text().trim(),
     comments: reviewComments(),
@@ -399,6 +405,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     browsers: browsers(),
     pastes: paste.pastes().map((item) => item.text),
     contexts: contexts(),
+    terminals: terminals(),
     scroll: textareaRef?.scrollTop ?? scrollDrafts.get(draftKey()) ?? 0,
   })
 
@@ -439,6 +446,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     text,
   })
   const [contexts, setContexts] = createSignal<CodeContext[]>([])
+  const [terminals, setTerminals] = createSignal<TerminalSelection[]>([])
   const [enhancing, setEnhancing] = createSignal(false)
   const [autoApprove, setAutoApprove] = createSignal(false)
   const [sandboxes, setSandboxes] = createSignal<Record<string, SandboxState>>({})
@@ -622,6 +630,19 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
   }
   const clearContexts = () => replaceContexts([])
 
+  const replaceTerminals = (next: TerminalSelection[]) => {
+    setTerminals(next)
+    if (next.length === 0) {
+      terminalDrafts.delete(draftKey())
+      return
+    }
+    terminalDrafts.set(draftKey(), next)
+  }
+  const removeTerminal = (id: string) => {
+    if (!readonly()) replaceTerminals(removeTerminalSelection(terminals(), id))
+  }
+  const clearTerminals = () => replaceTerminals([])
+
   const removeReviewComment = (id: string) => {
     if (readonly()) return
     replaceReviewComments(reviewComments().filter((item) => item.id !== id))
@@ -637,12 +658,14 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
         const imgs = untrack(imageAttach.images)
         const browser = untrack(browsers)
         const codeContexts = untrack(contexts)
+        const terminalItems = untrack(terminals)
         if (
           val ||
           comments.length > 0 ||
           imgs.length > 0 ||
           browser.length > 0 ||
           codeContexts.length > 0 ||
+          terminalItems.length > 0 ||
           drafts.has(prev)
         ) {
           saveDraft(
@@ -654,6 +677,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
             browser,
             codeContexts,
             untrack(paste.pastes).map((item) => item.text),
+            terminalItems,
           )
         }
       }
@@ -671,6 +695,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
       setReviewComments(pending)
       setBrowsers(references.get(key) ?? [])
       setContexts(contextDrafts.get(key) ?? [])
+      setTerminals(terminalDrafts.get(key) ?? [])
       imageAttach.replace(imageDrafts.get(key) ?? [])
       setEnhancing(false)
       preEnhanceText = null
@@ -770,7 +795,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     const id = tabs?.add()
     if (!id) session.clearCurrentSession()
     const key = id ? scopeDraftKey(boxKey(), pendingDraftKey(id) ?? "new") : draftKey()
-    saveDraft(key, draft, comments, imgs, scroll, browser, undefined, pastes)
+    saveDraft(key, draft, comments, imgs, scroll, browser, undefined, pastes, [])
   }
   window.addEventListener("newTaskRequest", onNewTaskRequest)
   onCleanup(() => window.removeEventListener("newTaskRequest", onNewTaskRequest))
@@ -801,6 +826,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
       draft.browsers,
       draft.contexts,
       draft.pastes,
+      draft.terminals,
     )
   }
   window.addEventListener("agentManagerApplyDraft", onAgentManagerApplyDraft)
@@ -847,11 +873,12 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     imageAttach.images().length > 0 ||
     reviewComments().length > 0 ||
     browsers().length > 0 ||
-    contexts().length > 0
+    contexts().length > 0 ||
+    terminals().length > 0
   // Review, browser, and code context all need the composed message instead of
   // the server slash-command branch, which sends the raw args only.
   const hasStructuredInput = (data: unknown, browser: unknown) =>
-    data != null || browser != null || contexts().length > 0
+    data != null || browser != null || contexts().length > 0 || terminals().length > 0
   const sendReady = () => !isDisabled() && goalReady() && !terminal.pending() && !git.pending() && !props.blocked?.()
   const canContinue = () => !goal.active() && speech.state() === "idle" && !hasInput() && session.canResume()
   const goalReady = () => !goal.pending() && (!goal.active() || (!enhancing() && !imageAttach.pending()))
@@ -1034,7 +1061,8 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
       reviewComments().length > 0 ||
       imageAttach.images().length > 0 ||
       browsers().length > 0 ||
-      contexts().length > 0
+      contexts().length > 0 ||
+      terminals().length > 0
     )
       return
     replaceReviewComments(comments)
@@ -1161,6 +1189,21 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     textareaRef?.focus()
   }
 
+  const appendTerminal = (message: Extract<ExtensionMessage, { type: "addTerminalContext" }>, key = draftKey()) => {
+    if (defer(key, (next) => appendTerminal(message, next))) return
+    const item = {
+      id: message.id,
+      text: message.text,
+      ...(message.terminalName ? { terminalName: message.terminalName } : {}),
+    }
+    if (key !== draftKey()) {
+      terminalDrafts.set(key, addTerminalSelection(terminalDrafts.get(key) ?? [], item))
+      return
+    }
+    replaceTerminals(addTerminalSelection(terminals(), item))
+    textareaRef?.focus()
+  }
+
   const appendReviews = (message: Extract<ExtensionMessage, { type: "appendReviewComments" }>, key?: string) => {
     const target =
       key ??
@@ -1214,6 +1257,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
         browsers: references,
         pastes: pasteDrafts,
         contexts: contextDrafts,
+        terminals: terminalDrafts,
       },
       source,
       target,
@@ -1238,6 +1282,8 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     if (message.type === "appendChatBoxMessage") appendBox(message)
 
     if (message.type === "appendChatContext") appendContext(message)
+
+    if (message.type === "addTerminalContext") appendTerminal(message)
 
     if (message.type === "appendReviewComments") appendReviews(message)
 
@@ -1758,12 +1804,14 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
       clearReviewComments()
       clear()
       clearContexts()
+      clearTerminals()
       imageAttach.clear()
       mention.closeMention()
       slash.close()
       drafts.delete(draftKey())
       reviewDrafts.delete(draftKey())
       contextDrafts.delete(draftKey())
+      terminalDrafts.delete(draftKey())
       imageDrafts.delete(draftKey())
       mentionDrafts.delete(draftKey())
       scrollDrafts.delete(draftKey())
@@ -1786,12 +1834,14 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
       clearReviewComments()
       clear()
       clearContexts()
+      clearTerminals()
       imageAttach.clear()
       mention.closeMention()
       slash.close()
       drafts.delete(draftKey())
       reviewDrafts.delete(draftKey())
       contextDrafts.delete(draftKey())
+      terminalDrafts.delete(draftKey())
       imageDrafts.delete(draftKey())
       mentionDrafts.delete(draftKey())
       scrollDrafts.delete(draftKey())
@@ -1809,7 +1859,8 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     const browserData = browserFeedbackData(browsers())
     const browserText = browserData ? formatBrowserFeedback(browserData.references) : ""
     const contextText = formatCodeContexts(contexts())
-    const message = [review, browserText, push, contextText, draft].filter(Boolean).join("\n\n")
+    const terminalText = formatTerminalSelections(terminals())
+    const message = [review, browserText, push, contextText, terminalText, draft].filter(Boolean).join("\n\n")
     if (canSendContinue()) {
       session.resume()
       return
@@ -1929,6 +1980,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     reviewDrafts.delete(key)
     references.delete(key)
     contextDrafts.delete(key)
+    terminalDrafts.delete(key)
     imageDrafts.delete(key)
     mentionDrafts.delete(key)
     scrollDrafts.delete(key)
@@ -1940,6 +1992,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     clearReviewComments()
     setBrowsers([])
     clearContexts()
+    clearTerminals()
     imageAttach.clear()
     mention.closeMention()
     slash.close()
@@ -2062,6 +2115,9 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
             textareaRef?.focus()
           }}
         />
+      </Show>
+      <Show when={terminals().length > 0}>
+        <TerminalSelectionChips items={terminals()} onRemove={removeTerminal} />
       </Show>
       <Show when={contexts().length > 0}>
         <CodeContextChips

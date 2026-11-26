@@ -388,6 +388,8 @@ export const dict = {
   "common.requestFailed": "Запрос не выполнен",
   "common.rename": "Переименовать",
   "common.delete": "Удалить",
+  "ui.promptInput.terminal": "Терминал",
+  "ui.promptInput.terminalLines": "{{count}} строк",
   "common.close": "Закрыть",
   "common.edit": "Редактировать",
   "common.loadMore": "Загрузить ещё",

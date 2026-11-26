@@ -446,6 +446,11 @@
         "category": "Semafour"
       },
       {
+        "command": "kilo-code.new.addTerminalSelectionToChat",
+        "title": "Add Terminal Selection to Chat",
+        "category": "Semafour"
+      },
+      {
         "command": "kilo-code.new.terminalFixCommand",
         "title": "Fix This Command",
         "category": "Semafour"
@@ -513,6 +518,10 @@
     ],
     "menus": {
       "commandPalette": [
+        {
+          "command": "kilo-code.new.addTerminalSelectionToChat",
+          "when": "false"
+        },
         {
           "command": "kilo-code.new.sidebarTitle.plusButtonClicked",
           "when": "false"

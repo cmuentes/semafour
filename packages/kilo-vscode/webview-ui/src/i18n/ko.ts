@@ -390,6 +390,8 @@ export const dict = {
   "common.requestFailed": "요청 실패",
   "common.rename": "이름 바꾸기",
   "common.delete": "삭제",
+  "ui.promptInput.terminal": "터미널",
+  "ui.promptInput.terminalLines": "{{count}}줄",
   "common.close": "닫기",
   "common.edit": "편집",
   "common.loadMore": "더 불러오기",

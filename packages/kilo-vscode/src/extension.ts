@@ -34,6 +34,7 @@ import {
 import { TelemetryEventName, TelemetryProxy } from "./services/telemetry"
 import { registerCommitMessageService } from "./services/commit-message"
 import { registerCodeActions, registerTerminalActions, KiloCodeActionProvider } from "./services/code-actions"
+import { registerTerminalSelection } from "./services/terminal-selection/register"
 import { createActiveEditorTracker } from "./services/active-editor/create"
 import { closeTaskTarget, SurfaceFocus } from "./commands/close-task-target"
 import { registerToggleAutoApprove } from "./commands/toggle-auto-approve"
@@ -923,7 +924,8 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register code actions (editor context menus, terminal context menus, keyboard shortcuts)
   registerCodeActions(context, provider, agentManagerProvider, activeTabProvider, () => chat)
-  registerTerminalActions(context, provider, agentManagerProvider)
+  registerTerminalSelection(context, provider, agentManagerProvider, activeTabProvider, () => chat)
+  registerTerminalActions(context, provider, agentManagerProvider, activeTabProvider, () => chat)
 
   // Register CodeActionProvider (lightbulb quick fixes)
   context.subscriptions.push(

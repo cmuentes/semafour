@@ -1217,6 +1217,33 @@ body.vscode-reduce-motion .prompt-issues-menu {
   color: var(--vscode-charts-yellow, #cca700);
 }
 
+.terminal-selection-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 6px 0;
+}
+
+.terminal-selection-pill {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  min-width: 0;
+  padding: 2px 4px 2px 8px;
+  border: 1px solid var(--vscode-panel-border);
+  border-radius: 999px;
+  background: var(--vscode-editorWidget-background, var(--vscode-input-background));
+  color: var(--text-weak, var(--vscode-descriptionForeground));
+}
+
+.terminal-selection-pill-main {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
 @keyframes prompt-speech-recording-pulse {
   0%,
   100% {

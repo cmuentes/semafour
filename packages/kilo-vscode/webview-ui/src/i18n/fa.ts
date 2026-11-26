@@ -359,6 +359,8 @@ export const dict = {
   "common.requestFailed": "درخواست ناموفق بود",
   "common.rename": "تغییر نام",
   "common.delete": "حذف",
+  "ui.promptInput.terminal": "ترمینال",
+  "ui.promptInput.terminalLines": "{{count}} خط",
   "common.close": "بستن",
   "common.edit": "ویرایش",
   "common.loadMore": "بارگذاری بیشتر",

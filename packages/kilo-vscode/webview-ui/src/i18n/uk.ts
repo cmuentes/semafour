@@ -393,6 +393,8 @@ export const dict = {
   "common.requestFailed": "Запит не вдався",
   "common.rename": "Перейменувати",
   "common.delete": "Видалити",
+  "ui.promptInput.terminal": "Термінал",
+  "ui.promptInput.terminalLines": "{{count}} рядків",
   "common.close": "Закрити",
   "common.edit": "Редагувати",
   "common.loadMore": "Завантажити більше",

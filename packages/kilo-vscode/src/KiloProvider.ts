@@ -76,6 +76,9 @@ import { handleSessionSearch } from "./kilo-provider/session-search"
 import { handleFilePicker } from "./kilo-provider/file-picker"
 import { watchFontSizeConfig } from "./kilo-provider/font-size"
 import { watchActiveEditorContext } from "./kilo-provider/active-editor-bridge"
+import { createPendingQueue } from "./kilo-provider/pending-queue"
+import { toSelection } from "./services/terminal-selection/selection"
+import type { AddTerminalSelectionPayload, TerminalSelection } from "./shared/terminal-selection"
 import { withoutActiveFile } from "./kilo-provider/active-editor-dedupe"
 import { parseActiveEditor } from "./kilo-provider/active-editor-message"
 import type { ActiveEditorContext } from "./shared/active-editor-context"
@@ -484,6 +487,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
   private localUsageGeneration = 0
   private pendingKiloModel: { modelID?: string; agent?: string } | null = null
   private pendingReviewComments: { comments: unknown[]; autoSend: boolean; sessionID?: string }[] = []
+  private readonly pendingTerminals = createPendingQueue<TerminalSelection>()
   private reviewCommentsHandler: ReviewCommentsHandler | undefined
   private readyResolvers: (() => void)[] = []
   private promptRecoveryQueued = false
@@ -1392,6 +1396,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
           this.flushPendingKiloModel()
           await this.syncWebviewState("webviewReady")
           this.flushPendingReviewComments()
+          this.flushPendingTerminalSelections()
           this.recoverPendingPrompts()
           this.readyResolvers.splice(0).forEach((r) => r())
           break
@@ -5857,6 +5862,20 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
 
     for (const entry of pending) {
       this.postMessage({ type: "appendReviewComments", ...entry })
+    }
+  }
+
+  public appendTerminalSelection(payload: AddTerminalSelectionPayload): void {
+    const item = toSelection(payload)
+    if (!item) return
+    this.pendingTerminals.push(item)
+    this.flushPendingTerminalSelections()
+  }
+
+  private flushPendingTerminalSelections(): void {
+    if (!this.webview || !this.isWebviewReady || this.pendingTerminals.size() === 0) return
+    for (const item of this.pendingTerminals.take()) {
+      this.postMessage({ type: "addTerminalContext", ...item })
     }
   }
 

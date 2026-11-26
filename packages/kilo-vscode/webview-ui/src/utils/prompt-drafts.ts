@@ -81,7 +81,7 @@ function move<V>(map: Map<string, V>, source: string, target: string, overwrite:
   return value
 }
 
-export function movePromptDraft<T, C, I, S, B, P, X>(
+export function movePromptDraft<T, C, I, S, B, P, X, R>(
   stores: {
     text: Map<string, T>
     comments: Map<string, C>
@@ -90,16 +90,19 @@ export function movePromptDraft<T, C, I, S, B, P, X>(
     browsers?: Map<string, B>
     pastes?: Map<string, P>
     contexts?: Map<string, X>
+    terminals?: Map<string, R>
   },
   source: string,
   target: string,
-): { text?: T; comments?: C; images?: I; scroll?: S; browsers?: B; pastes?: P; contexts?: X } {
+): { text?: T; comments?: C; images?: I; scroll?: S; browsers?: B; pastes?: P; contexts?: X; terminals?: R } {
   const hasBrowsers = stores.browsers?.has(source) ?? false
   const hasPastes = stores.pastes?.has(source) ?? false
   const hasContexts = stores.contexts?.has(source) ?? false
+  const hasTerminals = stores.terminals?.has(source) ?? false
   const browsers = stores.browsers ? move(stores.browsers, source, target, true) : undefined
   const pastes = stores.pastes ? move(stores.pastes, source, target, true) : undefined
   const contexts = stores.contexts ? move(stores.contexts, source, target, true) : undefined
+  const terminals = stores.terminals ? move(stores.terminals, source, target, true) : undefined
   return {
     text: move(stores.text, source, target, false),
     comments: move(stores.comments, source, target, false),
@@ -108,5 +111,6 @@ export function movePromptDraft<T, C, I, S, B, P, X>(
     ...(hasBrowsers ? { browsers } : {}),
     ...(hasPastes ? { pastes } : {}),
     ...(hasContexts ? { contexts } : {}),
+    ...(hasTerminals ? { terminals } : {}),
   }
 }

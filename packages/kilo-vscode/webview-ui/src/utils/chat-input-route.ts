@@ -6,7 +6,12 @@ export function routeChatInput(
   show: () => void,
   post: (message: { type?: string }) => void,
 ) {
-  if (message.type !== "triggerTask" && message.type !== "appendChatContext" && message.type !== "appendReviewComments")
+  if (
+    message.type !== "triggerTask" &&
+    message.type !== "appendChatContext" &&
+    message.type !== "appendReviewComments" &&
+    message.type !== "addTerminalContext"
+  )
     return
   if (view === "newTask") return
   show()

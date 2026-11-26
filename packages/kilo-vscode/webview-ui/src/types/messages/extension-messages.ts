@@ -399,6 +399,13 @@ export interface AppendChatContextMessage {
   context: CodeContext
 }
 
+export interface AddTerminalContextMessage {
+  type: "addTerminalContext"
+  id: string
+  text: string
+  terminalName?: string
+}
+
 export interface AppendReviewCommentsMessage {
   type: "appendReviewComments"
   comments: ReviewCommentEntry[]
@@ -1938,6 +1945,7 @@ export type ExtensionMessage =
   | SetChatBoxMessage
   | AppendChatBoxMessage
   | AppendChatContextMessage
+  | AddTerminalContextMessage
   | AppendReviewCommentsMessage
   | AppendReviewCommentsToTerminalMessage
   | TriggerTaskMessage

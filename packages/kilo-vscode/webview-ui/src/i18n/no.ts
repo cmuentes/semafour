@@ -396,6 +396,8 @@ export const dict = {
   "common.requestFailed": "Forespørsel mislyktes",
   "common.rename": "Gi nytt navn",
   "common.delete": "Slett",
+  "ui.promptInput.terminal": "Terminal",
+  "ui.promptInput.terminalLines": "{{count}} linjer",
   "common.close": "Lukk",
   "common.edit": "Rediger",
   "common.loadMore": "Last flere",

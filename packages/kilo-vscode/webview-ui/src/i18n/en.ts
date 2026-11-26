@@ -354,6 +354,8 @@ export const dict = {
   "common.requestFailed": "Request failed",
   "common.rename": "Rename",
   "common.delete": "Delete",
+  "ui.promptInput.terminal": "Terminal",
+  "ui.promptInput.terminalLines": "{{count}} lines",
   "common.close": "Close",
   "common.edit": "Edit",
   "common.loadMore": "Load more",

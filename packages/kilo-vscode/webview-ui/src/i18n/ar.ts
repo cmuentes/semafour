@@ -382,6 +382,8 @@ export const dict = {
   "common.requestFailed": "فشل الطلب",
   "common.rename": "إعادة تسمية",
   "common.delete": "حذف",
+  "ui.promptInput.terminal": "الطرفية",
+  "ui.promptInput.terminalLines": "{{count}} أسطر",
   "common.close": "إغلاق",
   "common.edit": "تحرير",
   "common.loadMore": "تحميل المزيد",

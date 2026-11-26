@@ -390,6 +390,8 @@ export const dict = {
   "common.requestFailed": "リクエスト失敗",
   "common.rename": "名前変更",
   "common.delete": "削除",
+  "ui.promptInput.terminal": "ターミナル",
+  "ui.promptInput.terminalLines": "{{count}} 行",
   "common.close": "閉じる",
   "common.edit": "編集",
   "common.loadMore": "さらに読み込む",

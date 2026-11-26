@@ -388,6 +388,8 @@ export const dict = {
   "common.requestFailed": "คำขอล้มเหลว",
   "common.rename": "เปลี่ยนชื่อ",
   "common.delete": "ลบ",
+  "ui.promptInput.terminal": "เทอร์มินัล",
+  "ui.promptInput.terminalLines": "{{count}} บรรทัด",
   "common.close": "ปิด",
   "common.edit": "แก้ไข",
   "common.loadMore": "โหลดเพิ่มเติม",
